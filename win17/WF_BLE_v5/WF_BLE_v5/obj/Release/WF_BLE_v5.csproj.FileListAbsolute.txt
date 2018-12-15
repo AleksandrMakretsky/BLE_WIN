@@ -1,0 +1,12 @@
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\bin\Release\WF_BLE_v5.exe.config
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\bin\Release\WF_BLE_v5.exe
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\bin\Release\WF_BLE_v5.pdb
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\bin\Release\System.Runtime.WindowsRuntime.dll
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\bin\Release\Windows.Foundation.FoundationContract.winmd
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\bin\Release\Windows.WinMD
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\bin\Release\System.Runtime.WindowsRuntime.xml
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\obj\Release\WF_BLE_v5.Form1.resources
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\obj\Release\WF_BLE_v5.Properties.Resources.resources
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\obj\Release\WF_BLE_v5.csproj.GenerateResource.Cache
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\obj\Release\WF_BLE_v5.exe
+D:\Work\PROJ\c sharp\WF_BLE_v5\WF_BLE_v5\WF_BLE_v5\obj\Release\WF_BLE_v5.pdb

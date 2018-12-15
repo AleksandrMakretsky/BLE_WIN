@@ -34,7 +34,7 @@ using System.Windows.Threading;
 //using SDKTemplate;
 using System.Windows.Forms;
 
-// add button try
+// add button try 777
 // remone button
 namespace WF_BLE_v5
 {

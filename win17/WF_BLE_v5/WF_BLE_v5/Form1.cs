@@ -35,6 +35,7 @@ using System.Windows.Threading;
 using System.Windows.Forms;
 
 // add button try
+// remone button
 namespace WF_BLE_v5
 {
 

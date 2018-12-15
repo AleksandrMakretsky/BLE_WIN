@@ -34,7 +34,7 @@ using System.Windows.Threading;
 //using SDKTemplate;
 using System.Windows.Forms;
 
-
+// add button try
 namespace WF_BLE_v5
 {
 

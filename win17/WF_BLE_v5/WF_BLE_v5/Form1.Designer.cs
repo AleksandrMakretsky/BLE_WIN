@@ -33,6 +33,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCharacteristicWriteData1 = new System.Windows.Forms.Button();
+            this.btnCharacteristicWriteButton = new System.Windows.Forms.Button();
+            this.CharacteristicWriteValue = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnReadData = new System.Windows.Forms.Button();
+            this.CharacteristicReadValue = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CharacteristicList = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,7 +57,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDev = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.btnCharacteristicReadButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbDevName = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.listView1 = new System.Windows.Forms.ListView();
             this.colServerId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -65,6 +74,7 @@
             this.colSolicitedServiceUuids = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ValueChangedSubscribeToggle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,6 +92,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ValueChangedSubscribeToggle);
+            this.panel1.Controls.Add(this.btnCharacteristicWriteData1);
+            this.panel1.Controls.Add(this.btnCharacteristicWriteButton);
+            this.panel1.Controls.Add(this.CharacteristicWriteValue);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.btnReadData);
+            this.panel1.Controls.Add(this.CharacteristicReadValue);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.CharacteristicList);
             this.panel1.Controls.Add(this.label3);
@@ -95,8 +113,73 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(903, 149);
+            this.panel1.Size = new System.Drawing.Size(903, 220);
             this.panel1.TabIndex = 1;
+            // 
+            // btnCharacteristicWriteData1
+            // 
+            this.btnCharacteristicWriteData1.Location = new System.Drawing.Point(479, 175);
+            this.btnCharacteristicWriteData1.Name = "btnCharacteristicWriteData1";
+            this.btnCharacteristicWriteData1.Size = new System.Drawing.Size(118, 27);
+            this.btnCharacteristicWriteData1.TabIndex = 27;
+            this.btnCharacteristicWriteData1.Text = "WriteData1";
+            this.btnCharacteristicWriteData1.UseVisualStyleBackColor = true;
+            this.btnCharacteristicWriteData1.Click += new System.EventHandler(this.btnCharacteristicWriteData1_Click);
+            // 
+            // btnCharacteristicWriteButton
+            // 
+            this.btnCharacteristicWriteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCharacteristicWriteButton.Location = new System.Drawing.Point(328, 175);
+            this.btnCharacteristicWriteButton.Name = "btnCharacteristicWriteButton";
+            this.btnCharacteristicWriteButton.Size = new System.Drawing.Size(118, 28);
+            this.btnCharacteristicWriteButton.TabIndex = 26;
+            this.btnCharacteristicWriteButton.Text = "WriteBuffer";
+            this.btnCharacteristicWriteButton.UseVisualStyleBackColor = true;
+            // 
+            // CharacteristicWriteValue
+            // 
+            this.CharacteristicWriteValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CharacteristicWriteValue.Location = new System.Drawing.Point(328, 147);
+            this.CharacteristicWriteValue.Name = "CharacteristicWriteValue";
+            this.CharacteristicWriteValue.Size = new System.Drawing.Size(269, 22);
+            this.CharacteristicWriteValue.TabIndex = 25;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(407, 131);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(123, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "CharacteristicWriteValue";
+            // 
+            // btnReadData
+            // 
+            this.btnReadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnReadData.Location = new System.Drawing.Point(72, 175);
+            this.btnReadData.Name = "btnReadData";
+            this.btnReadData.Size = new System.Drawing.Size(117, 28);
+            this.btnReadData.TabIndex = 23;
+            this.btnReadData.Text = "ReadData";
+            this.btnReadData.UseVisualStyleBackColor = true;
+            this.btnReadData.Click += new System.EventHandler(this.btnReadData_Click);
+            // 
+            // CharacteristicReadValue
+            // 
+            this.CharacteristicReadValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CharacteristicReadValue.Location = new System.Drawing.Point(17, 147);
+            this.CharacteristicReadValue.Name = "CharacteristicReadValue";
+            this.CharacteristicReadValue.Size = new System.Drawing.Size(253, 22);
+            this.CharacteristicReadValue.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(69, 131);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(124, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "CharacteristicReadValue";
             // 
             // label4
             // 
@@ -116,6 +199,7 @@
             this.CharacteristicList.Name = "CharacteristicList";
             this.CharacteristicList.Size = new System.Drawing.Size(486, 23);
             this.CharacteristicList.TabIndex = 12;
+            this.CharacteristicList.SelectedIndexChanged += new System.EventHandler(this.CharacteristicList_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -189,7 +273,7 @@
             this.btnScanDev.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnScanDev.Location = new System.Drawing.Point(8, 18);
             this.btnScanDev.Name = "btnScanDev";
-            this.btnScanDev.Size = new System.Drawing.Size(115, 31);
+            this.btnScanDev.Size = new System.Drawing.Size(117, 28);
             this.btnScanDev.TabIndex = 0;
             this.btnScanDev.Text = "Сканировать";
             this.btnScanDev.UseVisualStyleBackColor = true;
@@ -200,7 +284,7 @@
             this.btnStopScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnStopScan.Location = new System.Drawing.Point(8, 54);
             this.btnStopScan.Name = "btnStopScan";
-            this.btnStopScan.Size = new System.Drawing.Size(115, 31);
+            this.btnStopScan.Size = new System.Drawing.Size(117, 28);
             this.btnStopScan.TabIndex = 1;
             this.btnStopScan.Text = "Стоп";
             this.btnStopScan.UseVisualStyleBackColor = true;
@@ -223,7 +307,7 @@
             this.btnDevConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDevConnect.Location = new System.Drawing.Point(8, 19);
             this.btnDevConnect.Name = "btnDevConnect";
-            this.btnDevConnect.Size = new System.Drawing.Size(117, 30);
+            this.btnDevConnect.Size = new System.Drawing.Size(117, 28);
             this.btnDevConnect.TabIndex = 2;
             this.btnDevConnect.Text = "Соединить";
             this.btnDevConnect.UseVisualStyleBackColor = false;
@@ -234,7 +318,7 @@
             this.btnDevDisConn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDevDisConn.Location = new System.Drawing.Point(8, 55);
             this.btnDevDisConn.Name = "btnDevDisConn";
-            this.btnDevDisConn.Size = new System.Drawing.Size(117, 30);
+            this.btnDevDisConn.Size = new System.Drawing.Size(117, 28);
             this.btnDevDisConn.TabIndex = 3;
             this.btnDevDisConn.Text = "Разъединить";
             this.btnDevDisConn.UseVisualStyleBackColor = true;
@@ -245,10 +329,10 @@
             this.tabControl1.Controls.Add(this.tabPageDev);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 149);
+            this.tabControl1.Location = new System.Drawing.Point(0, 220);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(903, 380);
+            this.tabControl1.Size = new System.Drawing.Size(903, 309);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPageDev
@@ -257,7 +341,7 @@
             this.tabPageDev.Location = new System.Drawing.Point(4, 22);
             this.tabPageDev.Name = "tabPageDev";
             this.tabPageDev.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDev.Size = new System.Drawing.Size(895, 354);
+            this.tabPageDev.Size = new System.Drawing.Size(895, 283);
             this.tabPageDev.TabIndex = 0;
             this.tabPageDev.Text = "BLE устройства";
             this.tabPageDev.UseVisualStyleBackColor = true;
@@ -270,22 +354,48 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Silver;
+            this.splitContainer1.Panel1.Controls.Add(this.btnCharacteristicReadButton);
+            this.splitContainer1.Panel1.Controls.Add(this.label5);
+            this.splitContainer1.Panel1.Controls.Add(this.tbDevName);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(889, 348);
+            this.splitContainer1.Size = new System.Drawing.Size(889, 277);
             this.splitContainer1.SplitterDistance = 296;
             this.splitContainer1.TabIndex = 0;
             // 
-            // treeView1
+            // btnCharacteristicReadButton
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(296, 348);
-            this.treeView1.TabIndex = 0;
+            this.btnCharacteristicReadButton.BackColor = System.Drawing.Color.LightBlue;
+            this.btnCharacteristicReadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCharacteristicReadButton.Location = new System.Drawing.Point(40, 18);
+            this.btnCharacteristicReadButton.Name = "btnCharacteristicReadButton";
+            this.btnCharacteristicReadButton.Size = new System.Drawing.Size(223, 28);
+            this.btnCharacteristicReadButton.TabIndex = 15;
+            this.btnCharacteristicReadButton.Text = ">Information about the device<";
+            this.btnCharacteristicReadButton.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(23, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 16);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Device";
+            // 
+            // tbDevName
+            // 
+            this.tbDevName.BackColor = System.Drawing.SystemColors.Menu;
+            this.tbDevName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbDevName.Location = new System.Drawing.Point(80, 68);
+            this.tbDevName.Name = "tbDevName";
+            this.tbDevName.ReadOnly = true;
+            this.tbDevName.Size = new System.Drawing.Size(202, 22);
+            this.tbDevName.TabIndex = 1;
             // 
             // splitContainer2
             // 
@@ -301,8 +411,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.richTextBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(589, 348);
-            this.splitContainer2.SplitterDistance = 166;
+            this.splitContainer2.Size = new System.Drawing.Size(589, 277);
+            this.splitContainer2.SplitterDistance = 132;
             this.splitContainer2.TabIndex = 0;
             // 
             // listView1
@@ -326,7 +436,7 @@
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.ShowItemToolTips = true;
-            this.listView1.Size = new System.Drawing.Size(589, 166);
+            this.listView1.Size = new System.Drawing.Size(589, 132);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -389,7 +499,7 @@
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(589, 178);
+            this.richTextBox1.Size = new System.Drawing.Size(589, 141);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
@@ -398,10 +508,20 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(895, 354);
+            this.tabPage2.Size = new System.Drawing.Size(895, 283);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ValueChangedSubscribeToggle
+            // 
+            this.ValueChangedSubscribeToggle.Location = new System.Drawing.Point(642, 175);
+            this.ValueChangedSubscribeToggle.Name = "ValueChangedSubscribeToggle";
+            this.ValueChangedSubscribeToggle.Size = new System.Drawing.Size(233, 23);
+            this.ValueChangedSubscribeToggle.TabIndex = 28;
+            this.ValueChangedSubscribeToggle.Text = "...";
+            this.ValueChangedSubscribeToggle.UseVisualStyleBackColor = true;
+            this.ValueChangedSubscribeToggle.Click += new System.EventHandler(this.ValueChangedSubscribeToggle_Click);
             // 
             // Form1
             // 
@@ -420,6 +540,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageDev.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -441,7 +562,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageDev;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.RichTextBox richTextBox1;
@@ -456,6 +576,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CharacteristicList;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCharacteristicWriteData1;
+        private System.Windows.Forms.Button btnCharacteristicWriteButton;
+        private System.Windows.Forms.TextBox CharacteristicWriteValue;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnReadData;
+        private System.Windows.Forms.TextBox CharacteristicReadValue;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnCharacteristicReadButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbDevName;
+        private System.Windows.Forms.Button ValueChangedSubscribeToggle;
     }
 }
 

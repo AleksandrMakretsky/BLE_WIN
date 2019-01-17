@@ -1,0 +1,12 @@
+
+Bluetooth GATT Client example
+https://docs.microsoft.com/en-us/windows/uwp/devices-sensors/gatt-client
+
+nordic sdk
+{
+https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v15.0.0%2Fble_sdk_app_att_mtu.html
+тоже но в новом стиле
+https://www.nordicsemi.com/DocLib/Content/SDK_Doc/nRF5_SDK/v15-0-0/ble_sdk_app_blinky_c
+sdk zip file
+https://www.nordicsemi.com/DocLib
+}

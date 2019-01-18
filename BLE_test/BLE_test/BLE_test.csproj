@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="Windows.Devices" />
     <Reference Include="Windows.Foundation" />
+    <Reference Include="Windows.Graphics" />
+    <Reference Include="Windows.Storage" />
+    <Reference Include="Windows.UI" />
+    <Reference Include="Windows.UI.Xaml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BleDevice.cs" />

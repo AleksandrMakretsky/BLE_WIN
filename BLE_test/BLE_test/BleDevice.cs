@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows.Threading;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
+
 
 namespace BLE_test
 {
@@ -14,16 +16,25 @@ namespace BLE_test
 	class BleDevice {
 
 		public bool change;
+		public bool enumerationCompleted;
+		public Dispatcher dispUI = null;// Dispatcher.CurrentDispatcher;
+		public object _locker;// = new object();
 
-		List<DeviceInformation> devices = null;// new List<DeviceInformation>();
+		public List<DeviceInformation> devices = null;// new List<DeviceInformation>();
 
-		//		static List<DeviceInformation> _deviceList;// = new List<DeviceInformation>();
 
 		public BleDevice() {
 			devices =  new List<DeviceInformation>();
+			enumerationCompleted = false;
+
+			_locker = new object();
+
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
 
 		public void WatchDevices() {
+			// from https://docs.microsoft.com/en-us/windows/uwp/devices-sensors/gatt-client
+
 			// Query for extra properties you want returned
 			string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
 
@@ -47,10 +58,12 @@ namespace BLE_test
 			deviceWatcher.Start();
 
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation deviceInterface) {
-			Console.WriteLine("DeviceWatcher_Added." + deviceInterface.Name);
-			lock (this)
+			Console.WriteLine("DeviceWatcher_Added:  " + deviceInterface.Name);
+			lock ( _locker )
 			{
 				if (deviceInterface.Name != "")
 				{
@@ -61,74 +74,57 @@ namespace BLE_test
 					Console.WriteLine("Name = NULL");
 				}
 			}
-
 			change = true;
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		async void DeviceWatcher_Updated(DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate) {
+
 			Console.WriteLine("DeviceWatcher_Updated.");
 
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		async void DeviceWatcher_Removed(DeviceWatcher sender, DeviceInformationUpdate devUpdate) {
+
 			Console.WriteLine("DeviceWatcher_Removed.");
-
-			lock (this)
+			lock ( _locker )
 			{
-				Console.WriteLine("    before Device");
-				int count = 0;
-				foreach (DeviceInformation deviceInterface in devices)
+				for (int index = 0; index < devices.Count; index++)
 				{
-					Console.WriteLine("               Device " + deviceInterface.Name);
-					if (count++ == devices.Count)
-					{
-						break;
-					}
-
-				}
-
-
-				count = 0;
-				foreach (DeviceInformation deviceInterface in devices)
-				{
-
+					DeviceInformation deviceInterface = devices[index];
 					if (deviceInterface.Id == devUpdate.Id)
 					{
 						devices.Remove(deviceInterface);
 					}
-					if (count++ == devices.Count)
-					{
-						break;
-					}
 				}
-
-				count = 0;
-				Console.WriteLine("    after Device");
-				foreach (DeviceInformation deviceInterface in devices)
-				{
-					Console.WriteLine("               Device " + deviceInterface.Name);
-					if (count++ == devices.Count)
-					{
-						break;
-					}
-				}
-
 			}
+			change = true;
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		async void DeviceWatcher_EnumerationCompleted(DeviceWatcher sender, object e) {
+
 			Console.WriteLine("DeviceWatcher_EnumerationCompleted.");
+			enumerationCompleted = true;
+
+
 
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
 
 		async void DeviceWatcher_Stopped(DeviceWatcher sender, object args) {
 			Console.WriteLine("DeviceWatcher_Stopped.");
 
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
 
 
-	}
-}
+	} // end of class
+} // end of namespace BLE_test
 
 
 

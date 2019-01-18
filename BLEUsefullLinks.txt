@@ -10,3 +10,7 @@ https://www.nordicsemi.com/DocLib/Content/SDK_Doc/nRF5_SDK/v15-0-0/ble_sdk_app_b
 sdk zip file
 https://www.nordicsemi.com/DocLib
 }
+
+
+c# tutorial rus
+https://metanit.com/sharp/tutorial/11.4.php

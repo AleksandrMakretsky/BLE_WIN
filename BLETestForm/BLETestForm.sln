@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLETestForm", "BLETestForm\BLETestForm.csproj", "{F3330A26-6691-44C7-8401-810E0A1CD046}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3330A26-6691-44C7-8401-810E0A1CD046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3330A26-6691-44C7-8401-810E0A1CD046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3330A26-6691-44C7-8401-810E0A1CD046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3330A26-6691-44C7-8401-810E0A1CD046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E60B8BB-B8E3-41C8-82E9-835941A03404}
+	EndGlobalSection
+EndGlobal

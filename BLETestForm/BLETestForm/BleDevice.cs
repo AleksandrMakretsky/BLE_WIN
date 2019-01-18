@@ -8,20 +8,32 @@ using System.Windows.Threading;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
-using System.Activities.Core;
+//using System.Activities.Core;
 
+using System.Runtime.InteropServices; // find window
 
-
+ 
 namespace BLETestForm
 {
+//	const string winName = "9999";
 
 	class BleDevice {
 
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+		static extern uint RegisterWindowMessage(string lpString);
+
+		private uint _messageId;
+
+		[DllImport("user32.dll")]
+		public static extern int FindWindow(string lpClassName, String lpWindowName);
+		[DllImport("user32.dll")]
+		public static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
+
 		public bool change;
 		public bool enumerationCompleted;
-		public Dispatcher dispUI = null;// Dispatcher.CurrentDispatcher;
-		public object _locker;// = new object();
-		public List<DeviceInformation> devices = null;// new List<DeviceInformation>();
+		public Dispatcher dispUI = null;
+		public object _locker;
+		public List<DeviceInformation> devices = null;
 
 		private DeviceWatcher deviceWatcher;
 		public BluetoothLEDevice bluetoothLeDevice = null;
@@ -32,16 +44,15 @@ namespace BLETestForm
 			enumerationCompleted = false;
 
 			_locker = new object();
-
-//			TextWriter tmp = Console.Out;
 			Console.SetOut(Console.Out);
 			Console.WriteLine("Hello World");
+			_messageId = RegisterWindowMessage("BLEDeviceMessage");
 
 
-		}
-		////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////
 
-		async void ConnectDevice(DeviceInformation deviceInfo)
+	void ConnectDevice(DeviceInformation deviceInfo)
 		{
 
 //			BluetoothLEDevice bluetoothLeDevice = await BluetoothLEDevice.FromIdAsync(deviceInfo.Id);
@@ -49,18 +60,8 @@ namespace BLETestForm
 			//			BluetoothLEDevice bluetoothLeDevice = await BluetoothLEDevice.FromIdAsync(deviceInfo.Id);
 			// ...
 		}
-//		public void ConnectDevice(DeviceInformation deviceInfo)
-//		{
-//			bluetoothLeDevice = BluetoothLEDevice.FromIdAsync(deviceInfo.Id);
-			// ...
-//		}
-/*
-		async void DisposeDevice()
-		{
-			bluetoothLeDevice.Dispose();
-		}
+		////////////////////////////////////////////////////////////////////////////////////////////
 
-*/
 		public void StartDiscovery()
 		{
 			WatchDevices();
@@ -73,7 +74,7 @@ namespace BLETestForm
 		}
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		public void WatchDevices() {
+		private void WatchDevices() {
 			// from https://docs.microsoft.com/en-us/windows/uwp/devices-sensors/gatt-client
 
 			// Query for extra properties you want returned
@@ -102,7 +103,8 @@ namespace BLETestForm
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 
-		async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation deviceInterface) {
+		void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation deviceInterface) {
+
 			Console.WriteLine("DeviceWatcher_Added:  " + deviceInterface.Name);
 			lock ( _locker )
 			{
@@ -115,20 +117,23 @@ namespace BLETestForm
 					Console.WriteLine("Name = NULL");
 				}
 			}
+
+			System.IntPtr hwnd = (System.IntPtr)FindWindow("BLETestForm", null);
+			SendMessage(hwnd, (int)_messageId, (IntPtr)55, (IntPtr)66);
+
 			change = true;
 		}
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 
-		async void DeviceWatcher_Updated(DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate) {
+		void DeviceWatcher_Updated(DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate) {
 
-			Console.WriteLine("DeviceWatcher_Updated.");
 
 		}
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 
-		async void DeviceWatcher_Removed(DeviceWatcher sender, DeviceInformationUpdate devUpdate) {
+		void DeviceWatcher_Removed(DeviceWatcher sender, DeviceInformationUpdate devUpdate) {
 
 			Console.WriteLine("DeviceWatcher_Removed.");
 			lock ( _locker )
@@ -139,6 +144,7 @@ namespace BLETestForm
 					if (deviceInterface.Id == devUpdate.Id)
 					{
 						devices.Remove(deviceInterface);
+						Console.WriteLine("   delete " + deviceInterface.Name);
 					}
 				}
 			}
@@ -147,17 +153,19 @@ namespace BLETestForm
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 
-		async void DeviceWatcher_EnumerationCompleted(DeviceWatcher sender, object e) {
+		void DeviceWatcher_EnumerationCompleted(DeviceWatcher sender, object e) {
 
 			Console.WriteLine("DeviceWatcher_EnumerationCompleted.");
 			enumerationCompleted = true;
 
+			System.IntPtr hwnd = (System.IntPtr)FindWindow("WindowsForms10.Window.8.app.0.141b42a_r10_ad1", null);
+			SendMessage(hwnd, (int)_messageId, (IntPtr)55, (IntPtr)66);
 
-
+			//			::SendMessage()
 		}
-		////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////
 
-		async void DeviceWatcher_Stopped(DeviceWatcher sender, object args) {
+	void DeviceWatcher_Stopped(DeviceWatcher sender, object args) {
 
 			Console.WriteLine("DeviceWatcher_Stopped.");
 

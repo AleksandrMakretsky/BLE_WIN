@@ -29,7 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.Connect = new System.Windows.Forms.Button();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.DeviceList = new System.Windows.Forms.ListBox();
+			this.Disconnect = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// Connect
@@ -40,21 +41,33 @@
 			this.Connect.TabIndex = 0;
 			this.Connect.Text = "Connect";
 			this.Connect.UseVisualStyleBackColor = true;
+			this.Connect.Click += new System.EventHandler(this.Connect_Click);
 			// 
-			// listBox1
+			// DeviceList
 			// 
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.Location = new System.Drawing.Point(212, 31);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(224, 173);
-			this.listBox1.TabIndex = 1;
+			this.DeviceList.FormattingEnabled = true;
+			this.DeviceList.Location = new System.Drawing.Point(212, 31);
+			this.DeviceList.Name = "DeviceList";
+			this.DeviceList.Size = new System.Drawing.Size(224, 173);
+			this.DeviceList.TabIndex = 1;
+			// 
+			// Disconnect
+			// 
+			this.Disconnect.Location = new System.Drawing.Point(26, 76);
+			this.Disconnect.Name = "Disconnect";
+			this.Disconnect.Size = new System.Drawing.Size(139, 23);
+			this.Disconnect.TabIndex = 2;
+			this.Disconnect.Text = "Disconnect";
+			this.Disconnect.UseVisualStyleBackColor = true;
+			this.Disconnect.Click += new System.EventHandler(this.Disconnect_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(457, 280);
-			this.Controls.Add(this.listBox1);
+			this.Controls.Add(this.Disconnect);
+			this.Controls.Add(this.DeviceList);
 			this.Controls.Add(this.Connect);
 			this.Name = "Form1";
 			this.Text = "Form1";
@@ -66,7 +79,8 @@
 		#endregion
 
 		private System.Windows.Forms.Button Connect;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ListBox DeviceList;
+		private System.Windows.Forms.Button Disconnect;
 	}
 }
 

@@ -28,20 +28,45 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.Connect = new System.Windows.Forms.Button();
+			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.SuspendLayout();
+			// 
+			// Connect
+			// 
+			this.Connect.Location = new System.Drawing.Point(26, 31);
+			this.Connect.Name = "Connect";
+			this.Connect.Size = new System.Drawing.Size(139, 23);
+			this.Connect.TabIndex = 0;
+			this.Connect.Text = "Connect";
+			this.Connect.UseVisualStyleBackColor = true;
+			// 
+			// listBox1
+			// 
+			this.listBox1.FormattingEnabled = true;
+			this.listBox1.Location = new System.Drawing.Point(212, 31);
+			this.listBox1.Name = "listBox1";
+			this.listBox1.Size = new System.Drawing.Size(224, 173);
+			this.listBox1.TabIndex = 1;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(426, 292);
+			this.ClientSize = new System.Drawing.Size(457, 280);
+			this.Controls.Add(this.listBox1);
+			this.Controls.Add(this.Connect);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Button Connect;
+		private System.Windows.Forms.ListBox listBox1;
 	}
 }
 

@@ -8,7 +8,7 @@ using System.Windows.Threading;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
-
+using System.Activities.Core;
 
 
 
@@ -33,16 +33,20 @@ namespace BLETestForm
 
 			_locker = new object();
 
+//			TextWriter tmp = Console.Out;
+			Console.SetOut(Console.Out);
+			Console.WriteLine("Hello World");
+
+
 		}
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		void ConnectDevice(DeviceInformation deviceInfo)
+		async void ConnectDevice(DeviceInformation deviceInfo)
 		{
-			UInt64 bluetoothAddress = 0;
-//			bluetoothLeDevice = await BluetoothLEDevice.FromBluetoothAddressAsync(bluetoothAddress);
 
-			// Note: BluetoothLEDevice.FromIdAsync must be called from a UI thread because it may prompt for consent.
 //			BluetoothLEDevice bluetoothLeDevice = await BluetoothLEDevice.FromIdAsync(deviceInfo.Id);
+			// Note: BluetoothLEDevice.FromIdAsync must be called from a UI thread because it may prompt for consent.
+			//			BluetoothLEDevice bluetoothLeDevice = await BluetoothLEDevice.FromIdAsync(deviceInfo.Id);
 			// ...
 		}
 //		public void ConnectDevice(DeviceInformation deviceInfo)

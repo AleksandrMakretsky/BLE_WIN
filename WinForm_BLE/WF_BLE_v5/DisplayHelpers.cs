@@ -219,6 +219,7 @@ namespace WF_BLE_v5
     public enum GattNativeServiceUuid : ushort
     {
         None = 0,
+        DS_BLE = 0x1423,
         AlertNotification = 0x1811,
         Battery = 0x180F,
         BloodPressure = 0x1810,
@@ -249,6 +250,8 @@ namespace WF_BLE_v5
     public enum GattNativeCharacteristicUuid : ushort
     {
         None = 0,
+        DS_BLE_READ = 0x1424,
+        DS_BLE_WRITE = 0x1425,
         AlertCategoryID = 0x2A43,
         AlertCategoryIDBitMask = 0x2A42,
         AlertLevel = 0x2A06,

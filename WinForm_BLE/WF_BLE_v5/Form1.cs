@@ -17,7 +17,7 @@ using System.Windows.Threading;
 //using SDKTemplate;
 using System.IO.Ports;
 using System.Windows.Forms;
-//=============================
+
 
 namespace WF_BLE_v5
 {
@@ -26,7 +26,7 @@ namespace WF_BLE_v5
     public partial class Form1 : Form
     {
         #region Designer Variables
-        private ColumnHeader colServerId=null;
+        private ColumnHeader colServerId = null;
         private ColumnHeader colName;
         private ColumnHeader colRssi;
         private ColumnHeader colTxPower;
@@ -38,20 +38,20 @@ namespace WF_BLE_v5
         private ColumnHeader colConnectable;
         #endregion
 
-        ObservableCollection<BluetoothLEDeviceDisplay> KnownDevices = null;//null new ObservableCollection<BluetoothLEDeviceDisplay>();
-        List<DeviceInformation> UnknownDevices = null;// new List<DeviceInformation>();
-        //List<DeviceInformation> interfaceList = null;// new List<DeviceInformation>(interfaces);
+       
+        List<DeviceInformation> interfaceList = null;
+
         DateTime aDateTime;
+
+        bool PrintScreanEn = false;
         public Form1()
         {
             InitializeComponent();
 
-            //interfaceList = new List<DeviceInformation>(interfaces);
-            UnknownDevices =  new List<DeviceInformation>();
-            KnownDevices = new ObservableCollection<BluetoothLEDeviceDisplay>();
+            interfaceList = new List<DeviceInformation>();//interfaces
 
             var doubleBufferedPropInfo = listView1.GetType().GetProperty("DoubleBuffered",
-                                            System.Reflection.BindingFlags.Instance | 
+                                            System.Reflection.BindingFlags.Instance |
                                             System.Reflection.BindingFlags.NonPublic);
 
             doubleBufferedPropInfo.SetValue(listView1, true, null);
@@ -81,9 +81,24 @@ namespace WF_BLE_v5
             btnScanDev.BackColor = Color.GreenYellow;
 
             listView1.Items.Clear();
-            UnknownDevices.Clear();
+            PrintScreanEn = false;
+
+
+
+            interfaceList.Clear(); //for listView;
+
+            ServiceList.Items.Clear();
+            CharacteristicList.Items.Clear();
+
+            ServiceList.Text="";
+            CharacteristicList.Text="";
+
+            textIDDev.Clear();
+            CharacteristicReadValue.Clear();
+            textSelDev.Clear();
+
             count = 0;
-            
+            btnDevConnect.Enabled = false;
 
             WatchDevices();
 
@@ -113,7 +128,7 @@ namespace WF_BLE_v5
 
         private async void printToLog(string args)
         {
-            
+
             aDateTime = DateTime.Now;
 
             String strDataTime = aDateTime.ToString() + " - ";
@@ -130,97 +145,57 @@ namespace WF_BLE_v5
         {
             try
             {
-                  
-               watcher = DeviceInformation.CreateWatcher(
-                        aqsAllBluetoothLEDevices,
-                        requestedProperties,
-                        DeviceInformationKind.AssociationEndpoint);
+
+                watcher = DeviceInformation.CreateWatcher(
+                         aqsAllBluetoothLEDevices,
+                         requestedProperties,
+                         DeviceInformationKind.AssociationEndpoint);
 
                 // Add event handlers
                 watcher.Added += watcher_Added;
-
-                /*
-                watcher.Added += (DeviceWatcher sender, DeviceInformation devInfo) =>
-                {
-                    if (UnknownDevices.FirstOrDefault(d => d.Id.Equals(devInfo.Id) || d.Name.Equals(devInfo.Name)) == null)
-                    {
-
-                        UnknownDevices.Add(devInfo);
-                        DisplayDeviceInterfaceArray();
-
-                    }
-                };
-                */
-
                 watcher.Removed += watcher_Removed;
-                
-                /*
-                watcher.Removed += (DeviceWatcher sender, DeviceInformationUpdate devInfo) =>
-                {
-                    UnknownDevices.Remove(FindUnknownDevices(devInfo.Id));
-                };
-                */
-               
                 watcher.Updated += watcher_Updated;
-                //watcher.Updated += (_, __) => { };
                 watcher.EnumerationCompleted += watcher_EnumerationCompleted;
-               //watcher.EnumerationCompleted += (DeviceWatcher sender, object arg) => { sender.Stop(); };
                 watcher.Stopped += watcher_Stopped;
-                //watcher.Stopped += (DeviceWatcher sender, object arg) => { UnknownDevices.Clear(); sender.Start(); };
-
-
 
                 // Start over with an empty collection.
-                KnownDevices.Clear();
+
                 watcher.Start();
-                
-                printToLog( "Сканирование BLE устройств... ");
+
+                printToLog("Сканирование BLE устройств... ");
             }
             catch (ArgumentException)
             {
-                //The ArgumentException gets thrown by FindAllAsync when the GUID isn't formatted properly
-                //The only reason we're catching it here is because the user is allowed to enter GUIDs without validation
-                //In normal usage of the API, this exception handling probably wouldn't be necessary when using known-good GUIDs 
-                // richTextBox1.AppendText("Caught ArgumentException. Failed to create watcher." + " \r\n");
                 printToLog("BLE устройства не найдены. ");
             }
         }
 
         async void watcher_Added(DeviceWatcher sender, DeviceInformation deviceInterface)
         {
-
             //await System.Windows.Threading.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             await dispUI.BeginInvoke((Action)(() =>
             {
                 lock (this)
                 {
-                    //Debug.WriteLine(String.Format("Added {0}{1}", deviceInterface.Id, deviceInterface.Name));
-
                     // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                     if (sender == watcher)
                     {
                         // Make sure device isn't already present in the list.
-                        if (FindBluetoothLEDeviceDisplay(deviceInterface.Id) == null)
+                        if (FindInterfaceList(deviceInterface.Id) == null)
                         {
                             if (deviceInterface.Name != string.Empty)
                             {
                                 // If device has a friendly name display it immediately.
-                                KnownDevices.Add(new BluetoothLEDeviceDisplay(deviceInterface));
+                                
+                                interfaceList.Add(deviceInterface);
 
                                 string sDev = "Add device:" + deviceInterface.Name;
                                 printToLog(sDev);
 
-                                interfaces[count] = deviceInterface;
-                                count += 1;
-
                                 DisplayDeviceInterfaceArray();
 
                             }
-                            else
-                            {
-                                // Add it to a list in case the name gets updated later. 
-                                UnknownDevices.Add(deviceInterface);
-                            }
+
                         }
 
                     }
@@ -230,53 +205,8 @@ namespace WF_BLE_v5
         }
 
 
-        public BluetoothLEDevice FindBluetoothLEDevice(string id)
-        {
-            int i = 0;
-
-            for (i=0; i < KnownDevices.Count; i++ )
-            //luetoothLEDevice bleDeviceDisplay in KnownDevices)
-            {
-                if (KnownDevices[i].Id == id)
-                {
-                    //return i; (BluetoothLEDevice)(KnownDevices[i].Id);
-                }
-            }
-
-
-            return null;
-        }
-
-        private BluetoothLEDeviceDisplay FindBluetoothLEDeviceDisplay(string id)
-        {
-            foreach (BluetoothLEDeviceDisplay bleDeviceDisplay in KnownDevices)
-            {
-                if (bleDeviceDisplay.Id == id)
-                {
-                    return bleDeviceDisplay;
-                }
-            }
-            return null;
-        }
-
-        private DeviceInformation FindUnknownDevices(string id)
-        {
-            foreach (DeviceInformation bleDeviceInfo in UnknownDevices)
-            {
-                if (bleDeviceInfo.Id == id)
-                {
-                    return bleDeviceInfo;
-                }
-            }
-            return null;
-        }
-
-
-
         private async void watcher_Updated(DeviceWatcher sender, DeviceInformationUpdate deviceInfoUpdate)
         {
-            //Dispatcher
-            //await dispUI.BeginInvoke((Action)(() =>
             // We must update the collection on the UI thread because the collection is databound to a UI element.
             await dispUI.BeginInvoke((Action)(() =>
             {
@@ -289,90 +219,67 @@ namespace WF_BLE_v5
                     // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                     if (sender == watcher)
                     {
-                        BluetoothLEDeviceDisplay bleDeviceDisplay = FindBluetoothLEDeviceDisplay(deviceInfoUpdate.Id);
-                        if (bleDeviceDisplay != null)
+                        DeviceInformation deviceInfo = null;
+                        deviceInfo = FindInterfaceList(deviceInfoUpdate.Id);
+
+                        if (deviceInfo != null)
                         {
                             // Device is already being displayed - update UX.
-                            bleDeviceDisplay.Update(deviceInfoUpdate);
-
+                            //bleDeviceDisplay.Update(deviceInfoUpdate);
+                            deviceInfo.Update(deviceInfoUpdate);
+                            
                             DisplayDeviceInterfaceArray();
 
                             return;
                         }
 
-                        DeviceInformation deviceInfo = FindUnknownDevices(deviceInfoUpdate.Id);
-                        if (deviceInfo != null)
-                        {
-                            deviceInfo.Update(deviceInfoUpdate);
-                            // If device has been updated with a friendly name it's no longer unknown.
-                            if (deviceInfo.Name != String.Empty)
-                            {
-                                KnownDevices.Add(new BluetoothLEDeviceDisplay(deviceInfo));
-
-                                interfaces[count] = deviceInfo;//DeviceInformation deviceInterface
-                                count += 1;
-
-                                UnknownDevices.Remove(deviceInfo);
-
-                            }
-                        }
+ 
                     }
                 }
             }));
 
         }
 
+
+        private DeviceInformation FindInterfaceList(string id)
+        {
+            foreach (DeviceInformation bleDeviceInfo in interfaceList)
+            {
+                if (bleDeviceInfo.Id == id)
+                {
+                    return bleDeviceInfo;
+                }
+            }
+            return null;
+        }
         async void watcher_Removed(DeviceWatcher sender, DeviceInformationUpdate devUpdate)
         {
-            int count2 = 0;
-            //Convert interfaces array to a list (IList).
-            List<DeviceInformation> interfaceList = new List<DeviceInformation>(interfaces);
 
-            //await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+
             await dispUI.BeginInvoke((Action)(() =>
             {
                 lock (this)
                 {
-      
-
 
                     // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                     if (sender == watcher)
                     {
                         // Find the corresponding DeviceInformation in the collection and remove it.
-                        BluetoothLEDeviceDisplay bleDeviceDisplay = FindBluetoothLEDeviceDisplay(devUpdate.Id);
-                        if (bleDeviceDisplay != null)
+
+                        DeviceInformation deviceInfo = null;
+                        deviceInfo = FindInterfaceList(devUpdate.Id);
+
+                        if (deviceInfo != null)
                         {
-                            KnownDevices.Remove(bleDeviceDisplay);
+                         
+                            interfaceList.Remove(deviceInfo);
 
                             string sDev = "Удалено {0}{1}" + devUpdate.Id;
                             printToLog(sDev);
-
-                            foreach (DeviceInformation deviceInterface in interfaces)
-                            {
-                                if (count2 < count)
-                                {
-                                    if (interfaces[count2].Id == devUpdate.Id)
-                                    {
-                                        //Remove the element.
-                                        interfaceList.RemoveAt(count2);
-
-                                    }
-
-                                }
-                                count2 += 1;
-                            }
-                            //Convert the list back to the interfaces array.
-                            interfaces = interfaceList.ToArray();
-                            if (count > 0) count -= 1;
                         }
 
-                        DeviceInformation deviceInfo = FindUnknownDevices(devUpdate.Id);
-                        if (deviceInfo != null)
-                        {
-                            UnknownDevices.Remove(deviceInfo);
-                        }
-                        //refresh display (ListView)
+
+
                         DisplayDeviceInterfaceArray();
                     }
                 }
@@ -381,49 +288,47 @@ namespace WF_BLE_v5
 
         private async void watcher_EnumerationCompleted(DeviceWatcher sender, object e)
         {
-            // We must update the collection on the UI thread because the collection is databound to a UI element.
-            //await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            await dispUI.BeginInvoke((Action)(() =>
-            {
+            // We must update the collection on the UI thread because the collection is databound to a UI element
+
                 // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                 if (sender == watcher)
                 {
-                    //rootPage.NotifyUser($"{KnownDevices.Count} devices found. Enumeration completed.",
-                    //   NotifyType.StatusMessage);
-
-                    //refresh display (ListView)
-                    //DisplayDeviceInterfaceArray();
+                    PrintScreanEn = true;// disp enable
+                    DisplayDeviceInterfaceArray();
+                    string sDev = "watcher_EnumerationCompleted";
+                    printToLog(sDev);
+                    
                 }
-            }));
+
         }
 
         async void DisplayDeviceInterfaceArray()
         {
-           
+
             listView1.Invoke((MethodInvoker)(() =>
                             listView1.Items.Clear()));
 
-            int count2 = 0;
-            foreach (DeviceInformation deviceInterface in interfaces)
+            if (PrintScreanEn == false) return;
+
+            btnDevConnect.Invoke((MethodInvoker)(() => btnDevConnect.Enabled = true));
+
+            //foreach (DeviceInformation deviceInterface in interfaces)
+            for ( int i=0; i < interfaceList.Count; i++ )
             {
-                if (count2 < count)
-                {
-                    //await dispUI.BeginInvoke((Action)(() =>
-                    //{
-                        DisplayDeviceInterface(deviceInterface);
-                    //}));
-                }
-                count2 += 1;
+                
+                    DisplayDeviceInterface(interfaceList[i]);
+
+              
             }
 
         }
 
-       void DisplayDeviceInterface(DeviceInformation deviceInterface)
+        void DisplayDeviceInterface(DeviceInformation deviceInterface)
         {
             var id = deviceInterface.Id;
             var name = deviceInterface.Name;
             var isEnabled = deviceInterface.IsEnabled.ToString();
-      
+
 
             string[] row1 = {
                 name,
@@ -435,11 +340,11 @@ namespace WF_BLE_v5
                 "s7",
                 "s8",
                 "s9" };
-           
-            
 
-          listView1.Invoke((MethodInvoker)(() => 
-                            listView1.Items.Add(id).SubItems.AddRange(row1))); 
+
+
+            listView1.Invoke((MethodInvoker)(() =>
+                              listView1.Items.Add(id).SubItems.AddRange(row1)));
         }
 
         private void btnStopScan_Click(object sender, EventArgs e)
@@ -451,17 +356,17 @@ namespace WF_BLE_v5
             if (watcher != null)
             {
 
-                    // Unregister the event handlers.
-                    watcher.Added -= watcher_Added;
-                    //watcher.Updated -= watcher_Updated;
-                   // watcher.Removed -= watcher_Removed;
-                    //watcher.EnumerationCompleted -= watcher_EnumerationCompleted;
-                   // watcher.Stopped -= watcher_Stopped;
+                // Unregister the event handlers.
+                watcher.Added -= watcher_Added;
+                //watcher.Updated -= watcher_Updated;
+                // watcher.Removed -= watcher_Removed;
+                //watcher.EnumerationCompleted -= watcher_EnumerationCompleted;
+                // watcher.Stopped -= watcher_Stopped;
 
-                    // Stop the watcher.
-                    watcher.Stop();
-                    watcher = null;
-                
+                // Stop the watcher.
+                watcher.Stop();
+                watcher = null;
+
 
             }
         }
@@ -514,58 +419,9 @@ namespace WF_BLE_v5
         static List<string> _forEachCommands = new List<string>();
         static List<string> _forEachDeviceNames = new List<string>();
         static List<DeviceInformation> _deviceList = new List<DeviceInformation>();
-        
-
-        static int _forEachCmdCounter = 0;
-        static int _forEachDeviceCounter = 0;
-        static bool _forEachCollection = false;
-        static bool _forEachExecution = false;
-        static string _forEachDeviceMask = "";
-        static int _exitCode = 0;
-
-        #region Error Codes
-        readonly int E_BLUETOOTH_ATT_WRITE_NOT_PERMITTED = unchecked((int)0x80650003);
-        readonly int E_BLUETOOTH_ATT_INVALID_PDU = unchecked((int)0x80650004);
-        readonly int E_ACCESSDENIED = unchecked((int)0x80070005);
-        readonly int E_DEVICE_NOT_AVAILABLE = unchecked((int)0x800710df); // HRESULT_FROM_WIN32(ERROR_DEVICE_NOT_AVAILABLE)
-        #endregion
-
-
 
         //#region Enumerating Services
 
-        private async void Characteristic_ValueChanged(GattCharacteristic sender, GattValueChangedEventArgs args)
-        {
-            // BT_Code: An Indicate or Notify reported that the value has changed.
-            // Display the new value with a timestamp.
-            /*
-            var newValue = FormatValueByPresentation(args.CharacteristicValue, presentationFormat);
-            var message = $"Value at {DateTime.Now:hh:mm:ss.FFF}: {newValue}";
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-                () => CharacteristicLatestValue.Text = message);
-            */
-        }
-
-        private async Task<bool> ClearBluetoothLEDeviceAsync()
-        {
-            if (subscribedForNotifications)
-            {
-                // Need to clear the CCCD from the remote device so we stop receiving notifications
-                var result = await registeredCharacteristic.WriteClientCharacteristicConfigurationDescriptorAsync(GattClientCharacteristicConfigurationDescriptorValue.None);
-                if (result != GattCommunicationStatus.Success)
-                {
-                    return false;
-                }
-                else
-                {
-                    selectedCharacteristic.ValueChanged -= Characteristic_ValueChanged;
-                    subscribedForNotifications = false;
-                }
-            }
-            bluetoothLeDevice?.Dispose();
-            bluetoothLeDevice = null;
-            return true;
-        }
 
         static TimeSpan _timeout = TimeSpan.FromSeconds(3);
         //private bool isBusy = false;
@@ -575,23 +431,13 @@ namespace WF_BLE_v5
             string sDev = "";
 
             btnDevConnect.Enabled = false;
-            /*
-            if (!await ClearBluetoothLEDeviceAsync())
-            {
-                rootPage.NotifyUser("Error: Unable to reset state, " +
-                                    "try again.", NotifyType.ErrorMessage);
-                ConnectButton.IsEnabled = false;
-                return;
-            }*/
+
 
             try
             {
-                // BT_Code: BluetoothLEDevice.FromIdAsync must be called from a UI thread because it may prompt for consent.
-                // await 
-                
-                // BluetoothLEDevice.FromIdAsync(rootPage.SelectedBleDeviceId);
+
                 strfoundId = textIDDev.Text;
-                if(strfoundId == "" )
+                if (strfoundId == "")
                 {
                     btnDevConnect.Enabled = true;
                     return;
@@ -603,14 +449,12 @@ namespace WF_BLE_v5
 
                 if (bluetoothLeDevice == null)
                 {
-                    //rootPage.NotifyUser("Failed to connect to device.", NotifyType.ErrorMessage);
                     sDev = "Failed to connect to device.";
                     printToLog(sDev);
                 }
             }
-            catch (Exception ex) when (ex.HResult == E_DEVICE_NOT_AVAILABLE)
+            catch (Exception ex) 
             {
-                //rootPage.NotifyUser("Bluetooth radio is not on.", NotifyType.ErrorMessage);
                 sDev = "Bluetooth radio is not on";
                 printToLog(sDev);
             }
@@ -626,7 +470,7 @@ namespace WF_BLE_v5
                 if (result.Status == GattCommunicationStatus.Success)
                 {
                     var services = result.Services;
-                    // rootPage.NotifyUser(String.Format("Found {0} services", services.Count), NotifyType.StatusMessage);
+
                     sDev = "Найдено " + services.Count.ToString() + "сервис(а).";
                     printToLog(sDev);
 
@@ -642,7 +486,7 @@ namespace WF_BLE_v5
                         ServiceCollection.Add(new BluetoothLEAttributeDisplay(service));
 
                         ServiceList.Items.Add(ServiceCollection[n++].Name);
-                        
+
                     }
 
                     ServiceList.Text = "Выбрать сервис:";
@@ -667,7 +511,7 @@ namespace WF_BLE_v5
             if (listView1.SelectedItems.Count == 0) return;
             textIDDev.Text = listView1.SelectedItems[0].Text;
             textSelDev.Text = listView1.SelectedItems[0].SubItems[1].Text;
-            
+
         }
 
         static BluetoothLEDevice _selectedDevice = null;
@@ -685,25 +529,13 @@ namespace WF_BLE_v5
             }
         }
 
-
-        /// Connect to the specific device by name or number, and make this device current
-        /// </summary>
-        /// <param name="deviceName"></param>
-        /// <returns></returns>
-        static int OpenDevice(string deviceName) //async 
-        {
-            int retVal = 0;
-
-
-            return retVal;
-
-        }//static async Task<int> OpenDevice(string deviceName)
-        
-
- 
         private void btnDevDisConn_Click(object sender, EventArgs e)
         {
             btnDevConnect.BackColor = btnDevDisConn.BackColor;
+
+            bluetoothLeDevice?.Dispose();
+            bluetoothLeDevice = null;
+
         }
 
         #region Enumerating Characteristics
@@ -720,7 +552,7 @@ namespace WF_BLE_v5
 
             CharacteristicList.Items.Clear();
             CharacteristicCollection.Clear();
-            RemoveValueChangedHandler();
+            
 
             IReadOnlyList<GattCharacteristic> characteristics = null;
             try
@@ -758,7 +590,7 @@ namespace WF_BLE_v5
             }
             catch (Exception ex)
             {
-               // rootPage.NotifyUser("Restricted service. Can't read characteristics: " + ex.Message,
+                // rootPage.NotifyUser("Restricted service. Can't read characteristics: " + ex.Message,
                 //    NotifyType.ErrorMessage);
 
                 sDev = "Ограниченный сервис. Не могу прочитать характеристики.";
@@ -781,17 +613,6 @@ namespace WF_BLE_v5
         }
         #endregion
 
-        private void RemoveValueChangedHandler()
-        {
-            //ValueChangedSubscribeToggle.Content = "Subscribe to value changes";
-            if (subscribedForNotifications)
-            {
-                registeredCharacteristic.ValueChanged -= Characteristic_ValueChanged;
-                registeredCharacteristic = null;
-                subscribedForNotifications = false;
-            }
-        }
-
 
         private async void CharacteristicList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -802,10 +623,7 @@ namespace WF_BLE_v5
 
             int num = CharacteristicList.SelectedIndex;
             var attributeInfoDisp = (BluetoothLEAttributeDisplay)CharacteristicCollection[num];
-            //int num = (int)CharacteristicList.SelectedItem;
-            //var attributeInfoDisp = (BluetoothLEAttributeDisplay)CharacteristicCollection[num];
 
-            //CharacteristicCollection
 
             if (attributeInfoDisp == null)
             {
@@ -816,7 +634,7 @@ namespace WF_BLE_v5
             selectedCharacteristic = attributeInfoDisp.characteristic;
             if (selectedCharacteristic == null)
             {
-                //rootPage.NotifyUser("No characteristic selected", NotifyType.ErrorMessage);
+
                 strDevName = "No characteristic selected";
                 printToLog(strDevName);
                 return;
@@ -827,7 +645,7 @@ namespace WF_BLE_v5
             var result = await selectedCharacteristic.GetDescriptorsAsync(BluetoothCacheMode.Uncached);
             if (result.Status != GattCommunicationStatus.Success)
             {
-                // rootPage.NotifyUser("Descriptor read failure: " + result.Status.ToString(), NotifyType.ErrorMessage);
+                
                 strDevName = "Descriptor read failure: " + result.Status.ToString();
                 printToLog(strDevName);
             }
@@ -855,7 +673,20 @@ namespace WF_BLE_v5
 
         private async void btnReadData_Click(object sender, EventArgs e)
         {
-            GattReadResult result = await selectedCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
+            if(selectedCharacteristic == null)
+            {
+                strDevName = "selectedCharacteristic == null";
+                printToLog(strDevName);
+                return;
+            }
+            GattReadResult result = null;
+            result = await selectedCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
+            if (result == null)
+            {
+                strDevName = "btnReadData_Click result == null";
+                printToLog(strDevName);
+                return;
+            }
             if (result.Status == GattCommunicationStatus.Success)
             {
                 string formattedResult = FormatValueByPresentation(result.Value, presentationFormat);
@@ -863,11 +694,9 @@ namespace WF_BLE_v5
                 CharacteristicReadValue.Text = $"Read result: {formattedResult}";
                 strDevName = $"Read result: {formattedResult}";
                 printToLog(strDevName);
-                //rootPage.NotifyUser($"Read result: {formattedResult}", NotifyType.StatusMessage);
             }
             else
             {
-                //rootPage.NotifyUser($"Read failed: {result.Status}", NotifyType.ErrorMessage);
                 strDevName = $"Read failed: {result.Status}";
                 printToLog(strDevName);
             }
@@ -879,19 +708,42 @@ namespace WF_BLE_v5
             if (!subscribedForNotifications)
             {
                 registeredCharacteristic = selectedCharacteristic;
-                registeredCharacteristic.ValueChanged += Characteristic_ValueChanged;
+                
                 subscribedForNotifications = true;
             }
         }
 
-     
+
 
         private string FormatValueByPresentation(IBuffer buffer, GattPresentationFormat format)
+        {
+
+            string sd = "";
+            // BT_Code: For the purpose of this sample, this function converts only UInt32 and
+            // UTF-8 buffers to readable text. It can be extended to support other formats if your app needs them.
+            byte[] data;
+            CryptographicBuffer.CopyToByteArray(buffer, out data);
+
+            if (data == null) return sd; 
+
+            if (data.Length == 1)
+            { 
+                sd = "data: " + data[0].ToString() + " [len: " + data.Length.ToString()+"]";
+             }
+            else if (data.Length > 1)
             {
-                // BT_Code: For the purpose of this sample, this function converts only UInt32 and
-                // UTF-8 buffers to readable text. It can be extended to support other formats if your app needs them.
-                byte[] data;
-                CryptographicBuffer.CopyToByteArray(buffer, out data);
+                sd = "[len: " + data.Length.ToString() + "] data: " + CryptographicBuffer.EncodeToHexString(buffer);
+                /*
+                sd = "[len: " + data.Length.ToString() + "] data: " + data[0].ToString() + " ";
+                for (int i = 1; i < data.Length; i++)
+                {
+                    sd += data[i].ToString() + " ";
+                }
+                */
+
+            }
+            return sd;
+
                 if (format != null)
                 {
                     if (format.FormatType == GattPresentationFormatTypes.UInt32 && data.Length >= 4)
@@ -992,12 +844,102 @@ namespace WF_BLE_v5
                     return data[1];
                 }
             }
-
-        private void btnCharacteristicWriteData1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// /////////////////////////////////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btnCharacteristicWriteData1_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
+            {
+                // var writeBuffer = CryptographicBuffer.ConvertStringToBinary(CharacteristicWriteValue.Text,
+                //    BinaryStringEncoding.Utf8);
+                /*
+               if( CharacteristicWriteValue.Text.Length == 0 )
+                {
+                    strDevName = "CharacteristicWriteValue.Text.Length == 0";
+                    printToLog(strDevName);
+                    return;
 
+                }*/
+
+                var writeBuffer = CryptographicBuffer.ConvertStringToBinary(CharacteristicWriteValue.Text, BinaryStringEncoding.Utf8);
+
+                var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
+            }
+            else
+            {              
+                strDevName = "No data to write to device";
+                printToLog(strDevName);
+            }
+        }
+        /// <summary>
+        /// ///////////////////////////////////////////////////////////////////////////////////////////
+           private async Task<bool> WriteBufferToSelectedCharacteristicAsync(IBuffer buffer)
+            {
+                try
+                {
+                        // BT_Code: Writes the value from the buffer to the characteristic.
+                     var result = await selectedCharacteristic.WriteValueWithResultAsync(buffer);
+
+                        if (result.Status == GattCommunicationStatus.Success)
+                        {
+                    
+                            strDevName = "Successfully wrote value to device";
+                            printToLog(strDevName);
+                            return true;
+                        }
+                        else
+                        {
+                            strDevName = "Write failed: {result.Status}";
+                            printToLog(strDevName);
+                    
+                            return false;
+                        }
+                }
+                catch (Exception ex)
+                        {
+                            //rootPage.NotifyUser(ex.Message, NotifyType.ErrorMessage);
+                            return false;
+                        }
+            
+            }
+        /// 
+        /// ///////////////////////////////////////////////////////////////////////////////////////////
+        private async void btnCharacteristicWriteButton_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
+            {
+                var isValidValue = Int32.TryParse(CharacteristicWriteValue.Text, out int readValue);
+                if (isValidValue)
+                {
+                    var writer = new DataWriter();
+                    writer.ByteOrder = ByteOrder.LittleEndian;
+                    writer.WriteInt32(readValue);
+
+                    var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writer.DetachBuffer());
+                }
+                else
+                {
+                    strDevName = "btnCharacteristicWriteButton_Click error 1";
+                    printToLog(strDevName);
+                }
+            }
+            else
+            {
+                strDevName = "btnCharacteristicWriteButton_Click error 2";
+                printToLog(strDevName);
+            }
         }
 
+        /// <summary>
+        /// ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// ///////////////////////////////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ValueChangedSubscribeToggle_Click(object sender, EventArgs e)
         {
             if (!subscribedForNotifications)
@@ -1015,24 +957,30 @@ namespace WF_BLE_v5
                     cccdValue = GattClientCharacteristicConfigurationDescriptorValue.Notify;
                 }
 
+                if (cccdValue == null) return;
+
                 try
                 {
                     // BT_Code: Must write the CCCD in order for server to send indications.
                     // We receive them in the ValueChanged event handler.
                     status = await selectedCharacteristic.WriteClientCharacteristicConfigurationDescriptorAsync(cccdValue);
+                    if( status == null )
+                    {
 
+                        return;
+                    }
                     if (status == GattCommunicationStatus.Success)
                     {
                         AddValueChangedHandler();
                         strDevName = "Successfully subscribed for value changes: ";
                         printToLog(strDevName);
-                        //  rootPage.NotifyUser("Successfully subscribed for value changes", NotifyType.StatusMessage);
+
                     }
                     else
                     {
                         strDevName = "Error registering for value changes: {status}";
                         printToLog(strDevName);
-                        //  rootPage.NotifyUser($"Error registering for value changes: {status}", NotifyType.ErrorMessage);
+                      
                     }
                 }
                 catch (UnauthorizedAccessException ex)
@@ -1054,7 +1002,7 @@ namespace WF_BLE_v5
                     if (result == GattCommunicationStatus.Success)
                     {
                         subscribedForNotifications = false;
-                        RemoveValueChangedHandler();
+                        
                         strDevName = "Successfully un-registered for notifications";
                         printToLog(strDevName);
                         //rootPage.NotifyUser("Successfully un-registered for notifications", NotifyType.StatusMessage);
@@ -1073,6 +1021,8 @@ namespace WF_BLE_v5
                 }
             }
         }
+
+
     }
 }
 

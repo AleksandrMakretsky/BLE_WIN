@@ -33,6 +33,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ValueChangedSubscribeToggle = new System.Windows.Forms.Button();
             this.btnCharacteristicWriteData1 = new System.Windows.Forms.Button();
             this.btnCharacteristicWriteButton = new System.Windows.Forms.Button();
             this.CharacteristicWriteValue = new System.Windows.Forms.TextBox();
@@ -74,7 +75,6 @@
             this.colSolicitedServiceUuids = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.ValueChangedSubscribeToggle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -116,9 +116,19 @@
             this.panel1.Size = new System.Drawing.Size(903, 220);
             this.panel1.TabIndex = 1;
             // 
+            // ValueChangedSubscribeToggle
+            // 
+            this.ValueChangedSubscribeToggle.Location = new System.Drawing.Point(241, 175);
+            this.ValueChangedSubscribeToggle.Name = "ValueChangedSubscribeToggle";
+            this.ValueChangedSubscribeToggle.Size = new System.Drawing.Size(115, 28);
+            this.ValueChangedSubscribeToggle.TabIndex = 28;
+            this.ValueChangedSubscribeToggle.Text = "...";
+            this.ValueChangedSubscribeToggle.UseVisualStyleBackColor = true;
+            this.ValueChangedSubscribeToggle.Click += new System.EventHandler(this.ValueChangedSubscribeToggle_Click);
+            // 
             // btnCharacteristicWriteData1
             // 
-            this.btnCharacteristicWriteData1.Location = new System.Drawing.Point(479, 175);
+            this.btnCharacteristicWriteData1.Location = new System.Drawing.Point(778, 173);
             this.btnCharacteristicWriteData1.Name = "btnCharacteristicWriteData1";
             this.btnCharacteristicWriteData1.Size = new System.Drawing.Size(118, 27);
             this.btnCharacteristicWriteData1.TabIndex = 27;
@@ -129,25 +139,26 @@
             // btnCharacteristicWriteButton
             // 
             this.btnCharacteristicWriteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCharacteristicWriteButton.Location = new System.Drawing.Point(328, 175);
+            this.btnCharacteristicWriteButton.Location = new System.Drawing.Point(627, 175);
             this.btnCharacteristicWriteButton.Name = "btnCharacteristicWriteButton";
             this.btnCharacteristicWriteButton.Size = new System.Drawing.Size(118, 28);
             this.btnCharacteristicWriteButton.TabIndex = 26;
             this.btnCharacteristicWriteButton.Text = "WriteBuffer";
             this.btnCharacteristicWriteButton.UseVisualStyleBackColor = true;
+            this.btnCharacteristicWriteButton.Click += new System.EventHandler(this.btnCharacteristicWriteButton_Click);
             // 
             // CharacteristicWriteValue
             // 
             this.CharacteristicWriteValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CharacteristicWriteValue.Location = new System.Drawing.Point(328, 147);
+            this.CharacteristicWriteValue.Location = new System.Drawing.Point(554, 147);
             this.CharacteristicWriteValue.Name = "CharacteristicWriteValue";
-            this.CharacteristicWriteValue.Size = new System.Drawing.Size(269, 22);
+            this.CharacteristicWriteValue.Size = new System.Drawing.Size(342, 22);
             this.CharacteristicWriteValue.TabIndex = 25;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(407, 131);
+            this.label6.Location = new System.Drawing.Point(700, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 13);
             this.label6.TabIndex = 24;
@@ -169,13 +180,13 @@
             this.CharacteristicReadValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CharacteristicReadValue.Location = new System.Drawing.Point(17, 147);
             this.CharacteristicReadValue.Name = "CharacteristicReadValue";
-            this.CharacteristicReadValue.Size = new System.Drawing.Size(253, 22);
+            this.CharacteristicReadValue.Size = new System.Drawing.Size(388, 22);
             this.CharacteristicReadValue.TabIndex = 22;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(69, 131);
+            this.label7.Location = new System.Drawing.Point(146, 131);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(124, 13);
             this.label7.TabIndex = 21;
@@ -304,6 +315,7 @@
             // btnDevConnect
             // 
             this.btnDevConnect.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDevConnect.Enabled = false;
             this.btnDevConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDevConnect.Location = new System.Drawing.Point(8, 19);
             this.btnDevConnect.Name = "btnDevConnect";
@@ -499,6 +511,7 @@
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(589, 141);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
@@ -512,16 +525,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // ValueChangedSubscribeToggle
-            // 
-            this.ValueChangedSubscribeToggle.Location = new System.Drawing.Point(642, 175);
-            this.ValueChangedSubscribeToggle.Name = "ValueChangedSubscribeToggle";
-            this.ValueChangedSubscribeToggle.Size = new System.Drawing.Size(233, 23);
-            this.ValueChangedSubscribeToggle.TabIndex = 28;
-            this.ValueChangedSubscribeToggle.Text = "...";
-            this.ValueChangedSubscribeToggle.UseVisualStyleBackColor = true;
-            this.ValueChangedSubscribeToggle.Click += new System.EventHandler(this.ValueChangedSubscribeToggle_Click);
             // 
             // Form1
             // 

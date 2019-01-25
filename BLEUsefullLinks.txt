@@ -14,3 +14,6 @@ https://www.nordicsemi.com/DocLib
 
 c# tutorial rus
 https://metanit.com/sharp/tutorial/11.4.php
+
+ti Voice over BLE
+http://dev.ti.com/tirex/content/simplelink_cc2640r2_sdk_1_50_00_58/docs/blestack/ble_user_guide/html/voice/ble_voice.html#fig-voice-sequence-diagram

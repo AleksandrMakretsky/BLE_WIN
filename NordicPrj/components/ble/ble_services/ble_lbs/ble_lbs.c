@@ -144,6 +144,7 @@ uint32_t ble_lbs_init(ble_lbs_t * p_lbs, const ble_lbs_init_t * p_lbs_init)
     return characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->led_char_handles);
 }
 
+
 uint32_t ble_lbs_on_button_change(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t button_state)
 {
 	NRF_LOG_INFO("ble_lbs_on_button_change()");

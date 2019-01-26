@@ -263,6 +263,9 @@ static void nrf_qwr_error_handler(uint32_t nrf_error)
 }
 
 
+char response[240];
+
+
 /**@brief Function for handling write events to the LED characteristic.
  *
  * @param[in] p_lbs     Instance of LED Button Service to which the write applies.
@@ -284,12 +287,14 @@ static void led_write_handler(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t l
         NRF_LOG_INFO("Received LED OFF!");
     }
 	
+	sprintf(response, "Hello ARM______________________led_write_handler response = %d ", led_state);
+	
 	ble_gatts_hvx_params_t params;
-    uint16_t len = 4;
+    uint16_t len = strlen(response);//4;
     memset(&params, 0, sizeof(params));
     params.type   = BLE_GATT_HVX_NOTIFICATION;
     params.handle = m_lbs.button_char_handles.value_handle;
-    params.p_data = (uint8_t const*)&led_state;
+    params.p_data = (uint8_t const*)&response[0];//&led_state;
     params.p_len  = &len;
 
     sd_ble_gatts_hvx(m_conn_handle, &params);

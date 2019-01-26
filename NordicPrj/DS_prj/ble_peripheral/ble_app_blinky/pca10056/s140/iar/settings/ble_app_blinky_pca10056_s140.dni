@@ -1,5 +1,5 @@
 [DebugChecksum]
-Checksum=1372156825
+Checksum=-345290980
 [CodeCoverage]
 Enabled=_ 0
 [Stack]
@@ -116,8 +116,10 @@ ProbeSetup0=2 1 1 2 0 0
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\..\..\..\..\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c}.360.9" 0 0 1 "" 0 "" 0
-Count=1
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\..\..\..\..\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c}.360.9" 0 0 1 "" 0 "" 0
+Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\..\main.c}.298.5" 0 0 1 "" 0 "" 0
+Bp2=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\..\..\..\..\components\libraries\util\app_error_weak.c}.100.5" 0 0 1 "" 0 "" 0
+Count=3
 [Aliases]
 Count=0
 SuppressDialog=0

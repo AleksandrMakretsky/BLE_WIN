@@ -32,7 +32,7 @@
 			this.DeviceList = new System.Windows.Forms.ListBox();
 			this.Disconnect = new System.Windows.Forms.Button();
 			this.Services = new System.Windows.Forms.ListBox();
-			this.Properties = new System.Windows.Forms.ListBox();
+			this.Characteristic = new System.Windows.Forms.ListBox();
 			this.Read = new System.Windows.Forms.Button();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.Write = new System.Windows.Forms.Button();
@@ -77,14 +77,15 @@
 			this.Services.TabIndex = 3;
 			this.Services.SelectedIndexChanged += new System.EventHandler(this.Services_SelectedIndexChanged);
 			// 
-			// Properties
+			// Characteristic
 			// 
-			this.Properties.FormattingEnabled = true;
-			this.Properties.Location = new System.Drawing.Point(212, 181);
-			this.Properties.Name = "Properties";
-			this.Properties.ScrollAlwaysVisible = true;
-			this.Properties.Size = new System.Drawing.Size(307, 82);
-			this.Properties.TabIndex = 4;
+			this.Characteristic.FormattingEnabled = true;
+			this.Characteristic.Location = new System.Drawing.Point(212, 181);
+			this.Characteristic.Name = "Characteristic";
+			this.Characteristic.ScrollAlwaysVisible = true;
+			this.Characteristic.Size = new System.Drawing.Size(307, 82);
+			this.Characteristic.TabIndex = 4;
+			this.Characteristic.SelectedIndexChanged += new System.EventHandler(this.Properties_SelectedIndexChanged);
 			// 
 			// Read
 			// 
@@ -94,6 +95,7 @@
 			this.Read.TabIndex = 5;
 			this.Read.Text = "Read";
 			this.Read.UseVisualStyleBackColor = true;
+			this.Read.Click += new System.EventHandler(this.Read_Click);
 			// 
 			// textBox1
 			// 
@@ -110,6 +112,7 @@
 			this.Write.TabIndex = 7;
 			this.Write.Text = "Write";
 			this.Write.UseVisualStyleBackColor = true;
+			this.Write.Click += new System.EventHandler(this.Write_Click);
 			// 
 			// Form1
 			// 
@@ -119,7 +122,7 @@
 			this.Controls.Add(this.Write);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.Read);
-			this.Controls.Add(this.Properties);
+			this.Controls.Add(this.Characteristic);
 			this.Controls.Add(this.Services);
 			this.Controls.Add(this.Disconnect);
 			this.Controls.Add(this.DeviceList);
@@ -138,7 +141,7 @@
 		private System.Windows.Forms.ListBox DeviceList;
 		private System.Windows.Forms.Button Disconnect;
 		private System.Windows.Forms.ListBox Services;
-		private System.Windows.Forms.ListBox Properties;
+		private System.Windows.Forms.ListBox Characteristic;
 		private System.Windows.Forms.Button Read;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button Write;

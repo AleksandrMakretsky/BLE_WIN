@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+    
+    
+  <CurrentConfigs><Project>ble_app_blinky_pca10056_s140/nrf52840_xxaa</Project><Project>ble_app_blinky_pca10059_s140/nrf52840_xxaa</Project><Project>ble_app_blinky_pca10040_s132/nrf52832_xxaa</Project><Project>ble_app_blinky_pca10040e_s112/nrf52810_xxaa</Project></CurrentConfigs><CurrentProj>ble_app_blinky_pca10056_s140</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>285</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1066</ColumnWidth1><ColumnWidth2>284</ColumnWidth2><ColumnWidth3>71</ColumnWidth3></Build>
+      <TerminalIO/>
+      <Find-in-Files>
+        
+        
+        
+        
+      <ColumnWidth0>437</ColumnWidth0><ColumnWidth1>72</ColumnWidth1><ColumnWidth2>656</ColumnWidth2><ColumnWidth3>291</ColumnWidth3></Find-in-Files>
+    </Static>
+    <Windows>
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-24114-27738</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>ble_app_blinky_pca10056_s140</ExpandedNode><ExpandedNode>ble_app_blinky_pca10056_s140/Application</ExpandedNode><ExpandedNode>ble_app_blinky_pca10056_s140/Board Definition</ExpandedNode><ExpandedNode>ble_app_blinky_pca10056_s140/Output</ExpandedNode><ExpandedNode>ble_app_blinky_pca10056_s140/Output/ble_app_blinky_pca10056_s140.out</ExpandedNode><ExpandedNode>ble_app_blinky_pca10056_s140/nRF_Log</ExpandedNode><ExpandedNode>ble_app_blinky_pca10056_s140/nRF_SoftDevice</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-12392-3088</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-9548-3346</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab></Tabs><SelectedTab>1</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>588</YPos2><SelStart2>22065</SelStart2><SelEnd2>22065</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\components\ble\ble_services\ble_lbs\ble_lbs.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>126</YPos2><SelStart2>5076</SelStart2><SelEnd2>5076</SelEnd2></Tab><ActiveTab>1</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-00871D80><key>iaridepm.enu1</key></Toolbar-00871D80></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>544</Bottom><Right>376</Right><x>-2</x><y>-2</y><xscreen>259</xscreen><yscreen>158</yscreen><sizeHorzCX>168840</sizeHorzCX><sizeHorzCY>157527</sizeHorzCY><sizeVertCX>246415</sizeVertCX><sizeVertCY>544367</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>414</Bottom><Right>1536</Right><x>-2</x><y>-2</y><xscreen>1538</xscreen><yscreen>416</yscreen><sizeHorzCX>1002608</sizeHorzCX><sizeHorzCY>414756</sizeHorzCY><sizeVertCX>178618</sizeVertCX><sizeVertCY>180459</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

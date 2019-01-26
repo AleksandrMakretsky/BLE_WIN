@@ -118,7 +118,7 @@ namespace BLETestForm
 				}
 			}
 
-			System.IntPtr hwnd = (System.IntPtr)FindWindow("BLETestForm", null);
+			System.IntPtr hwnd = (System.IntPtr)FindWindow("WindowsForms10.Window.8.app.0.141b42a_r10_ad1", null);
 			SendMessage(hwnd, (int)_messageId, (IntPtr)55, (IntPtr)66);
 
 			change = true;
@@ -148,6 +148,9 @@ namespace BLETestForm
 					}
 				}
 			}
+
+			System.IntPtr hwnd = (System.IntPtr)FindWindow("WindowsForms10.Window.8.app.0.141b42a_r10_ad1", null);
+			SendMessage(hwnd, (int)_messageId, (IntPtr)55, (IntPtr)66);
 			change = true;
 		}
 		////////////////////////////////////////////////////////////////////////////////////////////

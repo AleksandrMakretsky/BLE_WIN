@@ -128,18 +128,18 @@
             // 
             // btnCharacteristicWriteData1
             // 
-            this.btnCharacteristicWriteData1.Location = new System.Drawing.Point(778, 173);
+            this.btnCharacteristicWriteData1.Location = new System.Drawing.Point(703, 175);
             this.btnCharacteristicWriteData1.Name = "btnCharacteristicWriteData1";
             this.btnCharacteristicWriteData1.Size = new System.Drawing.Size(118, 27);
             this.btnCharacteristicWriteData1.TabIndex = 27;
-            this.btnCharacteristicWriteData1.Text = "WriteData1";
+            this.btnCharacteristicWriteData1.Text = "WriteByte";
             this.btnCharacteristicWriteData1.UseVisualStyleBackColor = true;
             this.btnCharacteristicWriteData1.Click += new System.EventHandler(this.btnCharacteristicWriteData1_Click);
             // 
             // btnCharacteristicWriteButton
             // 
             this.btnCharacteristicWriteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCharacteristicWriteButton.Location = new System.Drawing.Point(627, 175);
+            this.btnCharacteristicWriteButton.Location = new System.Drawing.Point(528, 175);
             this.btnCharacteristicWriteButton.Name = "btnCharacteristicWriteButton";
             this.btnCharacteristicWriteButton.Size = new System.Drawing.Size(118, 28);
             this.btnCharacteristicWriteButton.TabIndex = 26;
@@ -150,9 +150,9 @@
             // CharacteristicWriteValue
             // 
             this.CharacteristicWriteValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CharacteristicWriteValue.Location = new System.Drawing.Point(554, 147);
+            this.CharacteristicWriteValue.Location = new System.Drawing.Point(475, 147);
             this.CharacteristicWriteValue.Name = "CharacteristicWriteValue";
-            this.CharacteristicWriteValue.Size = new System.Drawing.Size(342, 22);
+            this.CharacteristicWriteValue.Size = new System.Drawing.Size(421, 22);
             this.CharacteristicWriteValue.TabIndex = 25;
             // 
             // label6
@@ -380,13 +380,13 @@
             // 
             // btnCharacteristicReadButton
             // 
-            this.btnCharacteristicReadButton.BackColor = System.Drawing.Color.LightBlue;
+            this.btnCharacteristicReadButton.BackColor = System.Drawing.Color.LavenderBlush;
             this.btnCharacteristicReadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCharacteristicReadButton.Location = new System.Drawing.Point(40, 18);
             this.btnCharacteristicReadButton.Name = "btnCharacteristicReadButton";
             this.btnCharacteristicReadButton.Size = new System.Drawing.Size(223, 28);
             this.btnCharacteristicReadButton.TabIndex = 15;
-            this.btnCharacteristicReadButton.Text = ">Information about the device<";
+            this.btnCharacteristicReadButton.Text = "Information about the device";
             this.btnCharacteristicReadButton.UseVisualStyleBackColor = false;
             // 
             // label5

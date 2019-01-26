@@ -386,13 +386,6 @@ namespace WF_BLE_v5
                     {
                         richTextBox1.Invoke((MethodInvoker)(() =>
                             richTextBox1.AppendText("Stopped \r\n")));
-
-
-                        // rootPage.NotifyUser($"No longer watching for devices.",
-                        // sender.Status == DeviceWatcherStatus.Aborted ? NotifyType.ErrorMessage : NotifyType.StatusMessage);
-
-                        //watcher.Stop();
-                        //watcher = null;
                     }
                 }));
 
@@ -708,7 +701,7 @@ namespace WF_BLE_v5
             if (!subscribedForNotifications)
             {
                 registeredCharacteristic = selectedCharacteristic;
-                
+                registeredCharacteristic.ValueChanged += Characteristic_ValueChanged;
                 subscribedForNotifications = true;
             }
         }
@@ -848,23 +841,19 @@ namespace WF_BLE_v5
         /// /////////////////////////////////////////////////////////////////////////////////////////////
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void btnCharacteristicWriteData1_Click(object sender, EventArgs e)
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    private async void btnCharacteristicWriteData1_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
             {
-                // var writeBuffer = CryptographicBuffer.ConvertStringToBinary(CharacteristicWriteValue.Text,
-                //    BinaryStringEncoding.Utf8);
-                /*
-               if( CharacteristicWriteValue.Text.Length == 0 )
-                {
-                    strDevName = "CharacteristicWriteValue.Text.Length == 0";
-                    printToLog(strDevName);
-                    return;
+                byte[] bw = { 0 };
 
-                }*/
 
-                var writeBuffer = CryptographicBuffer.ConvertStringToBinary(CharacteristicWriteValue.Text, BinaryStringEncoding.Utf8);
+               bw[0] = (byte)Convert.ToInt32(CharacteristicWriteValue.Text); ; 
+
+                IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(bw);
 
                 var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
             }
@@ -874,18 +863,71 @@ namespace WF_BLE_v5
                 printToLog(strDevName);
             }
         }
-        /// <summary>
+
         /// ///////////////////////////////////////////////////////////////////////////////////////////
+
+        private async void btnCharacteristicWriteButton_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
+            {
+                  
+                    byte[] readValue = new byte[240];
+                    string sd = CharacteristicWriteValue.Text;
+                    char[] chb = new char[240];
+                    chb = sd.ToCharArray();
+
+                    for (int i=0; i < sd.Length; i++  )
+                    {
+                        readValue[i] = Convert.ToByte(chb[i]);
+                    }
+
+                    //readValue = StrToByteArray(CharacteristicWriteValue.Text);
+
+                    IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(readValue);
+                    var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
+
+                 if (writeSuccessful)
+                 {
+
+                //var writer = new DataWriter();
+
+                // writer.ByteOrder = ByteOrder.LittleEndian;
+                // writer.WriteBytes(readValue);
+
+                // var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
+
+
+                /*
+                byte[240] bw = { 0 };
+                bw[] = (byte)Convert.ToInt32(CharacteristicWriteValue.Text); ;
+                IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(bw);
+                var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
+                */
+                
+                    }
+                    else
+                    {
+                        strDevName = "btnCharacteristicWriteButton_Click error 1";
+                        printToLog(strDevName);
+                    }
+            }
+            else
+            {
+                strDevName = "btnCharacteristicWriteButton_Click error 2";
+                printToLog(strDevName);
+            }
+        }
+
+        /// <summary>
+     /////////////////////////////////////////////////////////////////////////////////////////////
            private async Task<bool> WriteBufferToSelectedCharacteristicAsync(IBuffer buffer)
             {
                 try
                 {
                         // BT_Code: Writes the value from the buffer to the characteristic.
                      var result = await selectedCharacteristic.WriteValueWithResultAsync(buffer);
-
-                        if (result.Status == GattCommunicationStatus.Success)
-                        {
-                    
+                   if (result.Status == GattCommunicationStatus.Success)
+                        {                  
                             strDevName = "Successfully wrote value to device";
                             printToLog(strDevName);
                             return true;
@@ -893,8 +935,7 @@ namespace WF_BLE_v5
                         else
                         {
                             strDevName = "Write failed: {result.Status}";
-                            printToLog(strDevName);
-                    
+                            printToLog(strDevName);                  
                             return false;
                         }
                 }
@@ -905,41 +946,39 @@ namespace WF_BLE_v5
                         }
             
             }
-        /// 
-        /// ///////////////////////////////////////////////////////////////////////////////////////////
-        private async void btnCharacteristicWriteButton_Click(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
-            {
-                var isValidValue = Int32.TryParse(CharacteristicWriteValue.Text, out int readValue);
-                if (isValidValue)
-                {
-                    var writer = new DataWriter();
-                    writer.ByteOrder = ByteOrder.LittleEndian;
-                    writer.WriteInt32(readValue);
-
-                    var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writer.DetachBuffer());
-                }
-                else
-                {
-                    strDevName = "btnCharacteristicWriteButton_Click error 1";
-                    printToLog(strDevName);
-                }
-            }
-            else
-            {
-                strDevName = "btnCharacteristicWriteButton_Click error 2";
-                printToLog(strDevName);
-            }
-        }
 
         /// <summary>
         /// ///////////////////////////////////////////////////////////////////////////////////////////////////
+        /*
+        private void AddValueChangedHandler()
+        {
+            ValueChangedSubscribeToggle.Content = "Unsubscribe from value changes";
+            if (!subscribedForNotifications)
+            {
+                registeredCharacteristic = selectedCharacteristic;
+                registeredCharacteristic.ValueChanged += Characteristic_ValueChanged;
+                subscribedForNotifications = true;
+            }
+        }
+        */
 
+        private async void Characteristic_ValueChanged(GattCharacteristic sender, GattValueChangedEventArgs args)
+        {
+            // BT_Code: An Indicate or Notify reported that the value has changed.
+            // Display the new value with a timestamp.
+            var reader = DataReader.FromBuffer(args.CharacteristicValue);
+
+            var newValue = FormatValueByPresentation(args.CharacteristicValue, presentationFormat);
+            //var message = $"Value at {DateTime.Now:hh:mm:ss.FFF}: {newValue}";
+            printToLog(newValue);
+
+ 
+        }
         /// ///////////////////////////////////////////////////////////////////////////////////////////
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+       // private bool subscribedForNotifications = false;
         private async void ValueChangedSubscribeToggle_Click(object sender, EventArgs e)
         {
             if (!subscribedForNotifications)
@@ -969,6 +1008,7 @@ namespace WF_BLE_v5
 
                         return;
                     }
+
                     if (status == GattCommunicationStatus.Success)
                     {
                         AddValueChangedHandler();
@@ -986,7 +1026,8 @@ namespace WF_BLE_v5
                 catch (UnauthorizedAccessException ex)
                 {
                     // This usually happens when a device reports that it support indicate, but it actually doesn't.
-                    // rootPage.NotifyUser(ex.Message, NotifyType.ErrorMessage);
+                    strDevName = "catch (UnauthorizedAccessException ex)";
+                    printToLog(strDevName);
                 }
             }
             else
@@ -999,25 +1040,27 @@ namespace WF_BLE_v5
                     var result = await
                             selectedCharacteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
                                 GattClientCharacteristicConfigurationDescriptorValue.None);
+
                     if (result == GattCommunicationStatus.Success)
                     {
                         subscribedForNotifications = false;
                         
                         strDevName = "Successfully un-registered for notifications";
                         printToLog(strDevName);
-                        //rootPage.NotifyUser("Successfully un-registered for notifications", NotifyType.StatusMessage);
+                       
                     }
                     else
                     {
                         strDevName = "Error un-registering for notifications: {result}";
                         printToLog(strDevName);
-                        //rootPage.NotifyUser($"Error un-registering for notifications: {result}", NotifyType.ErrorMessage);
+
                     }
                 }
                 catch (UnauthorizedAccessException ex)
                 {
                     // This usually happens when a device reports that it support notify, but it actually doesn't.
-                    //rootPage.NotifyUser(ex.Message, NotifyType.ErrorMessage);
+                    strDevName = "reports that it support notify, but it actually doesn't";
+                    printToLog(strDevName);
                 }
             }
         }

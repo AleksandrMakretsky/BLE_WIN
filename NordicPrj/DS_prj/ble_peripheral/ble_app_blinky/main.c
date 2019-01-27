@@ -74,7 +74,7 @@
 #define LEDBUTTON_LED                   BSP_BOARD_LED_2                         /**< LED to be toggled with the help of the LED Button Service. */
 #define LEDBUTTON_BUTTON                BSP_BUTTON_0                            /**< Button that will trigger the notification event with the LED Button Service */
 
-#define DEVICE_NAME                     "DS Blinky"                         /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "DS Blinky VER.2"                         /**< Name of device. Will be included in the advertising data. */
 
 #define APP_BLE_OBSERVER_PRIO           3                                       /**< Application's BLE observer priority. You shouldn't need to modify this value. */
 #define APP_BLE_CONN_CFG_TAG            1                                       /**< A tag identifying the SoftDevice BLE configuration. */
@@ -263,7 +263,7 @@ static void nrf_qwr_error_handler(uint32_t nrf_error)
 }
 
 
-char response[240];
+char response[247];
 
 
 /**@brief Function for handling write events to the LED characteristic.
@@ -290,6 +290,7 @@ static void led_write_handler(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t l
 	sprintf(response, "Hello ARM______________________led_write_handler response = %d ", led_state);
 	
 	ble_gatts_hvx_params_t params;
+        
     uint16_t len = strlen(response);//4;
     memset(&params, 0, sizeof(params));
     params.type   = BLE_GATT_HVX_NOTIFICATION;

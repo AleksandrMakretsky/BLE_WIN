@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\work\BLE\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.general.xcl" --backend -f "D:\work\BLE\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\Work\PROJ\DS_PROJ\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.general.xcl" --backend -f "D:\Work\PROJ\DS_PROJ\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\work\BLE\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.general.xcl" "--debug_file=%~1" --backend -f "D:\work\BLE\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\Work\PROJ\DS_PROJ\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.general.xcl" "--debug_file=%~1" --backend -f "D:\Work\PROJ\DS_PROJ\NordicPrj\DS_prj\ble_peripheral\ble_app_blinky\pca10056\s140\iar\settings\ble_app_blinky_pca10056_s140.nrf52840_xxaa.driver.xcl" 
 
 @echo off 
 :end

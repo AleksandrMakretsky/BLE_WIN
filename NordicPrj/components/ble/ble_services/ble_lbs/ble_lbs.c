@@ -115,7 +115,7 @@ uint32_t ble_lbs_init(ble_lbs_t * p_lbs, const ble_lbs_init_t * p_lbs_init)
     add_char_params.uuid              = LBS_UUID_BUTTON_CHAR;
     add_char_params.uuid_type         = p_lbs->uuid_type;
     add_char_params.init_len          = sizeof(uint8_t);
-    add_char_params.max_len           = 247;//sizeof(uint8_t);
+    add_char_params.max_len           = NRF_SDH_BLE_GATT_MAX_MTU_SIZE;//sizeof(uint8_t);
     add_char_params.char_props.read   = 1;
     add_char_params.char_props.notify = 1;
 

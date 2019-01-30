@@ -59,8 +59,8 @@ STATIC_ASSERT(NRF_SDH_BLE_GAP_DATA_LENGTH < 252);
 /**@brief Initialize a link's parameters to defaults. */
 static void link_init(nrf_ble_gatt_link_t * p_link)
 {
-    p_link->att_mtu_desired            = NRF_SDH_BLE_GATT_MAX_MTU_SIZE;
-    p_link->att_mtu_effective          = BLE_GATT_ATT_MTU_DEFAULT;
+    p_link->att_mtu_desired            = 23;//NRF_SDH_BLE_GATT_MAX_MTU_SIZE;
+    p_link->att_mtu_effective          = 23;//BLE_GATT_ATT_MTU_DEFAULT;
     p_link->att_mtu_exchange_pending   = false;
     p_link->att_mtu_exchange_requested = false;
 #if !defined (S112)
@@ -534,7 +534,7 @@ void nrf_ble_gatt_on_ble_evt(ble_evt_t const * p_ble_evt, void * p_context)
         if (err_code == NRF_SUCCESS)
         {
             p_gatt->links[conn_handle].att_mtu_exchange_pending   = false;
-            p_gatt->links[conn_handle].att_mtu_exchange_requested = true;
+            p_gatt->links[conn_handle].att_mtu_exchange_requested = false;
 
             NRF_LOG_DEBUG("Requesting to update ATT MTU to %u bytes on connection 0x%x (retry).",
                           p_gatt->links[conn_handle].att_mtu_desired, conn_handle);

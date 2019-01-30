@@ -286,21 +286,31 @@ static void led_write_handler(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t l
         bsp_board_led_off(LEDBUTTON_LED);
         NRF_LOG_INFO("Received LED OFF!");
     }
-	
-	sprintf(response, "Hello ARM______________________led_write_handler response = %d ", led_state);
+	for(int i = 0; i < sizeof(response); i++) response[i] = 0;
+    
+   
+    
+	sprintf(response, 
+         "Hello ARM______________________led_write_handler response = %d ", 
+         led_state);
 	
 	ble_gatts_hvx_params_t params;
         
     uint16_t len = strlen(response);//4;
+    len = 244;
     memset(&params, 0, sizeof(params));
     params.type   = BLE_GATT_HVX_NOTIFICATION;
     params.handle = m_lbs.button_char_handles.value_handle;
     params.p_data = (uint8_t const*)&response[0];//&led_state;
     params.p_len  = &len;
+    
+    m_gatt.data_length=len;//links[m_conn_handle].
+      
+    //m_gatt.links[m_conn_handle].att_mtu_effective = len+3;
 
     sd_ble_gatts_hvx(m_conn_handle, &params);
-	led_state++;
-    sd_ble_gatts_hvx(m_conn_handle, &params);
+	//led_state++;
+    //sd_ble_gatts_hvx(m_conn_handle, &params);
 }
 
 

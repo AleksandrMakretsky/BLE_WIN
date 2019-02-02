@@ -6,51 +6,51 @@
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
       <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\c.out</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
       <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
       <file>$PROJ_DIR$\main.c</file>
-      <file>$PROJ_DIR$\Debug\Exe\c.out</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
     </outputs>
-    <file>
-      <name>[ROOT_NODE]</name>
-      <outputs>
-        <tool>
-          <name>ILINK</name>
-          <file> 12</file>
-        </tool>
-      </outputs>
-    </file>
     <file>
       <name>$PROJ_DIR$\main.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 16</file>
+          <file> 11</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 4</file>
+          <file> 10</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 15 3 14 0 5 7 13 1 10 2 6 9 8</file>
+          <file> 8 1 3 5 0 14 6 9 16 7 2 13 12</file>
         </tool>
       </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 4</file>
+        </tool>
+      </outputs>
     </file>
     <forcedrebuild>
       <name>[MULTI_TOOL]</name>

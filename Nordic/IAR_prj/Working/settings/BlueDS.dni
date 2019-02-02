@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=1380813875
+Checksum=-125743107
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -127,7 +127,8 @@ ProbeSetup0=2 1 1 2 0 0
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Count=0
+Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.232.4" 0 0 1 "" 0 "" 0
+Count=1
 [Aliases]
 Count=0
 SuppressDialog=0

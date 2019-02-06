@@ -322,6 +322,7 @@
         <option>
           <name>CCIncludePath2</name>
           <state>$PROJ_DIR$\..\..\Boards\pca10056\blank\config</state>
+          <state>d:\work\_NordicPRJ\NordicSource\components\libraries\fstorage\</state>
           <state>$PROJ_DIR$\..\MyNordic</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_advertising</state>
@@ -3039,6 +3040,9 @@
   <group>
     <name>My Nordic</name>
     <file>
+      <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\MyNordic\usb_wrapper.cpp</name>
     </file>
   </group>
@@ -3169,6 +3173,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage_sd.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.c</name>

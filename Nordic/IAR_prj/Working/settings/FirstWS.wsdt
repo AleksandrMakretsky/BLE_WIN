@@ -3,7 +3,7 @@
 <Workspace>
   <ConfigDictionary>
     
-  <CurrentConfigs><Project>FirstPrj/Debug</Project><Project>BlueDS/Debug</Project></CurrentConfigs><CurrentProj>BlueDS</CurrentProj><OverviewSelected>1</OverviewSelected></ConfigDictionary>
+  <CurrentConfigs><Project>BlueDS/Debug</Project><Project>FirstPrj/Debug</Project></CurrentConfigs><CurrentProj>BlueDS</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
   <Desktop>
     <Static>
       <Build>
@@ -18,13 +18,13 @@
           
           
           
-        <Column0>372</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>259</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
-    <TerminalIO/><Find-in-Files><ColumnWidth0>764</ColumnWidth0><ColumnWidth1>76</ColumnWidth1><ColumnWidth2>685</ColumnWidth2><ColumnWidth3>304</ColumnWidth3></Find-in-Files><Debug-Log><ColumnWidth0>19</ColumnWidth0><ColumnWidth1>1122</ColumnWidth1></Debug-Log></Static>
+    <TerminalIO/><Find-in-Files><ColumnWidth0>764</ColumnWidth0><ColumnWidth1>76</ColumnWidth1><ColumnWidth2>685</ColumnWidth2><ColumnWidth3>304</ColumnWidth3></Find-in-Files><Debug-Log><ColumnWidth0>19</ColumnWidth0><ColumnWidth1>1122</ColumnWidth1></Debug-Log><Select-Ambiguous-Definitions><ColumnWidth0>405</ColumnWidth0><ColumnWidth1>57</ColumnWidth1><ColumnWidth2>694</ColumnWidth2></Select-Ambiguous-Definitions><Find-All-Declarations><ColumnWidth0>405</ColumnWidth0><ColumnWidth1>57</ColumnWidth1><ColumnWidth2>694</ColumnWidth2></Find-All-Declarations></Static>
     <Windows>
       
       
-    <Wnd0>
+    <Wnd1>
         <Tabs>
           <Tab>
             <Identity>TabID-13093-20787</Identity>
@@ -32,29 +32,29 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/Application</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/nRF_SoftDevice</ExpandedNode><ExpandedNode>FirstPrj</ExpandedNode><ExpandedNode>FirstPrj/Application</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/Application</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/My Nordic</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/nRF_Libraries</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/nRF_SoftDevice</ExpandedNode><ExpandedNode>BlueDS</ExpandedNode><ExpandedNode>BlueDS/Application</ExpandedNode><ExpandedNode>BlueDS/My Nordic</ExpandedNode><ExpandedNode>BlueDS/nRF_Libraries</ExpandedNode><ExpandedNode>FirstPrj</ExpandedNode><ExpandedNode>FirstPrj/Application</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd3><Tabs><Tab>
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd3><Tabs><Tab>
             <Identity>TabID-23841-20790</Identity>
             <TabName>Build</TabName>
             <Factory>Build</Factory>
             <Session/>
-          </Tab><Tab><Identity>TabID-4969-26971</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-13622-7737</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+          </Tab><Tab><Identity>TabID-4969-26971</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-13622-7737</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab><Tab><Identity>TabID-13650-17748</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab><Tab><Identity>TabID-23834-19195</Identity><TabName>Declarations</TabName><Factory>Find-All-Declarations</Factory><Session/></Tab></Tabs><SelectedTab>1</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>194</YPos2><SelStart2>6926</SelStart2><SelEnd2>6950</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Boards\pca10056\blank\config\sdk_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>4638</YPos2><SelStart2>111868</SelStart2><SelEnd2>111868</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>190</YPos2><SelStart2>6313</SelStart2><SelEnd2>6318</SelEnd2></Tab><ActiveTab>2</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\flash_mem.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>98</SelStart2><SelEnd2>98</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>134</YPos2><SelStart2>6217</SelStart2><SelEnd2>6235</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_error.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>59</YPos2><SelStart2>4268</SelStart2><SelEnd2>4268</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Boards\pca10056\blank\config\sdk_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>4660</YPos2><SelStart2>112172</SelStart2><SelEnd2>112202</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>271</YPos2><SelStart2>12630</SelStart2><SelEnd2>12634</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\flash_mem.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>43</YPos2><SelStart2>1486</SelStart2><SelEnd2>1486</SelEnd2></Tab><ActiveTab>5</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>209</YPos2><SelStart2>6593</SelStart2><SelEnd2>6593</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-007B1D80><key>iaridepm.enu1</key></Toolbar-007B1D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>501</Bottom><Right>446</Right><x>-2</x><y>-2</y><xscreen>332</xscreen><yscreen>175</yscreen><sizeHorzCX>281356</sizeHorzCX><sizeHorzCY>209080</sizeHorzCY><sizeVertCX>379661</sizeVertCX><sizeVertCY>600956</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>291</Bottom><Right>1182</Right><x>-2</x><y>-2</y><xscreen>1184</xscreen><yscreen>293</yscreen><sizeHorzCX>1003390</sizeHorzCX><sizeHorzCY>350060</sizeHorzCY><sizeVertCX>169492</sizeVertCX><sizeVertCY>238949</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-03571D80><key>iaridepm.enu1</key></Toolbar-03571D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>636</Bottom><Right>350</Right><x>-2</x><y>-2</y><xscreen>346</xscreen><yscreen>175</yscreen><sizeHorzCX>247674</sizeHorzCX><sizeHorzCY>193798</sizeHorzCY><sizeVertCX>251969</sizeVertCX><sizeVertCY>706534</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>222</Bottom><Right>1399</Right><x>-2</x><y>-2</y><xscreen>1401</xscreen><yscreen>224</yscreen><sizeHorzCX>1002863</sizeHorzCX><sizeHorzCY>248062</sizeHorzCY><sizeVertCX>149606</sizeVertCX><sizeVertCY>221484</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=1022067099
+Checksum=498553498
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -127,7 +127,10 @@ ProbeSetup0=2 1 1 2 0 0
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Count=0
+Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.228.16" 0 0 1 "" 0 "" 0
+Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.223.2" 0 0 1 "" 0 "" 0
+Count=2
 [Aliases]
-Count=0
+A0=_ "D:\work\_NordicPRJ\IAR_prj\MyNordic\flash_mem.cpp" ""
+Count=1
 SuppressDialog=0

@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "nrf_fstorage.h"
 
+
 #define FLASH_BLOCK0ADR     0x3e000
 #define FLASH_BLOCK1ADR     0x3e100
 #define FLASH_BLOCK2ADR     0x3e200
@@ -16,8 +17,8 @@
 #define ADR_DEV_ID          FLASH_BLOCK0ADR
 #define ADR_VERSION         FLASH_BLOCK1ADR
 
-void FlashMemRead(char* data, uint16_t length, uint32_t block_adr);
-void FlashMemWrite(char* data, uint16_t length, uint32_t block_adr);
-
+ret_code_t FlashMemRead(char* data, uint16_t length, uint32_t block_adr);
+ret_code_t FlashMemWrite(char* data, uint16_t length, uint32_t block_adr);
+ret_code_t FlashMemErase(uint32_t block_adr);
 
 #endif // _FLASH_MEM_H_

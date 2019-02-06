@@ -42,7 +42,6 @@
 #include <stddef.h>
 #include <stdio.h>
 
-#include "usb_wrapper.h"
 
 #include "nrf.h"
 #include "nrf_drv_usbd.h"
@@ -68,6 +67,10 @@
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
+
+#include "usb_wrapper.h"
+#include "flash_mem.h"
+
 
 /**
  * @brief CLI interface over UART
@@ -212,7 +215,15 @@ int main(void)
         app_usbd_start();
     }
 
-    while (true)
+
+//	FlashMemWrite((char*)"Helllllllll0", 32, 0x3e000);
+	char data[32];
+//	memset(data, 0, sizeof(data));
+//	FlashMemErase(0x3e000);
+	FlashMemRead(data, 32, 0x3e000);
+
+
+	while (true)
     {
         while (app_usbd_event_queue_process())
         {
@@ -232,6 +243,8 @@ int main(void)
 			NRF_LOG_INFO("Got char: 0x%x", buf[0]);
 		}
         
+//		UsbWrite(buf, count);
+		
         if( m_send_flag )
         {
             static int  frame_counter;

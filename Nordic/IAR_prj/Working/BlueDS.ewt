@@ -3351,6 +3351,18 @@
     </file>
   </group>
   <group>
+    <name>nRF_SoftDevice</name>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_soc.c</name>
+    </file>
+  </group>
+  <group>
     <name>UTF8/UTF16 converter</name>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\external\utf_converter\utf.c</name>

@@ -18,13 +18,13 @@
           
           
           
-        <Column0>315</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>372</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
-    <TerminalIO/><Find-in-Files><ColumnWidth0>456</ColumnWidth0><ColumnWidth1>76</ColumnWidth1><ColumnWidth2>685</ColumnWidth2><ColumnWidth3>304</ColumnWidth3></Find-in-Files></Static>
+    <TerminalIO/><Find-in-Files><ColumnWidth0>764</ColumnWidth0><ColumnWidth1>76</ColumnWidth1><ColumnWidth2>685</ColumnWidth2><ColumnWidth3>304</ColumnWidth3></Find-in-Files><Debug-Log><ColumnWidth0>19</ColumnWidth0><ColumnWidth1>1122</ColumnWidth1></Debug-Log></Static>
     <Windows>
       
       
-    <Wnd2>
+    <Wnd0>
         <Tabs>
           <Tab>
             <Identity>TabID-13093-20787</Identity>
@@ -32,34 +32,29 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/Application</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/My Nordic</ExpandedNode><ExpandedNode>FirstPrj</ExpandedNode><ExpandedNode>FirstPrj/Application</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/Application</ExpandedNode><ExpandedNode>&lt;ws&gt;/BlueDS/nRF_SoftDevice</ExpandedNode><ExpandedNode>FirstPrj</ExpandedNode><ExpandedNode>FirstPrj/Application</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
-        <Tabs>
-          <Tab>
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd3><Tabs><Tab>
             <Identity>TabID-23841-20790</Identity>
             <TabName>Build</TabName>
             <Factory>Build</Factory>
             <Session/>
-          </Tab>
-        <Tab><Identity>TabID-4969-26971</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
-        
-      <SelectedTab>0</SelectedTab></Wnd3></Windows>
+          </Tab><Tab><Identity>TabID-4969-26971</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-13622-7737</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>209</YPos2><SelStart2>6771</SelStart2><SelEnd2>6778</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\usb_wrapper.cpp</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>3</YPos2><SelStart2>5967</SelStart2><SelEnd2>5967</SelEnd2></Tab><ActiveTab>1</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\usb_wrapper.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>772</SelStart2><SelEnd2>772</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_types.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>231</YPos2><SelStart2>11767</SelStart2><SelEnd2>11767</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\bsp\bsp.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>194</YPos2><SelStart2>11529</SelStart2><SelEnd2>11529</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_frontend.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>554</YPos2><SelStart2>20000</SelStart2><SelEnd2>20000</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>194</YPos2><SelStart2>6926</SelStart2><SelEnd2>6950</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Boards\pca10056\blank\config\sdk_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>4638</YPos2><SelStart2>111868</SelStart2><SelEnd2>111868</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>190</YPos2><SelStart2>6313</SelStart2><SelEnd2>6318</SelEnd2></Tab><ActiveTab>2</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-04FF1D80><key>iaridepm.enu1</key></Toolbar-04FF1D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>700</Bottom><Right>389</Right><x>-2</x><y>-2</y><xscreen>397</xscreen><yscreen>200</yscreen><sizeHorzCX>279774</sizeHorzCX><sizeHorzCY>191939</sizeHorzCY><sizeVertCX>275546</sizeVertCX><sizeVertCY>673704</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>297</Bottom><Right>1421</Right><x>-2</x><y>-2</y><xscreen>1423</xscreen><yscreen>299</yscreen><sizeHorzCX>1002819</sizeHorzCX><sizeHorzCY>286948</sizeHorzCY><sizeVertCX>279774</sizeVertCX><sizeVertCY>191939</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-007B1D80><key>iaridepm.enu1</key></Toolbar-007B1D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>501</Bottom><Right>446</Right><x>-2</x><y>-2</y><xscreen>332</xscreen><yscreen>175</yscreen><sizeHorzCX>281356</sizeHorzCX><sizeHorzCY>209080</sizeHorzCY><sizeVertCX>379661</sizeVertCX><sizeVertCY>600956</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>291</Bottom><Right>1182</Right><x>-2</x><y>-2</y><xscreen>1184</xscreen><yscreen>293</yscreen><sizeHorzCX>1003390</sizeHorzCX><sizeHorzCY>350060</sizeHorzCY><sizeVertCX>169492</sizeVertCX><sizeVertCY>238949</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

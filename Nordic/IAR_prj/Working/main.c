@@ -70,7 +70,11 @@
 
 #include "usb_wrapper.h"
 #include "flash_mem.h"
+#include "host_interfase.h"
+#include "bee_data_types.h"
 
+char version_name[] = "V1.008(P21)";
+char firmvare_version[VERSION_NAME_LENGTH] = "V1.008(P21) xxx xx xxxx";
 
 /**
  * @brief CLI interface over UART
@@ -173,9 +177,37 @@ static void init_cli(void)
 }
 /////////////////////////////////////////////////////////////////////////////
 
+#define INCOME_BUFFER_LENGTH   32
+void CheckUsbData()
+{
+
+	uint16_t data_length = UsbGetRxCount();
+	char buffer[INCOME_BUFFER_LENGTH];
+	if ( data_length ) {
+		NRF_LOG_INFO("Usb data_length: %d", data_length);
+		while ( data_length > 0 ) {
+			uint16_t n_count = data_length;
+			if (n_count > INCOME_BUFFER_LENGTH ){
+				n_count = INCOME_BUFFER_LENGTH;
+			}
+			uint16_t bytes_read = UsbRead(buffer, n_count);
+			for ( int i = 0; i < bytes_read; i++ ) {
+				addIncomingData(buffer[i]);
+			}
+			
+ 			data_length -= bytes_read;
+		}
+	}
+
+}
+/////////////////////////////////////////////////////////////////////////////
+
 
 int main(void)
 {
+	memset(firmvare_version, 0, sizeof(firmvare_version));
+	sprintf(&firmvare_version[0], "%s %s", version_name, __DATE__);
+
     ret_code_t ret;
 	
     ret = NRF_LOG_INIT(NULL);
@@ -217,34 +249,21 @@ int main(void)
 
 
 //	FlashMemWrite((char*)"Helllllllll0", 32, 0x3e000);
-	char data[32];
+//	char data[32];
 //	memset(data, 0, sizeof(data));
 //	FlashMemErase(0x3e000);
-	FlashMemRead(data, 32, 0x3e000);
+//	FlashMemRead(data, 32, 0x3e000);
 
 
+	hostInterfaseInit();
 	while (true)
     {
-        while (app_usbd_event_queue_process())
-        {
+        while (app_usbd_event_queue_process()) {
             /* Nothing to do */
         }
 		
-		uint8_t count;
-		char buf[20];
-		int len = UsbGetRxCount();
-		if ( len ) {
-			NRF_LOG_INFO("Usb buf len: %d", len);
-		}
-		while ( len > 0 ) {
-			count = len;
-			if (count > 20 ) count = 20;
- 			len -= UsbRead(buf, count);
-			NRF_LOG_INFO("Got char: 0x%x", buf[0]);
-		}
-        
-//		UsbWrite(buf, count);
-		
+		CheckUsbData();
+				
         if( m_send_flag )
         {
             static int  frame_counter;

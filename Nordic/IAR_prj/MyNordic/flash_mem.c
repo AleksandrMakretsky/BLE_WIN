@@ -62,6 +62,19 @@ ret_code_t FlashMemRead(char* data, uint16_t length, uint32_t block_adr) {
 /////////////////////////////////////////////////////////////////////////////
 
 
+ret_code_t  FlashMemWrite(char* data, uint16_t length, uint32_t block_adr) {
+	
+	ret_code_t rc;
+	CHECK_IF_INIT;
+	rc = nrf_fstorage_write(&fstorage, block_adr, data, length, NULL);
+
+    while (nrf_fstorage_is_busy(&fstorage));
+
+	return rc;
+}
+/////////////////////////////////////////////////////////////////////////////
+
+
 ret_code_t FlashMemErase(uint32_t block_adr) {
 
 	ret_code_t rc;
@@ -75,17 +88,45 @@ ret_code_t FlashMemErase(uint32_t block_adr) {
 /////////////////////////////////////////////////////////////////////////////
 
 
-ret_code_t  FlashMemWrite(char* data, uint16_t length, uint32_t block_adr) {
+ret_code_t FlashMemSegmentRead(char* data, uint16_t length, uint32_t offset) {
+	
+	if ( length + offset > READ_BUFFER_LRNGTH ) {
+		return NRF_ERROR_INVALID_ADDR;
+	}
 	
 	ret_code_t rc;
 	CHECK_IF_INIT;
-	rc = nrf_fstorage_write(&fstorage, block_adr, data, length, NULL);
+	char buffer[READ_BUFFER_LRNGTH];
+	rc = FlashMemRead(buffer, READ_BUFFER_LRNGTH, FLASH_BLOCK0ADR);
+	if ( rc == NRF_SUCCESS ) {
+		memcpy(data, &buffer[offset], length);
+	}
+	
+	return rc;
+}
+/////////////////////////////////////////////////////////////////////////////
 
-    while (nrf_fstorage_is_busy(&fstorage));
+
+ret_code_t FlashMemSegmentWrite(char* data, uint16_t length, uint32_t offset) {
+
+	if ( length + offset > READ_BUFFER_LRNGTH ) {
+		return NRF_ERROR_INVALID_ADDR;
+	}
+	
+	ret_code_t rc;
+	CHECK_IF_INIT;
+	char buffer[READ_BUFFER_LRNGTH];
+	rc = FlashMemRead(buffer, READ_BUFFER_LRNGTH, FLASH_BLOCK0ADR);
+	if ( rc == NRF_SUCCESS ) {
+		memcpy(&buffer[offset], data, length);
+		FlashMemErase(FLASH_BLOCK0ADR);
+		FlashMemWrite(buffer, sizeof(buffer), FLASH_BLOCK0ADR);
+	}
 
 	return rc;
 }
 /////////////////////////////////////////////////////////////////////////////
+
 
 static void fstorage_evt_handler(nrf_fstorage_evt_t * p_evt)
 {

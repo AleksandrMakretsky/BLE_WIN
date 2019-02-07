@@ -4,9 +4,6 @@
   <project>
     <path>$WS_DIR$\BlueDS.ewp</path>
   </project>
-  <project>
-    <path>$WS_DIR$\FirstPrj.ewp</path>
-  </project>
   <batchBuild/>
 </workspace>
 

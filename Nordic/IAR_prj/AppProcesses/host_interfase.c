@@ -30,6 +30,8 @@ device_id_st the_device_id = {NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT};
 
 void parseIncomingMessage(char* received_msg);
 void readDeviceId();
+void storeDeviceId();
+
 ///////////////////////////////////////////////////////////////////////////////
 
 
@@ -64,6 +66,14 @@ void parseIncomingMessage(char* received_msg) {
 				sizeof(the_device_id), CMD_DEVICE_ID);
 			responce = true;
 		break;
+		case CMD_SET_DEVICE_ID:
+			NetLevelGetMessageData(received_msg, (char*)&the_device_id,
+				sizeof(the_device_id));
+			storeDeviceId();
+			NetLevelCreateResponse(response_buffer, (char*)&the_device_id,
+				sizeof(the_device_id), CMD_DEVICE_ID);
+			responce = true;
+		break;
 		case CMD_GET_FIRMWARE_VERSION:
 			NetLevelCreateResponse(response_buffer, firmvare_version,
 				sizeof(firmvare_version), CMD_FIRMWARE_VERSION);
@@ -93,7 +103,7 @@ void parseIncomingMessage(char* received_msg) {
 
 void readDeviceId() {
 	
-/*	
+	
 	FlashMemSegmentRead((char*)&the_device_id,
 		sizeof(the_device_id), FLASH_DEVICEID_OFFSET);
 	
@@ -102,10 +112,6 @@ void readDeviceId() {
 		FlashMemSegmentWrite((char*)&the_device_id,
 			sizeof(the_device_id), FLASH_DEVICEID_OFFSET);
 	}
-*/
-	
-	memset(&the_device_id, 0, sizeof(the_device_id));
-	the_device_id = (device_id_st){NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT};
 	
 	the_device_id.device_class[DEVICE_ID_NAME_LENGTH-1] = 0;
 	the_device_id.device_number[DEVICE_ID_NAME_LENGTH-1] = 0;
@@ -113,3 +119,9 @@ void readDeviceId() {
 ///////////////////////////////////////////////////////////////////////////////
 
 
+void storeDeviceId() {
+
+	FlashMemSegmentWrite((char*)&the_device_id,
+		sizeof(the_device_id), FLASH_DEVICEID_OFFSET);
+}
+///////////////////////////////////////////////////////////////////////////////

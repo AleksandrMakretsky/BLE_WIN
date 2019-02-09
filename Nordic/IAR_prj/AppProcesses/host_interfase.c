@@ -72,9 +72,18 @@ void parseIncomingMessage(char* received_msg) {
 	}
 
 	if ( responce ) {
+		
+//		if ( chanelId == USB ) {
+//			ChanelWrite = UsbWrite;
+//		} else {
+//			ChanelWrite = BleWrite;
+//		}
+			
 		uint16_t count;
 		count = ((message_header_st*)response_buffer)->data_length +
 			sizeof(message_header_st) + 1;
+		//ChanelWrite((char*)response_buffer, count);
+		
 		UsbWrite((char*)response_buffer, count);
 	}
 

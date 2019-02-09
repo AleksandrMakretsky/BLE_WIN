@@ -321,7 +321,7 @@
         </option>
         <option>
           <name>CCIncludePath2</name>
-          <state>$PROJ_DIR$\..\..\Boards\pca10056\blank\config</state>
+          <state>$PROJ_DIR$\..\Boards\pca10056</state>
           <state>$PROJ_DIR$\..\AppProcesses</state>
           <state>$PROJ_DIR$\..\MyNordic</state>
           <state>$PROJ_DIR$\..\DsCommons</state>
@@ -3021,12 +3021,12 @@
       <file>
         <name>$PROJ_DIR$\..\AppProcesses\host_interfase.c</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\..\Boards\pca10056\sdk_config.h</name>
+      </file>
     </group>
     <file>
       <name>$PROJ_DIR$\main.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\Boards\pca10056\blank\config\sdk_config.h</name>
     </file>
   </group>
   <group>
@@ -3045,15 +3045,6 @@
     </file>
   </group>
   <group>
-    <name>MyNordic</name>
-    <file>
-      <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\MyNordic\usb_wrapper.cpp</name>
-    </file>
-  </group>
-  <group>
     <name>DsCommons</name>
     <file>
       <name>$PROJ_DIR$\..\DsCommons\bit_operations.cpp</name>
@@ -3066,6 +3057,15 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\DsCommons\types_porting.cpp</name>
+    </file>
+  </group>
+  <group>
+    <name>MyNordic</name>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\usb_wrapper.cpp</name>
     </file>
   </group>
   <group>

@@ -178,12 +178,25 @@ static void init_cli(void)
 /////////////////////////////////////////////////////////////////////////////
 
 #define INCOME_BUFFER_LENGTH   32
-void CheckUsbData()
+
+void CheckBleIncommingData()
+{
+
+//		chanelId = BLE;
+
+}
+/////////////////////////////////////////////////////////////////////////////
+
+
+void CheckUsbIncommingData()
 {
 
 	uint16_t data_length = UsbGetRxCount();
 	char buffer[INCOME_BUFFER_LENGTH];
 	if ( data_length ) {
+		
+//		chanelId = USB;
+		
 		NRF_LOG_INFO("Usb data_length: %d", data_length);
 		while ( data_length > 0 ) {
 			uint16_t n_count = data_length;
@@ -262,7 +275,8 @@ int main(void)
             /* Nothing to do */
         }
 		
-		CheckUsbData();
+		CheckUsbIncommingData();
+//		CheckBleIncommingData();
 				
         if( m_send_flag )
         {

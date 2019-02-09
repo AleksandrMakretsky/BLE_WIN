@@ -19,7 +19,7 @@
           
           
           
-        <Column0>130</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>152</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -73,14 +73,14 @@
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>48</YPos2><SelStart2>1719</SelStart2><SelEnd2>1735</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>192</YPos2><SelStart2>6478</SelStart2><SelEnd2>6478</SelEnd2></Tab><ActiveTab>1</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>61</YPos2><SelStart2>2145</SelStart2><SelEnd2>2150</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>205</YPos2><SelStart2>6662</SelStart2><SelEnd2>6662</SelEnd2></Tab><ActiveTab>1</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\usb_wrapper.cpp</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>140</YPos2><SelStart2>2947</SelStart2><SelEnd2>2955</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\sdk_common.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>31</YPos2><SelStart2>2642</SelStart2><SelEnd2>2642</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-02921D80><key>iaridepm.enu1</key></Toolbar-02921D80></Sizes></Row0><Row1><Sizes><Toolbar-13E55EB0><key>debuggergui.enu1</key></Toolbar-13E55EB0><Toolbar-13E553C0><key>armjlink2.enu1</key></Toolbar-13E553C0></Sizes></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>588</Bottom><Right>204</Right><x>-2</x><y>-2</y><xscreen>151</xscreen><yscreen>178</yscreen><sizeHorzCX>118524</sizeHorzCX><sizeHorzCY>171815</sizeHorzCY><sizeVertCX>161695</sizeVertCX><sizeVertCY>569498</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>379</Bottom><Right>1276</Right><x>-2</x><y>-2</y><xscreen>1278</xscreen><yscreen>381</yscreen><sizeHorzCX>1003140</sizeHorzCX><sizeHorzCY>367761</sizeHorzCY><sizeVertCX>118524</sizeVertCX><sizeVertCY>171815</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-03E91D80><key>iaridepm.enu1</key></Toolbar-03E91D80></Sizes></Row0><Row1><Sizes><Toolbar-1A38C4F8><key>debuggergui.enu1</key></Toolbar-1A38C4F8><Toolbar-1A38D628><key>armjlink2.enu1</key></Toolbar-1A38D628></Sizes></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>588</Bottom><Right>226</Right><x>-2</x><y>-2</y><xscreen>167</xscreen><yscreen>178</yscreen><sizeHorzCX>118440</sizeHorzCX><sizeHorzCY>171815</sizeHorzCY><sizeVertCX>161702</sizeVertCX><sizeVertCY>569498</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>379</Bottom><Right>1412</Right><x>-2</x><y>-2</y><xscreen>1414</xscreen><yscreen>381</yscreen><sizeHorzCX>1002837</sizeHorzCX><sizeHorzCY>367761</sizeHorzCY><sizeVertCX>118440</sizeVertCX><sizeVertCY>171815</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

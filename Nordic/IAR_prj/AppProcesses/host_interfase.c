@@ -84,6 +84,7 @@ void parseIncomingMessage(char* received_msg) {
 
 void readDeviceId() {
 	
+/*	
 	FlashMemSegmentRead((char*)&the_device_id,
 		sizeof(the_device_id), FLASH_DEVICEID_OFFSET);
 	
@@ -92,6 +93,10 @@ void readDeviceId() {
 		FlashMemSegmentWrite((char*)&the_device_id,
 			sizeof(the_device_id), FLASH_DEVICEID_OFFSET);
 	}
+*/
+	
+	memset(&the_device_id, 0, sizeof(the_device_id));
+	the_device_id = (device_id_st){NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT};
 	
 	the_device_id.device_class[DEVICE_ID_NAME_LENGTH-1] = 0;
 	the_device_id.device_number[DEVICE_ID_NAME_LENGTH-1] = 0;

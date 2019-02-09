@@ -1010,6 +1010,7 @@
 // <i> Vendor ID ordered from USB IF: http://www.usb.org/developers/vendor/
 #ifndef APP_USBD_VID
 #define APP_USBD_VID 0x1915
+// 0x1915
 #endif
 
 // <s> APP_USBD_PID - Product ID.
@@ -1018,6 +1019,7 @@
 // <i> Selected Product ID
 #ifndef APP_USBD_PID
 #define APP_USBD_PID 0x520F
+// 0x520F   0x521A   0x520F(cdc_acm)  0x520B(hid)  0x520C(hid_g)
 #endif
 
 // <o> APP_USBD_DEVICE_VER_MAJOR - Device version, major part.  <0-99> 

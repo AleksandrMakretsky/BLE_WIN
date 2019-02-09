@@ -73,8 +73,8 @@
 #include "host_interfase.h"
 #include "bee_data_types.h"
 
-char version_name[] = "V1.008(P21)";
-char firmvare_version[VERSION_NAME_LENGTH] = "V1.008(P21) xxx xx xxxx";
+char version_name[] = "V0.000(RF)";
+char firmvare_version[VERSION_NAME_LENGTH];
 
 /**
  * @brief CLI interface over UART

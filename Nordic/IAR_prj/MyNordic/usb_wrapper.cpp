@@ -38,8 +38,7 @@ APP_USBD_CDC_ACM_GLOBAL_DEF(m_app_cdc_acm,
 
 #define READ_SIZE 1
 static char m_rx_char[READ_SIZE];
-static char m_tx_buffer[NRF_DRV_USBD_EPSIZE];
-static char m_rx_buffer[RX_BUFFER_SIZE];
+static char m_rx_buffer_fifo[RX_BUFFER_SIZE];
 static uint16_t in_index = 0;
 static uint16_t out_index = 0;
 static uint16_t buffer_length = 0;
@@ -89,7 +88,7 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
                 /*Get amount of data transfered*/
                 size_t size = app_usbd_cdc_acm_rx_size(p_cdc_acm);
                 NRF_LOG_INFO("RX: size: %lu char: %c", size, m_rx_char[0]);
-				m_rx_buffer[in_index++] = m_rx_char[0];
+				m_rx_buffer_fifo[in_index++] = m_rx_char[0];
 				in_index &= (RX_BUFFER_SIZE-1);
 				buffer_length++;
 
@@ -158,7 +157,7 @@ uint16_t UsbRead(char* data, uint16_t length) {
 	
 	uint16_t count = 0;
 	for (int i = 0; i < length; i++) {
-		data[i] = m_rx_buffer[out_index++];
+		data[i] = m_rx_buffer_fifo[out_index++];
 		out_index &= (RX_BUFFER_SIZE-1);
 		count++;
 		buffer_length--;

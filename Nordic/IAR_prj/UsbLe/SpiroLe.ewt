@@ -3165,6 +3165,12 @@
     </file>
   </group>
   <group>
+    <name>MyNordic</name>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\ble_wrapper.cpp</name>
+    </file>
+  </group>
+  <group>
     <name>None</name>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s</name>

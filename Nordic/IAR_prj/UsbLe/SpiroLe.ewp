@@ -321,6 +321,7 @@
         </option>
         <option>
           <name>CCIncludePath2</name>
+          <state>$PROJ_DIR$\</state>
           <state>$PROJ_DIR$\..\Boards\pca10056_UsbLe</state>
           <state>$PROJ_DIR$\..\MyNordic</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components</state>
@@ -3031,6 +3032,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_btn_ble.c</name>
+    </file>
+  </group>
+  <group>
+    <name>MyNordic</name>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\ble_wrapper.cpp</name>
     </file>
   </group>
   <group>

@@ -6956,9 +6956,9 @@
 
 // <e> NRF_FSTORAGE_ENABLED - nrf_fstorage - Flash abstraction library
 //==========================================================
-#ifndef NRF_FSTORAGE_ENABLED
-#define NRF_FSTORAGE_ENABLED 0
-#endif
+//#ifndef NRF_FSTORAGE_ENABLED
+//#define NRF_FSTORAGE_ENABLED 0
+//#endif
 // <h> nrf_fstorage - Common settings
 
 // <i> Common settings to all fstorage implementations
@@ -13051,6 +13051,29 @@
 #ifndef POWER_CONFIG_SOC_OBSERVER_PRIO
 #define POWER_CONFIG_SOC_OBSERVER_PRIO 0
 #endif
+
+// start out adding
+#ifndef NRF_FSTORAGE_ENABLED
+#define NRF_FSTORAGE_ENABLED 1
+#endif
+
+#ifndef NRF_FSTORAGE_PARAM_CHECK_DISABLED
+#define NRF_FSTORAGE_PARAM_CHECK_DISABLED 0
+#endif
+
+#ifndef NRF_FSTORAGE_SD_QUEUE_SIZE
+#define NRF_FSTORAGE_SD_QUEUE_SIZE 4
+#endif
+
+#ifndef NRF_FSTORAGE_SD_MAX_WRITE_SIZE
+#define NRF_FSTORAGE_SD_MAX_WRITE_SIZE 4096
+#endif
+
+#ifndef NRF_FSTORAGE_SD_MAX_RETRIES
+#define NRF_FSTORAGE_SD_MAX_RETRIES 8
+#endif
+
+
 
 // </h> 
 //==========================================================

@@ -85,6 +85,9 @@
 #include "app_usbd_cdc_acm.h"
 #include "app_usbd_serial_num.h"
 
+#include "flash_mem.h"
+#include "bee_data_types.h"
+
 #define LED_BLE_NUS_CONN (BSP_BOARD_LED_0)
 #define LED_BLE_NUS_RX   (BSP_BOARD_LED_1)
 #define LED_CDC_ACM_CONN (BSP_BOARD_LED_2)
@@ -861,6 +864,12 @@ int main(void)
     ret = app_usbd_power_events_enable();
     APP_ERROR_CHECK(ret);
 
+#ifdef TEST_FLASH	
+	DsDeviceId dsDeviceId;
+	FlashMemSegmentRead((char*)&dsDeviceId,
+		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
+#endif
+	
     // Enter main loop.
     for (;;)
     {

@@ -20,7 +20,7 @@ typedef struct
 {
 	unsigned char adr[6];
 	char name[64];
-} S_DEVISE_ID;
+} BlueDeviceId;
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -28,7 +28,7 @@ typedef struct
 typedef struct {
 	char device_class[DEVICE_ID_NAME_LENGTH];
 	char device_number[DEVICE_ID_NAME_LENGTH];
-} device_id_st;
+} DsDeviceId;
 /////////////////////////////////////////////////////////////////////////////
 
 #include "types_porting.h"
@@ -238,7 +238,7 @@ typedef struct {
 /////////////////////////////////////////////////////////////////////////////
 
 typedef struct {
-	device_id_st device_id;
+	DsDeviceId dsDeviceId;
 	leads_identification_st lead_id;
 	device_status_st device_state;
 	

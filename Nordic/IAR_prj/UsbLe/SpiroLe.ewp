@@ -324,6 +324,8 @@
           <state>$PROJ_DIR$\</state>
           <state>$PROJ_DIR$\..\Boards\pca10056_UsbLe</state>
           <state>$PROJ_DIR$\..\MyNordic</state>
+          <state>$PROJ_DIR$\..\AppProcesses</state>
+          <state>$PROJ_DIR$\..\DsCommons</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_advertising</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_dtm</state>
@@ -3039,6 +3041,9 @@
     <file>
       <name>$PROJ_DIR$\..\MyNordic\ble_wrapper.cpp</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
+    </file>
   </group>
   <group>
     <name>None</name>
@@ -3185,6 +3190,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage_sd.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.c</name>

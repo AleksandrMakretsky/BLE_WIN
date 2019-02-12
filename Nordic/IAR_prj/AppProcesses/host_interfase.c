@@ -18,7 +18,6 @@ host interfase
 #include "../MyNordic/flash_mem.h"
 
 #include "host_interfase.h"
-//#include "usb_wrapper.h"
 
 extern char* received_msg_buffer;
 

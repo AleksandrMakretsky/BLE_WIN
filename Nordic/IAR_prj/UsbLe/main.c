@@ -85,8 +85,12 @@
 #include "app_usbd_cdc_acm.h"
 #include "app_usbd_serial_num.h"
 
+#include "host_interfase.h"
 #include "flash_mem.h"
 #include "bee_data_types.h"
+
+char version_name[] = "V0.000(RF)";
+char firmware_version[VERSION_NAME_LENGTH];
 
 #define LED_BLE_NUS_CONN (BSP_BOARD_LED_0)
 #define LED_BLE_NUS_RX   (BSP_BOARD_LED_1)
@@ -174,6 +178,14 @@ static ble_uuid_t m_adv_uuids[]          =                                      
     {BLE_UUID_NUS_SERVICE, NUS_SERVICE_UUID_TYPE}
 };
 static char m_nus_data_array[BLE_NUS_MAX_DATA_LEN];
+
+#define RX_BUFFER_SIZE 512
+static char m_rx_buffer_fifo[RX_BUFFER_SIZE];
+static uint16_t in_index = 0;
+static uint16_t out_index = 0;
+static uint16_t buffer_length = 0;
+
+
 
 // BLE DEFINES END
 
@@ -692,81 +704,29 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
             break;
 
         case APP_USBD_CDC_ACM_USER_EVT_RX_DONE:
-        {
+		{ // need it for vars declaration inside
             ret_code_t ret;
-            static uint8_t index = 0;
-            index++;
-
+			size_t size = 0;
             do
             {
-                if ((m_cdc_data_array[index - 1] == '\n') ||
-                    (m_cdc_data_array[index - 1] == '\r') ||
-                    (index >= (m_ble_nus_max_data_len)))
-                {
-                    if (index > 1)
-                    {
-                        bsp_board_led_invert(LED_CDC_ACM_RX);
-                        NRF_LOG_DEBUG("Ready to send data over BLE NUS");
-                        NRF_LOG_HEXDUMP_DEBUG(m_cdc_data_array, index);
+				size++;
+				m_rx_buffer_fifo[in_index++] = m_cdc_data_array[0];
+				in_index &= (RX_BUFFER_SIZE-1);
+				buffer_length++;
 
-                        do
-                        {
-                            uint16_t length = (uint16_t)index;
-                            if (length + sizeof(ENDLINE_STRING) < BLE_NUS_MAX_DATA_LEN)
-                            {
-                                memcpy(m_cdc_data_array + length, ENDLINE_STRING, sizeof(ENDLINE_STRING));
-                                length += sizeof(ENDLINE_STRING);
-                            }
-
-                            ret = ble_nus_data_send(&m_nus,
-                                                    (uint8_t *) m_cdc_data_array,
-                                                    &length,
-                                                    m_conn_handle);
-
-                            if (ret == NRF_ERROR_NOT_FOUND)
-                            {
-                                NRF_LOG_INFO("BLE NUS unavailable, data received: %s", m_cdc_data_array);
-                                break;
-                            }
-
-                            if (ret == NRF_ERROR_RESOURCES)
-                            {
-                                NRF_LOG_ERROR("BLE NUS Too many notifications queued.");
-                                break;
-                            }
-
-                            if ((ret != NRF_ERROR_INVALID_STATE) && (ret != NRF_ERROR_BUSY))
-                            {
-                                APP_ERROR_CHECK(ret);
-                            }
-                        }
-                        while (ret == NRF_ERROR_BUSY);
-                    }
-
-                    index = 0;
-                }
-
-                /*Get amount of data transferred*/
-                size_t size = app_usbd_cdc_acm_rx_size(p_cdc_acm);
-                NRF_LOG_DEBUG("RX: size: %lu char: %c", size, m_cdc_data_array[index - 1]);
-
-                /* Fetch data until internal buffer is empty */
-                ret = app_usbd_cdc_acm_read(&m_app_cdc_acm,
-                                            &m_cdc_data_array[index],
-                                            1);
-                if (ret == NRF_SUCCESS)
-                {
-                    index++;
-                }
-            }
-            while (ret == NRF_SUCCESS);
-
+                // Fetch data until internal buffer is empty
+                ret = app_usbd_cdc_acm_read(&m_app_cdc_acm, &m_cdc_data_array[0], 1);
+            } while (ret == NRF_SUCCESS);
+			
+			NRF_LOG_INFO("Usb got bites: %lu ", size);
             break;
-        }
+		}
         default:
             break;
     }
 }
+/////////////////////////////////////////////////////////////////////////////
+
 
 static void usbd_user_ev_handler(app_usbd_event_type_t event)
 {
@@ -821,12 +781,32 @@ static void usbd_user_ev_handler(app_usbd_event_type_t event)
             break;
     }
 }
+/////////////////////////////////////////////////////////////////////////////
 
+void ChannelWriteUsb(char*data, uint16_t dataLength) {
+	app_usbd_cdc_acm_write(&m_app_cdc_acm, data, dataLength);
+}
+/////////////////////////////////////////////////////////////////////////////
 // USB CODE END
+
+
+void CheckUsbIncommingData()
+{
+	while ( buffer_length > 0 ) {
+		addIncomingData(m_rx_buffer_fifo[out_index]);
+		out_index = (out_index+1) & (RX_BUFFER_SIZE-1);
+		buffer_length--;
+	}
+}
+/////////////////////////////////////////////////////////////////////////////
+
 
 /** @brief Application main function. */
 int main(void)
 {
+	memset(firmware_version, 0, sizeof(firmware_version));
+	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
+
     ret_code_t ret;
     static const app_usbd_config_t usbd_config = {
         .ev_state_proc = usbd_user_ev_handler
@@ -870,9 +850,17 @@ int main(void)
 		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 #endif
 	
+	hostInterfaseInit();
+	in_index = 0;
+	out_index = 0;
+	buffer_length = 0;
+	channelWriteFn = ChannelWriteUsb;
+	
     // Enter main loop.
     for (;;)
     {
+		CheckUsbIncommingData();
+
         while (app_usbd_event_queue_process())
         {
             /* Nothing to do */

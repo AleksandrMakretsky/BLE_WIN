@@ -18,9 +18,9 @@
           
           
           
-        <Column0>370</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>131</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
-    <Find-in-Files><ColumnWidth0>274</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>411</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/></Static>
+    <Find-in-Files><ColumnWidth0>383</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>411</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/></Static>
     <Windows>
       
       
@@ -42,7 +42,7 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode><ExpandedNode>SpiroLe/nRF_Libraries</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe/DsCommons</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
@@ -52,14 +52,14 @@
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\arm\doc\infocenter\index.ENU.html</Filename></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\sdk_common.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>42</YPos2><SelStart2>2485</SelStart2><SelEnd2>2485</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>57</YPos2><SelStart2>3303</SelStart2><SelEnd2>3303</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\ble_wrapper.cpp</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>430</SelStart2><SelEnd2>430</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\ble_wrapper.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>395</SelStart2><SelEnd2>395</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DsCommons\bee_data_types.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>226</YPos2><SelStart2>8898</SelStart2><SelEnd2>8898</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>27</YPos2><SelStart2>2099</SelStart2><SelEnd2>2119</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Boards\pca10056_UsbLe\sdk_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>6953</YPos2><SelStart2>172104</SelStart2><SelEnd2>172104</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>847</YPos2><SelStart2>31302</SelStart2><SelEnd2>31302</SelEnd2></Tab><ActiveTab>8</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>78</YPos2><SelStart2>3865</SelStart2><SelEnd2>3865</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>789</YPos2><SelStart2>28876</SelStart2><SelEnd2>28876</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>1554</SelStart2><SelEnd2>1554</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>214</SelStart2><SelEnd2>228</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>62</YPos2><SelStart2>3266</SelStart2><SelEnd2>3266</SelEnd2></Tab><ActiveTab>3</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-02D81D80><key>iaridepm.enu1</key></Toolbar-02D81D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>689</Bottom><Right>461</Right><x>-2</x><y>-2</y><xscreen>242</xscreen><yscreen>200</yscreen><sizeHorzCX>189804</sizeHorzCX><sizeHorzCY>190840</sizeHorzCY><sizeVertCX>363137</sizeVertCX><sizeVertCY>659351</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>314</Bottom><Right>1277</Right><x>-2</x><y>-2</y><xscreen>1279</xscreen><yscreen>316</yscreen><sizeHorzCX>1003137</sizeHorzCX><sizeHorzCY>301527</sizeHorzCY><sizeVertCX>189804</sizeVertCX><sizeVertCY>190840</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-008B1D80><key>iaridepm.enu1</key></Toolbar-008B1D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>649</Bottom><Right>205</Right><x>-2</x><y>-2</y><xscreen>234</xscreen><yscreen>202</yscreen><sizeHorzCX>176205</sizeHorzCX><sizeHorzCY>190386</sizeHorzCY><sizeVertCX>155873</sizeVertCX><sizeVertCY>613572</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>367</Bottom><Right>1330</Right><x>-2</x><y>-2</y><xscreen>1332</xscreen><yscreen>369</yscreen><sizeHorzCX>1003012</sizeHorzCX><sizeHorzCY>347785</sizeHorzCY><sizeVertCX>176205</sizeVertCX><sizeVertCY>190386</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

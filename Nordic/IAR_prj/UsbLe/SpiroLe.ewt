@@ -3142,6 +3142,12 @@
   </configuration>
   <group>
     <name>Application</name>
+    <group>
+      <name>Processes</name>
+      <file>
+        <name>$PROJ_DIR$\..\AppProcesses\host_interfase.c</name>
+      </file>
+    </group>
     <file>
       <name>$PROJ_DIR$\main.c</name>
     </file>
@@ -3165,10 +3171,22 @@
     </file>
   </group>
   <group>
-    <name>MyNordic</name>
+    <name>DsCommons</name>
     <file>
-      <name>$PROJ_DIR$\..\MyNordic\ble_wrapper.cpp</name>
+      <name>$PROJ_DIR$\..\DsCommons\bit_operations.cpp</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\crc16_ccitt.cpp</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\net_level.cpp</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\types_porting.cpp</name>
+    </file>
+  </group>
+  <group>
+    <name>MyNordic</name>
     <file>
       <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
     </file>

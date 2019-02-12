@@ -804,59 +804,50 @@ void CheckUsbIncommingData()
 /** @brief Application main function. */
 int main(void)
 {
-	memset(firmware_version, 0, sizeof(firmware_version));
-	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
-
     ret_code_t ret;
-    static const app_usbd_config_t usbd_config = {
-        .ev_state_proc = usbd_user_ev_handler
-    };
-    // Initialize.
+
+	// common initialization
     log_init();
     timers_init();
-
     buttons_leds_init();
-
-    app_usbd_serial_num_generate();
-
     ret = nrf_drv_clock_init();
     APP_ERROR_CHECK(ret);
 
-    NRF_LOG_INFO("USBD BLE UART example started.");
-
+	// init USB
+    static const app_usbd_config_t usbd_config = {
+        .ev_state_proc = usbd_user_ev_handler
+    };
+    app_usbd_serial_num_generate();
     ret = app_usbd_init(&usbd_config);
     APP_ERROR_CHECK(ret);
-
     app_usbd_class_inst_t const * class_cdc_acm = app_usbd_cdc_acm_class_inst_get(&m_app_cdc_acm);
     ret = app_usbd_class_append(class_cdc_acm);
     APP_ERROR_CHECK(ret);
+    ret = app_usbd_power_events_enable();
+    APP_ERROR_CHECK(ret);
+	// end for USB
 
+	// ble init
     ble_stack_init();
     gap_params_init();
     gatt_init();
     services_init();
     advertising_init();
     conn_params_init();
-
-    // Start execution.
     advertising_start();
+	// end for ble
 
-    ret = app_usbd_power_events_enable();
-    APP_ERROR_CHECK(ret);
-
-#ifdef TEST_FLASH	
-	DsDeviceId dsDeviceId;
-	FlashMemSegmentRead((char*)&dsDeviceId,
-		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
-#endif
-	
+	// app init
+	memset(firmware_version, 0, sizeof(firmware_version));
+	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
 	hostInterfaseInit();
 	in_index = 0;
 	out_index = 0;
 	buffer_length = 0;
-	channelWriteFn = ChannelWriteUsb;
+	channelWriteFn = ChannelWriteUsb; // init call back writing function
 	
     // Enter main loop.
+    NRF_LOG_INFO("USBD BLE UART example started.");
     for (;;)
     {
 		CheckUsbIncommingData();

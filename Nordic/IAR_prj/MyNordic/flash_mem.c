@@ -12,8 +12,13 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
-
 #include "flash_mem.h"
+
+#ifdef TEST_FLASH	
+	DsDeviceId dsDeviceId;
+	FlashMemSegmentRead((char*)&dsDeviceId,
+		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
+#endif
 
 #define CHECK_IF_INIT if ( !initDone ) { \
 		rc = InitFlashMem(); \

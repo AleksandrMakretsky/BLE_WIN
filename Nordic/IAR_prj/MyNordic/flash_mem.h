@@ -12,12 +12,12 @@
 
 #define READ_BUFFER_LRNGTH     (0x100*4)
 
-ret_code_t FlashMemRead(char* data, uint16_t length, uint32_t block_adr);
-ret_code_t FlashMemWrite(char* data, uint16_t length, uint32_t block_adr);
-ret_code_t FlashMemErase(uint32_t block_adr);
+ret_code_t flashMemRead(char* data, uint16_t length, uint32_t block_adr);
+ret_code_t flashMemWrite(char* data, uint16_t length, uint32_t block_adr);
+ret_code_t flashMemErase(uint32_t block_adr);
 
-ret_code_t FlashMemSegmentRead(char* data, uint16_t length, uint32_t offset);
-ret_code_t FlashMemSegmentWrite(char* data, uint16_t length, uint32_t offset);
+ret_code_t flashMemSegmentRead(char* data, uint16_t length, uint32_t offset);
+ret_code_t flashMemSegmentWrite(char* data, uint16_t length, uint32_t offset);
 
 
 #endif // _FLASH_MEM_H_

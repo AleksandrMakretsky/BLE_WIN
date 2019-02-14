@@ -790,14 +790,14 @@ static void usbd_user_ev_handler(app_usbd_event_type_t event)
 }
 /////////////////////////////////////////////////////////////////////////////
 
-void ChannelWriteUsb(char*data, uint16_t dataLength) {
+void channelWriteUsb(char*data, uint16_t dataLength) {
 	app_usbd_cdc_acm_write(&m_app_cdc_acm, data, dataLength);
 }
 /////////////////////////////////////////////////////////////////////////////
 // USB CODE END
 
 
-void CheckUsbIncommingData()
+void checkUsbIncommingData()
 {
 	while ( rxBufferLength > 0 ) {
 		addIncomingData(m_rx_buffer_fifo[outRxBufferIndex]);
@@ -857,14 +857,14 @@ int main(void)
 	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
 	hostInterfaseInit();
 	initRxBuffer();
-	channelWriteFn = ChannelWriteUsb; // init call back writing function
+	channelWriteFn = channelWriteUsb; // init call back writing function
 	timestampTimerInit();
 
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
     for (;;)
     {
-		CheckUsbIncommingData();
+		checkUsbIncommingData();
 
         while (app_usbd_event_queue_process())
         {

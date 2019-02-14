@@ -16,7 +16,7 @@
 
 #ifdef TEST_FLASH	
 	DsDeviceId dsDeviceId;
-	FlashMemSegmentRead((char*)&dsDeviceId,
+	flashMemSegmentRead((char*)&dsDeviceId,
 		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 #endif
 
@@ -56,7 +56,7 @@ static ret_code_t InitFlashMem() {
 /////////////////////////////////////////////////////////////////////////////
 
 
-ret_code_t FlashMemRead(char* data, uint16_t length, uint32_t block_adr) {
+ret_code_t flashMemRead(char* data, uint16_t length, uint32_t block_adr) {
 
 	ret_code_t rc;
 	CHECK_IF_INIT;
@@ -67,7 +67,7 @@ ret_code_t FlashMemRead(char* data, uint16_t length, uint32_t block_adr) {
 /////////////////////////////////////////////////////////////////////////////
 
 
-ret_code_t  FlashMemWrite(char* data, uint16_t length, uint32_t block_adr) {
+ret_code_t  flashMemWrite(char* data, uint16_t length, uint32_t block_adr) {
 	
 	ret_code_t rc;
 	CHECK_IF_INIT;
@@ -80,7 +80,7 @@ ret_code_t  FlashMemWrite(char* data, uint16_t length, uint32_t block_adr) {
 /////////////////////////////////////////////////////////////////////////////
 
 
-ret_code_t FlashMemErase(uint32_t block_adr) {
+ret_code_t flashMemErase(uint32_t block_adr) {
 
 	ret_code_t rc;
 	CHECK_IF_INIT;
@@ -93,7 +93,7 @@ ret_code_t FlashMemErase(uint32_t block_adr) {
 /////////////////////////////////////////////////////////////////////////////
 
 
-ret_code_t FlashMemSegmentRead(char* data, uint16_t length, uint32_t offset) {
+ret_code_t flashMemSegmentRead(char* data, uint16_t length, uint32_t offset) {
 	
 	if ( length + offset > READ_BUFFER_LRNGTH ) {
 		return NRF_ERROR_INVALID_ADDR;
@@ -102,7 +102,7 @@ ret_code_t FlashMemSegmentRead(char* data, uint16_t length, uint32_t offset) {
 	ret_code_t rc;
 	CHECK_IF_INIT;
 	char buffer[READ_BUFFER_LRNGTH];
-	rc = FlashMemRead(buffer, READ_BUFFER_LRNGTH, FLASH_BLOCK0ADR);
+	rc = flashMemRead(buffer, READ_BUFFER_LRNGTH, FLASH_BLOCK0ADR);
 	if ( rc == NRF_SUCCESS ) {
 		memcpy(data, &buffer[offset], length);
 	}
@@ -112,7 +112,7 @@ ret_code_t FlashMemSegmentRead(char* data, uint16_t length, uint32_t offset) {
 /////////////////////////////////////////////////////////////////////////////
 
 
-ret_code_t FlashMemSegmentWrite(char* data, uint16_t length, uint32_t offset) {
+ret_code_t flashMemSegmentWrite(char* data, uint16_t length, uint32_t offset) {
 
 	if ( length + offset > READ_BUFFER_LRNGTH ) {
 		return NRF_ERROR_INVALID_ADDR;
@@ -121,11 +121,11 @@ ret_code_t FlashMemSegmentWrite(char* data, uint16_t length, uint32_t offset) {
 	ret_code_t rc;
 	CHECK_IF_INIT;
 	char buffer[READ_BUFFER_LRNGTH];
-	rc = FlashMemRead(buffer, READ_BUFFER_LRNGTH, FLASH_BLOCK0ADR);
+	rc = flashMemRead(buffer, READ_BUFFER_LRNGTH, FLASH_BLOCK0ADR);
 	if ( rc == NRF_SUCCESS ) {
 		memcpy(&buffer[offset], data, length);
-		FlashMemErase(FLASH_BLOCK0ADR);
-		FlashMemWrite(buffer, sizeof(buffer), FLASH_BLOCK0ADR);
+		flashMemErase(FLASH_BLOCK0ADR);
+		flashMemWrite(buffer, sizeof(buffer), FLASH_BLOCK0ADR);
 	}
 
 	return rc;

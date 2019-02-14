@@ -103,12 +103,12 @@ void parseIncomingMessage(char* received_msg) {
 
 void readDeviceId() {
 	
-	FlashMemSegmentRead((char*)&dsDeviceId,
+	flashMemSegmentRead((char*)&dsDeviceId,
 		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 	
 	if ( dsDeviceId.device_class[0] == 0xff ) {
 		dsDeviceId = (DsDeviceId){NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT};
-		FlashMemSegmentWrite((char*)&dsDeviceId,
+		flashMemSegmentWrite((char*)&dsDeviceId,
 			sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 	}
 	
@@ -120,7 +120,7 @@ void readDeviceId() {
 
 void storeDeviceId() {
 
-	FlashMemSegmentWrite((char*)&dsDeviceId,
+	flashMemSegmentWrite((char*)&dsDeviceId,
 		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 }
 ///////////////////////////////////////////////////////////////////////////////

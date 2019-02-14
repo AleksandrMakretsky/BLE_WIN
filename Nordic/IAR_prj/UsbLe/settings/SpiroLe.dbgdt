@@ -19,7 +19,7 @@
           
           
           
-        <Column0>316</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>206</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -36,26 +36,26 @@
       <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><ShowCodeCoverage>1</ShowCodeCoverage><ShowInstrProfiling>1</ShowInstrProfiling></Disassembly>
       <CallStack>
         <PreferedWindows>
-          <Position>1</Position>
-          <ScreenPosX>0</ScreenPosX>
-          <ScreenPosY>0</ScreenPosY>
-          <Windows/>
-        </PreferedWindows>
+          
+          
+          
+          
+        <Position>1</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows>
         <col-names>
-          <item>Frame</item>
-          <item>_I0</item>
-        </col-names>
+          
+          
+        <item>Frame</item><item>_I0</item></col-names>
         <col-widths>
-          <item>3500</item>
-          <item>20</item>
-        </col-widths>
+          
+          
+        <item>3500</item><item>20</item></col-widths>
       </CallStack>
-    <WATCH_1><expressions><item>deviceId</item><item>buffer_length</item><item></item></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>100</item><item>150</item><item>100</item><item>100</item></col-widths><PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></WATCH_1></Static>
+    <WATCH_1><expressions><item>deviceId</item><item>buffer_length</item><item>timer_cfg</item><item>p_instance</item><item/></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>100</item><item>150</item><item>100</item><item>385</item></col-widths><PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></WATCH_1><Find-in-Files><ColumnWidth0>384</ColumnWidth0><ColumnWidth1>64</ColumnWidth1><ColumnWidth2>576</ColumnWidth2><ColumnWidth3>256</ColumnWidth3></Find-in-Files></Static>
     <Windows>
       
       
       
-    <Wnd0>
+    <Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-9327-1863</Identity>
@@ -69,9 +69,9 @@
             <Factory>Build</Factory>
             <Session/>
           </Tab>
-        </Tabs>
+        <Tab><Identity>TabID-30456-28853</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-20076-1867</Identity>
@@ -83,20 +83,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd1></Windows>
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>650</SelStart2><SelEnd2>664</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>214</SelStart2><SelEnd2>228</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>62</YPos2><SelStart2>3266</SelStart2><SelEnd2>3266</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>780</YPos2><SelStart2>28916</SelStart2><SelEnd2>28916</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\flash_mem.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>6</YPos2><SelStart2>285</SelStart2><SelEnd2>285</SelEnd2></Tab><ActiveTab>4</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>802</YPos2><SelStart2>29092</SelStart2><SelEnd2>29092</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\timestamp_timer.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>7</YPos2><SelStart2>861</SelStart2><SelEnd2>861</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_timer.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>44</YPos2><SelStart2>2579</SelStart2><SelEnd2>2579</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\timestamp_timer.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>121</SelStart2><SelEnd2>133</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uarte.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>47</YPos2><SelStart2>16959</SelStart2><SelEnd2>16959</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>67</YPos2><SelStart2>1006</SelStart2><SelEnd2>1006</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>98</SelStart2><SelEnd2>98</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-008B1D80><key>iaridepm.enu1</key></Toolbar-008B1D80></Sizes></Row0><Row1><Sizes><Toolbar-24ED5D88><key>debuggergui.enu1</key></Toolbar-24ED5D88><Toolbar-24ED54F0><key>armjlink2.enu1</key></Toolbar-24ED54F0></Sizes></Row1></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>690</Bottom><Right>390</Right><x>-2</x><y>-2</y><xscreen>327</xscreen><yscreen>202</yscreen><sizeHorzCX>246235</sizeHorzCX><sizeHorzCY>190386</sizeHorzCY><sizeVertCX>295181</sizeVertCX><sizeVertCY>652215</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>302</Bottom><Right>1330</Right><x>-2</x><y>-2</y><xscreen>1332</xscreen><yscreen>304</yscreen><sizeHorzCX>1003012</sizeHorzCX><sizeHorzCY>286522</sizeHorzCY><sizeVertCX>246235</sizeVertCX><sizeVertCY>190386</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-04181D80><key>iaridepm.enu1</key></Toolbar-04181D80></Sizes></Row0><Row1><Sizes><Toolbar-1A4ACA78><key>debuggergui.enu1</key></Toolbar-1A4ACA78><Toolbar-1A4AC690><key>armjlink2.enu1</key></Toolbar-1A4AC690></Sizes></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>733</Bottom><Right>280</Right><x>-2</x><y>-2</y><xscreen>238</xscreen><yscreen>211</yscreen><sizeHorzCX>188889</sizeHorzCX><sizeHorzCY>190433</sizeHorzCY><sizeVertCX>223810</sizeVertCX><sizeVertCY>663357</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>306</Bottom><Right>1262</Right><x>-2</x><y>-2</y><xscreen>1264</xscreen><yscreen>308</yscreen><sizeHorzCX>1003175</sizeHorzCX><sizeHorzCY>277978</sizeHorzCY><sizeVertCX>188889</sizeVertCX><sizeVertCY>190433</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

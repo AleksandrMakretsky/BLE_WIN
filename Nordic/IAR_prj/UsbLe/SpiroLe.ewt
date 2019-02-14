@@ -3190,6 +3190,9 @@
     <file>
       <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\timestamp_timer.c</name>
+    </file>
   </group>
   <group>
     <name>None</name>
@@ -3258,6 +3261,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_timer.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uart.c</name>

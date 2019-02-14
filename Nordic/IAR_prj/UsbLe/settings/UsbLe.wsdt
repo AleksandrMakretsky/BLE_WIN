@@ -3,7 +3,7 @@
 <Workspace>
   <ConfigDictionary>
     
-  <CurrentConfigs><Project>EcgLe/Debug</Project><Project>SpiroLe/Debug</Project></CurrentConfigs><CurrentProj>SpiroLe</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+  <CurrentConfigs><Project>SpiroLe/Debug</Project><Project>EcgLe/Debug</Project></CurrentConfigs><CurrentProj>SpiroLe</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
   <Desktop>
     <Static>
       <Build>
@@ -18,9 +18,9 @@
           
           
           
-        <Column0>277</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>248</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
-    <Find-in-Files><ColumnWidth0>383</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>411</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/></Static>
+    <Find-in-Files><ColumnWidth0>526</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>411</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/></Static>
     <Windows>
       
       
@@ -42,7 +42,7 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe/DsCommons</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
@@ -52,14 +52,14 @@
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>650</SelStart2><SelEnd2>664</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>214</SelStart2><SelEnd2>228</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>62</YPos2><SelStart2>3266</SelStart2><SelEnd2>3266</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>780</YPos2><SelStart2>28916</SelStart2><SelEnd2>28916</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\flash_mem.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>6</YPos2><SelStart2>285</SelStart2><SelEnd2>285</SelEnd2></Tab><ActiveTab>4</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>802</YPos2><SelStart2>29092</SelStart2><SelEnd2>29092</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\timestamp_timer.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>7</YPos2><SelStart2>861</SelStart2><SelEnd2>861</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_timer.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>44</YPos2><SelStart2>2579</SelStart2><SelEnd2>2579</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\MyNordic\timestamp_timer.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>121</SelStart2><SelEnd2>133</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uarte.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>47</YPos2><SelStart2>16959</SelStart2><SelEnd2>16959</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>67</YPos2><SelStart2>1006</SelStart2><SelEnd2>1006</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>98</SelStart2><SelEnd2>98</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-008B1D80><key>iaridepm.enu1</key></Toolbar-008B1D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>680</Bottom><Right>351</Right><x>-2</x><y>-2</y><xscreen>234</xscreen><yscreen>202</yscreen><sizeHorzCX>176205</sizeHorzCX><sizeHorzCY>190386</sizeHorzCY><sizeVertCX>265813</sizeVertCX><sizeVertCY>642790</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>336</Bottom><Right>1330</Right><x>-2</x><y>-2</y><xscreen>1332</xscreen><yscreen>338</yscreen><sizeHorzCX>1003012</sizeHorzCX><sizeHorzCY>318567</sizeHorzCY><sizeVertCX>176205</sizeVertCX><sizeVertCY>190386</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-04181D80><key>iaridepm.enu1</key></Toolbar-04181D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>774</Bottom><Right>322</Right><x>-2</x><y>-2</y><xscreen>261</xscreen><yscreen>211</yscreen><sizeHorzCX>207143</sizeHorzCX><sizeHorzCY>190433</sizeHorzCY><sizeVertCX>257143</sizeVertCX><sizeVertCY>700361</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>289</Bottom><Right>1262</Right><x>-2</x><y>-2</y><xscreen>1264</xscreen><yscreen>291</yscreen><sizeHorzCX>1003175</sizeHorzCX><sizeHorzCY>262635</sizeHorzCY><sizeVertCX>207143</sizeVertCX><sizeVertCY>190433</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

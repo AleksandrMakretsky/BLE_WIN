@@ -85,9 +85,10 @@
 #include "app_usbd_cdc_acm.h"
 #include "app_usbd_serial_num.h"
 
+#include "bee_data_types.h"
 #include "host_interfase.h"
 #include "flash_mem.h"
-#include "bee_data_types.h"
+#include "timestamp_timer.h"
 
 char version_name[] = "V0.000(RF)";
 char firmware_version[VERSION_NAME_LENGTH];
@@ -181,9 +182,11 @@ static char m_nus_data_array[BLE_NUS_MAX_DATA_LEN];
 
 #define RX_BUFFER_SIZE 512
 static char m_rx_buffer_fifo[RX_BUFFER_SIZE];
-static uint16_t in_index = 0;
-static uint16_t out_index = 0;
-static uint16_t buffer_length = 0;
+static uint16_t inRxBufferIndex = 0;
+static uint16_t outRxBufferIndex = 0;
+static uint16_t rxBufferLength = 0;
+
+uint32_t command_timestamp = 0;
 
 
 
@@ -704,21 +707,25 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
             break;
 
         case APP_USBD_CDC_ACM_USER_EVT_RX_DONE:
-		{ // need it for vars declaration inside
+			{ // '{' need it for vars declaration inside
             ret_code_t ret;
 			size_t size = 0;
             do
             {
 				size++;
-				m_rx_buffer_fifo[in_index++] = m_cdc_data_array[0];
-				in_index &= (RX_BUFFER_SIZE-1);
-				buffer_length++;
+				m_rx_buffer_fifo[inRxBufferIndex] = m_cdc_data_array[0];
+				inRxBufferIndex = (inRxBufferIndex+1)&(RX_BUFFER_SIZE-1);
+				rxBufferLength++;
 
                 // Fetch data until internal buffer is empty
                 ret = app_usbd_cdc_acm_read(&m_app_cdc_acm, &m_cdc_data_array[0], 1);
             } while (ret == NRF_SUCCESS);
 			
 			NRF_LOG_INFO("Usb got bites: %lu ", size);
+
+			uint32_t current_tic = getTimestamp();
+			NRF_LOG_INFO("interval %lu , sec: %lu", current_tic - command_timestamp, (current_tic - command_timestamp)/1000000);
+			command_timestamp = current_tic;
             break;
 		}
         default:
@@ -792,14 +799,22 @@ void ChannelWriteUsb(char*data, uint16_t dataLength) {
 
 void CheckUsbIncommingData()
 {
-	while ( buffer_length > 0 ) {
-		addIncomingData(m_rx_buffer_fifo[out_index]);
-		out_index = (out_index+1) & (RX_BUFFER_SIZE-1);
-		buffer_length--;
+	while ( rxBufferLength > 0 ) {
+		addIncomingData(m_rx_buffer_fifo[outRxBufferIndex]);
+		outRxBufferIndex = (outRxBufferIndex+1) & (RX_BUFFER_SIZE-1);
+		rxBufferLength--;
 	}
 }
 /////////////////////////////////////////////////////////////////////////////
 
+
+void initRxBuffer() {
+
+	inRxBufferIndex = 0;
+	outRxBufferIndex = 0;
+	rxBufferLength = 0;
+}
+/////////////////////////////////////////////////////////////////////////////
 
 /** @brief Application main function. */
 int main(void)
@@ -841,11 +856,10 @@ int main(void)
 	memset(firmware_version, 0, sizeof(firmware_version));
 	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
 	hostInterfaseInit();
-	in_index = 0;
-	out_index = 0;
-	buffer_length = 0;
+	initRxBuffer();
 	channelWriteFn = ChannelWriteUsb; // init call back writing function
-	
+	timestampTimerInit();
+
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
     for (;;)

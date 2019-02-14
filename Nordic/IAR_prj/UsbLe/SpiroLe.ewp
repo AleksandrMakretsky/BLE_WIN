@@ -185,6 +185,7 @@
         </option>
         <option>
           <name>CCDefines</name>
+          <state>DEBUG</state>
           <state>BOARD_PCA10056</state>
           <state>CONFIG_GPIO_AS_PINRESET</state>
           <state>FLOAT_ABI_HARD</state>
@@ -3062,6 +3063,9 @@
     <file>
       <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\timestamp_timer.c</name>
+    </file>
   </group>
   <group>
     <name>None</name>
@@ -3130,6 +3134,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_timer.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uart.c</name>

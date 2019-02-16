@@ -101,9 +101,8 @@ char firmware_version[VERSION_NAME_LENGTH];
 #define LED_BLINK_INTERVAL 800
 
 
-#define BLE_CHANNEL  // delme please
-
-
+void channelWriteBle(char*data, uint16_t dataLength);
+void channelWriteUsb(char*data, uint16_t dataLength);
 
 APP_TIMER_DEF(m_blink_ble);
 APP_TIMER_DEF(m_blink_cdc);
@@ -150,7 +149,7 @@ APP_USBD_CDC_ACM_GLOBAL_DEF(m_app_cdc_acm,
 
 #define APP_FEATURE_NOT_SUPPORTED       BLE_GATT_STATUS_ATTERR_APP_BEGIN + 2        /**< Reply when unsupported features are requested. */
 
-#define DEVICE_NAME                     "Nordic_USBD_BLE_UART"                      /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "Nordic_USBD_BLE_UART_DS"                      /**< Name of device. Will be included in the advertising data. */
 #define NUS_SERVICE_UUID_TYPE           BLE_UUID_TYPE_VENDOR_BEGIN                  /**< UUID type for the Nordic UART Service (vendor specific). */
 
 #define APP_BLE_OBSERVER_PRIO           3                                           /**< Application's BLE observer priority. You shouldn't need to modify this value. */
@@ -281,7 +280,8 @@ static void nus_data_handler(ble_nus_evt_t * p_evt)
 			inRxBufferIndex = (inRxBufferIndex+1)&(RX_BUFFER_SIZE-1);
 			rxBufferLength++;
 		}
-		
+		channelWriteFn = channelWriteBle; // init call back writing function
+
         // Add endline characters
         uint16_t length = p_evt->params.rx_data.length;
         if (length + sizeof(ENDLINE_STRING) < BLE_NUS_MAX_DATA_LEN)
@@ -734,7 +734,8 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
                 // Fetch data until internal buffer is empty
                 ret = app_usbd_cdc_acm_read(&m_app_cdc_acm, &m_cdc_data_array[0], 1);
             } while (ret == NRF_SUCCESS);
-			
+			channelWriteFn = channelWriteUsb; // init call back writing function
+
 			NRF_LOG_INFO("Usb got bytes: %lu ", size);
 
 			uint32_t current_tic = getTimestamp();
@@ -813,12 +814,10 @@ void channelWriteUsb(char*data, uint16_t dataLength) {
 
 void channelWriteBle(char*data, uint16_t dataLength) {
 
-	NRF_LOG_INFO("BLE channelWriteBle bytes: %d", dataLength);
+	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", dataLength);
 //	send data with data length dataLength
-        ble_nus_data_send(&m_nus, (uint8_t *)data, &dataLength, m_conn_handle);
-                                                    
-                                                    
-	
+	ble_nus_data_send(&m_nus, (uint8_t *)data, &dataLength, m_conn_handle);
+
 }
 /////////////////////////////////////////////////////////////////////////////
 
@@ -878,16 +877,11 @@ int main(void)
 	// end for ble
 
 	// app init
+	channelWriteFn = NULL;
 	memset(firmware_version, 0, sizeof(firmware_version));
 	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
 	hostInterfaseInit();
 	initRxBuffer();
-	
-#ifdef BLE_CHANNEL
-	channelWriteFn = channelWriteBle; // init call back writing function
-#else
-	channelWriteFn = channelWriteUsb; // init call back writing function
-#endif	
 	timestampTimerInit();
 
     // Enter main loop.

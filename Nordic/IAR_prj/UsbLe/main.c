@@ -100,6 +100,11 @@ char firmware_version[VERSION_NAME_LENGTH];
 
 #define LED_BLINK_INTERVAL 800
 
+
+#define BLE_CHANNEL  // delme please
+
+
+
 APP_TIMER_DEF(m_blink_ble);
 APP_TIMER_DEF(m_blink_cdc);
 
@@ -265,10 +270,18 @@ static void nus_data_handler(ble_nus_evt_t * p_evt)
     if (p_evt->type == BLE_NUS_EVT_RX_DATA)
     {
         bsp_board_led_invert(LED_BLE_NUS_RX);
-        NRF_LOG_DEBUG("Received data from BLE NUS. Writing data on CDC ACM.");
+        NRF_LOG_DEBUG("Received data from BLE NUS.");
         NRF_LOG_HEXDUMP_DEBUG(p_evt->params.rx_data.p_data, p_evt->params.rx_data.length);
         memcpy(m_nus_data_array, p_evt->params.rx_data.p_data, p_evt->params.rx_data.length);
 
+		//  move incomming data to our buffer
+		NRF_LOG_INFO("Got bytes from BLE: %lu ", p_evt->params.rx_data.length);
+		for (int i = 0; i < p_evt->params.rx_data.length; i++) {
+			m_rx_buffer_fifo[inRxBufferIndex] = p_evt->params.rx_data.p_data[i];
+			inRxBufferIndex = (inRxBufferIndex+1)&(RX_BUFFER_SIZE-1);
+			rxBufferLength++;
+		}
+		
         // Add endline characters
         uint16_t length = p_evt->params.rx_data.length;
         if (length + sizeof(ENDLINE_STRING) < BLE_NUS_MAX_DATA_LEN)
@@ -276,7 +289,7 @@ static void nus_data_handler(ble_nus_evt_t * p_evt)
             memcpy(m_nus_data_array + length, ENDLINE_STRING, sizeof(ENDLINE_STRING));
             length += sizeof(ENDLINE_STRING);
         }
-
+/*
         // Send data through CDC ACM
         ret_code_t ret = app_usbd_cdc_acm_write(&m_app_cdc_acm,
                                                 m_nus_data_array,
@@ -285,6 +298,7 @@ static void nus_data_handler(ble_nus_evt_t * p_evt)
         {
             NRF_LOG_INFO("CDC ACM unavailable, data received: %s", m_nus_data_array);
         }
+*/		
     }
 
 }
@@ -721,7 +735,7 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
                 ret = app_usbd_cdc_acm_read(&m_app_cdc_acm, &m_cdc_data_array[0], 1);
             } while (ret == NRF_SUCCESS);
 			
-			NRF_LOG_INFO("Usb got bites: %lu ", size);
+			NRF_LOG_INFO("Usb got bytes: %lu ", size);
 
 			uint32_t current_tic = getTimestamp();
 			NRF_LOG_INFO("interval %lu , sec: %lu", current_tic - command_timestamp, (current_tic - command_timestamp)/1000000);
@@ -797,7 +811,16 @@ void channelWriteUsb(char*data, uint16_t dataLength) {
 // USB CODE END
 
 
-void checkUsbIncommingData()
+void channelWriteBle(char*data, uint16_t dataLength) {
+
+	NRF_LOG_INFO("BLE channelWriteBle bytes: %d", dataLength);
+//	send data with data length dataLength
+//	ble_nus_data_send
+	
+}
+/////////////////////////////////////////////////////////////////////////////
+
+void checkUsbBleIncommingData()
 {
 	while ( rxBufferLength > 0 ) {
 		addIncomingData(m_rx_buffer_fifo[outRxBufferIndex]);
@@ -857,14 +880,19 @@ int main(void)
 	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
 	hostInterfaseInit();
 	initRxBuffer();
+	
+#ifdef BLE_CHANNEL
+	channelWriteFn = channelWriteBle; // init call back writing function
+#else
 	channelWriteFn = channelWriteUsb; // init call back writing function
+#endif	
 	timestampTimerInit();
 
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
     for (;;)
     {
-		checkUsbIncommingData();
+		checkUsbBleIncommingData();
 
         while (app_usbd_event_queue_process())
         {

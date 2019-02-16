@@ -33,8 +33,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.GetInfo = new System.Windows.Forms.Button();
             this.ValueChangedSubscribeToggle = new System.Windows.Forms.Button();
             this.btnCharacteristicWriteData1 = new System.Windows.Forms.Button();
+            this.btnCharacteristicWriteButton = new System.Windows.Forms.Button();
             this.CharacteristicWriteValue = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnReadData = new System.Windows.Forms.Button();
@@ -57,7 +59,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDev = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnCharacteristicReadButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbDevName = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -74,9 +75,6 @@
             this.colSolicitedServiceUuids = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBoxNum = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.labelErr = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,11 +92,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.labelErr);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBoxNum);
+            this.panel1.Controls.Add(this.GetInfo);
             this.panel1.Controls.Add(this.ValueChangedSubscribeToggle);
             this.panel1.Controls.Add(this.btnCharacteristicWriteData1);
+            this.panel1.Controls.Add(this.btnCharacteristicWriteButton);
             this.panel1.Controls.Add(this.CharacteristicWriteValue);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.btnReadData);
@@ -120,25 +117,46 @@
             this.panel1.Size = new System.Drawing.Size(903, 220);
             this.panel1.TabIndex = 1;
             // 
+            // GetInfo
+            // 
+            this.GetInfo.Location = new System.Drawing.Point(292, 175);
+            this.GetInfo.Name = "GetInfo";
+            this.GetInfo.Size = new System.Drawing.Size(109, 28);
+            this.GetInfo.TabIndex = 29;
+            this.GetInfo.Text = "GetInfo";
+            this.GetInfo.UseVisualStyleBackColor = true;
+            this.GetInfo.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ValueChangedSubscribeToggle
             // 
-            this.ValueChangedSubscribeToggle.Location = new System.Drawing.Point(241, 175);
+            this.ValueChangedSubscribeToggle.Location = new System.Drawing.Point(149, 175);
             this.ValueChangedSubscribeToggle.Name = "ValueChangedSubscribeToggle";
             this.ValueChangedSubscribeToggle.Size = new System.Drawing.Size(115, 28);
             this.ValueChangedSubscribeToggle.TabIndex = 28;
-            this.ValueChangedSubscribeToggle.Text = "Set Notify";
+            this.ValueChangedSubscribeToggle.Text = "Notify Set";
             this.ValueChangedSubscribeToggle.UseVisualStyleBackColor = true;
             this.ValueChangedSubscribeToggle.Click += new System.EventHandler(this.ValueChangedSubscribeToggle_Click);
             // 
             // btnCharacteristicWriteData1
             // 
-            this.btnCharacteristicWriteData1.Location = new System.Drawing.Point(475, 176);
+            this.btnCharacteristicWriteData1.Location = new System.Drawing.Point(703, 175);
             this.btnCharacteristicWriteData1.Name = "btnCharacteristicWriteData1";
             this.btnCharacteristicWriteData1.Size = new System.Drawing.Size(118, 27);
             this.btnCharacteristicWriteData1.TabIndex = 27;
             this.btnCharacteristicWriteData1.Text = "WriteByte";
             this.btnCharacteristicWriteData1.UseVisualStyleBackColor = true;
             this.btnCharacteristicWriteData1.Click += new System.EventHandler(this.btnCharacteristicWriteData1_Click);
+            // 
+            // btnCharacteristicWriteButton
+            // 
+            this.btnCharacteristicWriteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCharacteristicWriteButton.Location = new System.Drawing.Point(528, 175);
+            this.btnCharacteristicWriteButton.Name = "btnCharacteristicWriteButton";
+            this.btnCharacteristicWriteButton.Size = new System.Drawing.Size(118, 28);
+            this.btnCharacteristicWriteButton.TabIndex = 26;
+            this.btnCharacteristicWriteButton.Text = "WriteBuffer";
+            this.btnCharacteristicWriteButton.UseVisualStyleBackColor = true;
+            this.btnCharacteristicWriteButton.Click += new System.EventHandler(this.btnCharacteristicWriteButton_Click);
             // 
             // CharacteristicWriteValue
             // 
@@ -160,7 +178,7 @@
             // btnReadData
             // 
             this.btnReadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnReadData.Location = new System.Drawing.Point(72, 175);
+            this.btnReadData.Location = new System.Drawing.Point(19, 175);
             this.btnReadData.Name = "btnReadData";
             this.btnReadData.Size = new System.Drawing.Size(117, 28);
             this.btnReadData.TabIndex = 23;
@@ -360,7 +378,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Silver;
-            this.splitContainer1.Panel1.Controls.Add(this.btnCharacteristicReadButton);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
             this.splitContainer1.Panel1.Controls.Add(this.tbDevName);
             // 
@@ -371,22 +388,11 @@
             this.splitContainer1.SplitterDistance = 296;
             this.splitContainer1.TabIndex = 0;
             // 
-            // btnCharacteristicReadButton
-            // 
-            this.btnCharacteristicReadButton.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btnCharacteristicReadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCharacteristicReadButton.Location = new System.Drawing.Point(40, 18);
-            this.btnCharacteristicReadButton.Name = "btnCharacteristicReadButton";
-            this.btnCharacteristicReadButton.Size = new System.Drawing.Size(223, 28);
-            this.btnCharacteristicReadButton.TabIndex = 15;
-            this.btnCharacteristicReadButton.Text = "Information about the device";
-            this.btnCharacteristicReadButton.UseVisualStyleBackColor = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(23, 68);
+            this.label5.Location = new System.Drawing.Point(17, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 16);
             this.label5.TabIndex = 2;
@@ -396,7 +402,7 @@
             // 
             this.tbDevName.BackColor = System.Drawing.SystemColors.Menu;
             this.tbDevName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbDevName.Location = new System.Drawing.Point(80, 68);
+            this.tbDevName.Location = new System.Drawing.Point(74, 9);
             this.tbDevName.Name = "tbDevName";
             this.tbDevName.ReadOnly = true;
             this.tbDevName.Size = new System.Drawing.Size(202, 22);
@@ -519,34 +525,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBoxNum
-            // 
-            this.textBoxNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxNum.Location = new System.Drawing.Point(757, 175);
-            this.textBoxNum.Name = "textBoxNum";
-            this.textBoxNum.Size = new System.Drawing.Size(139, 22);
-            this.textBoxNum.TabIndex = 29;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(693, 183);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Num Cycle";
-            // 
-            // labelErr
-            // 
-            this.labelErr.AutoSize = true;
-            this.labelErr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelErr.Location = new System.Drawing.Point(625, 196);
-            this.labelErr.Name = "labelErr";
-            this.labelErr.Size = new System.Drawing.Size(274, 18);
-            this.labelErr.TabIndex = 31;
-            this.labelErr.Text = "ОШИБКА СРАВНЕНИЯ БУФФЕРА";
-            this.labelErr.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,18 +579,16 @@
         private System.Windows.Forms.ComboBox CharacteristicList;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCharacteristicWriteData1;
+        private System.Windows.Forms.Button btnCharacteristicWriteButton;
         private System.Windows.Forms.TextBox CharacteristicWriteValue;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnReadData;
         private System.Windows.Forms.TextBox CharacteristicReadValue;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnCharacteristicReadButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbDevName;
         private System.Windows.Forms.Button ValueChangedSubscribeToggle;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxNum;
-        private System.Windows.Forms.Label labelErr;
+        private System.Windows.Forms.Button GetInfo;
     }
 }
 

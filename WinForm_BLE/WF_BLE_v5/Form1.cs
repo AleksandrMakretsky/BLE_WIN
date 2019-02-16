@@ -137,8 +137,6 @@ namespace WF_BLE_v5
             {
                 richTextBox1.Invoke((MethodInvoker)(() =>
                             richTextBox1.AppendText(strDataTime + args + " \r\n")));
-
-                richTextBox1.ScrollToCaret();
             }));
         }
 
@@ -527,7 +525,7 @@ namespace WF_BLE_v5
         private void btnDevDisConn_Click(object sender, EventArgs e)
         {
             btnDevConnect.BackColor = btnDevDisConn.BackColor;
-            
+
             bluetoothLeDevice?.Dispose();
             bluetoothLeDevice = null;
 
@@ -709,7 +707,7 @@ namespace WF_BLE_v5
         }
 
 
-        string str_cmp = "";
+
         private string FormatValueByPresentation(IBuffer buffer, GattPresentationFormat format)
         {
 
@@ -727,28 +725,7 @@ namespace WF_BLE_v5
              }
             else if (data.Length > 1)
             {
-                sd = " [len: " + data.Length.ToString() + "] data: " + Encoding.UTF8.GetString(data);// CryptographicBuffer.ConvertBinaryToString( ,buffer );// EncodeToHexString(buffer);
-                if( cnt_wr == 1 )
-                {
-                    str_cmp = sd;
-                }
-                else
-                {
-                    if (str_cmp != sd)
-                    {
-                        strDevName = "ERROR WRITE SEND: " + sd;
-                        printToLog(strDevName);
-                        
-                        labelErr.Invoke((MethodInvoker)(() =>
-                                labelErr.Visible = true));
-                    }
-                }
-
-                label8.Invoke((MethodInvoker)(() =>
-                                label8.Text = cnt_wr.ToString()));
-
-        
-
+                sd = "[len: " + data.Length.ToString() + "] data: " + CryptographicBuffer.EncodeToHexString(buffer);
                 /*
                 sd = "[len: " + data.Length.ToString() + "] data: " + data[0].ToString() + " ";
                 for (int i = 1; i < data.Length; i++)
@@ -871,12 +848,14 @@ namespace WF_BLE_v5
         {
             if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
             {
-
-                num_wr = (int)Convert.ToInt32(textBoxNum.Text); 
-                WriteCycleData();
-                cnt_wr = 0;
+                byte[] bw = { 0 };
 
 
+               bw[0] = (byte)Convert.ToInt32(CharacteristicWriteValue.Text); ; 
+
+                IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(bw);
+
+                var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
             }
             else
             {              
@@ -886,20 +865,7 @@ namespace WF_BLE_v5
         }
 
         /// ///////////////////////////////////////////////////////////////////////////////////////////
-        int cnt_wr = 0;
-        int num_wr = 10;
-        private async void WriteCycleData()
-        {
-            byte[] bw = { 0 };
 
-
-            bw[0] = (byte)Convert.ToInt32(CharacteristicWriteValue.Text); 
-
-            IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(bw);
-
-            var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
-
-        }
         private async void btnCharacteristicWriteButton_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
@@ -983,20 +949,25 @@ namespace WF_BLE_v5
 
         /// <summary>
         /// ///////////////////////////////////////////////////////////////////////////////////////////////////
+        /*
+        private void AddValueChangedHandler()
+        {
+            ValueChangedSubscribeToggle.Content = "Unsubscribe from value changes";
+            if (!subscribedForNotifications)
+            {
+                registeredCharacteristic = selectedCharacteristic;
+                registeredCharacteristic.ValueChanged += Characteristic_ValueChanged;
+                subscribedForNotifications = true;
+            }
+        }
+        */
 
         private async void Characteristic_ValueChanged(GattCharacteristic sender, GattValueChangedEventArgs args)
         {
             // BT_Code: An Indicate or Notify reported that the value has changed.
             // Display the new value with a timestamp.
             var reader = DataReader.FromBuffer(args.CharacteristicValue);
-            //////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            
-            if (cnt_wr < num_wr)
-            {
-                WriteCycleData();
-                cnt_wr++;
-            }
-            ////////////////////////////////!@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             var newValue = FormatValueByPresentation(args.CharacteristicValue, presentationFormat);
             //var message = $"Value at {DateTime.Now:hh:mm:ss.FFF}: {newValue}";
             printToLog(newValue);
@@ -1091,7 +1062,23 @@ namespace WF_BLE_v5
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GetInfoCMD( sender, e);
+        }
 
+        private async void GetInfoCMD(object sender, EventArgs e)
+        {
+            byte[] bgi = { 0x02, 0x52, 0xFC, 0x06, 0x0, 0x54, 0x3B, 0xDC, 0x11, 0x0, 0x0, 0x0, 0x03 };
+
+            IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(bgi);
+
+            var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
+        
+                      
+                strDevName = "GetInfoCMD -> SEND";
+                printToLog(strDevName);
+        }
     }
 }
 

@@ -815,7 +815,9 @@ void channelWriteBle(char*data, uint16_t dataLength) {
 
 	NRF_LOG_INFO("BLE channelWriteBle bytes: %d", dataLength);
 //	send data with data length dataLength
-//	ble_nus_data_send
+        ble_nus_data_send(&m_nus, (uint8_t *)data, &dataLength, m_conn_handle);
+                                                    
+                                                    
 	
 }
 /////////////////////////////////////////////////////////////////////////////

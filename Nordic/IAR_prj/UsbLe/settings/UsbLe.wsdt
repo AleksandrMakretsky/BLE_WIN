@@ -3,7 +3,7 @@
 <Workspace>
   <ConfigDictionary>
     
-  <CurrentConfigs><Project>EcgLe/Debug</Project><Project>SpiroLe/Debug</Project></CurrentConfigs><CurrentProj>SpiroLe</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+  <CurrentConfigs><Project>SpiroLe/Debug</Project><Project>EcgLe/Debug</Project></CurrentConfigs><CurrentProj>SpiroLe</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
   <Desktop>
     <Static>
       <Build>
@@ -18,13 +18,13 @@
           
           
           
-        <Column0>218</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>201</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
     <Find-in-Files><ColumnWidth0>526</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>411</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/><Select-Ambiguous-Definitions><ColumnWidth0>457</ColumnWidth0><ColumnWidth1>65</ColumnWidth1><ColumnWidth2>784</ColumnWidth2></Select-Ambiguous-Definitions></Static>
     <Windows>
       
       
-    <Wnd2>
+    <Wnd0>
         <Tabs>
           <Tab>
             <Identity>TabID-18415-14010</Identity>
@@ -34,7 +34,7 @@
           </Tab>
         <Tab><Identity>TabID-8088-30374</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-32110-14452</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab></Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+      <SelectedTab>1</SelectedTab></Wnd0><Wnd1>
         <Tabs>
           <Tab>
             <Identity>TabID-29164-14014</Identity>
@@ -46,20 +46,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd3></Windows>
+      <SelectedTab>0</SelectedTab></Wnd1></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>799</YPos2><SelStart2>29246</SelStart2><SelEnd2>29246</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>39</YPos2><SelStart2>1767</SelStart2><SelEnd2>1777</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus\ble_nus.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>303</YPos2><SelStart2>11927</SelStart2><SelEnd2>11944</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>811</YPos2><SelStart2>13083</SelStart2><SelEnd2>13083</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>39</YPos2><SelStart2>1767</SelStart2><SelEnd2>1777</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus\ble_nus.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>221</YPos2><SelStart2>11927</SelStart2><SelEnd2>11944</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-02B11D80><key>iaridepm.enu1</key></Toolbar-02B11D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>822</Bottom><Right>292</Right><x>-2</x><y>-2</y><xscreen>256</xscreen><yscreen>206</yscreen><sizeHorzCX>157927</sizeHorzCX><sizeHorzCY>190564</sizeHorzCY><sizeVertCX>181370</sizeVertCX><sizeVertCY>762257</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>214</Bottom><Right>1623</Right><x>-2</x><y>-2</y><xscreen>1625</xscreen><yscreen>216</yscreen><sizeHorzCX>1002468</sizeHorzCX><sizeHorzCY>199815</sizeHorzCY><sizeVertCX>157927</sizeVertCX><sizeVertCY>190564</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-06139188><key>iaridepm.enu1</key></Toolbar-06139188></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>553</Bottom><Right>292</Right><x>-2</x><y>-2</y><xscreen>256</xscreen><yscreen>198</yscreen><sizeHorzCX>133333</sizeHorzCX><sizeHorzCY>198596</sizeHorzCY><sizeVertCX>153125</sizeVertCX><sizeVertCY>556670</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>399</Bottom><Right>1922</Right><x>-2</x><y>-2</y><xscreen>1924</xscreen><yscreen>401</yscreen><sizeHorzCX>1002083</sizeHorzCX><sizeHorzCY>402207</sizeHorzCY><sizeVertCX>133333</sizeVertCX><sizeVertCY>198596</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

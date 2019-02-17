@@ -3147,6 +3147,9 @@
       <file>
         <name>$PROJ_DIR$\..\AppProcesses\host_interfase.c</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\..\AppProcesses\spiro_process.c</name>
+      </file>
     </group>
     <file>
       <name>$PROJ_DIR$\main.c</name>

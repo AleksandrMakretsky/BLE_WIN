@@ -190,9 +190,6 @@ static uint16_t inRxBufferIndex = 0;
 static uint16_t outRxBufferIndex = 0;
 static uint16_t rxBufferLength = 0;
 
-uint32_t command_timestamp = 0;
-
-
 
 // BLE DEFINES END
 
@@ -737,10 +734,6 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
 			channelWriteFn = channelWriteUsb; // init call back writing function
 
 			NRF_LOG_INFO("Usb got bytes: %lu ", size);
-
-			uint32_t current_tic = getTimestamp();
-			NRF_LOG_INFO("interval %lu , sec: %lu", current_tic - command_timestamp, (current_tic - command_timestamp)/1000000);
-			command_timestamp = current_tic;
             break;
 		}
         default:
@@ -806,7 +799,9 @@ static void usbd_user_ev_handler(app_usbd_event_type_t event)
 /////////////////////////////////////////////////////////////////////////////
 
 void channelWriteUsb(char*data, uint16_t dataLength) {
+
 	app_usbd_cdc_acm_write(&m_app_cdc_acm, data, dataLength);
+	NRF_LOG_INFO("USB channelWriteUsb bytes count: %d", dataLength);
 }
 /////////////////////////////////////////////////////////////////////////////
 // USB CODE END
@@ -814,15 +809,13 @@ void channelWriteUsb(char*data, uint16_t dataLength) {
 
 void channelWriteBle(char*data, uint16_t dataLength) {
 
-	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", dataLength);
-//	send data with data length dataLength
 	ble_nus_data_send(&m_nus, (uint8_t *)data, &dataLength, m_conn_handle);
-
+	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", dataLength);
 }
 /////////////////////////////////////////////////////////////////////////////
 
-void checkUsbBleIncommingData()
-{
+void checkUsbBleIncommingData() {
+	
 	while ( rxBufferLength > 0 ) {
 		addIncomingData(m_rx_buffer_fifo[outRxBufferIndex]);
 		outRxBufferIndex = (outRxBufferIndex+1) & (RX_BUFFER_SIZE-1);
@@ -841,8 +834,8 @@ void initRxBuffer() {
 /////////////////////////////////////////////////////////////////////////////
 
 /** @brief Application main function. */
-int main(void)
-{
+int main(void) {
+	
     ret_code_t ret;
 
 	// common initialization

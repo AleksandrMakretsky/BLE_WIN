@@ -185,6 +185,7 @@
         </option>
         <option>
           <name>CCDefines</name>
+          <state>SPIRO</state>
           <state>DEBUG</state>
           <state>BOARD_PCA10056</state>
           <state>CONFIG_GPIO_AS_PINRESET</state>
@@ -3019,6 +3020,9 @@
       <name>Processes</name>
       <file>
         <name>$PROJ_DIR$\..\AppProcesses\host_interfase.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\AppProcesses\spiro_process.c</name>
       </file>
     </group>
     <file>

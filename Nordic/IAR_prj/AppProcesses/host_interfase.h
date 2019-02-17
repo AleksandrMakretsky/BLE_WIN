@@ -3,6 +3,8 @@
 
 void addIncomingData(char data);
 void hostInterfaseInit();
+void hostInterfaseProcessPoll(bool _readyToSend);
+
 
 typedef void (*ChannelWriteFn_t)(char*data, uint16_t dataLength);
 

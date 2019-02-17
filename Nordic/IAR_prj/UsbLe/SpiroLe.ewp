@@ -3053,6 +3053,9 @@
       <name>$PROJ_DIR$\..\DsCommons\bit_operations.cpp</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\DsCommons\compressor.cpp</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\DsCommons\crc16_ccitt.cpp</name>
     </file>
     <file>

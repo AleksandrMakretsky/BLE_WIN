@@ -107,6 +107,7 @@ void channelWriteUsb(char*data, uint16_t dataLength);
 APP_TIMER_DEF(m_blink_ble);
 APP_TIMER_DEF(m_blink_cdc);
 
+
 /**
  * @brief App timer handler for blinking the LEDs.
  *
@@ -189,7 +190,7 @@ static char m_rx_buffer_fifo[RX_BUFFER_SIZE];
 static uint16_t inRxBufferIndex = 0;
 static uint16_t outRxBufferIndex = 0;
 static uint16_t rxBufferLength = 0;
-
+static bool readyToSend = true;
 
 // BLE DEFINES END
 
@@ -715,6 +716,7 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
             break;
 
         case APP_USBD_CDC_ACM_USER_EVT_TX_DONE:
+			readyToSend = true;
             break;
 
         case APP_USBD_CDC_ACM_USER_EVT_RX_DONE:
@@ -802,6 +804,7 @@ void channelWriteUsb(char*data, uint16_t dataLength) {
 
 	app_usbd_cdc_acm_write(&m_app_cdc_acm, data, dataLength);
 	NRF_LOG_INFO("USB channelWriteUsb bytes count: %d", dataLength);
+	readyToSend = false;
 }
 /////////////////////////////////////////////////////////////////////////////
 // USB CODE END
@@ -811,8 +814,11 @@ void channelWriteBle(char*data, uint16_t dataLength) {
 
 	ble_nus_data_send(&m_nus, (uint8_t *)data, &dataLength, m_conn_handle);
 	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", dataLength);
+	readyToSend = false;
+	// finish can be in the on_hvx_tx_complete()
 }
 /////////////////////////////////////////////////////////////////////////////
+
 
 void checkUsbBleIncommingData() {
 	
@@ -887,6 +893,7 @@ int main(void) {
         {
             /* Nothing to do */
         }
+		hostInterfaseProcessPoll(readyToSend);
         idle_state_handle();
     }
 }

@@ -46,45 +46,45 @@ static const unsigned short	bits_left_mask[] = {
 
 static short ecg_first_prev[MAX_CHANNEL_COUNT];
 static short ecg_second_prev[MAX_CHANNEL_COUNT];
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 // callback functions prototype
-void (* CompressorBlockReadyCallBack)(char* buffer);
+void (* compressorSaveDataBlock)(char* buffer);
 
 // function prototypes
-static void CompressorBitBufferSave(unsigned short nbits,unsigned short zdest);
-static void CompressorNewEcgBlock();
-static void CompressorFinishEcgBlock(void);
-static bool CompressorAddDdt(short *ecg_vector);
-static bool CompressorAddRaw16(short *ecg_vector);
-static void CompressorHuffmanSave(short val);
+static void compressorBitBufferSave(unsigned short nbits,unsigned short zdest);
+static void compressorNewEcgBlock();
+static void compressorFinishEcgBlock(void);
+static bool compressorAddDdt(short *ecg_vector);
+static bool compressorAddRaw16(short *ecg_vector);
+static void compressorHuffmanSave(short val);
 
 #ifdef UNCOMPRESS_AVAILABLE
-static unsigned short CompressorBitBufferFill(short bits);
-static short CompressorHuffmanGet(void);
-static int CompressorUnpackMit212(unsigned short *pblock, short *p_ecg, int samples);
-static int CompressorUnpackDdt(unsigned short *pblock, short *p_ecg, int samples, int adc_bits);
-static int CompressorUnpackRaw16(unsigned short *pblock, short *p_ecg, int samples);
+static unsigned short compressorBitBufferFill(short bits);
+static short compressorHuffmanGet(void);
+static int compressorUnpackMit212(unsigned short *pblock, short *p_ecg, int samples);
+static int compressorUnpackDdt(unsigned short *pblock, short *p_ecg, int samples, int adc_bits);
+static int compressorUnpackRaw16(unsigned short *pblock, short *p_ecg, int samples);
 #endif
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-int GetCompressorDataLength(void)
+int getCompressorDataLength(void)
 {
 	return samples_in_block;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
-CompressorInit set initial values to all critical members
+compressorInit set initial values to all critical members
 */
-void CompressorInit(short channel_count)
+void compressorInit(short channel_count)
 {
 	compressor_channel_count = channel_count;
-	CompressorNewEcgBlock();
+	compressorNewEcgBlock();
 	total_vectors_count = 0;
 	block_number = 0;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
 WRITE_BITS store nbits in bit buffer, if less than bits left, otherwise store bit buffer
@@ -95,15 +95,15 @@ WRITE_BITS store nbits in bit buffer, if less than bits left, otherwise store bi
 		p_compressor->bit_buffer |= ((unsigned short)zdest & bits_left_mask[nbits])<<(16-p_compressor->bits_left_in_bitbuffer); \
 		p_compressor->bits_left_in_bitbuffer -= nbits; \
 	} else { \
-		CompressorBitBufferSave(nbits,zdest); \
+		compressorBitBufferSave(nbits,zdest); \
 	} \
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
-CompressorBitBufferSave store the bit buffer(unsigned short value) in the compressor buffer(unsigned short[])
+compressorBitBufferSave store the bit buffer(unsigned short value) in the compressor buffer(unsigned short[])
 */
-static void CompressorBitBufferSave(unsigned short nbits,unsigned short zdest)
+static void compressorBitBufferSave(unsigned short nbits,unsigned short zdest)
 {
 	short sbits = p_compressor->bits_left_in_bitbuffer;
 
@@ -120,19 +120,20 @@ static void CompressorBitBufferSave(unsigned short nbits,unsigned short zdest)
 	p_compressor->bit_buffer = 0;
 	p_compressor->bits_left_in_bitbuffer = 16;
 
-	p_compressor->bit_buffer |= ( (zdest>>sbits)<<(16-p_compressor->bits_left_in_bitbuffer) & bits_left_mask[nbits]);
+	p_compressor->bit_buffer |= ( (zdest>>sbits)<<(16-p_compressor->bits_left_in_bitbuffer) &
+		bits_left_mask[nbits]);
 	p_compressor->bits_left_in_bitbuffer -= nbits;
 
 	if ( p_compressor->buffer_index >= COMPRESS_BUF_SIZE ) {
 		p_compressor->overflow = true;
 	}
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
-CompressorNewEcgBlock init new block variables
+compressorNewEcgBlock init new block variables
 */
-void CompressorNewEcgBlock()
+void compressorNewEcgBlock()
 {
 	the_compressor_raw.bit_buffer = 0;
 	the_compressor_raw.bits_left_in_bitbuffer = 16;
@@ -140,28 +141,29 @@ void CompressorNewEcgBlock()
 	the_compressor_raw.overflow = false;
 	the_compressor_raw.samples_in_block = 0;
 
-	memcpy(&the_compressor_ddt, &the_compressor_raw, sizeof(the_compressor_ddt) );
+	memcpy(&the_compressor_ddt, &the_compressor_raw, sizeof(the_compressor_ddt));
 
 	the_compressor_raw.buffer_pointer = ecg_block_buffer_raw;
 	the_compressor_ddt.buffer_pointer = ecg_block_buffer_ddt;
 
 	samples_in_block = 0;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-void CompressorCreateCheckSum(char* buffer)
+void compressorCreateCheckSum(char* buffer)
 {
 	ecg_block_header_st* header;
 	header = (ecg_block_header_st*)buffer;
 	header->crc_ccitt = 0xffff;
-	header->crc_ccitt = crc16_add_data( (unsigned char*)&header->block_size, header->block_size-2, header->crc_ccitt );	
+	header->crc_ccitt = crc16_add_data( (unsigned char*)&header->block_size,
+		header->block_size-2, header->crc_ccitt );	
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
 CompressorFinishEcgBlock define the ecg data block header, and store it in the beginning of the block
 */
-void CompressorFinishEcgBlock(void)
+void compressorFinishEcgBlock(void)
 {
 	ecg_block_header_st* header;
 
@@ -186,10 +188,10 @@ void CompressorFinishEcgBlock(void)
 	header->data_packing_method = (char)compressor_mode;
 	header->lead_off_status = 0;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-void CompressorPushRaw32()
+void compressorPushRaw32()
 {
 	if ( samples_in_block == 0 ) {
 		return;
@@ -205,18 +207,18 @@ void CompressorPushRaw32()
 	header->data_packing_method = DATA_FORMAT_RAW32;
 	header->lead_off_status = 0;
 		
-	CompressorCreateCheckSum((char*)ecg_block_buffer_raw);
+	compressorCreateCheckSum((char*)ecg_block_buffer_raw);
 		
-	if ( CompressorBlockReadyCallBack ) {
-		CompressorBlockReadyCallBack((char*)ecg_block_buffer_raw);			
+	if ( compressorSaveDataBlock ) {
+		compressorSaveDataBlock((char*)ecg_block_buffer_raw);			
 	}
 		
-	CompressorNewEcgBlock();
+	compressorNewEcgBlock();
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-void CompressorAddRaw32(__int32 data)
+void compressorAddRaw32(__int32 data)
 {
 	p_compressor = &the_compressor_raw;
 
@@ -237,26 +239,26 @@ void CompressorAddRaw32(__int32 data)
 		header->data_packing_method = DATA_FORMAT_RAW32;
 		header->lead_off_status = 0;
 		
-		CompressorCreateCheckSum((char*)ecg_block_buffer_raw);
+		compressorCreateCheckSum((char*)ecg_block_buffer_raw);
 
-		if ( CompressorBlockReadyCallBack ) {
-			CompressorBlockReadyCallBack((char*)ecg_block_buffer_raw);			
+		if ( compressorSaveDataBlock ) {
+			compressorSaveDataBlock((char*)ecg_block_buffer_raw);			
 		}
 
-		CompressorNewEcgBlock();
+		compressorNewEcgBlock();
 	}
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 /*
-CompressorAddVector stores ecg in two ways: compressed and uncompressed.
+compressorAddVector stores ecg in two ways: compressed and uncompressed.
 If both buffers will be full, buffer which have more data will be push forward.
 */
-void CompressorAddVector(short* ecg_vector)
+void compressorAddVector(short* ecg_vector)
 {
-	CompressorAddRaw16(ecg_vector);
-	CompressorAddDdt(ecg_vector);
+	compressorAddRaw16(ecg_vector);
+	compressorAddDdt(ecg_vector);
 
 #ifdef TEST_PACK_METHOD
 	if ( the_compressor_raw.overflow  ) // change _raw to _ddt if needed
@@ -264,43 +266,43 @@ void CompressorAddVector(short* ecg_vector)
 	if ( the_compressor_ddt.overflow && the_compressor_raw.overflow  )
 #endif
 	{
-		CompressorFinishEcgBlock();
+		compressorFinishEcgBlock();
 		// send block to parent
-		if ( CompressorBlockReadyCallBack ) {
-			CompressorBlockReadyCallBack( p_ecg_block );			
+		if ( compressorSaveDataBlock ) {
+			compressorSaveDataBlock( p_ecg_block );			
 		}
-		CompressorNewEcgBlock();
+		compressorNewEcgBlock();
 		block_number++;
 
-		CompressorAddDdt(ecg_vector);
-		CompressorAddRaw16(ecg_vector);
+		compressorAddDdt(ecg_vector);
+		compressorAddRaw16(ecg_vector);
 	}
 
 	total_vectors_count++;
 	samples_in_block++;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
 Compressor Close() Push incomplete block
 returns count of successfully stored samples
 */
-__int32 CompressorClose(void)
+__int32 compressorClose(void)
 {
 	if ( samples_in_block != 0 ) {
-		CompressorFinishEcgBlock();
+		compressorFinishEcgBlock();
 		// send block to parent
-		if ( CompressorBlockReadyCallBack ) {
-			CompressorBlockReadyCallBack( p_ecg_block );			
+		if ( compressorSaveDataBlock ) {
+			compressorSaveDataBlock( p_ecg_block );			
 		}
 	}
 
 	return total_vectors_count;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-static bool CompressorAddRaw16(short *ecg_vector)
+static bool compressorAddRaw16(short *ecg_vector)
 {
 	short j;
 	if ( the_compressor_raw.overflow ) {
@@ -324,17 +326,17 @@ static bool CompressorAddRaw16(short *ecg_vector)
 
 	return (p_compressor->overflow == false);
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 /*
-Compressor_AddVector add the ECG vector to buffer
+compressor_AddVector add the ECG vector to buffer
 first value is data itself
 second - first derivative
 next  - the second derivative
 return value - true if success
 */
-static bool CompressorAddDdt(short *ecg_vector)
+static bool compressorAddDdt(short *ecg_vector)
 {
 	short j;
 	if ( the_compressor_ddt.overflow ) {
@@ -347,9 +349,9 @@ static bool CompressorAddDdt(short *ecg_vector)
 		{
 		case 0: WRITE_BITS( 16, (ecg_vector[j]) );
 			break;
-		case 1: CompressorHuffmanSave( ecg_vector[j] - ecg_first_prev[j] );
+		case 1: compressorHuffmanSave( ecg_vector[j] - ecg_first_prev[j] );
 			break;
-		default: CompressorHuffmanSave( ecg_vector[j] - (ecg_first_prev[j]<<1) + ecg_second_prev[j] );
+		default: compressorHuffmanSave( ecg_vector[j] - (ecg_first_prev[j]<<1) + ecg_second_prev[j] );
 			break;
 		}
 	}
@@ -361,13 +363,13 @@ static bool CompressorAddDdt(short *ecg_vector)
 	}
 	return (p_compressor->overflow == false);
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
-Compressor_Huffman_save
+compressor_Huffman_save
 implement Huffman code table
 */
-static void CompressorHuffmanSave(short val)
+static void compressorHuffmanSave(short val)
 {
 	short temp = val;
 	if ( temp < 0 ) temp--;
@@ -382,7 +384,7 @@ static void CompressorHuffmanSave(short val)
 	if ( temp <= 127 && temp >= -128 )		{ WRITE_BITS(8,	127 );	WRITE_BITS(7, temp );	return;} // 15
 											{ WRITE_BITS(9,	255 );	WRITE_BITS(16,temp );}
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 #ifdef UNCOMPRESS_AVAILABLE
@@ -392,13 +394,13 @@ static void CompressorHuffmanSave(short val)
 		zdest = ( unsigned short)(p_compressor->bit_buffer & bits_left_mask[nbits]); \
 		p_compressor->bit_buffer >>= nbits; p_compressor->bits_left_in_bitbuffer -= nbits; \
 	} else { \
-		zdest = CompressorBitBufferFill(nbits); \
+		zdest = compressorBitBufferFill(nbits); \
 	} \
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-static unsigned short CompressorBitBufferFill(short bits)
+static unsigned short compressorBitBufferFill(short bits)
 {
 	//  get the bits that are left and read the next word 
 	register unsigned short result = p_compressor->bit_buffer;
@@ -419,12 +421,12 @@ static unsigned short CompressorBitBufferFill(short bits)
 	p_compressor->bits_left_in_bitbuffer -= bits;
 	return result;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*
 CompressorHuffmanGet return short value from Huffman bit stream
 */
-static short CompressorHuffmanGet(void)
+static short compressorHuffmanGet(void)
 {
 	short cc;
 	READ_BITS(1,cc); if (cc==0) return 0; //0
@@ -439,9 +441,9 @@ static short CompressorHuffmanGet(void)
 	READ_BITS(1,cc); if (cc==0) { READ_BITS(16,cc); if (cc<0) cc++; return cc;}
 	return 0;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-static int CompressorUnpackMit212(unsigned short *pblock, short *p_ecg, int samples)
+static int compressorUnpackMit212(unsigned short *pblock, short *p_ecg, int samples)
 {
 	short temp_value;
 	ecg_block_header_st* p_header = (ecg_block_header_st*)pblock;
@@ -464,10 +466,10 @@ static int CompressorUnpackMit212(unsigned short *pblock, short *p_ecg, int samp
 	}
 	return index;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-static int CompressorUnpackRaw16(unsigned short *pblock, short *p_ecg, int samples)
+static int compressorUnpackRaw16(unsigned short *pblock, short *p_ecg, int samples)
 {
 	ecg_block_header_st* p_header = (ecg_block_header_st*)pblock;
 	
@@ -490,10 +492,10 @@ static int CompressorUnpackRaw16(unsigned short *pblock, short *p_ecg, int sampl
 	}
 	return index;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-static int CompressorUnpackDdt(unsigned short *pblock, short *p_ecg, int samples, int adc_bits)
+static int compressorUnpackDdt(unsigned short *pblock, short *p_ecg, int samples, int adc_bits)
 {
 	short temp_value;
 	ecg_block_header_st* p_header = (ecg_block_header_st*)pblock;
@@ -543,14 +545,14 @@ static int CompressorUnpackDdt(unsigned short *pblock, short *p_ecg, int samples
 
 	return index;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 #ifdef _DEBUG
 bool test_blkock = false;
 int  block_nom = 0;
 #endif  // _DEBUG
 
-int CompressorUnpackBlock(unsigned short *pblock, short *p_ecg, int samples)
+int compressorUnpackBlock(unsigned short *pblock, short *p_ecg, int samples)
 {
 	ecg_block_header_st* p_header = (ecg_block_header_st*)pblock;
 	int samples_read = 0;
@@ -558,7 +560,8 @@ int CompressorUnpackBlock(unsigned short *pblock, short *p_ecg, int samples)
 #ifdef _DEBUG
 	if ( test_blkock ) {
 		if ( block_nom+1 != p_header->block_number ) {
-//			TRACE(_T("__ERROR block nomber %d, start sample = %d\n"), block_nom, p_header->start_sample_number);
+//			TRACE(_T("__ERROR block nomber %d, start sample = %d\n"),
+//			block_nom, p_header->start_sample_number);
 		}
 		block_nom = p_header->block_number;
 	}
@@ -586,5 +589,5 @@ int CompressorUnpackBlock(unsigned short *pblock, short *p_ecg, int samples)
 
 	return samples_read;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 #endif //UNCOMPRESS_AVAILABLE

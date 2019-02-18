@@ -4,5 +4,6 @@
 void spiroProcessInit();
 void spiroProcessStart();
 void spiroProcessStop();
+void spiroProcessResetTimeout();
 
 #endif // _SPIRO_PROCESS_H_

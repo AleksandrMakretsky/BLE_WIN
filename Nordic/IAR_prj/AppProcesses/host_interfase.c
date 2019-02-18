@@ -19,6 +19,7 @@ host interfase
 
 #include "../MyNordic/flash_mem.h"
 #include "host_interfase.h"
+#include "compressor.h"
 
 #ifdef SPIRO
 #include "spiro_process.h"
@@ -30,19 +31,16 @@ host interfase
 #include "mic_process.h"
 #endif
 
+extern char firmware_version[VERSION_NAME_LENGTH];
 extern char* received_msg_buffer;
-extern void (* CompressorBlockReadyCallBack)(char* buffer);
 
 #pragma data_alignment=2
 char response_buffer[128];
 #pragma data_alignment=2
-char data_block_buffer[512+20];
+char data_block_buffer[512+24];
 ChannelWriteFn_t channelWriteFn = NULL; //callback function to push data to channel 
 
-extern char firmware_version[VERSION_NAME_LENGTH];
-extern void (* CompressorBlockReadyCallBack)(char* buffer);
-
-DsDeviceId dsDeviceId = {NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT};
+DsDeviceId dsDeviceId = { NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT };
 static uint8_t monitoringMode = MONITORING_MODE_OFF;
 static bool responceToSend = false;
 static bool dataToSend = false;
@@ -51,10 +49,29 @@ void parseIncomingMessage(char* received_msg);
 void readDeviceId();
 void storeDeviceId();
 void onCommandSetMonitoringMode(uint8_t modeValue);
-void OnDataBlockReady(char* data);
+void onDataBlockReady(char* data);
+void sendDataToHost(char* data);
+////////////////////////////////////////////////////////////////////////////////
 
 
-///////////////////////////////////////////////////////////////////////////////
+void hostInterfaseProcessPoll(bool _readyToSend) {
+
+	if ( _readyToSend ) {
+		if ( responceToSend ) {
+			sendDataToHost(response_buffer);
+			responceToSend = false;
+		}
+		if ( dataToSend ) {
+			sendDataToHost(data_block_buffer);
+			dataToSend = false;
+#ifdef SPIRO
+			spiroProcessResetTimeout();
+#endif			
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
 
 void sendDataToHost(char* data) {
 
@@ -67,47 +84,15 @@ void sendDataToHost(char* data) {
 		channelWriteFn((char*)data, count);
 	}
 }
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-void hostInterfaseProcessPoll(bool _readyToSend) {
 
-	if ( _readyToSend ) {
-		if ( responceToSend ) {
-			sendDataToHost(response_buffer);
-			responceToSend = false;
-		}
-		if ( dataToSend ) {
-			sendDataToHost(data_block_buffer);
-			dataToSend = false;
-		}
-	}
-
-}
-///////////////////////////////////////////////////////////////////////////////
-
-void OnDataBlockReady(char* data) {
+void onDataBlockReady(char* data) {
 
 	NetLevelCreateResponse(data_block_buffer, (char*)data, 512, CMD_DATA_BLOCK);
 	dataToSend = true;
 }
-///////////////////////////////////////////////////////////////////////////////
-
-
-void hostInterfaseInit() {
-	NetLevelInit();
-	monitoringMode = MONITORING_MODE_OFF;
-	CompressorBlockReadyCallBack = OnDataBlockReady;
-}
-///////////////////////////////////////////////////////////////////////////////
-
-
-void addIncomingData(char data) {
-
-	if ( NetLevelAddIncomingByte(data) >= 0 )	{
-		parseIncomingMessage(received_msg_buffer);
-	}
-}
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 void parseIncomingMessage(char* received_msg) {
@@ -157,12 +142,29 @@ void parseIncomingMessage(char* received_msg) {
 		break;
 	}
 }
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+void hostInterfaseInit() {
+	
+	NetLevelInit();
+	monitoringMode = MONITORING_MODE_OFF;
+	compressorSaveDataBlock = onDataBlockReady;
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+void addIncomingData(char data) {
+
+	if ( NetLevelAddIncomingByte(data) >= 0 )	{
+		parseIncomingMessage(received_msg_buffer);
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
 
 
 void onCommandSetMonitoringMode(uint8_t modeValue) {
 
-//	uint8_t previouseMode = monitoringMode;
 	if ( monitoringMode == modeValue ) {
 		NRF_LOG_INFO("the same mode. ignoge it: %d", monitoringMode);
 		return;
@@ -179,7 +181,7 @@ void onCommandSetMonitoringMode(uint8_t modeValue) {
 		spiroProcessStop();
 	}
 }
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 void readDeviceId() {
@@ -196,7 +198,7 @@ void readDeviceId() {
 	dsDeviceId.device_class[DEVICE_ID_NAME_LENGTH-1] = 0;
 	dsDeviceId.device_number[DEVICE_ID_NAME_LENGTH-1] = 0;
 }
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 void storeDeviceId() {
@@ -204,4 +206,4 @@ void storeDeviceId() {
 	flashMemSegmentWrite((char*)&dsDeviceId,
 		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 }
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////

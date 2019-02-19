@@ -84,12 +84,14 @@ void sendDataToHost(char* data) {
 }
 ////////////////////////////////////////////////////////////////////////////////
 
+
 void addResponseDataToQueue(Response *response) {
 
 	memcpy(&responseBuffer[inputResponseIndex], response, sizeof(Response));
 	inputResponseIndex = (inputResponseIndex+1)&(RESPONCE_BUFFER_LRNGTH-1);
 }
 ////////////////////////////////////////////////////////////////////////////////
+
 
 void onDataBlockReady(char* data) {
 
@@ -184,11 +186,11 @@ void onCommandSetMonitoringMode(uint8_t modeValue) {
 	NRF_LOG_INFO("now monitoringMode will be: %d", monitoringMode);
 
 	if ( monitoringMode == MONITORING_MODE_RUN ) {
-		spiroProcessStart();
+		sensorProcessStart();
 	}
 	
 	if ( monitoringMode == MONITORING_MODE_OFF ) {
-		spiroProcessStop();
+		sensorProcessStop();
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////

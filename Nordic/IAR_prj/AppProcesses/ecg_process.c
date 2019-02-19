@@ -16,23 +16,22 @@ host interfase
 #include "../DsCommons/bee_command_codes.h"
 #include "../DsCommons/bee_dev_info.h"
 
-#include "spiro_process.h"
+#include "ecg_process.h"
 #include "timestamp_timer.h"
 #include "nrf_drv_timer.h"
 #include "compressor.h"
-
 
 const nrf_drv_timer_t TIMEOUT_TIMER_100MS = NRF_DRV_TIMER_INSTANCE(2);
 static bool initDone = false;
 ////////////////////////////////////////////////////////////////////////////////
 
-
-void spiroProcessResetTimeout() {
+/*
+void processResetTimeout() {
 
 	nrf_drv_timer_clear(&TIMEOUT_TIMER_100MS);
 }
 ////////////////////////////////////////////////////////////////////////////////
-
+*/
 
 static void timeoutTimerHandler(nrf_timer_event_t event_type, void* p_context) {
 	
@@ -73,7 +72,7 @@ void initTimeoutTimer(){
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void spiroProcessInit() {
+void processInit() {
 	
 	initTimeoutTimer();
 }
@@ -83,7 +82,7 @@ void spiroProcessInit() {
 void sensorProcessStart() {
 	
 	if ( !initDone ) {
-		spiroProcessInit();
+		processInit();
 	}
 	nrf_drv_timer_clear(&TIMEOUT_TIMER_100MS);
 	nrf_drv_timer_enable(&TIMEOUT_TIMER_100MS);

@@ -19,7 +19,7 @@
           
           
           
-        <Column0>254</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>298</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -55,7 +55,7 @@
       
       
       
-    <Wnd2>
+    <Wnd0>
         <Tabs>
           <Tab>
             <Identity>TabID-9327-1863</Identity>
@@ -71,7 +71,7 @@
           </Tab>
         <Tab><Identity>TabID-30456-28853</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-21384-26790</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab></Tabs>
         
-      <SelectedTab>2</SelectedTab></Wnd2><Wnd3>
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-20076-1867</Identity>
@@ -83,20 +83,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd3><Wnd0><Tabs><Tab><Identity>TabID-2965-24516</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd0></Windows>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-2965-24516</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>830</YPos2><SelStart2>30398</SelStart2><SelEnd2>30398</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_serial_num.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>50</YPos2><SelStart2>2685</SelStart2><SelEnd2>2685</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\ble\common\ble_srv_common.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>190</YPos2><SelStart2>7976</SelStart2><SelEnd2>7976</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Boards\pca10056_UsbLe\sdk_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>6132</YPos2><SelStart2>144462</SelStart2><SelEnd2>144462</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>1775</YPos2><SelStart2>56800</SelStart2><SelEnd2>56827</SelEnd2></Tab><ActiveTab>4</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>47</YPos2><SelStart2>2851</SelStart2><SelEnd2>2851</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>827</YPos2><SelStart2>30554</SelStart2><SelEnd2>30554</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\spiro_process.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>52</YPos2><SelStart2>2328</SelStart2><SelEnd2>2328</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>165</YPos2><SelStart2>5248</SelStart2><SelEnd2>5265</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>459</SelStart2><SelEnd2>459</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DsCommons\bee_data_types.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>467</SelStart2><SelEnd2>544</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\spiro_process.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>61</SelStart2><SelEnd2>61</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-035A1D80><key>iaridepm.enu1</key></Toolbar-035A1D80></Sizes></Row0><Row1><Sizes><Toolbar-1FB884A8><key>debuggergui.enu1</key></Toolbar-1FB884A8><Toolbar-1FB88570><key>armjlink2.enu1</key></Toolbar-1FB88570></Sizes></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>720</Bottom><Right>328</Right><x>-2</x><y>-2</y><xscreen>260</xscreen><yscreen>212</yscreen><sizeHorzCX>168941</sizeHorzCX><sizeHorzCY>191336</sizeHorzCY><sizeVertCX>214425</sizeVertCX><sizeVertCY>651625</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>720</Bottom><Right>209</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>129955</sizeHorzCX><sizeHorzCY>180505</sizeHorzCY><sizeVertCX>137102</sizeVertCX><sizeVertCY>651625</sizeVertCY></Rect></Wnd0></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>319</Bottom><Right>1541</Right><x>-2</x><y>-2</y><xscreen>1543</xscreen><yscreen>321</yscreen><sizeHorzCX>1002599</sizeHorzCX><sizeHorzCY>289711</sizeHorzCY><sizeVertCX>168941</sizeVertCX><sizeVertCY>191336</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-03121D80><key>iaridepm.enu1</key></Toolbar-03121D80></Sizes></Row0><Row1><Sizes><Toolbar-34D7F4E8><key>debuggergui.enu1</key></Toolbar-34D7F4E8><Toolbar-34D7FE48><key>armjlink2.enu1</key></Toolbar-34D7FE48></Sizes></Row1></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>713</Bottom><Right>372</Right><x>-2</x><y>-2</y><xscreen>238</xscreen><yscreen>210</yscreen><sizeHorzCX>168914</sizeHorzCX><sizeHorzCY>191257</sizeHorzCY><sizeVertCX>265436</sizeVertCX><sizeVertCY>651184</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>713</Bottom><Right>191</Right><x>-2</x><y>-2</y><xscreen>183</xscreen><yscreen>198</yscreen><sizeHorzCX>129879</sizeHorzCX><sizeHorzCY>180328</sizeHorzCY><sizeVertCX>136977</sizeVertCX><sizeVertCY>651184</sizeVertCY></Rect></Wnd3></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>316</Bottom><Right>1411</Right><x>-2</x><y>-2</y><xscreen>1413</xscreen><yscreen>318</yscreen><sizeHorzCX>1002839</sizeHorzCX><sizeHorzCY>289617</sizeHorzCY><sizeVertCX>168914</sizeVertCX><sizeVertCY>191257</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

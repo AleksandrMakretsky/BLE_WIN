@@ -3,7 +3,7 @@
 <Workspace>
   <ConfigDictionary>
     
-  <CurrentConfigs><Project>EcgLe/Debug</Project><Project>SpiroLe/Debug</Project></CurrentConfigs><CurrentProj>SpiroLe</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+  <CurrentConfigs><Project>EcgLe/Debug</Project><Project>SpiroLe/Debug</Project></CurrentConfigs><CurrentProj>EcgLe</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
   <Desktop>
     <Static>
       <Build>
@@ -18,13 +18,13 @@
           
           
           
-        <Column0>275</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>226</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
     <Find-in-Files><ColumnWidth0>526</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>411</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/><Select-Ambiguous-Definitions><ColumnWidth0>457</ColumnWidth0><ColumnWidth1>65</ColumnWidth1><ColumnWidth2>784</ColumnWidth2></Select-Ambiguous-Definitions></Static>
     <Windows>
       
       
-    <Wnd1>
+    <Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-18415-14010</Identity>
@@ -34,7 +34,7 @@
           </Tab>
         <Tab><Identity>TabID-8088-30374</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-32110-14452</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab></Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd1><Wnd3>
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
         <Tabs>
           <Tab>
             <Identity>TabID-29164-14014</Identity>
@@ -42,24 +42,24 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe/DsCommons</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode><ExpandedNode>SpiroLe/nRF_BLE_Services</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>EcgLe/Application</ExpandedNode><ExpandedNode>EcgLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe/DsCommons</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode><ExpandedNode>SpiroLe/nRF_BLE_Services</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd3></Windows>
+      <SelectedTab>0</SelectedTab></Wnd4></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>830</YPos2><SelStart2>30422</SelStart2><SelEnd2>30422</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\spiro_process.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>13</YPos2><SelStart2>688</SelStart2><SelEnd2>688</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>19</YPos2><SelStart2>487</SelStart2><SelEnd2>487</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>378</SelStart2><SelEnd2>378</SelEnd2></Tab><ActiveTab>3</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DsCommons\bee_data_types.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>467</SelStart2><SelEnd2>544</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>827</YPos2><SelStart2>30554</SelStart2><SelEnd2>30554</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\spiro_process.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>52</YPos2><SelStart2>2328</SelStart2><SelEnd2>2328</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>15</YPos2><SelStart2>586</SelStart2><SelEnd2>586</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>459</SelStart2><SelEnd2>459</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DsCommons\bee_data_types.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>467</SelStart2><SelEnd2>544</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\spiro_process.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>61</SelStart2><SelEnd2>61</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\ecg_process.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>12</YPos2><SelStart2>854</SelStart2><SelEnd2>854</SelEnd2></Tab><ActiveTab>6</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\ecg_process.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>130</SelStart2><SelEnd2>130</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-00811D80><key>iaridepm.enu1</key></Toolbar-00811D80></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>774</Bottom><Right>349</Right><x>-2</x><y>-2</y><xscreen>117</xscreen><yscreen>130</yscreen><sizeHorzCX>80357</sizeHorzCX><sizeHorzCY>118397</sizeHorzCY><sizeVertCX>241071</sizeVertCX><sizeVertCY>706740</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>279</Bottom><Right>1458</Right><x>-2</x><y>-2</y><xscreen>1460</xscreen><yscreen>281</yscreen><sizeHorzCX>1002747</sizeHorzCX><sizeHorzCY>255920</sizeHorzCY><sizeVertCX>80357</sizeVertCX><sizeVertCY>118397</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-03121D80><key>iaridepm.enu1</key></Toolbar-03121D80></Sizes></Row0></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>641</Bottom><Right>300</Right><x>-2</x><y>-2</y><xscreen>101</xscreen><yscreen>129</yscreen><sizeHorzCX>71682</sizeHorzCX><sizeHorzCY>117486</sizeHorzCY><sizeVertCX>214336</sizeVertCX><sizeVertCY>585610</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>412</Bottom><Right>1411</Right><x>-2</x><y>-2</y><xscreen>1413</xscreen><yscreen>414</yscreen><sizeHorzCX>1002839</sizeHorzCX><sizeHorzCY>377049</sizeHorzCY><sizeVertCX>71682</sizeVertCX><sizeVertCY>117486</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

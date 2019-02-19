@@ -35,15 +35,18 @@ extern char firmware_version[VERSION_NAME_LENGTH];
 extern char* received_msg_buffer;
 
 #pragma data_alignment=2
-char response_buffer[128];
+static char response_buffer[128];
 #pragma data_alignment=2
-char data_block_buffer[512+24];
+static char data_block_buffer[512+24];
 ChannelWriteFn_t channelWriteFn = NULL; //callback function to push data to channel 
 
-DsDeviceId dsDeviceId = { NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT };
+#pragma data_alignment=2
+static Response responseBuffer[RESPONCE_BUFFER_LRNGTH];
+static uint16_t inputResponseIndex;
+static uint16_t outputResponseIndex;
+
+static DsDeviceId dsDeviceId = { NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT };
 static uint8_t monitoringMode = MONITORING_MODE_OFF;
-static bool responceToSend = false;
-static bool dataToSend = false;
 
 void parseIncomingMessage(char* received_msg);
 void readDeviceId();
@@ -56,19 +59,14 @@ void sendDataToHost(char* data);
 
 void hostInterfaseProcessPoll(bool _readyToSend) {
 
-	if ( _readyToSend ) {
-		if ( responceToSend ) {
-			sendDataToHost(response_buffer);
-			responceToSend = false;
-		}
-		if ( dataToSend ) {
-			sendDataToHost(data_block_buffer);
-			dataToSend = false;
-#ifdef SPIRO
-			spiroProcessResetTimeout();
-#endif			
-		}
+	if ( outputResponseIndex != inputResponseIndex ) {
+		sendDataToHost((char*)&responseBuffer[outputResponseIndex]);
+		outputResponseIndex = (outputResponseIndex+1)&(RESPONCE_BUFFER_LRNGTH-1);
 	}
+
+#ifdef SPIRO
+	spiroProcessResetTimeout();
+#endif
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -80,17 +78,23 @@ void sendDataToHost(char* data) {
 		sizeof(message_header_st) + 1;
 
 	if ( channelWriteFn != NULL ) {
-		NRF_LOG_INFO("send responce with length: %d", count);
+		NRF_LOG_INFO("send response with length: %d", count);
 		channelWriteFn((char*)data, count);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////
 
+void addResponseDataToQueue(Response *response) {
+
+	memcpy(&responseBuffer[inputResponseIndex], response, sizeof(Response));
+	inputResponseIndex = (inputResponseIndex+1)&(RESPONCE_BUFFER_LRNGTH-1);
+}
+////////////////////////////////////////////////////////////////////////////////
 
 void onDataBlockReady(char* data) {
 
 	NetLevelCreateResponse(data_block_buffer, (char*)data, 512, CMD_DATA_BLOCK);
-	dataToSend = true;
+	addResponseDataToQueue((Response *)data_block_buffer);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -98,7 +102,7 @@ void onDataBlockReady(char* data) {
 void parseIncomingMessage(char* received_msg) {
 
 	uint16_t opp_code = ((message_header_st*)received_msg)->opcode;
-//	bool responce = false;
+	bool response = false;
 	uint8_t tempChar;
 	
 
@@ -114,7 +118,7 @@ void parseIncomingMessage(char* received_msg) {
 			readDeviceId();
 			NetLevelCreateResponse(response_buffer, (char*)&dsDeviceId,
 				sizeof(dsDeviceId), CMD_DEVICE_ID);
-			responceToSend = true;
+			response = true;
 		break;
 		
 		case CMD_SET_DEVICE_ID:
@@ -123,13 +127,13 @@ void parseIncomingMessage(char* received_msg) {
 			storeDeviceId();
 			NetLevelCreateResponse(response_buffer, (char*)&dsDeviceId,
 				sizeof(dsDeviceId), CMD_DEVICE_ID);
-			responceToSend = true;
+			response = true;
 		break;
 		
 		case CMD_GET_FIRMWARE_VERSION:
 			NetLevelCreateResponse(response_buffer, firmware_version,
 				sizeof(firmware_version), CMD_FIRMWARE_VERSION);
-			responceToSend = true;
+			response = true;
 		break;
 		
 		case CMD_SET_MONITORING_MODE:
@@ -138,8 +142,12 @@ void parseIncomingMessage(char* received_msg) {
 			onCommandSetMonitoringMode(tempChar);
 			NetLevelCreateResponse(response_buffer, (char*)&monitoringMode,
 				sizeof(monitoringMode), CMD_MONITORING_MODE);
-			responceToSend = true;
+			response = true;
 		break;
+	}
+	
+	if ( response ) {
+		addResponseDataToQueue((Response *)response_buffer);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -150,6 +158,8 @@ void hostInterfaseInit() {
 	NetLevelInit();
 	monitoringMode = MONITORING_MODE_OFF;
 	compressorSaveDataBlock = onDataBlockReady;
+	inputResponseIndex = 0;
+	outputResponseIndex = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 

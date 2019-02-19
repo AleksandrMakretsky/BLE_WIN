@@ -676,10 +676,12 @@ static void idle_state_handle(void)
     UNUSED_RETURN_VALUE(NRF_LOG_PROCESS());
     power_manage();
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 // USB CODE START
 static bool m_usb_connected = false;
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief User event handler @ref app_usbd_cdc_acm_user_ev_handler_t */
@@ -800,6 +802,7 @@ static void usbd_user_ev_handler(app_usbd_event_type_t event)
 }
 /////////////////////////////////////////////////////////////////////////////
 
+
 void channelWriteUsb(char*data, uint16_t dataLength) {
 
 	app_usbd_cdc_acm_write(&m_app_cdc_acm, data, dataLength);
@@ -820,7 +823,7 @@ void channelWriteBle(char*data, uint16_t dataLength) {
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void checkUsbBleIncommingData() {
+void checkIncommingData() {
 	
 	while ( rxBufferLength > 0 ) {
 		addIncomingData(m_rx_buffer_fifo[outRxBufferIndex]);
@@ -837,7 +840,8 @@ void initRxBuffer() {
 	outRxBufferIndex = 0;
 	rxBufferLength = 0;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 
 /** @brief Application main function. */
 int main(void) {
@@ -887,7 +891,7 @@ int main(void) {
     NRF_LOG_INFO("USBD BLE UART example started.");
     for (;;)
     {
-		checkUsbBleIncommingData();
+		checkIncommingData();
 
         while (app_usbd_event_queue_process())
         {

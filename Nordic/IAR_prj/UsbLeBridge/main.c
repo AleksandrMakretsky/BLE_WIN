@@ -216,14 +216,28 @@ static ble_uuid_t m_adv_uuids[] =
 //static char m_nus_data_array[BLE_NUS_MAX_DATA_LEN];
 
 #define RX_BUFFER_SIZE 512
-char m_rx_buffer_fifo[RX_BUFFER_SIZE];
-uint16_t in_index = 0;
-uint16_t out_index = 0;
-uint16_t buffer_length = 0;
-bool readyToSend = true;
+char m_rx_usb[RX_BUFFER_SIZE];
+char m_tx_usb[RX_BUFFER_SIZE];
 
+uint16_t in_usb_index = 0;
+uint16_t out_usb_index = 0;
+uint16_t usb_buffer_length = 0;
 
-void CheckUsbIncommingData();
+char m_rx_ble[RX_BUFFER_SIZE];
+char m_tx_ble[RX_BUFFER_SIZE];
+uint16_t in_ble_index = 0;
+uint16_t out_ble_index = 0;
+uint16_t ble_buffer_length = 0;
+
+bool usbReadyToSend = true;
+bool bleReadyToSend = true;
+bool isConnected = false;
+
+void CheckIncommingData();
+void ChannelWriteUsb(char*data, uint16_t dataLength);
+void channelWriteBle(char*data, uint16_t dataLength);
+void initRxTxbuffers();
+
 
 static ble_gap_scan_params_t m_scan_param =                 /**< Scan parameters requested for scanning and connection. */
 {
@@ -1276,6 +1290,7 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
             break;
 
         case APP_USBD_CDC_ACM_USER_EVT_TX_DONE:
+			usbReadyToSend = true;
             break;
 
         case APP_USBD_CDC_ACM_USER_EVT_RX_DONE:
@@ -1286,9 +1301,9 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
             do
             {
                   size++;
-                  m_rx_buffer_fifo[in_index++] = m_cdc_data_array[0];
-                  in_index &= (RX_BUFFER_SIZE-1);
-                  buffer_length++;
+                  m_rx_usb[in_usb_index++] = m_cdc_data_array[0];
+                  in_usb_index &= (RX_BUFFER_SIZE-1);
+                  usb_buffer_length++;
 
                 // Fetch data until internal buffer is empty
                 ret = app_usbd_cdc_acm_read(&m_app_cdc_acm, &m_cdc_data_array[0], 1);
@@ -1302,29 +1317,49 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
     }
 }
 /////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
+
 
 void ChannelWriteUsb(char*data, uint16_t dataLength) {
+
 	app_usbd_cdc_acm_write(&m_app_cdc_acm, data, dataLength);
+	usbReadyToSend = false;
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
 void channelWriteBle(char*data, uint16_t dataLength) {
 
-	//ble_nus_data_send(&m_nus, (uint8_t *)data, &dataLength, m_conn_handle);
+//	app_usbd_cdc_acm_write(&m_app_cdc_acm, data, dataLength);
 	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", dataLength);
-	readyToSend = false;
+	bleReadyToSend = false;
 	// finish can be in the on_hvx_tx_complete()
 }
 ////////////////////////////////////////////////////////////////////////////////
 
-void CheckUsbIncommingData()
-{
-  /*
-	while ( buffer_length > 0 ) {
+void CheckIncommingData() {
+	
+	if ( !isConnected ) return;
+	
+	// check USB incoming data
+	uint16_t count = 0;
+	while ( usb_buffer_length > 0 ) {
+		m_tx_ble[count++] = m_rx_usb[out_usb_index];
 		//addIncomingData(m_rx_buffer_fifo[out_index]);
-		out_index = (out_index+1) & (RX_BUFFER_SIZE-1);
-		buffer_length--;
-	}*/
+		out_usb_index = (out_usb_index+1) & (RX_BUFFER_SIZE-1);
+		usb_buffer_length--;
+	}
+	if ( count ) channelWriteBle(m_tx_ble, count);
+	
+	// check BLE incoming data
+	count = 0;
+	while ( ble_buffer_length > 0 ) {
+		m_tx_usb[count++] = m_rx_ble[out_usb_index];
+		//addIncomingData(m_rx_buffer_fifo[out_index]);
+		out_ble_index = (out_ble_index+1) & (RX_BUFFER_SIZE-1);
+		ble_buffer_length--;
+	}
+	if ( count ) ChannelWriteUsb(m_tx_usb, count);
+	
 }
 /////////////////////////////////////////////////////////////////////////////
 
@@ -1361,6 +1396,20 @@ static void timers_init(void)
     err_code = app_timer_create(&m_blink_cdc, APP_TIMER_MODE_REPEATED, blink_handler);
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
+
+
+void initRxTxbuffers() {
+
+	in_usb_index = 0;
+	out_usb_index = 0;
+	usb_buffer_length = 0;
+
+	in_ble_index = 0;
+	out_ble_index = 0;
+	ble_buffer_length = 0;
+}
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**@brief Function for initializing the application main entry.
@@ -1423,12 +1472,8 @@ int main(void)
 	FlashMemSegmentRead((char*)&dsDeviceId,
 		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 #endif
-	
-	//hostInterfaseInit();
-	in_index = 0;
-	out_index = 0;
-	buffer_length = 0;
-	//channelWriteFn = ChannelWriteUsb;
+
+	initRxTxbuffers();
 	
     //---------------------------------------
     // Start execution.
@@ -1447,12 +1492,12 @@ int main(void)
     // Enter main loop.
     for (;;)
     {
-      	CheckUsbIncommingData();
+      	CheckIncommingData();
 
-          while (app_usbd_event_queue_process())
-          {
-              /* Nothing to do */
-          }
-          idle_state_handle();
+		while (app_usbd_event_queue_process()) {
+			
+		/* Nothing to do */
+		}
+		idle_state_handle();
     }
 }

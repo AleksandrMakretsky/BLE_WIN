@@ -59,6 +59,7 @@ void sendDataToHost(char* data);
 
 void hostInterfaseProcessPoll(bool _readyToSend) {
 
+	if ( !_readyToSend ) return;
 	if ( outputResponseIndex != inputResponseIndex ) {
 		sendDataToHost((char*)&responseBuffer[outputResponseIndex]);
 		outputResponseIndex = (outputResponseIndex+1)&(RESPONCE_BUFFER_LRNGTH-1);

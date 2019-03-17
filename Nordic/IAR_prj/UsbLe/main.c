@@ -261,6 +261,9 @@ static void gap_params_init(void)
  *
  * @param[in] p_evt Nordic UART Service event.
  */
+
+uint16_t cnt_data=0;
+
 static void nus_data_handler(ble_nus_evt_t * p_evt)
 {
 
@@ -287,6 +290,10 @@ static void nus_data_handler(ble_nus_evt_t * p_evt)
             memcpy(m_nus_data_array + length, ENDLINE_STRING, sizeof(ENDLINE_STRING));
             length += sizeof(ENDLINE_STRING);
         }
+        
+ //cnt_data=0;   
+    
+NRF_LOG_INFO("nus_data_handler(): %d", p_evt->params.rx_data.length);        
 /*
         // Send data through CDC ACM
         ret_code_t ret = app_usbd_cdc_acm_write(&m_app_cdc_acm,
@@ -423,6 +430,8 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             APP_ERROR_CHECK(err_code);
             bsp_board_led_on(LED_BLE_NUS_CONN);
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
+            
+            readyToSend = true;
             break;
 
         case BLE_GAP_EVT_DISCONNECTED:
@@ -569,7 +578,7 @@ void gatt_init(void)
     err_code = nrf_ble_gatt_init(&m_gatt, gatt_evt_handler);
     APP_ERROR_CHECK(err_code);
 
-    err_code = nrf_ble_gatt_att_mtu_periph_set(&m_gatt, 64);
+    err_code = nrf_ble_gatt_att_mtu_periph_set(&m_gatt, BLE_MAX_LEN_TX);//..64 было
     APP_ERROR_CHECK(err_code);
 }
 
@@ -703,6 +712,8 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
             APP_ERROR_CHECK(ret);
             bsp_board_led_on(LED_CDC_ACM_CONN);
             NRF_LOG_INFO("CDC ACM port opened");
+            
+            readyToSend = true;
             break;
         }
 
@@ -813,10 +824,30 @@ void channelWriteUsb(char*data, uint16_t dataLength) {
 // USB CODE END
 
 
-void channelWriteBle(char*data, uint16_t dataLength) {
 
-	ble_nus_data_send(&m_nus, (uint8_t *)data, &dataLength, m_conn_handle);
+void channelWriteBle(char* data, uint16_t dataLength) {
+  
+uint16_t i=0;
+uint16_t n=0;
+ 
+  if(dataLength > 0x28)
+  {
+    dataLength = BLE_MAX_LEN_TX;
+    cnt_data++;   
+       
+    n=cnt_data;
+    for( i = 0; i < BLE_MAX_LEN_TX ; i++ ) data[i]=n++;
+  }
+  else
+  {
+    cnt_data=0;
+  }
+  
+  
+	ble_nus_data_send(&m_nus, (uint8_t*)data, &dataLength, m_conn_handle);
+        
 	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", dataLength);
+                
 	readyToSend = false;
 	// finish can be in the on_hvx_tx_complete()
 }
@@ -890,13 +921,23 @@ int main(void) {
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
     for (;;)
-    {
+    {   
+      
+      if( ble_ready_to_send )
+        {
+          ble_ready_to_send=false;
+          readyToSend = true;
+          NRF_LOG_INFO("BLE readyToSend=true;");
+        }
 		checkIncommingData();
 
         while (app_usbd_event_queue_process())
         {
             /* Nothing to do */
         }
+        
+
+        
 		hostInterfaseProcessPoll(readyToSend);
         idle_state_handle();
     }

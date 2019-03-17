@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\work\_NordicPRJ_00\IAR_prj\UsbLe\settings\SpiroLe.Debug.general.xcl" --backend -f "D:\work\_NordicPRJ_00\IAR_prj\UsbLe\settings\SpiroLe.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\Work\PROJ\DS_PROJ_old\Nordic\IAR_prj\UsbLe\settings\SpiroLe.Debug.general.xcl" --backend -f "D:\Work\PROJ\DS_PROJ_old\Nordic\IAR_prj\UsbLe\settings\SpiroLe.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\work\_NordicPRJ_00\IAR_prj\UsbLe\settings\SpiroLe.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\work\_NordicPRJ_00\IAR_prj\UsbLe\settings\SpiroLe.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "D:\Work\PROJ\DS_PROJ_old\Nordic\IAR_prj\UsbLe\settings\SpiroLe.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\Work\PROJ\DS_PROJ_old\Nordic\IAR_prj\UsbLe\settings\SpiroLe.Debug.driver.xcl" 
 
 @echo off 
 :end

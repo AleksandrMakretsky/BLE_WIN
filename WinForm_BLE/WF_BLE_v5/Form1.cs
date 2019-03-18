@@ -26,16 +26,6 @@ namespace WF_BLE_v5
     public partial class Form1 : Form
     {
         #region Designer Variables
-        private ColumnHeader colServerId = null;
-        private ColumnHeader colName;
-        private ColumnHeader colRssi;
-        private ColumnHeader colTxPower;
-        private ColumnHeader colServiceUuids;
-        private ColumnHeader colServicesWithData;
-        private ColumnHeader colSolicitedServiceUuids;
-        private ColumnHeader colManufacturerCompanyId;
-        private ColumnHeader colManufacturerData;
-        private ColumnHeader colConnectable;
         #endregion
 
        
@@ -126,20 +116,22 @@ namespace WF_BLE_v5
 
         private bool subscribedForNotifications = false;
 
-        private async void printToLog(string args)
+        private void printToLog(string args)
         {
 
             aDateTime = DateTime.Now;
 
             String strDataTime = aDateTime.ToString() + " - ";
 
-            await dispUI.BeginInvoke((Action)(() =>
-            {
-                richTextBox1.Invoke((MethodInvoker)(() =>
-                            richTextBox1.AppendText(strDataTime + args + " \r\n")));
-            }));
+            Invoke(new Action(() => SetRichExitText(strDataTime + args + " \r\n")));
         }
+        private void SetRichExitText(string indata)
+        {
+            richTextBox1.AppendText(indata);
+            richTextBox1.ScrollToCaret();
+            //richTextBox1.BackColor = Color.LawnGreen;
 
+        }
 
         private void WatchDevices()
         {
@@ -984,6 +976,8 @@ namespace WF_BLE_v5
             if (!subscribedForNotifications)
             {
                 // initialize status
+                // initialize status
+                // initialize status
                 GattCommunicationStatus status = GattCommunicationStatus.Unreachable;
 
                 var cccdValue = GattClientCharacteristicConfigurationDescriptorValue.None;
@@ -1078,6 +1072,32 @@ namespace WF_BLE_v5
                       
                 strDevName = "GetInfoCMD -> SEND";
                 printToLog(strDevName);
+        }
+
+        private async void button1_Click_1(object sender, EventArgs e)
+        {
+            byte[] bgi = { 0x02, 0x52, 0xFC, 0x07, 0x00, 0x55, 0x5e, 0x38, 0x20, 0x00, 0x01, 0x00, 0x03, 0x03 };
+
+            IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(bgi);
+
+            var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
+
+
+            strDevName = "GetInfoCMD -> SEND start";
+            printToLog(strDevName);
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            byte[] bgi = { 0x02, 0x52, 0xFC, 0x07, 0x00, 0x55, 0xc5, 0x0a, 0x20, 0x00, 0x01, 0x00, 0x00, 0x03 };
+
+            IBuffer writeBuffer = CryptographicBuffer.CreateFromByteArray(bgi);
+
+            var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
+
+
+            strDevName = "GetInfoCMD -> SEND stop";
+            printToLog(strDevName);
         }
     }
 }

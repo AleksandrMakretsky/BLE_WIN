@@ -326,7 +326,6 @@
         </option>
         <option>
           <name>CCIncludePath2</name>
-          <state>$PROJ_DIR$\..\Boards\pca10056_UsbLeBridge_v01</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_advertising</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_db_discovery</state>
@@ -465,6 +464,7 @@
           <state>$PROJ_DIR$\..\MyNordic</state>
           <state>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd</state>
           <state>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy</state>
+          <state>$PROJ_DIR$\..\Boards\pca10056_UsbLeBridg</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1250,7 +1250,7 @@
       <name>$PROJ_DIR$\main.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Boards\pca10056_UsbLeBridge_v01\sdk_config.h</name>
+      <name>$PROJ_DIR$\..\Boards\pca10056_UsbLeBridg\sdk_config.h</name>
     </file>
   </group>
   <group>

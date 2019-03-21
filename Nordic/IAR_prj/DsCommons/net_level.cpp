@@ -274,6 +274,11 @@ bool NetLevelPushByteToReceiver(unsigned char in_byte)
 lmx9838 data packet parser, we need something for byte stream synchronization
 (start delimiter, packet type, command, length... end delimiter )
 */
+
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
+#include "nrf_log_default_backends.h"
+
 short NetLevelAddIncomingByte(unsigned char in_byte)
 {
 	static char status_bt = INPUT_STATUS_WAIT_START;
@@ -283,6 +288,7 @@ short NetLevelAddIncomingByte(unsigned char in_byte)
 	
 	short ret = -1;
 	
+        
 	switch ( status_bt ) {
 	case INPUT_STATUS_WAIT_START: //  wait IO_DELIM_START
 		if ( in_byte == IO_DELIM_START ) {

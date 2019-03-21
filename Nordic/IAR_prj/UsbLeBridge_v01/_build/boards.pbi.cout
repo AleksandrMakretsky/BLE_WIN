@@ -2,8 +2,6 @@
 -std=c99
 -ferror-limit=100
 -I
-D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\UsbLeBridge_v01\..\Boards\pca10056_UsbLeBridge_v01
--I
 D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\UsbLeBridge_v01\..\..\NordicSource\components
 -I
 D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\UsbLeBridge_v01\..\..\NordicSource\components\ble\ble_advertising
@@ -280,11 +278,11 @@ D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\UsbLeBridge_v01\..\..\NordicSource\component
 -I
 D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\UsbLeBridge_v01\..\..\NordicSource\integration\nrfx\legacy
 -I
+D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\UsbLeBridge_v01\..\Boards\pca10056_UsbLeBridg
+-I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\arm\inc\c
--I
-D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\Boards\pca10056_UsbLeBridge_v01
 -I
 D:\Work\PROJ\DS_PROJ\Nordic\NordicSource\components
 -I
@@ -561,6 +559,8 @@ D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\MyNordic
 D:\Work\PROJ\DS_PROJ\Nordic\NordicSource\components\drivers_nrf\usbd
 -I
 D:\Work\PROJ\DS_PROJ\Nordic\NordicSource\integration\nrfx\legacy
+-I
+D:\Work\PROJ\DS_PROJ\Nordic\IAR_prj\Boards\pca10056_UsbLeBridg
 -DDEBUG=1
 -DBOARD_PCA10056=1
 -DCONFIG_GPIO_AS_PINRESET=1

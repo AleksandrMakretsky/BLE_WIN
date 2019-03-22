@@ -1,4 +1,3 @@
-
 Bluetooth GATT Client example
 https://docs.microsoft.com/en-us/windows/uwp/devices-sensors/gatt-client
 

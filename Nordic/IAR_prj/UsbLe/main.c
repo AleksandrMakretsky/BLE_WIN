@@ -100,6 +100,10 @@ char firmware_version[VERSION_NAME_LENGTH];
 
 #define LED_BLINK_INTERVAL 800
 
+#define BLE_MAX_SEND_LENGTH  64
+#if BLE_MAX_SEND_LENGTH > (NRF_SDH_BLE_GATT_MAX_MTU_SIZE - OPCODE_LENGTH - HANDLE_LENGTH)
+#error "length too long"
+#endif
 
 void channelWriteBle(char*data, uint16_t dataLength);
 void channelWriteUsb(char*data, uint16_t dataLength);
@@ -190,7 +194,7 @@ static char m_rx_buffer_fifo[RX_BUFFER_SIZE];
 static uint16_t inRxBufferIndex = 0;
 static uint16_t outRxBufferIndex = 0;
 static uint16_t rxBufferLength = 0;
-static bool readyToSend = true;
+bool readyToSend = true;
 
 // BLE DEFINES END
 
@@ -578,7 +582,7 @@ void gatt_init(void)
     err_code = nrf_ble_gatt_init(&m_gatt, gatt_evt_handler);
     APP_ERROR_CHECK(err_code);
 
-    err_code = nrf_ble_gatt_att_mtu_periph_set(&m_gatt, BLE_MAX_LEN_TX);//..64 было
+    err_code = nrf_ble_gatt_att_mtu_periph_set(&m_gatt, NRF_SDH_BLE_GATT_MAX_MTU_SIZE);
     APP_ERROR_CHECK(err_code);
 }
 
@@ -826,30 +830,17 @@ void channelWriteUsb(char*data, uint16_t dataLength) {
 
 
 void channelWriteBle(char* data, uint16_t dataLength) {
-  
-uint16_t i=0;
-uint16_t n=0;
- 
-  if(dataLength > 0x28)
-  {
-    dataLength = BLE_MAX_LEN_TX;
-    cnt_data++;   
-       
-    n=cnt_data;
-    for( i = 0; i < BLE_MAX_LEN_TX ; i++ ) data[i]=n++;
-  }
-  else
-  {
-    cnt_data=0;
-  }
-  
-  
-	ble_nus_data_send(&m_nus, (uint8_t*)data, &dataLength, m_conn_handle);
-        
-	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", dataLength);
-                
-	readyToSend = false;
-	// finish can be in the on_hvx_tx_complete()
+
+//testing line    for( i = 0; i < BLE_MAX_LEN_TX ; i++ ) data[i]=n++;
+
+	uint16_t length = dataLength;
+	if ( length > BLE_MAX_SEND_LENGTH ) length = BLE_MAX_SEND_LENGTH;
+	
+	ble_nus_data_send(&m_nus, (uint8_t*)data, &length, m_conn_handle);
+	readyToSend = false; // "true" will be in the ble_nus_on_ble_evt()
+
+	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", length);
+	NRF_LOG_INFO("readyToSend = false");
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -920,23 +911,15 @@ int main(void) {
 
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
-    for (;;)
-    {   
-      
-      if( ble_ready_to_send )
-        {
-          ble_ready_to_send=false;
-          readyToSend = true;
-          NRF_LOG_INFO("BLE readyToSend=true;");
-        }
+	
+    for (;;) {
+		
 		checkIncommingData();
 
         while (app_usbd_event_queue_process())
         {
             /* Nothing to do */
         }
-        
-
         
 		hostInterfaseProcessPoll(readyToSend);
         idle_state_handle();

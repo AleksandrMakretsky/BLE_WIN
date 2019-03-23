@@ -63,9 +63,6 @@ NRF_LOG_MODULE_REGISTER();
 
 #define NUS_BASE_UUID                  {{0x9E, 0xCA, 0xDC, 0x24, 0x0E, 0xE5, 0xA9, 0xE0, 0x93, 0xF3, 0xA3, 0xB5, 0x00, 0x00, 0x40, 0x6E}} /**< Used vendor specific UUID. */
 
-
-bool ble_ready_to_send=false;
-
 /**@brief Function for handling the @ref BLE_GAP_EVT_CONNECTED event from the SoftDevice.
  *
  * @param[in] p_nus     Nordic UART Service structure.
@@ -194,8 +191,6 @@ static void on_hvx_tx_complete(ble_nus_t * p_nus, ble_evt_t const * p_ble_evt)
     ble_nus_evt_t              evt;
     ble_nus_client_context_t * p_client;
 
- ble_ready_to_send = true;   
-    
     err_code = blcm_link_ctx_get(p_nus->p_link_ctx_storage,
                                  p_ble_evt->evt.gatts_evt.conn_handle,
                                  (void *) &p_client);
@@ -219,7 +214,7 @@ static void on_hvx_tx_complete(ble_nus_t * p_nus, ble_evt_t const * p_ble_evt)
     }
 }
 
-
+extern bool readyToSend;
 void ble_nus_on_ble_evt(ble_evt_t const * p_ble_evt, void * p_context)
 {
     if ((p_context == NULL) || (p_ble_evt == NULL))
@@ -240,10 +235,8 @@ void ble_nus_on_ble_evt(ble_evt_t const * p_ble_evt, void * p_context)
             break;
 
         case BLE_GATTS_EVT_HVN_TX_COMPLETE:
-          
             on_hvx_tx_complete(p_nus, p_ble_evt);
-      
-	
+			readyToSend = true;
             break;
 
         default:

@@ -107,11 +107,6 @@ extern "C" {
     #warning NRF_SDH_BLE_GATT_MAX_MTU_SIZE is not defined.
 #endif
 
-      
-#define BLE_MAX_LEN_TX 131
-
-extern bool ble_ready_to_send;      
-
 /**@brief   Nordic UART Service event types. */
 typedef enum
 {

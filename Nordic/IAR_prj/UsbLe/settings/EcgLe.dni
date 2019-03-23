@@ -20,7 +20,7 @@ Stop=1
 Freq=10000000
 MultiCoreRunAll=1
 [DebugChecksum]
-Checksum=-2069175677
+Checksum=1189503915
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -129,5 +129,10 @@ mode=0
 [Breakpoints2]
 Count=0
 [Aliases]
-Count=0
-SuppressDialog=0
+A0=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c" ""
+A1=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\nrf_log_backend_interface.h" ""
+A2=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\src\nrf_log_frontend.c" ""
+A3=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\util\app_error_weak.c" ""
+A4=_ "E:\TestNordic\Nordic\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s" ""
+Count=5
+SuppressDialog=1

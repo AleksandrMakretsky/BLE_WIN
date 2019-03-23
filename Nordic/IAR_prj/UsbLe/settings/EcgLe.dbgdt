@@ -19,7 +19,7 @@
           
           
           
-        <Column0>187</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>133</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -34,7 +34,7 @@
         
         
       <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><ShowCodeCoverage>1</ShowCodeCoverage><ShowInstrProfiling>1</ShowInstrProfiling></Disassembly>
-    <Find-in-Files><ColumnWidth0>432</ColumnWidth0><ColumnWidth1>72</ColumnWidth1><ColumnWidth2>649</ColumnWidth2><ColumnWidth3>288</ColumnWidth3></Find-in-Files></Static>
+    <Find-in-Files><ColumnWidth0>432</ColumnWidth0><ColumnWidth1>72</ColumnWidth1><ColumnWidth2>649</ColumnWidth2><ColumnWidth3>288</ColumnWidth3></Find-in-Files><WATCH_1><expressions><item>p_nus</item><item>p_client</item><item></item></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>177</item><item>150</item><item>100</item><item>164</item></col-widths></WATCH_1></Static>
     <Windows>
       
       
@@ -63,24 +63,24 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>EcgLe</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>EcgLe/nRF_BLE_Services</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-30104-15097</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
+      <SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-1077-2192</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
     <Editor>
       
       
       
       
-    <Pane/><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>42</YPos2><SelStart2>1899</SelStart2><SelEnd2>1899</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>852</YPos2><SelStart2>31044</SelStart2><SelEnd2>31044</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Boards\pca10056_UsbLe\sdk_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>12355</YPos2><SelStart2>294531</SelStart2><SelEnd2>294560</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus\ble_nus.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>118</YPos2><SelStart2>5575</SelStart2><SelEnd2>5575</SelEnd2></Tab><ActiveTab>3</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_coredep.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>45</YPos2><SelStart2>2297</SelStart2><SelEnd2>2300</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DsCommons\net_level.cpp</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>201</SelStart2><SelEnd2>201</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\ble\ble_link_ctx_manager\ble_link_ctx_manager.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>45</YPos2><SelStart2>3208</SelStart2><SelEnd2>3208</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\app_error.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>92</YPos2><SelStart2>4811</SelStart2><SelEnd2>4811</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>59</YPos2><SelStart2>3865</SelStart2><SelEnd2>3865</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-04ADC730><key>iaridepm.enu1</key></Toolbar-04ADC730></Sizes></Row0><Row1><Sizes><Toolbar-1F275EA0><key>debuggergui.enu1</key></Toolbar-1F275EA0><Toolbar-1F2765A8><key>armjlink2.enu1</key></Toolbar-1F2765A8></Sizes></Row1></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>636</Bottom><Right>261</Right><x>-2</x><y>-2</y><xscreen>263</xscreen><yscreen>165</yscreen><sizeHorzCX>170668</sizeHorzCX><sizeHorzCY>162242</sizeHorzCY><sizeVertCX>170668</sizeVertCX><sizeVertCY>627335</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>636</Bottom><Right>203</Right><x>-2</x><y>-2</y><xscreen>205</xscreen><yscreen>200</yscreen><sizeHorzCX>133030</sizeHorzCX><sizeHorzCY>196657</sizeHorzCY><sizeVertCX>133030</sizeVertCX><sizeVertCY>627335</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>312</Bottom><Right>1543</Right><x>-2</x><y>-2</y><xscreen>1545</xscreen><yscreen>314</yscreen><sizeHorzCX>1002596</sizeHorzCX><sizeHorzCY>308751</sizeHorzCY><sizeVertCX>170668</sizeVertCX><sizeVertCY>162242</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-04EFC730><key>iaridepm.enu1</key></Toolbar-04EFC730></Sizes></Row0><Row1><Sizes><Toolbar-1E7016F0><key>debuggergui.enu1</key></Toolbar-1E7016F0><Toolbar-1E7013D0><key>armjlink2.enu1</key></Toolbar-1E7013D0></Sizes></Row1></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>699</Bottom><Right>207</Right><x>-2</x><y>-2</y><xscreen>263</xscreen><yscreen>180</yscreen><sizeHorzCX>170668</sizeHorzCX><sizeHorzCY>162455</sizeHorzCY><sizeVertCX>135626</sizeVertCX><sizeVertCY>632671</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>699</Bottom><Right>611</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>129786</sizeHorzCX><sizeHorzCY>180505</sizeHorzCY><sizeVertCX>397794</sizeVertCX><sizeVertCY>632671</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>340</Bottom><Right>1543</Right><x>-2</x><y>-2</y><xscreen>1545</xscreen><yscreen>342</yscreen><sizeHorzCX>1002596</sizeHorzCX><sizeHorzCY>308664</sizeHorzCY><sizeVertCX>170668</sizeVertCX><sizeVertCY>162455</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

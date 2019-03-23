@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "E:\TestNordic\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.general.xcl" --backend -f "E:\TestNordic\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "E:\WorkBle\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.general.xcl" --backend -f "E:\WorkBle\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "E:\TestNordic\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.general.xcl" "--debug_file=%~1" --backend -f "E:\TestNordic\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "E:\WorkBle\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.general.xcl" "--debug_file=%~1" --backend -f "E:\WorkBle\Nordic\IAR_prj\UsbLeBridge_v01\settings\UsbLeBridge_v01_pca10056.nrf52840_xxaa.driver.xcl" 
 
 @echo off 
 :end

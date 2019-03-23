@@ -1092,9 +1092,6 @@
   </group>
   <group>
     <name>MyNordic</name>
-    <file>
-      <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
-    </file>
   </group>
   <group>
     <name>None</name>

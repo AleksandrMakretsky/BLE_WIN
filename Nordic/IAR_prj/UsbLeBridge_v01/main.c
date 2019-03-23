@@ -1,7 +1,20 @@
+// from 
+// ..\nRF5_SDK_15.2.0_9412b96\examples\ble_central\ble_app_uart_c
+/*
+led1 on = connect ble
+led1 2000 no connect ble
+led3 on = usb com connect
+led3 off = no usb
+led3 800 = usb not connected
+
+scan filter
+*/
 
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+//------------------------------------------------------------------------------
+
 #include "nordic_common.h"
 #include "app_error.h"
 #include "app_uart.h"
@@ -24,7 +37,8 @@
 #include "nrf_gpio.h"
 #include "nrf_delay.h"
 #include "nrf_drv_power.h"
-//-------------------------------------
+//------------------------------------------------------------------------------
+
 #include "app_util.h"
 #include "app_usbd_core.h"
 #include "app_usbd.h"
@@ -32,20 +46,44 @@
 #include "app_usbd_cdc_acm.h"
 #include "app_usbd_cdc_acm_internal.h"
 #include "app_usbd_serial_num.h" 
-
 //--------------------------------------
+
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
-
-#include "flash_mem.h"
-
 ////////////////////////////////////////////////////////////////////////////////
-//USB
-//VERSION_NAME_LENGTH
 
-char version_name[] = "V0.000(RF)";
-char firmware_version[64];
+//------------------------------------------------------------------------------
+char version_name[] = "UsbBle bridge V1.001";
+//------------------------------------------------------------------------------
+// app vars
+#define RX_BUFFER_SIZE 256
+char m_rx_usb[RX_BUFFER_SIZE];
+char m_tx_usb[RX_BUFFER_SIZE];
+char m_rx_ble[RX_BUFFER_SIZE];
+
+uint16_t in_usb_index = 0;
+uint16_t out_usb_index = 0;
+uint16_t usb_buffer_length = 0;
+
+char m_tx_ble[RX_BUFFER_SIZE];
+uint16_t in_ble_index = 0;
+uint16_t out_ble_index = 0;
+uint16_t ble_buffer_length = 0;
+
+bool usbReadyToSend = true;
+bool bleReadyToSend = true;
+bool isConnected = false;
+//------------------------------------------------------------------------------
+
+// app prototypes
+void CheckIncommingData();
+void ChannelWriteUsb(char*data, uint16_t dataLength);
+void channelWriteBle(uint8_t* data, uint16_t dataLength);
+void initRxTxbuffers();
+//------------------------------------------------------------------------------
+
+
 #define NUS_SERVICE_UUID_TYPE BLE_UUID_TYPE_VENDOR_BEGIN /**< UUID type for the Nordic UART Service (vendor specific). */
 
 APP_TIMER_DEF(m_blink_ble);
@@ -57,7 +95,6 @@ APP_TIMER_DEF(m_blink_cdc);
 #define LED_CDC_ACM_RX   (BSP_BOARD_LED_3)
 
 #define LED_BLINK_INTERVAL 800
-
 
 #define ENDLINE_STRING "\r\n"
 
@@ -88,36 +125,6 @@ APP_USBD_CDC_ACM_GLOBAL_DEF(m_app_cdc_acm,
                             
 static char m_cdc_data_array[DS_BLE_NUS_MAX_DATA_LEN];
 
-
-#define RX_BUFFER_SIZE 256
-char m_rx_usb[RX_BUFFER_SIZE];
-char m_tx_usb[RX_BUFFER_SIZE];
-char m_rx_ble[RX_BUFFER_SIZE];
-
-//uint8_t * ptr_data_rx_ble;
-
-uint16_t in_usb_index = 0;
-uint16_t out_usb_index = 0;
-uint16_t usb_buffer_length = 0;
-
-//char m_rx_ble[RX_BUFFER_SIZE];
-char m_tx_ble[RX_BUFFER_SIZE];
-uint16_t in_ble_index = 0;
-uint16_t out_ble_index = 0;
-uint16_t ble_buffer_length = 0;
-
-bool usbReadyToSend = true;
-bool bleReadyToSend = true;
-bool isConnected = false;
-
-void CheckIncommingData();
-void ChannelWriteUsb(char*data, uint16_t dataLength);
-void channelWriteBle(uint8_t* data, uint16_t dataLength);
-void initRxTxbuffers();
-
-
-
-////////////////////////////////////////////////////////////////////////////////
 #define APP_BLE_CONN_CFG_TAG    1                                       /**< Tag that refers to the BLE stack configuration set with @ref sd_ble_cfg_set. The default tag is @ref BLE_CONN_CFG_TAG_DEFAULT. */
 #define APP_BLE_OBSERVER_PRIO   3                                       /**< BLE observer priority of the application. There is no need to modify this value. */
 
@@ -165,7 +172,6 @@ void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name)
 static void scan_start(void)
 {
     ret_code_t ret;
-
     ret = nrf_ble_scan_start(&m_scan);
     APP_ERROR_CHECK(ret);
 
@@ -216,6 +222,12 @@ static void scan_evt_handler(scan_evt_t const * p_scan_evt)
              scan_start();
          } break;
 
+		case NRF_BLE_SCAN_EVT_FILTER_MATCH:
+			{
+             	NRF_LOG_INFO("Scan timed out.");
+				   isConnected = 0;
+			} break;
+			
          default:
              break;
     }
@@ -693,19 +705,17 @@ static void log_init(void)
 
     NRF_LOG_DEFAULT_BACKENDS_INIT();
 }
-
-/////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
 // USB CODE START
 static bool m_usb_connected = false;
-
-/////////////////////////////////////////////////////////////////////////////
 void blink_handler(void * p_context)
 {
     bsp_board_led_invert((uint32_t) p_context);
 }
 /////////////////////////////////////////////////////////////////////////////
+
+
 void usbd_user_ev_handler(app_usbd_event_type_t event)
 {
     switch (event)
@@ -759,8 +769,8 @@ void usbd_user_ev_handler(app_usbd_event_type_t event)
             break;
     }
 }
-
 /////////////////////////////////////////////////////////////////////////////
+
 
 /** @brief User event handler @ref app_usbd_cdc_acm_user_ev_handler_t */
 static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
@@ -938,11 +948,11 @@ void initRxTxbuffers() {
 	in_ble_index = 0;
 	out_ble_index = 0;
 	ble_buffer_length = 0;
-        
-           isConnected=0;
-}
 
+	isConnected = 0;
+}
 ////////////////////////////////////////////////////////////////////////////////
+
 
 /**@brief Function for initializing power management.
  */
@@ -976,79 +986,64 @@ static void idle_state_handle(void)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-int main(void)
-{
-  
-	memset(firmware_version, 0, sizeof(firmware_version));
-	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
-
+int main(void) {
   
     static const app_usbd_config_t usbd_config = {
         .ev_state_proc = usbd_user_ev_handler
     };
     
-    // Initialize.
-    log_init();
-    timers_init();
-    uart_init();
-    buttons_leds_init();
-    db_discovery_init();
-    power_management_init();
-    
-    //--------------------------------------------
-    
-    app_usbd_serial_num_generate();
+	log_init();
+	timers_init();
+	uart_init();
+	buttons_leds_init();
+	db_discovery_init();
+	power_management_init();
+//------------------------------------------------------------------------------
 
-    ret_code_t ret;
-    ret = nrf_drv_clock_init();
-    APP_ERROR_CHECK(ret);
-    NRF_LOG_INFO("USBD BLE UART example started.");
- 
-    
-    ret = app_usbd_init(&usbd_config);
-    APP_ERROR_CHECK(ret);
+	ret_code_t ret;
+	ret = nrf_drv_clock_init();
+	APP_ERROR_CHECK(ret);
+	NRF_LOG_INFO("USBD BLE UART example started.");
 
-    app_usbd_class_inst_t const * class_cdc_acm = app_usbd_cdc_acm_class_inst_get(&m_app_cdc_acm);
-    ret = app_usbd_class_append(class_cdc_acm);
-    APP_ERROR_CHECK(ret);  
-    
-    printf("USBD BLE UART example started.\r\n");   
-     //--------------------------------------------    
-    
-    ble_stack_init();
-    gatt_init();
-    nus_c_init();
-    scan_init();
+	app_usbd_serial_num_generate();
+	ret = app_usbd_init(&usbd_config);
+	APP_ERROR_CHECK(ret);
 
-    // Start execution.
-    printf("BLE UART central example started.\r\n");
-    
-    NRF_LOG_INFO("BLE UART central example started.");
-    
-    scan_start();
+	app_usbd_class_inst_t const * class_cdc_acm = app_usbd_cdc_acm_class_inst_get(&m_app_cdc_acm);
+	ret = app_usbd_class_append(class_cdc_acm);
+	APP_ERROR_CHECK(ret);  
 
-    
-    
-        ret = app_usbd_power_events_enable();
-        APP_ERROR_CHECK(ret);
-        
-#ifdef TEST_FLASH	
-	DsDeviceId dsDeviceId;
-	FlashMemSegmentRead((char*)&dsDeviceId,
-		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
-#endif
+	printf("USBD BLE UART example start \r\n");   
+//------------------------------------------------------------------------------
+
+	ble_stack_init();
+	gatt_init();
+	nus_c_init();
+	scan_init();
+	scan_start();
+	NRF_LOG_INFO("BLE scan_start()");
+
+	ret = app_usbd_power_events_enable();
+	APP_ERROR_CHECK(ret);
 
 	initRxTxbuffers();
-    // Enter main loop.
-    for (;;)
-    {
-            	CheckIncommingData();
 
-		while (app_usbd_event_queue_process()) {
-			
-		/* Nothing to do */
+	// Start execution.
+	NRF_LOG_INFO("USBD BLE bridge Start execution");
+	NRF_LOG_INFO("Version %s %s", version_name, __DATE__);
+
+	int count = 0;
+	for (;;) {
+		if (count++ > 100 ) {
+			CheckIncommingData();
+			count = 0;
+		
 		}
-
-        idle_state_handle();
+		CheckIncommingData();
+		while (app_usbd_event_queue_process()) {
+			/* Nothing to do */
+		}
+		idle_state_handle();
     }
 }
+////////////////////////////////////////////////////////////////////////////////

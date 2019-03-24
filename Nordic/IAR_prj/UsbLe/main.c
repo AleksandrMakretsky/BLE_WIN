@@ -89,9 +89,39 @@
 #include "host_interfase.h"
 #include "flash_mem.h"
 #include "timestamp_timer.h"
+//------------------------------------------------------------------------------
 
-char version_name[] = "V0.000(RF)";
+// app vars
+#define BLE_MAX_SEND_LENGTH  120
+#if BLE_MAX_SEND_LENGTH > (NRF_SDH_BLE_GATT_MAX_MTU_SIZE - OPCODE_LENGTH - HANDLE_LENGTH)
+#error "length too long"
+#endif
+
+const char version_name[] = "UsbLe V1.001";
 char firmware_version[VERSION_NAME_LENGTH];
+#define RX_BUFFER_SIZE 512
+static char rx_buffer_fifo[RX_BUFFER_SIZE];
+static uint16_t inRxBufferIndex = 0;
+static uint16_t outRxBufferIndex = 0;
+static uint16_t rxBufferLength = 0;
+
+#define TX_BUFFER_SIZE 4096
+static char tx_buffer_fifo[TX_BUFFER_SIZE];
+static uint16_t inTxBufferIndex = 0;
+static uint16_t outTxBufferIndex = 0;
+static uint16_t txBufferLength = 0;
+
+static char send_buffer[BLE_MAX_SEND_LENGTH];
+
+bool readyToSend = true;
+WriteDataFn_t SendDataToHostFn = NULL;
+//------------------------------------------------------------------------------
+
+// app prototipes
+void channelWriteBle(char*data, uint16_t dataLength);
+void channelWriteUsb(char*data, uint16_t dataLength);
+void addDataToOutputQueue(char*data, uint16_t dataLength);
+//------------------------------------------------------------------------------
 
 #define LED_BLE_NUS_CONN (BSP_BOARD_LED_0)
 #define LED_BLE_NUS_RX   (BSP_BOARD_LED_1)
@@ -99,14 +129,6 @@ char firmware_version[VERSION_NAME_LENGTH];
 #define LED_CDC_ACM_RX   (BSP_BOARD_LED_3)
 
 #define LED_BLINK_INTERVAL 800
-
-#define BLE_MAX_SEND_LENGTH  64
-#if BLE_MAX_SEND_LENGTH > (NRF_SDH_BLE_GATT_MAX_MTU_SIZE - OPCODE_LENGTH - HANDLE_LENGTH)
-#error "length too long"
-#endif
-
-void channelWriteBle(char*data, uint16_t dataLength);
-void channelWriteUsb(char*data, uint16_t dataLength);
 
 APP_TIMER_DEF(m_blink_ble);
 APP_TIMER_DEF(m_blink_cdc);
@@ -173,10 +195,6 @@ APP_USBD_CDC_ACM_GLOBAL_DEF(m_app_cdc_acm,
 
 #define DEAD_BEEF                       0xDEADBEEF                                  /**< Value used as error code on stack dump. Can be used to identify stack location on stack unwind. */
 
-#define UART_TX_BUF_SIZE                256                                         /**< UART TX buffer size. */
-#define UART_RX_BUF_SIZE                256                                         /**< UART RX buffer size. */
-
-
 BLE_NUS_DEF(m_nus, NRF_SDH_BLE_TOTAL_LINK_COUNT);                                   /**< BLE NUS service instance. */
 NRF_BLE_GATT_DEF(m_gatt);                                                           /**< GATT module instance. */
 BLE_ADVERTISING_DEF(m_advertising);                                                 /**< Advertising module instance. */
@@ -187,15 +205,7 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 {
     {BLE_UUID_NUS_SERVICE, NUS_SERVICE_UUID_TYPE}
 };
-static char m_nus_data_array[BLE_NUS_MAX_DATA_LEN];
-
-#define RX_BUFFER_SIZE 512
-static char m_rx_buffer_fifo[RX_BUFFER_SIZE];
-static uint16_t inRxBufferIndex = 0;
-static uint16_t outRxBufferIndex = 0;
-static uint16_t rxBufferLength = 0;
-bool readyToSend = true;
-
+//------------------------------------------------------------------------------
 // BLE DEFINES END
 
 /**
@@ -210,14 +220,16 @@ bool readyToSend = true;
  * @param[in] line_num    Line number of the failing ASSERT call.
  * @param[in] p_file_name File name of the failing ASSERT call.
  */
-void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name)
-{
+void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name) {
+	
     app_error_handler(DEAD_BEEF, line_num, p_file_name);
 }
+////////////////////////////////////////////////////////////////////////////////
+
 
 /** @brief Function for initializing the timer module. */
-static void timers_init(void)
-{
+static void timers_init(void) {
+
     ret_code_t err_code = app_timer_init();
     APP_ERROR_CHECK(err_code);
     err_code = app_timer_create(&m_blink_ble, APP_TIMER_MODE_REPEATED, blink_handler);
@@ -225,6 +237,7 @@ static void timers_init(void)
     err_code = app_timer_create(&m_blink_cdc, APP_TIMER_MODE_REPEATED, blink_handler);
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Function for the GAP initialization.
@@ -232,8 +245,8 @@ static void timers_init(void)
  * @details This function sets up all the necessary GAP (Generic Access Profile) parameters of
  *          the device. It also sets the permissions and appearance.
  */
-static void gap_params_init(void)
-{
+static void gap_params_init(void) {
+
     uint32_t                err_code;
     ble_gap_conn_params_t   gap_conn_params;
     ble_gap_conn_sec_mode_t sec_mode;
@@ -255,6 +268,7 @@ static void gap_params_init(void)
     err_code = sd_ble_gap_ppcp_set(&gap_conn_params);
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**
@@ -265,57 +279,28 @@ static void gap_params_init(void)
  *
  * @param[in] p_evt Nordic UART Service event.
  */
+static void nus_data_handler(ble_nus_evt_t * p_evt) {
 
-uint16_t cnt_data=0;
-
-static void nus_data_handler(ble_nus_evt_t * p_evt)
-{
-
-    if (p_evt->type == BLE_NUS_EVT_RX_DATA)
-    {
-        bsp_board_led_invert(LED_BLE_NUS_RX);
-        NRF_LOG_DEBUG("Received data from BLE NUS.");
-        NRF_LOG_HEXDUMP_DEBUG(p_evt->params.rx_data.p_data, p_evt->params.rx_data.length);
-        memcpy(m_nus_data_array, p_evt->params.rx_data.p_data, p_evt->params.rx_data.length);
+    if (p_evt->type == BLE_NUS_EVT_RX_DATA) {
+		
+		bsp_board_led_invert(LED_BLE_NUS_RX);
 
 		//  move incomming data to our buffer
 		NRF_LOG_INFO("Got bytes from BLE: %lu ", p_evt->params.rx_data.length);
 		for (int i = 0; i < p_evt->params.rx_data.length; i++) {
-			m_rx_buffer_fifo[inRxBufferIndex] = p_evt->params.rx_data.p_data[i];
+			rx_buffer_fifo[inRxBufferIndex] = p_evt->params.rx_data.p_data[i];
 			inRxBufferIndex = (inRxBufferIndex+1)&(RX_BUFFER_SIZE-1);
 			rxBufferLength++;
 		}
-		channelWriteFn = channelWriteBle; // init call back writing function
-
-        // Add endline characters
-        uint16_t length = p_evt->params.rx_data.length;
-        if (length + sizeof(ENDLINE_STRING) < BLE_NUS_MAX_DATA_LEN)
-        {
-            memcpy(m_nus_data_array + length, ENDLINE_STRING, sizeof(ENDLINE_STRING));
-            length += sizeof(ENDLINE_STRING);
-        }
-        
- //cnt_data=0;   
-    
-NRF_LOG_INFO("nus_data_handler(): %d", p_evt->params.rx_data.length);        
-/*
-        // Send data through CDC ACM
-        ret_code_t ret = app_usbd_cdc_acm_write(&m_app_cdc_acm,
-                                                m_nus_data_array,
-                                                length);
-        if(ret != NRF_SUCCESS)
-        {
-            NRF_LOG_INFO("CDC ACM unavailable, data received: %s", m_nus_data_array);
-        }
-*/		
+		SendDataToHostFn = channelWriteBle;
     }
-
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief Function for initializing services that will be used by the application. */
-static void services_init(void)
-{
+static void services_init(void) {
+
     uint32_t       err_code;
     ble_nus_init_t nus_init;
 
@@ -326,21 +311,24 @@ static void services_init(void)
     err_code = ble_nus_init(&m_nus, &nus_init);
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
+
 
 /**
  * @brief Function for handling errors from the Connection Parameters module.
  *
  * @param[in] nrf_error  Error code containing information about what went wrong.
  */
-static void conn_params_error_handler(uint32_t nrf_error)
-{
+static void conn_params_error_handler(uint32_t nrf_error) {
+
     APP_ERROR_HANDLER(nrf_error);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief Function for initializing the Connection Parameters module. */
-static void conn_params_init(void)
-{
+static void conn_params_init(void) {
+
     uint32_t               err_code;
     ble_conn_params_init_t cp_init;
 
@@ -358,6 +346,7 @@ static void conn_params_init(void)
     err_code = ble_conn_params_init(&cp_init);
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**
@@ -365,8 +354,8 @@ static void conn_params_init(void)
  *
  * @note This function does not return.
  */
-static void sleep_mode_enter(void)
-{
+static void sleep_mode_enter(void) {
+
     uint32_t err_code = bsp_indication_set(BSP_INDICATE_IDLE);
     APP_ERROR_CHECK(err_code);
 
@@ -378,14 +367,16 @@ static void sleep_mode_enter(void)
     err_code = sd_power_system_off();
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief Function for starting advertising. */
-static void advertising_start(void)
-{
+static void advertising_start(void) {
+
     uint32_t err_code = ble_advertising_start(&m_advertising, BLE_ADV_MODE_FAST);
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Function for handling advertising events.
@@ -394,8 +385,8 @@ static void advertising_start(void)
  *
  * @param[in] ble_adv_evt  Advertising event.
  */
-static void on_adv_evt(ble_adv_evt_t ble_adv_evt)
-{
+static void on_adv_evt(ble_adv_evt_t ble_adv_evt) {
+
     uint32_t err_code;
 
     switch (ble_adv_evt)
@@ -414,6 +405,7 @@ static void on_adv_evt(ble_adv_evt_t ble_adv_evt)
             break;
     }
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**
@@ -422,8 +414,8 @@ static void on_adv_evt(ble_adv_evt_t ble_adv_evt)
  * @param[in]   p_ble_evt   Bluetooth stack event.
  * @param[in]   p_context   Unused.
  */
-static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
-{
+static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context) {
+
     uint32_t err_code;
 
     switch (p_ble_evt->header.evt_id)
@@ -531,6 +523,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             break;
     }
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**
@@ -538,8 +531,8 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
  *
  * @details This function initializes the SoftDevice and the BLE event interrupt.
  */
-static void ble_stack_init(void)
-{
+static void ble_stack_init(void) {
+
     ret_code_t err_code;
 
     err_code = nrf_sdh_enable_request();
@@ -558,11 +551,12 @@ static void ble_stack_init(void)
     // Register a handler for BLE events.
     NRF_SDH_BLE_OBSERVER(m_ble_observer, APP_BLE_OBSERVER_PRIO, ble_evt_handler, NULL);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief Function for handling events from the GATT library. */
-void gatt_evt_handler(nrf_ble_gatt_t * p_gatt, nrf_ble_gatt_evt_t const * p_evt)
-{
+void gatt_evt_handler(nrf_ble_gatt_t * p_gatt, nrf_ble_gatt_evt_t const * p_evt) {
+
     if ((m_conn_handle == p_evt->conn_handle) && (p_evt->evt_id == NRF_BLE_GATT_EVT_ATT_MTU_UPDATED))
     {
         m_ble_nus_max_data_len = p_evt->params.att_mtu_effective - OPCODE_LENGTH - HANDLE_LENGTH;
@@ -572,11 +566,12 @@ void gatt_evt_handler(nrf_ble_gatt_t * p_gatt, nrf_ble_gatt_evt_t const * p_evt)
                   p_gatt->att_mtu_desired_central,
                   p_gatt->att_mtu_desired_periph);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief Function for initializing the GATT library. */
-void gatt_init(void)
-{
+void gatt_init(void) {
+
     ret_code_t err_code;
 
     err_code = nrf_ble_gatt_init(&m_gatt, gatt_evt_handler);
@@ -585,6 +580,7 @@ void gatt_init(void)
     err_code = nrf_ble_gatt_att_mtu_periph_set(&m_gatt, NRF_SDH_BLE_GATT_MAX_MTU_SIZE);
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**
@@ -592,8 +588,8 @@ void gatt_init(void)
  *
  * @param[in]   event   Event generated by button press.
  */
-void bsp_event_handler(bsp_event_t event)
-{
+void bsp_event_handler(bsp_event_t event) {
+
     uint32_t err_code;
     switch (event)
     {
@@ -624,10 +620,12 @@ void bsp_event_handler(bsp_event_t event)
             break;
     }
 }
+////////////////////////////////////////////////////////////////////////////////
+
 
 /** @brief Function for initializing the Advertising functionality. */
-static void advertising_init(void)
-{
+static void advertising_init(void) {
+
     uint32_t               err_code;
     ble_advertising_init_t init;
 
@@ -651,32 +649,35 @@ static void advertising_init(void)
 
     ble_advertising_conn_cfg_tag_set(&m_advertising, APP_BLE_CONN_CFG_TAG);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief Function for initializing buttons and LEDs. */
-static void buttons_leds_init(void)
-{
+static void buttons_leds_init(void) {
+
     uint32_t err_code = bsp_init(BSP_INIT_LEDS, bsp_event_handler);
     APP_ERROR_CHECK(err_code);
 }
 
 
 /** @brief Function for initializing the nrf_log module. */
-static void log_init(void)
-{
+static void log_init(void) {
+
     ret_code_t err_code = NRF_LOG_INIT(NULL);
     APP_ERROR_CHECK(err_code);
 
     NRF_LOG_DEFAULT_BACKENDS_INIT();
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /** @brief Function for placing the application in low power state while waiting for events. */
-static void power_manage(void)
-{
+static void power_manage(void) {
+
     uint32_t err_code = sd_app_evt_wait();
     APP_ERROR_CHECK(err_code);
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**
@@ -684,8 +685,8 @@ static void power_manage(void)
  *
  * @details If there is no pending log operation, then sleep until next the next event occurs.
  */
-static void idle_state_handle(void)
-{
+static void idle_state_handle(void) {
+	
     UNUSED_RETURN_VALUE(NRF_LOG_PROCESS());
     power_manage();
 }
@@ -694,13 +695,10 @@ static void idle_state_handle(void)
 
 // USB CODE START
 static bool m_usb_connected = false;
-////////////////////////////////////////////////////////////////////////////////
-
-
 /** @brief User event handler @ref app_usbd_cdc_acm_user_ev_handler_t */
 static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
-                                    app_usbd_cdc_acm_user_event_t event)
-{
+                                    app_usbd_cdc_acm_user_event_t event) {
+
     app_usbd_cdc_acm_t const * p_cdc_acm = app_usbd_cdc_acm_class_get(p_inst);
 
     switch (event)
@@ -740,17 +738,16 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
 			{ // '{' need it for vars declaration inside
             ret_code_t ret;
 			size_t size = 0;
-            do
-            {
+            do {
 				size++;
-				m_rx_buffer_fifo[inRxBufferIndex] = m_cdc_data_array[0];
+				rx_buffer_fifo[inRxBufferIndex] = m_cdc_data_array[0];
 				inRxBufferIndex = (inRxBufferIndex+1)&(RX_BUFFER_SIZE-1);
 				rxBufferLength++;
 
                 // Fetch data until internal buffer is empty
                 ret = app_usbd_cdc_acm_read(&m_app_cdc_acm, &m_cdc_data_array[0], 1);
             } while (ret == NRF_SUCCESS);
-			channelWriteFn = channelWriteUsb; // init call back writing function
+			SendDataToHostFn = channelWriteUsb;
 
 			NRF_LOG_INFO("Usb got bytes: %lu ", size);
             break;
@@ -762,9 +759,9 @@ static void cdc_acm_user_ev_handler(app_usbd_class_inst_t const * p_inst,
 /////////////////////////////////////////////////////////////////////////////
 
 
-static void usbd_user_ev_handler(app_usbd_event_type_t event)
-{
-    switch (event)
+static void usbd_user_ev_handler(app_usbd_event_type_t event) {
+
+	switch (event)
     {
         case APP_USBD_EVT_DRV_SUSPEND:
             break;
@@ -815,7 +812,7 @@ static void usbd_user_ev_handler(app_usbd_event_type_t event)
             break;
     }
 }
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 void channelWriteUsb(char*data, uint16_t dataLength) {
@@ -827,20 +824,14 @@ void channelWriteUsb(char*data, uint16_t dataLength) {
 ////////////////////////////////////////////////////////////////////////////////
 // USB CODE END
 
-
-
 void channelWriteBle(char* data, uint16_t dataLength) {
-
-//testing line    for( i = 0; i < BLE_MAX_LEN_TX ; i++ ) data[i]=n++;
 
 	uint16_t length = dataLength;
 	if ( length > BLE_MAX_SEND_LENGTH ) length = BLE_MAX_SEND_LENGTH;
 	
 	ble_nus_data_send(&m_nus, (uint8_t*)data, &length, m_conn_handle);
-	readyToSend = false; // "true" will be in the ble_nus_on_ble_evt()
-
 	NRF_LOG_INFO("BLE channelWriteBle bytes count: %d", length);
-	NRF_LOG_INFO("readyToSend = false");
+	readyToSend = false; // "true" will be in the ble_nus_on_ble_evt()
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -848,9 +839,40 @@ void channelWriteBle(char* data, uint16_t dataLength) {
 void checkIncommingData() {
 	
 	while ( rxBufferLength > 0 ) {
-		addIncomingData(m_rx_buffer_fifo[outRxBufferIndex]);
+		addIncomingData(rx_buffer_fifo[outRxBufferIndex]);
 		outRxBufferIndex = (outRxBufferIndex+1) & (RX_BUFFER_SIZE-1);
 		rxBufferLength--;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+void checkOutStream() {
+	
+	if ( !readyToSend ) return;
+	int count = 0;
+	while ( outTxBufferIndex != inTxBufferIndex ) {
+	
+		send_buffer[count] = tx_buffer_fifo[outTxBufferIndex];
+		outTxBufferIndex = (outTxBufferIndex+1) & (TX_BUFFER_SIZE-1);
+		count++;
+		txBufferLength++;
+		if (count >= BLE_MAX_SEND_LENGTH ) break;
+	}
+	
+	if ( count > 0 && SendDataToHostFn != NULL ) {
+		SendDataToHostFn(send_buffer, count);
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+void addDataToOutputQueue(char*data, uint16_t dataLength) {
+
+	for ( int count = 0; count < dataLength; count++) {
+		tx_buffer_fifo[inTxBufferIndex] = data[count];
+		inTxBufferIndex = (inTxBufferIndex+1) & (TX_BUFFER_SIZE-1);
+		txBufferLength--;
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -861,6 +883,10 @@ void initRxBuffer() {
 	inRxBufferIndex = 0;
 	outRxBufferIndex = 0;
 	rxBufferLength = 0;
+	
+	inTxBufferIndex = 0;
+	outTxBufferIndex = 0;
+	txBufferLength = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -902,7 +928,8 @@ int main(void) {
 	// end for ble
 
 	// app init
-	channelWriteFn = NULL;
+	channelWriteFn = addDataToOutputQueue;
+
 	memset(firmware_version, 0, sizeof(firmware_version));
 	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
 	hostInterfaseInit();
@@ -915,13 +942,12 @@ int main(void) {
     for (;;) {
 		
 		checkIncommingData();
+		checkOutStream();
 
-        while (app_usbd_event_queue_process())
-        {
+        while (app_usbd_event_queue_process()) {
             /* Nothing to do */
         }
         
-		hostInterfaseProcessPoll(readyToSend);
         idle_state_handle();
     }
 }

@@ -38,15 +38,11 @@ extern char* received_msg_buffer;
 static char response_buffer[128];
 #pragma data_alignment=2
 static char data_block_buffer[512+24];
-ChannelWriteFn_t channelWriteFn = NULL; //callback function to push data to channel 
-
-#pragma data_alignment=2
-static Response responseBuffer[RESPONCE_BUFFER_LRNGTH];
-static uint16_t inputResponseIndex;
-static uint16_t outputResponseIndex;
+WriteDataFn_t channelWriteFn = NULL; //callback function to push data to channel 
 
 static DsDeviceId dsDeviceId = { NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT };
 static uint8_t monitoringMode = MONITORING_MODE_OFF;
+//------------------------------------------------------------------------------
 
 void parseIncomingMessage(char* received_msg);
 void readDeviceId();
@@ -54,22 +50,7 @@ void storeDeviceId();
 void onCommandSetMonitoringMode(uint8_t modeValue);
 void onDataBlockReady(char* data);
 void sendDataToHost(char* data);
-////////////////////////////////////////////////////////////////////////////////
-
-
-void hostInterfaseProcessPoll(bool _readyToSend) {
-
-	if ( !_readyToSend ) return;
-	if ( outputResponseIndex != inputResponseIndex ) {
-		sendDataToHost((char*)&responseBuffer[outputResponseIndex]);
-		outputResponseIndex = (outputResponseIndex+1)&(RESPONCE_BUFFER_LRNGTH-1);
-	}
-
-#ifdef SPIRO
-	spiroProcessResetTimeout();
-#endif
-}
-////////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------
 
 
 void sendDataToHost(char* data) {
@@ -88,8 +69,13 @@ void sendDataToHost(char* data) {
 
 void addResponseDataToQueue(Response *response) {
 
-	memcpy(&responseBuffer[inputResponseIndex], response, sizeof(Response));
-	inputResponseIndex = (inputResponseIndex+1)&(RESPONCE_BUFFER_LRNGTH-1);
+	uint16_t count;
+	count = ((message_header_st*)response)->data_length + sizeof(message_header_st) + 1;
+
+	if ( count > 0 && channelWriteFn != NULL ) {
+		NRF_LOG_INFO("_send length: %d", count);
+		channelWriteFn((char*)response, count);
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -161,8 +147,6 @@ void hostInterfaseInit() {
 	NetLevelInit();
 	monitoringMode = MONITORING_MODE_OFF;
 	compressorSaveDataBlock = onDataBlockReady;
-	inputResponseIndex = 0;
-	outputResponseIndex = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 

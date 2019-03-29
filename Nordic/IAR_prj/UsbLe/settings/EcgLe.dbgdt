@@ -19,7 +19,7 @@
           
           
           
-        <Column0>131</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>193</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -34,7 +34,7 @@
         
         
       <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><ShowCodeCoverage>1</ShowCodeCoverage><ShowInstrProfiling>1</ShowInstrProfiling></Disassembly>
-    <Find-in-Files><ColumnWidth0>432</ColumnWidth0><ColumnWidth1>72</ColumnWidth1><ColumnWidth2>649</ColumnWidth2><ColumnWidth3>288</ColumnWidth3></Find-in-Files><WATCH_1><expressions><item>p_nus</item><item>p_client</item><item></item></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>177</item><item>150</item><item>100</item><item>164</item></col-widths></WATCH_1></Static>
+    <Find-in-Files><ColumnWidth0>432</ColumnWidth0><ColumnWidth1>72</ColumnWidth1><ColumnWidth2>649</ColumnWidth2><ColumnWidth3>288</ColumnWidth3></Find-in-Files><WATCH_1><expressions><item>p_nus</item><item>p_client</item><item>sd_softdevice_enable</item><item>p_info</item><item>clock_lf_cfg</item><item>received_msg_buffer</item><item>data</item><item>response_buffer</item><item></item></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>250</item><item>150</item><item>100</item><item>423</item></col-widths><PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></WATCH_1><Select-Ambiguous-Definitions><ColumnWidth0>547</ColumnWidth0><ColumnWidth1>78</ColumnWidth1><ColumnWidth2>939</ColumnWidth2></Select-Ambiguous-Definitions><CallStack><col-names><item>Frame</item><item>_I0</item></col-names><col-widths><item>3500</item><item>20</item></col-widths><PreferedWindows><Position>1</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></CallStack></Static>
     <Windows>
       
       
@@ -53,7 +53,7 @@
             <Factory>Build</Factory>
             <Session/>
           </Tab>
-        <Tab><Identity>TabID-16846-14118</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
+        <Tab><Identity>TabID-16846-14118</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-15716-18064</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab></Tabs>
         
       <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
         <Tabs>
@@ -63,24 +63,24 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>EcgLe/nRF_BLE_Services</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>EcgLe/Application</ExpandedNode><ExpandedNode>EcgLe/nRF_BLE_Services</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-1077-2192</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
+      <SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-27321-16823</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>925</YPos2><SelStart2>33929</SelStart2><SelEnd2>33929</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>56</SelStart2><SelEnd2>56</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>5536</SelStart2><SelEnd2>5536</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>227</YPos2><SelStart2>7139</SelStart2><SelEnd2>7139</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>836</YPos2><SelStart2>30384</SelStart2><SelEnd2>30384</SelEnd2></Tab><ActiveTab>1</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DsCommons\bee_command_codes.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>29</YPos2><SelStart2>1533</SelStart2><SelEnd2>1552</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DsCommons\bee_dev_info.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>559</SelStart2><SelEnd2>580</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-04D0C730><key>iaridepm.enu1</key></Toolbar-04D0C730></Sizes></Row0><Row1><Sizes><Toolbar-056974C0><key>debuggergui.enu1</key></Toolbar-056974C0><Toolbar-2AA370F8><key>armjlink2.enu1</key></Toolbar-2AA370F8></Sizes></Row1></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>681</Bottom><Right>205</Right><x>-2</x><y>-2</y><xscreen>261</xscreen><yscreen>176</yscreen><sizeHorzCX>182135</sizeHorzCX><sizeHorzCY>162662</sizeHorzCY><sizeVertCX>144452</sizeVertCX><sizeVertCY>631238</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>681</Bottom><Right>252</Right><x>-2</x><y>-2</y><xscreen>198</xscreen><yscreen>195</yscreen><sizeHorzCX>138172</sizeHorzCX><sizeHorzCY>180222</sizeHorzCY><sizeVertCX>177251</sizeVertCX><sizeVertCY>631238</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>332</Bottom><Right>1435</Right><x>-2</x><y>-2</y><xscreen>1437</xscreen><yscreen>334</yscreen><sizeHorzCX>1002791</sizeHorzCX><sizeHorzCY>308688</sizeHorzCY><sizeVertCX>182135</sizeVertCX><sizeVertCY>162662</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-0528C730><key>iaridepm.enu1</key></Toolbar-0528C730></Sizes></Row0><Row1><Sizes><Toolbar-0A923128><key>debuggergui.enu1</key></Toolbar-0A923128><Toolbar-0A924640><key>armjlink2.enu1</key></Toolbar-0A924640></Sizes></Row1></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>487</Bottom><Right>267</Right><x>-2</x><y>-2</y><xscreen>192</xscreen><yscreen>180</yscreen><sizeHorzCX>121982</sizeHorzCX><sizeHorzCY>162455</sizeHorzCY><sizeVertCX>170902</sizeVertCX><sizeVertCY>441336</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>487</Bottom><Right>303</Right><x>-2</x><y>-2</y><xscreen>160</xscreen><yscreen>221</yscreen><sizeHorzCX>101652</sizeHorzCX><sizeHorzCY>199458</sizeHorzCY><sizeVertCX>193774</sizeVertCX><sizeVertCY>441336</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>552</Bottom><Right>1576</Right><x>-2</x><y>-2</y><xscreen>1578</xscreen><yscreen>554</yscreen><sizeHorzCX>1002541</sizeHorzCX><sizeHorzCY>500000</sizeHorzCY><sizeVertCX>121982</sizeVertCX><sizeVertCY>162455</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

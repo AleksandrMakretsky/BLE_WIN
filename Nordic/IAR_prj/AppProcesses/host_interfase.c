@@ -33,6 +33,7 @@ host interfase
 
 extern char firmware_version[VERSION_NAME_LENGTH];
 extern char* received_msg_buffer;
+//------------------------------------------------------------------------------
 
 #pragma data_alignment=2
 static char response_buffer[128];
@@ -40,8 +41,24 @@ static char response_buffer[128];
 static char data_block_buffer[512+24];
 WriteDataFn_t channelWriteFn = NULL; //callback function to push data to channel 
 
-static DsDeviceId dsDeviceId = { NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT };
+static DsDeviceId dsDeviceId = { DEVICE_NAME_DEFAULT, DEVICE_NUMBER_DEFAULT };
 static uint8_t monitoringMode = MONITORING_MODE_OFF;
+
+static const char *cmd_lst[] = {
+	"AT+GetDeviseID\0",
+	"AT+GetFwVersion\0",
+	"AT+StartMonitoring\0",
+	"AT+StopMonitoring\0"};
+   //12345456789 123456789 123456789 32
+enum { 
+	AT_DEVICE_ID,
+	AT_FW_VERSION,
+	AT_START,
+	AT_STOP };
+#define STRING_MESSAGE_COUNT     4
+#define STRING_MESSAGE_LENGTH    128
+static char strMessageBuffer[STRING_MESSAGE_LENGTH];
+static uint16_t strBufferIndex = 0;
 //------------------------------------------------------------------------------
 
 void parseIncomingMessage(char* received_msg);
@@ -88,20 +105,13 @@ void onDataBlockReady(char* data) {
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void parseIncomingMessage(char* received_msg) {
+void handleOppCode(uint16_t opp_code, char* received_msg) {
 
-	uint16_t opp_code = ((message_header_st*)received_msg)->opcode;
 	bool response = false;
 	uint8_t tempChar;
-	
 
-	NRF_LOG_INFO("Got a message: 0x%.2x", opp_code);
 
-	if ( !(NetLevelIsCrcCorrect(received_msg)) ) {
-		opp_code = -1;
-	}
-
-	switch (opp_code ) {
+	switch ( opp_code ) {
 		
 		case CMD_GET_DEVICE_ID:
 			readDeviceId();
@@ -133,6 +143,11 @@ void parseIncomingMessage(char* received_msg) {
 				sizeof(monitoringMode), CMD_MONITORING_MODE);
 			response = true;
 		break;
+		case CMD_MONITORING_MODE:
+			NetLevelCreateResponse(response_buffer, (char*)&monitoringMode,
+				sizeof(monitoringMode), CMD_MONITORING_MODE);
+			response = true;
+		break;
 	}
 	
 	if ( response ) {
@@ -142,20 +157,77 @@ void parseIncomingMessage(char* received_msg) {
 ////////////////////////////////////////////////////////////////////////////////
 
 
+void parseIncomingMessage(char* received_msg) {
+
+	uint16_t opp_code = ((message_header_st*)received_msg)->opcode;
+
+	NRF_LOG_INFO("Got a message: 0x%.2x", opp_code);
+
+	if ( !(NetLevelIsCrcCorrect(received_msg)) ) {
+		opp_code = -1;
+	}
+
+	handleOppCode(opp_code, received_msg);
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
 void hostInterfaseInit() {
 	
 	NetLevelInit();
 	monitoringMode = MONITORING_MODE_OFF;
 	compressorSaveDataBlock = onDataBlockReady;
+	
+	strBufferIndex = 0;
+	memset(strMessageBuffer, 0, sizeof(strMessageBuffer));
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+void checkStringMessage(char data) {
+	
+	strBufferIndex = strBufferIndex & (STRING_MESSAGE_LENGTH-1);
+	strMessageBuffer[strBufferIndex++] = data;
+
+	if ( data == 0 ) {
+		strBufferIndex = 0;
+		memset(strMessageBuffer, 0, sizeof(strMessageBuffer));
+		return;
+	}
+	
+	uint16_t opp_code = -1;
+	for (uint16_t msgNomber = 0; msgNomber < STRING_MESSAGE_COUNT; msgNomber++ ) {
+		if ( strstr((char *)strMessageBuffer, cmd_lst[msgNomber]) != NULL ) {
+			
+			switch ( msgNomber ) {
+				case AT_DEVICE_ID: opp_code = CMD_GET_DEVICE_ID; break;
+				case AT_FW_VERSION:
+					opp_code = CMD_GET_FIRMWARE_VERSION; break;
+				case AT_START:
+					onCommandSetMonitoringMode(MONITORING_MODE_RUN);
+					opp_code = CMD_MONITORING_MODE;
+					break;
+				case AT_STOP:
+					onCommandSetMonitoringMode(MONITORING_MODE_OFF);
+					opp_code = CMD_MONITORING_MODE;
+					break;
+			}
+			handleOppCode(opp_code, response_buffer);
+		}
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
 void addIncomingData(char data) {
 
+
 	if ( NetLevelAddIncomingByte(data) >= 0 )	{
 		parseIncomingMessage(received_msg_buffer);
+		return;
 	}
+	
+	checkStringMessage(data);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -187,7 +259,7 @@ void readDeviceId() {
 		sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 	
 	if ( dsDeviceId.device_class[0] == 0xff ) {
-		dsDeviceId = (DsDeviceId){NUMBER_NAME_DEFAULT, NUMBER_DEVICE_DEFAULT};
+		dsDeviceId = (DsDeviceId){DEVICE_NAME_DEFAULT, DEVICE_NUMBER_DEFAULT};
 		flashMemSegmentWrite((char*)&dsDeviceId,
 			sizeof(dsDeviceId), FLASH_DEVICEID_OFFSET);
 	}

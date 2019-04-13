@@ -18,6 +18,13 @@ const nrf_drv_timer_t TIMER_TS = NRF_DRV_TIMER_INSTANCE(1);
 
 /////////////////////////////////////////////////////////////////////////////
 
+void timestampClear() {
+
+	nrf_drv_timer_clear(&TIMER_TS);
+}
+/////////////////////////////////////////////////////////////////////////////
+
+
 int32_t getTimestamp() {
 	
 	nrf_drv_timer_capture(&TIMER_TS, NRF_TIMER_CC_CHANNEL1);
@@ -51,6 +58,8 @@ void timestampTimerInit() {
 
 	nrf_drv_timer_extended_compare(
 		 &TIMER_TS, NRF_TIMER_CC_CHANNEL0, 0xffffffff, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
+
+	TIMER_TS.p_reg->CC[NRF_TIMER_CC_CHANNEL1] = 0;
 
 	nrf_drv_timer_enable(&TIMER_TS);
 }

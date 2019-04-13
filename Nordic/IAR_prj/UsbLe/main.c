@@ -44,6 +44,8 @@ USBD CDC ACM over BLE application main file.
 #include "host_interfase.h"
 #include "flash_mem.h"
 #include "timestamp_timer.h"
+
+#include "spiro_pin_config.h"
 //------------------------------------------------------------------------------
 
 // app vars
@@ -890,18 +892,19 @@ int main(void) {
 
 	memset(firmware_version, 0, sizeof(firmware_version));
 	sprintf(&firmware_version[0], "%s %s", version_name, __DATE__);
-	hostInterfaseInit();
 	initRxBuffer();
 	timestampTimerInit();
+	hostInterfaseInit();
 
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
 	
     for (;;) {
+//		TEST_INV;
 		
 		checkIncommingData();
 		checkOutStream();
-
+		
         while (app_usbd_event_queue_process()) {
             /* Nothing to do */
         }

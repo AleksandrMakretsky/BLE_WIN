@@ -21,6 +21,13 @@ host interfase
 #include "nrf_drv_timer.h"
 #include "compressor.h"
 
+#include "spiro_pin_config.h"
+
+
+#define IN_BUFFER_LENGTH   128
+static __int32 input_buffer[IN_BUFFER_LENGTH];
+static short in_index = 0;
+static short done_index = 0;
 
 const nrf_drv_timer_t TIMEOUT_TIMER_100MS = NRF_DRV_TIMER_INSTANCE(2);
 static bool initDone = false;
@@ -35,13 +42,24 @@ void spiroProcessResetTimeout() {
 
 
 static void timeoutTimerHandler(nrf_timer_event_t event_type, void* p_context) {
-	
+
 	uint32_t  temp_ts = getTimestamp();
-	for (int i = 0; i < 16; i++) {
-		compressorAddRaw32(temp_ts);
+
+	int count = 0;
+	while ( done_index != in_index) {
+		compressorAddRaw32(input_buffer[done_index]);
+		done_index = (done_index+1)&(IN_BUFFER_LENGTH-1);
+		count++;
 	}
 
-	NRF_LOG_INFO("no data from turbine timeout 100 ms");
+	if ( count == 0 ) {
+		clrbit(temp_ts, 1); // bit 1 = "0" means no data
+		compressorAddRaw32(temp_ts);
+	}
+	
+	compressorPushRaw32();
+
+	NRF_LOG_INFO("100 ms gone. data count %d TS %d", count, temp_ts);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -75,7 +93,34 @@ void initTimeoutTimer(){
 
 void spiroProcessInit() {
 	
+	in_index = 0;
+	done_index = 0;
+
 	initTimeoutTimer();
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+int testA = 0;
+int testB = 0;
+void interruptFromPhaseA(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
+
+	uint32_t  temp_ts = getTimestamp();
+	
+	if ( pin == IN1 ) {
+		setbit(temp_ts, 0);
+		testA++;
+		TEST_ON;
+	}
+	if ( pin == IN2 ) {
+		clrbit(temp_ts, 0);
+		testB++;
+		TEST_OFF;
+	}
+
+	setbit(temp_ts, 1); // bit 1 = "1" means timestamp from sensor
+	input_buffer[in_index++] = temp_ts;
+	in_index &= (IN_BUFFER_LENGTH-1);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -83,10 +128,14 @@ void spiroProcessInit() {
 void sensorProcessStart() {
 	
 	if ( !initDone ) {
+		initSpiroPins(interruptFromPhaseA);
 		spiroProcessInit();
 	}
 	nrf_drv_timer_clear(&TIMEOUT_TIMER_100MS);
 	nrf_drv_timer_enable(&TIMEOUT_TIMER_100MS);
+	timestampClear();
+	
+	NRF_LOG_INFO("sensorProcessStart");
 }
 ////////////////////////////////////////////////////////////////////////////////
 

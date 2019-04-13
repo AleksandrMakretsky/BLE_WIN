@@ -3037,6 +3037,9 @@
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\..\Boards\pca10056_UsbLe\spiro_pin_config.c</name>
+    </file>
   </group>
   <group>
     <name>Board Support</name>

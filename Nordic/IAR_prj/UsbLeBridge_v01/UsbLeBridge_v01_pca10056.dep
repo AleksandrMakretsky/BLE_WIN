@@ -6,513 +6,1048 @@
   <configuration>
     <name>nrf52840_xxaa</name>
     <outputs>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_backend_rtt.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\xtls.h</file>
-      <file>$PROJ_DIR$\_build\nrf_atomic.pbi</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT_printf.__cstat.et</file>
-      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
-      <file>$PROJ_DIR$\_build\nrf_fprintf_format.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_log_backend_rtt.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\hardfault_implementation.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_pwr_mgmt.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_db_discovery\ble_db_discovery.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gattc.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\xmtx.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_error_soc.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fifo\app_fifo.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_backend_rtt.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_memobj.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_descriptor.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_macros.h</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh_ble.__cstat.et</file>
-      <file>$TOOLKIT_DIR$\inc\c\xlocalelist.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\xlocale.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_err.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\nrfx_common.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus_c\ble_nus_c.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_clock.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_default_backends.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cm4.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cmSimd.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gatt.h</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_usbd.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\pwr_mgmt\nrf_pwr_mgmt.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\nrfx_errors.h</file>
-      <file>$PROJ_DIR$\_build\nrf_section_iter.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_log_str_formatter.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf51_to_nrf52840.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_irqs.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_frontend.pbi</file>
-      <file>$PROJ_DIR$\_build\utf.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_ringbuf.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd.h</file>
-      <file>$PROJ_DIR$\_build\system_nrf52840.pbi</file>
-      <file>$PROJ_DIR$\_build\nrfx_prs.pbi</file>
-      <file>$PROJ_DIR$\_build\nrfx_power_clock.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_clock.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_log_backend_serial.o</file>
-      <file>$PROJ_DIR$\_build\app_usbd.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_power.pbi</file>
-      <file>$PROJ_DIR$\_build\nrfx_gpiote.pbi</file>
-      <file>$PROJ_DIR$\_build\app_util_platform.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_fprintf_format.o</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_uart.pbi</file>
-      <file>$PROJ_DIR$\_build\types_porting.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_log_backend_rtt.o</file>
-      <file>$PROJ_DIR$\_build\ble_db_discovery.pbi</file>
-      <file>$PROJ_DIR$\_build\nrfx_clock.pbi</file>
-      <file>$PROJ_DIR$\_build\app_usbd_serial_num.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_pwr_mgmt.o</file>
-      <file>$PROJ_DIR$\_build\nrf_fprintf.o</file>
-      <file>$PROJ_DIR$\_build\app_usbd_cdc_acm.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_resources.h</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh_soc.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_irqs_nrf52840.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\nrfx.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_hci.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd.h</file>
-      <file>$PROJ_DIR$\_build\ble_app_uart_c_pca10056_s140.hex</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_util.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_l2cap.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_clock.h</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_svc.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble.h</file>
       <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\compiler_abstraction.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_ctrl.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_assert.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_types.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_ranges.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf_peripherals.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\compiler_abstraction.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_scan\nrf_ble_scan.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
       <file>$PROJ_DIR$\_build\bsp.o</file>
-      <file>$PROJ_DIR$\_build\utf.pbi</file>
-      <file>$PROJ_DIR$\_build\system_nrf52840.o</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh_ble.pbi</file>
-      <file>$PROJ_DIR$\_build\fds.o</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT_Syscalls_IAR.pbi</file>
-      <file>$PROJ_DIR$\_build\app_usbd_core.o</file>
-      <file>$PROJ_DIR$\_build\nrfx_prs.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_serial_num.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
-      <file>$PROJ_DIR$\_build\app_usbd_cdc_acm.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_gatt\nrf_ble_gatt.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.h</file>
-      <file>$PROJ_DIR$\_build\UsbLeBridge_v01_pca10056.pbd</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cmFunc.h</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT_printf.pbi</file>
-      <file>$PROJ_DIR$\_build\app_util_platform.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_backend_interface.h</file>
-      <file>$PROJ_DIR$\_build\crc16.o</file>
-      <file>$PROJ_DIR$\_build\app_error.o</file>
-      <file>$PROJ_DIR$\_build\boards.o</file>
-      <file>$PROJ_DIR$\_build\hardfault_implementation.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-      <file>$PROJ_DIR$\_build\nrf_atomic.o</file>
-      <file>$PROJ_DIR$\_build\app_button.o</file>
-      <file>$PROJ_DIR$\_build\app_error_handler_iar.o</file>
-      <file>$PROJ_DIR$\_build\app_timer.pbi</file>
-      <file>$PROJ_DIR$\_build\app_uart_fifo.o</file>
-      <file>$PROJ_DIR$\_build\main.o</file>
-      <file>$PROJ_DIR$\_build\nrfx_uarte.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_error.h</file>
-      <file>$PROJ_DIR$\..\MyNordic\flash_mem.c</file>
-      <file>$PROJ_DIR$\_build\bit_operations.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_sdm.h</file>
-      <file>$PROJ_DIR$\_build\nrf_ble_gatt.o</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_config.h</file>
-      <file>$PROJ_DIR$\_build\ble_advdata.pbi</file>
-      <file>$PROJ_DIR$\_build\utf.o</file>
-      <file>$PROJ_DIR$\..\DsCommons\bit_operations.h</file>
-      <file>$PROJ_DIR$\_build\nrfx_uart.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
-      <file>$PROJ_DIR$\_build\app_error.pbi</file>
-      <file>$PROJ_DIR$\_build\app_usbd_serial_num.__cstat.et</file>
-      <file>$PROJ_DIR$\..\DsCommons\compressor.h</file>
-      <file>$PROJ_DIR$\_build\app_usbd_string_desc.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf.h</file>
-      <file>$PROJ_DIR$\..\DsCommons\net_level.h</file>
-      <file>$PROJ_DIR$\_build\ble_app_uart_c_pca10056_s140.map</file>
-      <file>$PROJ_DIR$\_build\app_usbd.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_ble_gatt.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrfx_prs.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\ble_nus_c.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.h</file>
-      <file>$PROJ_DIR$\_build\net_level.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_uart.__cstat.et</file>
-      <file>$PROJ_DIR$\..\DsCommons\bee_data_types.h</file>
-      <file>$PROJ_DIR$\..\DsCommons\crc16_ccitt.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\nrfx_log.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_srv_common.h</file>
-      <file>$PROJ_DIR$\..\DsCommons\stdafx.h</file>
-      <file>$PROJ_DIR$\_build\app_usbd_core.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\app_scheduler.__cstat.et</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
-      <file>$PROJ_DIR$\_build\app_util_platform.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.h</file>
-      <file>$PROJ_DIR$\_build\app_timer.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_error_sdm.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_advdata.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_uarte.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_str_formatter.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\utf_converter\utf.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_uart.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_frontend.o</file>
-      <file>$PROJ_DIR$\_build\nrfx_power_clock.__cstat.et</file>
-      <file>$PROJ_DIR$\..\DsCommons\types_porting.h</file>
-      <file>$PROJ_DIR$\_build\hardfault_implementation.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_uart.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage_sd.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_uarte.h</file>
+      <file>$PROJ_DIR$\_build\ble_app_uart_c_pca10056_s140.hex</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_clock.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_assert.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_types.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_l2cap.h</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_svc.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$PROJ_DIR$\_build\app_usbd_cdc_acm.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_power.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_pwr_mgmt.o</file>
+      <file>$PROJ_DIR$\_build\nrf_fprintf.o</file>
+      <file>$PROJ_DIR$\_build\nrfx_power_clock.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_resources.h</file>
+      <file>$PROJ_DIR$\_build\app_util_platform.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_log_backend_rtt.o</file>
+      <file>$PROJ_DIR$\_build\types_porting.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_fprintf_format.o</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_uart.pbi</file>
+      <file>$PROJ_DIR$\_build\ble_db_discovery.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_log_backend_serial.o</file>
+      <file>$PROJ_DIR$\_build\app_usbd.pbi</file>
+      <file>$PROJ_DIR$\_build\app_usbd_serial_num.pbi</file>
+      <file>$PROJ_DIR$\_build\nrfx_clock.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error.h</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_clock.pbi</file>
+      <file>$PROJ_DIR$\_build\nrfx_gpiote.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\nrfx_glue.h</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT_Syscalls_IAR.o</file>
       <file>$PROJ_DIR$\_build\crc16.pbi</file>
       <file>$PROJ_DIR$\_build\nrf_drv_power.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh_soc.o</file>
       <file>$PROJ_DIR$\UsbLeBridge.icf</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT.o</file>
+      <file>$PROJ_DIR$\_build\bsp_btn_ble.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\ringbuf\nrf_ringbuf.h</file>
+      <file>$PROJ_DIR$\_build\nrf_log_default_backends.o</file>
+      <file>$PROJ_DIR$\_build\nrf_atfifo.pbi</file>
+      <file>$PROJ_DIR$\_build\main.pbi</file>
       <file>$PROJ_DIR$\_build\nrf_sdh_ble.o</file>
       <file>$PROJ_DIR$\_build\SEGGER_RTT_printf.o</file>
-      <file>$PROJ_DIR$\_build\nrf_log_default_backends.o</file>
-      <file>$PROJ_DIR$\_build\bsp_btn_ble.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_atfifo.pbi</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT_Syscalls_IAR.o</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh_soc.o</file>
-      <file>$PROJ_DIR$\_build\main.pbi</file>
-      <file>$PROJ_DIR$\_build\crc16_ccitt.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\nrfx_glue.h</file>
-      <file>$PROJ_DIR$\_build\compressor.pbi</file>
-      <file>$PROJ_DIR$\_build\fds.pbi</file>
       <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\ringbuf\nrf_ringbuf.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo_internal.h</file>
-      <file>$PROJ_DIR$\_build\app_error_weak.pbi</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT.o</file>
+      <file>$PROJ_DIR$\_build\crc16_ccitt.pbi</file>
+      <file>$PROJ_DIR$\_build\fds.pbi</file>
       <file>$PROJ_DIR$\_build\nrfx_power.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\app_uart_fifo.pbi</file>
       <file>$PROJ_DIR$\_build\net_level.o</file>
       <file>$PROJ_DIR$\_build\nrf_ble_scan.pbi</file>
-      <file>$PROJ_DIR$\_build\app_fifo.pbi</file>
-      <file>$PROJ_DIR$\_build\nrfx_uarte.pbi</file>
-      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-      <file>$PROJ_DIR$\_build\bsp.pbi</file>
-      <file>$PROJ_DIR$\_build\app_error_handler_iar.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo_internal.h</file>
       <file>$PROJ_DIR$\_build\app_scheduler.pbi</file>
+      <file>$PROJ_DIR$\_build\bsp.pbi</file>
+      <file>$PROJ_DIR$\_build\nrfx_uarte.pbi</file>
       <file>$PROJ_DIR$\_build\iar_startup_nrf52840.o</file>
-      <file>$PROJ_DIR$\_build\ble_nus_c.pbi</file>
-      <file>$PROJ_DIR$\_build\ble_srv_common.pbi</file>
-      <file>$PROJ_DIR$\_build\crc16_ccitt.o</file>
+      <file>$PROJ_DIR$\_build\app_fifo.pbi</file>
+      <file>$PROJ_DIR$\_build\compressor.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$PROJ_DIR$\_build\app_error_handler_iar.pbi</file>
+      <file>$PROJ_DIR$\_build\app_error_weak.pbi</file>
+      <file>$PROJ_DIR$\_build\app_uart_fifo.pbi</file>
+      <file>$PROJ_DIR$\_build\system_nrf52840.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh_soc.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_log_str_formatter.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_irqs.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\pwr_mgmt\nrf_pwr_mgmt.h</file>
+      <file>$PROJ_DIR$\_build\nrf_section_iter.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_log_frontend.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm.h</file>
+      <file>$PROJ_DIR$\_build\nrf_ringbuf.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_irqs_nrf52840.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\nrfx.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf51_to_nrf52840.h</file>
+      <file>$PROJ_DIR$\_build\nrfx_prs.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gatt.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cm4.h</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_usbd.pbi</file>
+      <file>$PROJ_DIR$\_build\utf.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cmSimd.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\nrfx_errors.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.h</file>
+      <file>$PROJ_DIR$\_build\nrf_log_str_formatter.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_uart.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\utf_converter\utf.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.h</file>
+      <file>$PROJ_DIR$\_build\nrf_log_frontend.o</file>
+      <file>$PROJ_DIR$\..\DsCommons\types_porting.h</file>
+      <file>$PROJ_DIR$\_build\hardfault_implementation.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage_sd.h</file>
+      <file>$PROJ_DIR$\_build\nrfx_power_clock.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_uart.h</file>
+      <file>$PROJ_DIR$\_build\app_usbd_core.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_uarte.h</file>
+      <file>$PROJ_DIR$\_build\app_timer.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\app_scheduler.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+      <file>$PROJ_DIR$\..\DsCommons\stdafx.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_srv_common.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_advdata.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_uarte.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\nrfx_log.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_error_sdm.h</file>
+      <file>$PROJ_DIR$\_build\app_util_platform.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\app_usbd_string_desc.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrfx_prs.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\app_usbd_serial_num.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\app_error.pbi</file>
+      <file>$PROJ_DIR$\..\DsCommons\compressor.h</file>
+      <file>$PROJ_DIR$\_build\app_usbd.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\net_level.pbi</file>
+      <file>$PROJ_DIR$\_build\nrfx_uart.pbi</file>
+      <file>$PROJ_DIR$\_build\ble_app_uart_c_pca10056_s140.map</file>
+      <file>$PROJ_DIR$\_build\nrf_ble_gatt.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_uart.__cstat.et</file>
+      <file>$PROJ_DIR$\..\DsCommons\bee_data_types.h</file>
+      <file>$PROJ_DIR$\..\DsCommons\bit_operations.h</file>
+      <file>$PROJ_DIR$\_build\ble_nus_c.__cstat.et</file>
+      <file>$PROJ_DIR$\..\DsCommons\crc16_ccitt.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf.h</file>
+      <file>$PROJ_DIR$\..\DsCommons\net_level.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
+      <file>$PROJ_DIR$\..\DsCommons\compressor.cpp</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_advdata.c</file>
+      <file>$PROJ_DIR$\..\DsCommons\net_level.cpp</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_srv_common.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_scan\nrf_ble_scan.c</file>
+      <file>$PROJ_DIR$\..\Boards\pca10056_UsbLeBridg\sdk_config.h</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\..\DsCommons\crc16_ccitt.cpp</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\system_nrf52840.c</file>
+      <file>$PROJ_DIR$\..\DsCommons\types_porting.cpp</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_db_discovery\ble_db_discovery.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_gatt\nrf_ble_gatt.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus_c\ble_nus_c.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_btn_ble.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_clock.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_power.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.c</file>
+      <file>$PROJ_DIR$\..\DsCommons\bit_operations.cpp</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\nrfx_common.h</file>
+      <file>$PROJ_DIR$\_build\nrf_pwr_mgmt.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xlocalelist.h</file>
+      <file>$PROJ_DIR$\_build\nrf_memobj.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_err.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xmtx.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_macros.h</file>
+      <file>$PROJ_DIR$\_build\nrf_log_backend_rtt.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\hardfault_implementation.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gattc.h</file>
+      <file>$PROJ_DIR$\_build\nrf_log_backend_rtt.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_error_soc.h</file>
+      <file>$PROJ_DIR$\_build\nrf_fprintf_format.pbi</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT_printf.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fifo\app_fifo.h</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh_ble.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_db_discovery\ble_db_discovery.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_descriptor.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xlocale.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_serial.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\strerror\nrf_strerror.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_soc.c</file>
+      <file>$TOOLKIT_DIR$\inc\c\xtls.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus_c\ble_nus_c.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_clock.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_Syscalls_IAR.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_default_backends.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_str_formatter.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_backend_rtt.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_rtt.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\retarget.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\ringbuf\nrf_ringbuf.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_printf.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\utf_converter\utf.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_frontend.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_core.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\crc16\crc16.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_handler_iar.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fds\fds.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\hardfault\hardfault_implementation.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\balloc\nrf_balloc.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\button\app_button.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fifo\app_fifo.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_serial_num.c</file>
+      <file>$PROJ_DIR$\_build\nrf_atomic.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\timer\app_timer.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_assert.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\scheduler\app_scheduler.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uarte.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_util_platform.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic\nrf_atomic.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\app_uart_fifo.c</file>
+      <file>$PROJ_DIR$\_build\nrf_log_default_backends.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_string_desc.c</file>
+      <file>$PROJ_DIR$\_build\app_util_platform.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh.pbi</file>
+      <file>$PROJ_DIR$\_build\crc16.o</file>
+      <file>$PROJ_DIR$\_build\app_usbd_cdc_acm.o</file>
+      <file>$PROJ_DIR$\_build\utf.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_serial_num.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.h</file>
+      <file>$PROJ_DIR$\_build\UsbLeBridge_v01_pca10056.pbd</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh_ble.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cmFunc.h</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT_printf.pbi</file>
+      <file>$PROJ_DIR$\_build\system_nrf52840.o</file>
+      <file>$PROJ_DIR$\_build\hardfault_implementation.o</file>
+      <file>$PROJ_DIR$\_build\app_error.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT_Syscalls_IAR.pbi</file>
+      <file>$PROJ_DIR$\_build\fds.o</file>
+      <file>$PROJ_DIR$\_build\app_usbd_core.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_gatt\nrf_ble_gatt.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_backend_interface.h</file>
+      <file>$PROJ_DIR$\_build\nrfx_prs.o</file>
+      <file>$PROJ_DIR$\_build\app_uart_fifo.o</file>
+      <file>$PROJ_DIR$\_build\main.o</file>
+      <file>$PROJ_DIR$\_build\bit_operations.pbi</file>
+      <file>$PROJ_DIR$\..\MyNordic\flash_mem.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_sdm.h</file>
+      <file>$PROJ_DIR$\_build\nrfx_uarte.o</file>
+      <file>$PROJ_DIR$\_build\utf.o</file>
+      <file>$PROJ_DIR$\_build\nrf_ble_gatt.o</file>
+      <file>$PROJ_DIR$\_build\ble_advdata.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_atomic.o</file>
+      <file>$PROJ_DIR$\_build\app_error_handler_iar.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_error.h</file>
+      <file>$PROJ_DIR$\_build\boards.o</file>
+      <file>$PROJ_DIR$\_build\app_timer.pbi</file>
+      <file>$PROJ_DIR$\_build\app_button.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uart.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power_clock.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_gpiote.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_clock.c</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power.c</file>
+      <file>$PROJ_DIR$\_build\app_usbd_string_desc.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\delay\nrf_delay.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_coredep.h</file>
+      <file>$PROJ_DIR$\_build\ble_app_uart_c_pca10056_s140.out</file>
+      <file>$PROJ_DIR$\_build\ble_advdata.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_soc.h</file>
+      <file>$PROJ_DIR$\_build\compressor.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52840.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+      <file>$PROJ_DIR$\_build\types_porting.o</file>
+      <file>$PROJ_DIR$\_build\bit_operations.o</file>
+      <file>$PROJ_DIR$\_build\app_error_weak.o</file>
+      <file>$PROJ_DIR$\_build\nrfx_power.o</file>
+      <file>$PROJ_DIR$\_build\nrfx_uart.o</file>
+      <file>$PROJ_DIR$\_build\ble_srv_common.o</file>
+      <file>$PROJ_DIR$\_build\app_fifo.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_default_backends.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_soc.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd_errata.h</file>
+      <file>$PROJ_DIR$\_build\nrf_fprintf.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_atfifo.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_os.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_core.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_usbd.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_errors.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52_to_nrf52840.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\system_nrf52840.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52840_peripherals.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm_internal.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_types.h</file>
+      <file>$PROJ_DIR$\_build\nrf_ble_scan.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cmInstr.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\apply_old_config.h</file>
+      <file>$PROJ_DIR$\_build\app_usbd.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$PROJ_DIR$\_build\nrf_log_backend_serial.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_instance.h</file>
+      <file>$PROJ_DIR$\_build\nrf_ble_scan.o</file>
+      <file>$PROJ_DIR$\_build\app_scheduler.o</file>
+      <file>$PROJ_DIR$\_build\app_button.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_usbd.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gap.h</file>
+      <file>$PROJ_DIR$\_build\nrf_assert.o</file>
+      <file>$PROJ_DIR$\_build\bsp_btn_ble.o</file>
+      <file>$PROJ_DIR$\_build\app_timer.o</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_clock.o</file>
+      <file>$PROJ_DIR$\_build\nrf_assert.pbi</file>
       <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-      <file>$PROJ_DIR$\_build\ble_db_discovery.o</file>
-      <file>$PROJ_DIR$\_build\app_button.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\app_error.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\ble_advdata.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\ble_srv_common.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\app_error_weak.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\system_nrf52840.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_bitmask.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_gpiote.h</file>
+      <file>$PROJ_DIR$\_build\crc16_ccitt.o</file>
+      <file>$PROJ_DIR$\_build\app_error.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\boards.pbi</file>
+      <file>$PROJ_DIR$\_build\app_error_handler_iar.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\system_nrf52840.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrfx_uart.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\app_button.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\net_level.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\ble_srv_common.__cstat.et</file>
       <file>$PROJ_DIR$\_build\ble_db_discovery.__cstat.et</file>
       <file>$PROJ_DIR$\_build\boards.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\crc16.__cstat.et</file>
       <file>$PROJ_DIR$\_build\crc16_ccitt.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\ble_nus_c.pbi</file>
+      <file>$PROJ_DIR$\_build\ble_db_discovery.o</file>
+      <file>$PROJ_DIR$\_build\ble_advdata.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_bitmask.h</file>
+      <file>$PROJ_DIR$\_build\crc16.__cstat.et</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic\nrf_atomic.h</file>
       <file>$PROJ_DIR$\_build\nrfx_uarte.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\app_error_weak.__cstat.et</file>
       <file>$PROJ_DIR$\_build\flash_mem.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\boards.pbi</file>
-      <file>$PROJ_DIR$\_build\nrfx_uart.__cstat.et</file>
       <file>$PROJ_DIR$\_build\bsp_btn_ble.__cstat.et</file>
       <file>$PROJ_DIR$\_build\app_fifo.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\app_error_handler_iar.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\net_level.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrfx_clock.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\main.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\compressor.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_clock.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\mutex\nrf_mtx.h</file>
+      <file>$PROJ_DIR$\_build\ble_srv_common.pbi</file>
       <file>$PROJ_DIR$\_build\nrfx_power.pbi</file>
+      <file>$PROJ_DIR$\_build\nrfx_clock.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\compressor.__cstat.et</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_gpiote.h</file>
-      <file>$PROJ_DIR$\_build\app_usbd_cdc_acm.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\types_porting.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\balloc\nrf_balloc.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\strerror\nrf_strerror.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_power.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\app_usbd_cdc_desc.h</file>
-      <file>$PROJ_DIR$\_build\nrfx_gpiote.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\bsp.__cstat.et</file>
       <file>$TOOLKIT_DIR$\lib\dl7M_tlf.a</file>
       <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_gpiote.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_ctrl_internal.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_sd_def.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_internal.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
-      <file>$PROJ_DIR$\_build\app_uart_fifo.__cstat.et</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
-      <file>$PROJ_DIR$\_build\bit_operations.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_clock.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_backend_serial.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_fprintf.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_section_iter.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\app_usbd_cdc_types.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_power.h</file>
-      <file>$PROJ_DIR$\_build\nrf_atomic.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_nvic.h</file>
-      <file>$PROJ_DIR$\_build\nrf_balloc.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh_soc.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_memobj.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\boards\pca10056.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_string_desc.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_str_formatter.__cstat.et</file>
-      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_default_backends.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\nrfx_config.h</file>
-      <file>$PROJ_DIR$\_build\retarget.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gatts.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_gatt_db.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\button\app_button.h</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT_Syscalls_IAR.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\SEGGER_RTT.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_strerror.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52840_bitfields.h</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_clock.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\mutex\nrf_mtx.h</file>
+      <file>$PROJ_DIR$\_build\app_usbd_cdc_acm.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\types_porting.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\strerror\nrf_strerror.h</file>
+      <file>$PROJ_DIR$\_build\nrfx_gpiote.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\app_usbd_cdc_desc.h</file>
+      <file>$PROJ_DIR$\_build\main.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\balloc\nrf_balloc.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_power.h</file>
+      <file>$PROJ_DIR$\_build\bsp.__cstat.et</file>
       <file>$PROJ_DIR$\_build\nrf_log_frontend.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_types.h</file>
-      <file>$PROJ_DIR$\_build\nrf_sdh.o</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_power.o</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_uart.o</file>
+      <file>$PROJ_DIR$\_build\nrf_strerror.__cstat.et</file>
       <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
       <file>$PROJ_DIR$\_build\nrfx_power_clock.o</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_gatt_db.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gatts.h</file>
+      <file>$PROJ_DIR$\_build\retarget.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\nrfx_config.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_types.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\button\app_button.h</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_power.o</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh.o</file>
       <file>$PROJ_DIR$\_build\nrf_ringbuf.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrfx_gpiote.o</file>
-      <file>$PROJ_DIR$\_build\nrfx_clock.o</file>
+      <file>$PROJ_DIR$\_build\nrf_log_default_backends.__cstat.et</file>
       <file>$PROJ_DIR$\_build\nrf_atfifo.o</file>
-      <file>$PROJ_DIR$\_build\ble_nus_c.o</file>
       <file>$PROJ_DIR$\_build\nrf_drv_usbd.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\fds.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_ringbuf.o</file>
-      <file>$PROJ_DIR$\_build\app_usbd_core.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\utf_converter\utf.c</file>
-      <file>$PROJ_DIR$\_build\retarget.o</file>
-      <file>$PROJ_DIR$\_build\nrf_ble_gatt.pbi</file>
-      <file>$PROJ_DIR$\_build\flash_mem.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52840_bitfields.h</file>
+      <file>$PROJ_DIR$\_build\nrfx_gpiote.o</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT_Syscalls_IAR.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\SEGGER_RTT.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_drv_uart.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\locale.h</file>
+      <file>$PROJ_DIR$\_build\nrfx_clock.o</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_util_platform.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_soc.c</file>
-      <file>$PROJ_DIR$\_build\nrf_memobj.o</file>
-      <file>$PROJ_DIR$\_build\app_usbd_serial_num.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.c</file>
-      <file>$PROJ_DIR$\_build\app_usbd_string_desc.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nordic_common.h</file>
+      <file>$PROJ_DIR$\_build\flash_mem.pbi</file>
       <file>$PROJ_DIR$\_build\nrf_balloc.o</file>
+      <file>$PROJ_DIR$\_build\fds.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\app_usbd_serial_num.o</file>
       <file>$PROJ_DIR$\_build\nrf_strerror.o</file>
+      <file>$PROJ_DIR$\_build\nrf_ringbuf.o</file>
+      <file>$PROJ_DIR$\_build\retarget.o</file>
+      <file>$PROJ_DIR$\_build\ble_nus_c.o</file>
+      <file>$PROJ_DIR$\_build\app_usbd_string_desc.pbi</file>
+      <file>$PROJ_DIR$\_build\nrf_memobj.o</file>
+      <file>$PROJ_DIR$\_build\nrf_ble_gatt.pbi</file>
       <file>$PROJ_DIR$\_build\nrf_section_iter.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_rtt.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_serial.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_util_platform.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_str_formatter.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\retarget.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic\nrf_atomic.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_default_backends.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\hardfault\hardfault_implementation.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_assert.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_frontend.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_printf.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_Syscalls_IAR.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\crc16\crc16.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\balloc\nrf_balloc.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fds\fds.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\ringbuf\nrf_ringbuf.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\strerror\nrf_strerror.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_srv_common.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_gatt\nrf_ble_gatt.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp.c</file>
-      <file>$PROJ_DIR$\..\DsCommons\net_level.cpp</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_scan\nrf_ble_scan.c</file>
-      <file>$PROJ_DIR$\..\DsCommons\crc16_ccitt.cpp</file>
-      <file>$PROJ_DIR$\..\DsCommons\compressor.cpp</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_advdata.c</file>
-      <file>$PROJ_DIR$\..\Boards\pca10056_UsbLeBridg\sdk_config.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_db_discovery\ble_db_discovery.c</file>
-      <file>$PROJ_DIR$\main.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_btn_ble.c</file>
-      <file>$PROJ_DIR$\..\DsCommons\types_porting.cpp</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s</file>
-      <file>$PROJ_DIR$\..\DsCommons\bit_operations.cpp</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\system_nrf52840.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uart.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\scheduler\app_scheduler.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_serial_num.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_string_desc.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uarte.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\timer\app_timer.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_clock.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_power.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_gpiote.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_handler_iar.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fifo\app_fifo.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\app_uart_fifo.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\button\app_button.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_core.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_clock.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus_c\ble_nus_c.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power_clock.c</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_Conf.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\app_uart.h</file>
-      <file>$PROJ_DIR$\_build\nrf_balloc.pbi</file>
+      <file>$PROJ_DIR$\_build\app_usbd_core.pbi</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_serial.h</file>
+      <file>$PROJ_DIR$\_build\nrf_assert.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\retarget.pbi</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\timer\app_timer.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_request.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\wchar.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ctype.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\app_uart.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_common.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_btn_ble.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_Conf.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_str_formatter.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\scheduler\app_scheduler.h</file>
+      <file>$PROJ_DIR$\_build\nrf_balloc.pbi</file>
       <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_power.h</file>
       <file>$PROJ_DIR$\_build\nrf_pwr_mgmt.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\ctype.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_langid.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_common.h</file>
       <file>$TOOLKIT_DIR$\inc\c\xlocale_lconv.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\timer\app_timer.h</file>
-      <file>$PROJ_DIR$\_build\nrf_fprintf_format.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\nrf_assert.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_langid.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic\nrf_atomic_internal.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_gpio.h</file>
       <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_class_base.h</file>
+      <file>$PROJ_DIR$\_build\nrf_fprintf_format.__cstat.et</file>
       <file>$PROJ_DIR$\_build\nrf_strerror.pbi</file>
-      <file>$PROJ_DIR$\_build\retarget.pbi</file>
       <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_power_clock.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_request.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\wchar.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_btn_ble.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_str_formatter.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\scheduler\app_scheduler.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\locale.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nordic_common.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\system_nrf52840.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_types.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_instance.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_core.h</file>
-      <file>$PROJ_DIR$\_build\nrf_log_backend_serial.pbi</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm_internal.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_os.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\hal\nrf_usbd.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52_to_nrf52840.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52840_peripherals.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log_default_backends.h</file>
-      <file>$PROJ_DIR$\_build\nrf_ble_scan.__cstat.et</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\apply_old_config.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\nrf_log.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\toolchain\cmsis\include\core_cmInstr.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd_errata.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\fstorage\nrf_fstorage.h</file>
-      <file>$PROJ_DIR$\_build\nrf_fprintf.pbi</file>
-      <file>$PROJ_DIR$\_build\app_usbd.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_soc.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\sdk_errors.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-      <file>$PROJ_DIR$\_build\nrf_atfifo.__cstat.et</file>
-      <file>$PROJ_DIR$\_build\bsp_btn_ble.o</file>
-      <file>$PROJ_DIR$\_build\app_scheduler.o</file>
-      <file>$PROJ_DIR$\_build\app_timer.o</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_clock.o</file>
-      <file>$PROJ_DIR$\_build\nrf_ble_scan.o</file>
-      <file>$PROJ_DIR$\_build\nrf_drv_usbd.o</file>
-      <file>$PROJ_DIR$\_build\nrf_assert.pbi</file>
-      <file>$PROJ_DIR$\_build\app_button.pbi</file>
-      <file>$PROJ_DIR$\_build\nrf_assert.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\ble_gap.h</file>
-      <file>$PROJ_DIR$\_build\compressor.o</file>
-      <file>$PROJ_DIR$\_build\ble_app_uart_c_pca10056_s140.out</file>
-      <file>$PROJ_DIR$\_build\app_usbd_string_desc.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\delay\nrf_delay.h</file>
-      <file>$PROJ_DIR$\_build\bit_operations.o</file>
-      <file>$PROJ_DIR$\_build\app_fifo.o</file>
-      <file>$PROJ_DIR$\_build\ble_advdata.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\nrf52840.h</file>
-      <file>$PROJ_DIR$\_build\nrfx_uart.o</file>
-      <file>$PROJ_DIR$\_build\nrfx_power.o</file>
-      <file>$PROJ_DIR$\_build\types_porting.o</file>
-      <file>$PROJ_DIR$\_build\ble_srv_common.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_soc.h</file>
-      <file>$PROJ_DIR$\_build\app_error_weak.o</file>
-      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_coredep.h</file>
+      <file>$PROJ_DIR$\_build\bit_operations.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_log_backend_serial.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_power.h</file>
+      <file>$PROJ_DIR$\_build\nrf_balloc.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_fprintf.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_log_str_formatter.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\boards\pca10056.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\_build\nrf_section_iter.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\_build\app_uart_fifo.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\softdevice\s140\headers\nrf_nvic.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\app_usbd_cdc_types.h</file>
+      <file>$PROJ_DIR$\_build\nrf_atomic.__cstat.et</file>
+      <file>$PROJ_DIR$\_build\nrf_sdh_soc.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_string_desc.h</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\include\nrfx_clock.h</file>
+      <file>$PROJ_DIR$\_build\nrf_memobj.__cstat.et</file>
+      <file>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_internal.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
     </outputs>
     <file>
-      <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
+      <name>$PROJ_DIR$\..\DsCommons\compressor.cpp</name>
       <outputs>
         <tool>
+          <name>ICCARM</name>
+          <file> 283</file>
+        </tool>
+        <tool>
           <name>BICOMP</name>
-          <file> 304</file>
+          <file> 70</file>
         </tool>
         <tool>
           <name>__cstat</name>
-          <file> 226</file>
+          <file> 357</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 155 118 431 73 273 67 105 290 274 86 272 103 256 430 126 426 72 406 174 422 389 348 87 414 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 244 253 410 286 88 251 113 416 254 243 305 456 81 13 265 66 83 424 85 419</file>
+          <file> 113 453 316 23 445 29 234 377 447 239 439 124 102 131 134</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 26 38 86 30 431 4 89 118 88 290 274 20 430 73 87 406 113 77 126 174 273 426 389 348 84 103 451 110 446 72 66 13 85 272 422 419 67 105 256 244 253 414 284 417 407 423 31 286 265 81 155 410 251 416 254 243 305 456 83 424</file>
+          <file> 29 134 239 377 124 316 439 445 447 453 131 23 234 102 113</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\external\utf_converter\utf.c</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_advdata.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 133</file>
+          <file> 281</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 95</file>
+          <file> 264</file>
         </tool>
         <tool>
           <name>__cstat</name>
-          <file> 42</file>
+          <file> 345</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 166 84 431 73 273 67 105 290 274 103 118</file>
+          <file> 115 249 316 23 445 29 234 377 447 19 453 239 439 2 21 267 166 323 0 5 15 17 89 173 172 284 90 313 285 162 244 93 304 391 87 303 7 380 421 144 399 298 302 1 9 169 14 114</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 431 105 84 103 67 118 73 273 290 274 166</file>
+          <file> 249 285 29 439 166 89 23 316 17 239 2 421 21 0 267 303 304 313 15 1 172 114 453 234 173 5 391 93 399 9 323 19 445 377 447 380 284 87 7 90 244 162 298 14 115 144 302 169</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\net_level.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 62</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 126</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 338</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 113 3 316 23 445 29 234 377 447 239 301 453 439 137 102 131 134 308 421 249 19 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 16 368 457 318 383 4 362 254 310 458 372 398 282 21 175 449 41 22 293</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7 284 316 23 399 282 29 285 318 175 131 4 19 169 9 239 244 267 372 172 453 234 102 421 144 302 249 87 90 162 383 310 3 137 134 308 293 301 445 377 447 439 16 368 457 298 1 391 303 304 313 93 362 458 398 14 21 113 254 449 41 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_srv_common.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 291</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 354</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 339</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 114 249 316 23 445 29 234 377 447 19 15 1 9 239 7 399 172 284 90 313 285 162 244 93 304 391 87 303 2 21 267 166 323 0 5 17 89 173 380 453 439 41 3 301 302 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 313 172 303 304 166 89 323 2 445 23 19 316 285 17 3 399 15 377 447 7 391 93 21 267 5 0 453 41 1 29 234 9 239 284 87 90 244 162 173 301 114 380 439 302 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_scan\nrf_ble_scan.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 319</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 63</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 312</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 458 8 2 21 166 323 0 5 15 17 89 173 380 41 3 301 22 115 308 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 234 316 302 399 169 249 166 0 457 8 144 239 87 90 162 285 17 21 19 41 7 23 29 439 9 284 244 323 89 15 22 368 318 383 458 453 14 115 308 298 1 445 377 447 172 391 303 304 313 93 173 5 2 16 421 380 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 257</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 54</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 371</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 3 316 23 445 29 234 377 447 239 301 249 19 399 41 172 284 90 313 285 162 244 93 304 391 87 303 7 302 267 22 420 398 282 21 175 449 14 181 2 166 323 0 5 15 17 89 173 380 379 144 416 1 9 422 307 96 432 86 382 160 6 306 44 314 78 85 279 30 363 94 444 384 241 95 16 165 294 421 453 439 298 169 188 253 79 8 189 455 13 436 84 300 295 278 440 427 373 299 311 417 182 430 433 20 454 82 370 450 309 240 308 368 457 318 383 4 362 254 310 458 372 293</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84 244 453 23 399 308 445 267 363 89 188 175 417 318 19 316 1 440 302 7 2 172 16 282 430 3 41 0 189 454 285 166 21 239 307 384 444 44 306 14 249 95 433 383 310 181 165 79 432 299 309 293 301 377 234 284 173 15 144 86 298 436 311 182 372 420 416 422 323 241 294 253 8 278 20 82 240 4 29 22 87 90 162 17 5 382 9 314 421 439 455 373 398 450 368 457 362 458 447 391 303 304 313 93 449 379 380 96 160 94 6 78 279 30 85 169 13 300 295 427 370 254</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\crc16_ccitt.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 331</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 59</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 342</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 113 134</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 113 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 68</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\system_nrf52840.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 246</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 75</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 335</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 249 316 23 445 29 234 377 447 19 172 284 90 313 285 162 244 93 304 391 87 303 7</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23 90 7 445 285 284 93 172 316 377 447 87 313 162 249 19 304 29 234 391 303 244</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\types_porting.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 286</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 367</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 113 102</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 113 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_db_discovery\ble_db_discovery.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 344</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 340</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 181 2 21 166 323 0 5 15 17 89 173 380 379 458 114 308 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 302 267 234 23 21 172 285 17 0 323 457 114 144 19 303 304 313 173 166 249 399 181 308 7 169 316 29 391 93 89 5 377 1 368 318 383 458 453 298 445 447 239 439 9 284 87 90 244 162 15 16 421 14 2 379 380</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_gatt\nrf_ble_gatt.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 263</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 410</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 129</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 253 2 21 166 323 0 5 15 17 89 173 380 308 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 249 313 19 316 303 304 399 377 447 23 380 457 308 1 172 285 14 0 89 15 253 368 453 298 445 7 391 93 144 323 5 21 318 383 302 169 29 234 239 439 9 284 87 90 244 162 2 166 16 421 17 173</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus_c\ble_nus_c.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 407</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 343</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 133</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 458 2 21 166 323 0 5 15 17 89 173 380 188 181 379 165 95 16 114 41 3 301 22 308 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 19 267 391 23 249 453 445 239 5 21 188 298 399 93 377 166 172 173 1 89 22 16 458 114 447 439 9 303 304 313 285 15 181 379 2 318 383 41 308 144 7 302 169 29 234 284 87 90 244 162 14 17 0 368 457 421 323 380 165 95 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_btn_ble.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 50</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 352</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 422 249 316 23 445 29 234 377 447 2 21 267 166 323 0 5 15 17 89 173 172 284 90 313 285 162 244 93 304 391 87 303 7 380 307 19 96 432 86 382 144 160 9 239 6 306 44 314 78 85 14 1 399 398 282 175 449 41 3 301 302 22 279 30 363 94 444 384 165 95 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 90 249 87 267 175 29 5 21 432 95 23 316 279 239 307 89 166 285 86 7 302 234 323 380 284 244 15 384 444 44 172 398 9 449 19 1 165 2 445 377 447 17 173 0 391 303 304 313 93 399 382 78 30 85 41 22 16 422 162 96 160 94 144 6 306 314 14 282 3 301 363</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_clock.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 327</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 364</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 399 189 455 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 13 436 241 95 16 294 421 453 439 298 169 308 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 382 249 302 23 93 9 445 78 85 22 439 241 455 86 239 391 316 21 19 16 436 44 172 377 447 303 304 313 285 30 399 282 144 318 383 189 294 308 13 160 94 6 29 234 284 87 7 90 244 162 398 279 14 175 95 169 368 457 421 306 314 1 449 41 3 301 363 453 298</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_power.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 385</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 25</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 47</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 440 427 86 382 160 6 306 44 314 78 85 398 282 21 175 449 41 3 301 22 279 30 363 94 373 436 189 455 13 241 95 16 294</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 172 302 234 23 249 144 267 19 316 87 90 162 41 22 440 294 7 169 29 239 284 244 285 14 86 44 306 399 21 282 189 241 1 453 298 445 377 447 439 9 391 303 304 313 93 436 382 314 449 175 363 455 13 421 427 373 160 94 6 78 398 279 30 85 3 301 95 16</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 395</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 130</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 108 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 109 116 98 106</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 86 98 14 44 306 172 377 447 285 7 249 303 304 313 399 382 9 445 23 239 391 93 21 301 109 160 94 144 19 6 29 234 284 87 90 244 162 314 1 282 175 267 3 106 108 78 398 279 302 30 85 449 41 22 363 116</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 10</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 66</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 374</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 307 249 316 23 445 29 234 377 447 19 96 432 86 382 144 160 9 239 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 444 384 11 416</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 234 249 86 19 284 175 96 285 41 172 267 23 7 444 44 316 244 30 399 302 432 3 384 29 382 9 239 87 90 162 78 85 363 11 416 445 377 447 160 94 144 6 391 303 304 313 93 398 279 449 21 22 301 307 306 314 14 1 282</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 268</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 333</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 341</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 96 432 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 444</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 313 249 303 304 444 86 172 44 316 377 447 285 267 399 23 19 382 9 445 239 391 93 314 282 175 3 432 160 94 144 6 29 234 284 87 7 90 244 162 306 14 21 301 96 78 398 279 302 30 85 449 41 22 363</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\bit_operations.cpp</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 287</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 258</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 437</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 113 132</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 113 132</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 280 128</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_serial.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 37</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 317</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 438</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 413 254 310 458 372 398 282 21 175 449 41 3 301 22 318 16 383 136 424 4 362 457</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 14 445 249 282 453 239 23 391 316 398 172 457 298 399 93 136 267 9 1 413 377 447 439 303 304 313 285 372 21 383 19 424 144 7 302 169 29 234 284 87 90 244 162 310 458 318 175 3 301 362 421 254 16 449 41 22 4</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\strerror\nrf_strerror.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 404</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 435</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 376</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 368</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 399 377 447 439 23 285 249 1 172 303 90 368 453 298 445 239 267 19 93 144 7 302 169 29 234 391 313 162 421 9 284 87 304 244 14</file>
         </tool>
       </inputs>
     </file>
@@ -521,362 +1056,38 @@
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 186</file>
+          <file> 48</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 69</file>
+          <file> 76</file>
         </tool>
         <tool>
           <name>__cstat</name>
-          <file> 267</file>
+          <file> 452</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 429 45 72 456 81 13 107 66 83 424 85 422 244 253 410 286</file>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 294 95 16 282 21 175 241 41 3 301 22 308 368 457 318 383</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 126 431 414 406 31 456 272 273 73 103 118 284 89 430 85 72 429 77 290 274 256 84 417 407 423 446 26 86 410 286 107 66 422 348 87 20 67 105 451 38 30 110 4 389 244 253 45 81 13 83 424</file>
+          <file> 267 316 298 399 93 282 453 445 23 239 249 391 14 302 22 16 294 1 377 447 439 9 303 304 313 285 172 19 318 383 241 41 308 144 7 169 29 234 284 87 90 244 162 421 368 457 95 21 175 3 301</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.c</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_Syscalls_IAR.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 180</file>
+          <file> 45</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 97</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 21</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 18 82 81 24 442 74 91 90 78 32 10 278 45 72 107 66 83 424 85 244 422 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 406 414 431 72 31 118 24 66 272 273 73 103 284 91 81 430 85 18 77 290 274 256 84 417 407 423 446 89 82 10 74 90 86 410 286 107 244 422 348 87 20 67 105 26 451 38 30 110 4 78 32 253 389 45 442 278 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_rtt.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 59</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 15</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 6</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 0 113 416 254 243 305 456 81 13 265 66 83 424 85 410 72 286 384 141 403 88 251 253 447 71 276 25 92 418 189 421 40 70 458 68 252 35 381 12</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 89 31 113 418 381 414 431 406 73 348 118 189 384 272 273 103 284 72 86 126 26 252 253 77 290 274 256 84 417 407 423 446 430 66 13 389 410 0 403 447 12 87 20 67 105 451 38 30 110 4 265 81 85 88 286 71 276 421 305 416 254 243 456 83 424 141 251 25 35 92 40 458 68 70</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_serial.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 51</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 412</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 259</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 384 113 416 254 243 305 456 81 13 265 66 83 424 85 410 72 286 141 403 88 251 253</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 89 273 118 456 272 103 73 284 431 305 26 253 414 406 31 141 126 84 77 384 290 274 256 417 407 423 446 243 81 286 86 403 348 87 430 20 67 105 451 38 30 110 4 416 254 410 13 83 424 251 389 113 72 265 66 85 88</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_util_platform.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 112</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 55</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 159</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 305 118 431 73 273 67 105 290 274 87 26 451 30 423 446 4 110 31 407 284 38 417 456 81 126 13 265 89 66 83 103 424 86 430 406 85</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118 451 73 66 273 446 431 87 110 406 265 290 274 38 30 4 26 126 13 83 456 89 67 105 284 417 407 423 31 81 424 305 86 430 85 103</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_str_formatter.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 165</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 37</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 271</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 403 141 88 286 251 113 416 254 243 305 456 81 13 265 66 83 424 85 410 72 253 387 23 1 11 401 405 390 22</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 31 118 431 414 406 86 22 88 272 273 73 103 284 81 286 1 403 387 77 290 274 256 84 417 407 423 446 89 141 305 456 126 26 389 253 348 87 430 20 67 105 451 38 30 110 4 251 72 410 13 83 424 401 11 113 416 254 243 265 66 85 23 405 390</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 313</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 36</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 261</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 45 72</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 20 431 406 86 73 284 87 67 4 45 348 430 105 118 423 77 272 414 273 290 274 103 256 84 417 30 31 446 72 389 126 26 451 38 407 110 89</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\retarget.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 302</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 398</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 277</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 83 424 382 305 456 81 13 265 66 85</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 73 86 348 126 417 407 423 406 382 430 105 26 446 66 83 87 20 431 67 284 31 118 272 414 77 273 290 274 103 256 84 451 38 30 110 4 424 265 389 89 305 456 81 13 85</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 295</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 184</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 432</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 272 431 73 273 67 105 290 274 103 256 118 86 77 84 87 406 26 451 30 423 446 4 110 31 407 284 38 417 239 348 89 430 126 410 72 286 194 422 389 414 20 244 253</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 446 118 422 73 26 451 348 72 272 239 105 86 431 87 110 84 67 103 38 30 4 410 286 414 77 194 256 273 290 274 406 284 417 407 423 31 89 244 253 430 126 389 20</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 179</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 80</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 282</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 12 381 406 305 118 431 73 273 67 105 290 274 87 26 451 30 423 446 4 110 31 407 284 38 417 456 81 126 13 265 89 66 83 103 424 86 430 85 348 272 256</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 89 284 431 118 26 305 105 31 456 73 67 417 407 423 446 13 256 272 381 406 348 4 87 265 66 273 290 274 451 38 30 110 81 126 83 424 103 12 86 430 85</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic\nrf_atomic.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 119</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 2</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 264</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 224 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 394</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 118 406 290 274 256 77 110 446 26 394 272 414 273 73 103 38 389 86 348 87 430 20 67 105 84 451 407 89 224 126 284 417 30 423 31 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_default_backends.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 182</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 29</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 275</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 419 88 286 251 113 416 254 243 305 456 81 13 265 66 83 424 85 410 72 253 0</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 273 118 26 272 103 86 0 73 38 30 4 126 253 414 406 87 83 410 419 77 290 274 256 84 451 110 446 265 424 348 88 89 430 20 67 105 284 417 407 423 31 251 389 72 66 286 113 416 254 243 305 456 81 13 85</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\hardfault\hardfault_implementation.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 117</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 172</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 7</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 73 4 87 67 86 20 284 348 430 105 423 118 272 406 414 77 273 290 274 103 256 126 26 417 30 31 446 389 84 451 38 407 110 89</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_assert.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 441</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 439</file>
+          <file> 250</file>
         </tool>
         <tool>
           <name>__cstat</name>
@@ -886,1437 +1097,132 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 89 118 431 73 273 67 105 290 274 26 451 30 423 446 4 110 31 407 284 38 417 87 66 83 103 424 86 430 126 406 85</file>
+          <file> 144</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 85 26 105 423 446 103 38 4 73 406 431 67 451 87 30 31 86 118 66 273 290 274 284 417 407 110 430 89 83 424 126</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 63</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 386</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 8</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 34 45 72 237 224 245 71 276 25 92 418 189 421 40 70 305 456 81 13 265 66 83 424 85 458 68 252 35 88 286 251 113 416 254 243 410 422 244 253 107</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 389 77 456 446 88 118 431 458 81 243 237 406 290 274 256 84 73 417 407 423 348 26 34 66 272 414 273 103 284 31 89 35 92 305 126 113 86 245 422 107 87 430 20 67 105 451 38 30 110 4 45 72 25 40 68 70 13 83 424 286 416 254 410 224 71 276 189 418 421 265 85 252 251 244 253</file>
+          <file> 144</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_frontend.c</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_default_backends.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 169</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 41</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 285</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 305 456 81 13 265 66 83 424 85 422 72 244 253 410 286 88 251 113 416 254 243 403 141 193 224</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 72 87 110 403 414 103 446 26 430 84 422 224 272 273 73 451 83 86 118 389 77 88 193 406 431 290 274 126 38 30 4 66 424 113 348 305 253 416 20 67 105 256 284 417 407 423 31 89 265 286 141 456 81 13 85 244 410 251 254 243</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_printf.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 181</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 111</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 3</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 12 381 406 305 118 431 73 273 67 105 290 274 87 26 451 30 423 446 4 110 31 407 284 38 417 456 81 126 13 265 89 66 83 103 424 86 430 85 348 254</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118 67 73 431 417 407 423 81 126 158 456 446 305 26 89 105 284 31 13 430 103 381 254 406 348 4 87 265 66 273 290 274 451 38 30 110 86 85 12 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_Syscalls_IAR.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 185</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 99</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 281</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 348</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 348</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\crc16\crc16.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 114</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 176</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 222</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 73 4 87 67 86 20 284 348 430 105 423 118 272 406 414 77 273 290 274 103 256 126 26 417 30 31 446 389 84 451 38 407 110 89</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\balloc\nrf_balloc.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 311</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 383</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 266</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 72 243 305 456 81 13 265 66 83 424 85 410 286 422 244 253</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 86 73 20 431 284 118 305 87 67 31 81 85 72 77 348 430 105 126 26 417 407 423 446 406 456 286 243 422 272 414 273 290 274 103 256 84 451 38 30 110 4 410 89 13 389 265 66 83 424 244 253</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fds\fds.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 98</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 191</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 298</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 73 4 87 67 86 20 284 348 430 105 423 118 272 406 414 77 273 290 274 103 256 126 26 417 30 31 446 389 84 451 38 407 110 89</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 64</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 427</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 260</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 148 141</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 407 414 431 87 148 272 273 73 103 158 118 406 77 290 274 256 451 89 86 348 430 20 67 105 126 26 38 110 446 141 389 84 284 417 30 423 31 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\ringbuf\nrf_ringbuf.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 299</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 43</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 292</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 193 118 431 73 273 67 105 290 274 224 389 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 305 456 81 13 265 66 83 424 85</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 389 118 265 414 431 406 430 105 272 103 38 30 4 126 13 89 73 67 77 256 84 451 87 110 446 305 224 273 290 274 86 348 20 26 284 417 407 423 31 66 81 85 193 456 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\strerror\nrf_strerror.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 312</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 397</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 283</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 244</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 406 290 274 256 73 446 118 77 26 417 30 244 272 414 273 103 126 86 31 348 87 430 20 67 105 284 423 4 389 84 451 38 407 110 89</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 287</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 109</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 17</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 107 45 72 129 81 162 456 13 265 66 83 424 85 305 422 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 73 87 431 110 430 305 67 103 446 26 129 86 20 451 77 81 13 118 66 72 107 348 422 105 38 30 4 45 406 410 286 265 272 414 273 290 274 256 84 284 417 407 423 31 89 162 85 244 253 389 456 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 56</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 5</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 392</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 141 148</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 348 86 431 126 38 30 4 141 430 105 73 26 118 158 87 20 67 103 451 110 446 89 148 272 406 414 77 273 290 274 256 84 284 417 407 423 31 389</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 307</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 16</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 268</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 416 118 431 73 273 67 105 290 274 254 103 430 126 243 348 305 87 26 451 30 423 446 4 110 31 407 284 38 417 456 81 13 265 89 66 83 424 86 406 85 77 84 410 72 286 224 389 272 256 414 20</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 77 265 451 118 290 431 446 87 273 73 110 126 83 84 103 89 430 274 348 72 66 38 30 4 26 406 424 86 20 224 254 243 67 105 305 410 456 284 417 407 423 31 286 256 416 81 13 85 389 272 414</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 438</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 33</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 297</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 46 415 71 276 25 92 418 189 421 40 70 305 456 81 13 265 66 83 424 85 458 68 252 35 425 224 447 136 422 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 265 126 87 67 256 84 73 431 272 417 407 423 26 253 224 86 20 446 425 77 389 406 46 447 348 430 105 103 118 284 31 89 415 276 421 244 410 286 305 136 422 414 273 290 274 451 38 30 110 4 189 418 66 83 424 71 72 25 35 92 40 458 68 70 456 81 13 85 252</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_srv_common.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 455</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 208</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 215</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 154 118 431 73 273 67 105 290 274 86 90 77 84 103 87 406 26 451 30 423 446 4 110 31 407 284 38 417 82 81 126 24 442 74 91 78 32 10 278 272 256 66 83 424 430 85</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118 423 26 417 407 24 32 442 82 273 73 86 431 446 78 83 406 90 290 274 87 284 31 81 126 91 74 272 66 77 67 105 84 103 451 38 30 110 4 10 424 154 278 256 430 85</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_gatt\nrf_ble_gatt.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 130</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 303</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 145</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 106 82 81 24 442 74 91 90 78 32 10 278 422 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 118 423 86 431 417 407 406 290 274 73 278 253 422 77 26 446 89 74 32 90 106 244 272 414 273 87 284 31 348 442 91 81 410 286 430 20 67 105 103 256 84 451 38 30 110 4 82 24 72 389 78 10</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 94</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 203</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 248</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 408 118 431 73 273 67 105 290 274 86 39 395 71 276 348 25 84 103 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 269 280 131 391</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 105 118 71 86 451 13 39 446 66 26 126 73 87 269 189 431 110 68 406 430 395 83 280 67 276 84 103 38 30 4 40 70 252 131 391 273 290 274 25 35 348 92 284 417 407 423 31 305 458 265 81 85 424 408 418 421 89 77 456</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\DsCommons\net_level.cpp</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 198</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 149</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 232</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 155 83 431 73 273 67 105 290 274 103 424 272 256 142 171 151 152 422 389 118 86 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 72 244 253 410 286 88 251 113 416 254 243 305 456 81 13 265 66 85 419</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 87 451 431 73 406 456 67 446 410 13 151 88 86 20 84 103 110 126 243 26 272 105 171 389 348 430 118 38 30 4 286 416 83 142 152 422 419 424 273 290 274 256 72 244 253 414 77 284 417 407 423 31 251 254 305 89 81 155 113 265 66 85</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\nrf_ble_scan\nrf_ble_scan.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 437</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 199</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 420</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 254 93 82 81 24 442 74 91 90 78 32 10 278 66 83 424 85 163 422 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 105 431 430 406 20 118 24 74 253 93 348 103 38 30 4 446 78 81 86 66 87 73 67 256 84 451 110 442 32 90 85 244 410 286 254 272 89 163 422 414 77 273 290 274 26 284 417 407 423 31 10 91 82 72 389 278 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\DsCommons\crc16_ccitt.cpp</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 209</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 188</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 223</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 155 152</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 155 152</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\DsCommons\compressor.cpp</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 443</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 190</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 235</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 155 272 431 73 273 67 105 290 274 103 256 139 171 151 152</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 67 152 103 290 139 431 256 273 274 272 151 73 105 171 155</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\common\ble_advdata.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 450</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 132</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 214</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 163 118 431 73 273 67 105 290 274 86 272 103 256 82 81 126 24 442 74 91 90 78 32 10 26 451 30 423 446 4 110 31 407 284 38 417 87 278 389 348 406 414 430 77 84 20 89 154</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118 446 67 256 24 32 73 431 78 103 82 389 81 74 126 417 407 423 90 77 26 154 272 105 10 91 284 31 406 84 442 86 273 290 274 278 451 38 87 30 110 4 414 89 163 348 430 20</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_db_discovery\ble_db_discovery.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 211</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 60</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 220</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 9 82 81 24 442 74 91 90 78 32 10 278 279 254 154 422 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 430 126 105 73 81 26 446 78 74 442 253 154 348 86 417 407 423 10 24 118 406 9 422 87 20 431 67 284 31 32 91 290 77 244 410 286 254 272 414 273 274 103 256 84 451 38 30 110 4 90 72 389 89 82 279 278</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 124</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 187</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 234</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 83 431 73 273 67 105 290 274 103 424 118 86 406 66 26 451 30 423 446 4 110 31 407 284 38 417 87 430 126 85 382 305 456 81 13 265 89 9 82 24 442 74 91 90 78 32 10 278 279 348 391 77 84 402 408 39 395 71 276 25 92 418 189 421 40 70 458 68 252 35 269 280 107 45 72 18 429 389 272 256 414 20 27 106 34 93 28 258 79 399 46 415 425 447 263 385 245 411 409 400 19 388 396 75 270 44 246 262 413 102 422 244 253 410 286 88 251 113 416 254 243 419</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 46 110 272 73 406 422 273 126 252 32 27 13 400 410 86 431 77 263 430 87 82 26 72 456 388 83 66 74 28 270 446 24 81 103 408 280 269 189 418 89 118 45 396 286 416 9 18 34 395 411 413 419 424 290 105 451 10 90 348 71 414 399 409 19 243 382 391 402 442 107 429 106 93 447 75 44 102 88 67 85 38 30 4 78 91 276 84 421 389 256 258 245 305 262 244 253 251 254 274 284 417 407 423 31 265 279 278 39 25 35 92 40 458 68 70 20 79 415 425 385 246 113</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 116</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 227</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 221</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 39 395 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 269</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 77 423 118 417 407 269 71 26 189 431 290 274 446 126 406 73 86 276 84 273 103 284 31 421 456 13 83 395 25 35 348 92 67 105 451 38 87 30 110 4 418 89 81 424 39 40 305 458 430 68 70 265 66 85 252</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\bsp\bsp_btn_ble.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 433</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 183</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 229</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 402 118 431 73 273 67 105 290 274 82 81 126 24 442 74 91 90 78 32 10 26 451 30 423 446 4 110 31 407 284 38 417 87 278 408 86 39 395 71 276 348 25 84 103 92 418 189 421 40 70 89 77 406 305 456 13 265 66 83 424 430 85 458 68 252 35 269 280 18 45 72</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 30 118 38 126 13 67 91 81 395 45 73 431 458 103 408 32 24 446 71 87 430 105 442 278 451 110 90 280 269 189 26 305 84 265 86 77 18 82 273 290 274 78 10 74 284 417 407 423 31 406 276 40 68 70 66 85 72 402 4 39 25 35 348 92 418 421 89 456 83 424 252</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\DsCommons\types_porting.cpp</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 454</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 58</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 242</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 155 171</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 155 171</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s</name>
-      <outputs>
-        <tool>
-          <name>AARM</name>
-          <file> 206</file>
-        </tool>
-      </outputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\DsCommons\bit_operations.cpp</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 448</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 128</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 257</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 155 134</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 155 134</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\mdk\system_nrf52840.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 96</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 47</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 217</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 118 431 73 273 67 105 290 274 86 26 451 30 423 446 4 110 31 407 284 38 417 87</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 73 30 87 273 446 451 31 26 431 290 274 38 423 4 118 86 407 67 105 284 417 110</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 101</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 48</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 146</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 168 153 422 389 272 256 414 20 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 86 126 73 430 103 118 284 431 40 70 276 84 273 31 81 414 406 189 26 290 274 417 407 423 446 68 66 85 72 272 410 286 168 153 25 35 348 92 67 105 451 38 87 30 110 4 305 458 265 13 71 244 253 77 389 418 421 89 456 83 424 252 422 20 256</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uart.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 452</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 135</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 228</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 167 173 168 395 153 422 389 272 256 414 20 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 348 81 105 38 30 446 406 456 431 126 25 86 118 418 89 253 414 168 35 92 73 67 451 87 110 26 85 244 272 410 286 167 395 153 276 189 84 273 290 274 103 284 417 407 423 31 421 77 13 430 71 422 72 389 4 40 305 458 68 70 265 66 83 424 252 173 20 256</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\scheduler\app_scheduler.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 434</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 205</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 157</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 404 66 83 424 85 254 456 81 13 305 265</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118 4 38 30 305 348 103 431 430 105 406 26 85 73 265 404 456 86 87 20 67 256 84 451 110 446 77 254 272 89 414 273 290 274 126 284 417 407 423 31 66 389 83 424 81 13</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 104</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 65</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 241</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 44 46 415 71 276 25 92 418 189 421 40 70 305 456 81 13 265 66 83 424 85 458 68 252 35 425 396 409 400 19 388 75 411 246 262 413 136 422 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 118 89 77 430 105 73 26 46 253 348 86 431 38 30 68 13 103 84 19 389 406 44 87 20 67 451 4 25 40 70 252 305 244 410 286 136 422 272 414 273 290 274 256 284 417 407 110 446 75 262 71 35 92 458 456 81 85 396 409 72 423 31 411 246 413 415 425 276 189 418 421 265 66 83 424 400 388</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_serial_num.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 308</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 62</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 138</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 102 118 431 73 273 67 105 290 274 83 103 424 272 256 136 75 46 430 126 415 71 276 348 25 84 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 13 265 66 85 458 68 252 35 425 409 400 389 414 20 19 388 396</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 83 73 86 13 26 87 284 446 84 126 400 136 431 290 274 189 305 265 430 273 103 409 415 425 276 417 407 110 458 118 20 77 272 75 67 105 424 256 46 396 71 25 35 348 92 451 38 30 4 40 68 70 406 66 81 85 252 19 388 102 423 31 418 421 89 456 389 414</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_string_desc.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 445</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 310</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 140</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 348 270 118 431 73 273 67 105 290 274 389 86 272 103 256 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 75 46 415 71 276 25 92 418 189 421 40 70 305 456 81 13 265 66 83 424 85 458 68 252 35 425 409 400 19 388 396 411 166</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118 75 73 87 273 430 26 84 19 411 348 126 86 431 38 30 415 276 421 252 270 166 290 274 20 103 451 110 89 409 425 77 265 13 305 46 388 406 389 67 105 272 414 256 284 417 407 423 31 446 189 418 66 81 85 400 396 4 71 25 35 92 40 458 68 70 456 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uarte.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 125</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 201</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 225</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 175 164 168 395 153 422 389 272 256 414 20 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 118 168 431 87 110 305 265 73 35 92 67 451 446 84 26 253 414 406 25 348 86 105 38 30 458 252 244 272 410 286 175 395 153 276 189 273 290 274 103 284 417 407 423 31 4 40 430 68 70 66 83 424 164 71 422 72 77 389 418 421 89 456 81 13 85 20 256</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\timer\app_timer.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 435</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 122</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 161</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 391 66 83 424 85 254 92 418 456 81 13 447 71 276 25 189 421 40 70 305 265 458 68 252 35</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 86 431 348 68 447 126 38 30 4 430 26 105 73 118 305 89 391 456 87 20 67 103 451 110 446 66 189 40 458 70 81 252 254 92 272 406 414 77 273 290 274 256 84 284 417 407 423 31 83 85 424 276 13 389 418 71 25 35 421 265</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_clock.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 436</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 50</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 236</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 406 28 258 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 79 399 107 45 72 429 389 272 256 414 20 422 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 276 118 430 73 31 84 273 40 70 85 256 107 258 71 103 284 431 81 86 72 399 189 26 290 274 417 407 423 446 68 406 456 348 410 286 28 429 422 79 25 35 92 67 105 451 38 87 30 110 4 305 458 89 13 45 20 244 253 389 418 421 77 265 66 83 424 252 272 414</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_power.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 288</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 53</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 177</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 263 385 71 276 25 92 418 189 421 40 70 305 456 81 13 265 66 83 424 85 458 68 252 35 245 399 28 258 79 107 45 72 429</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 26 430 105 73 118 348 126 86 431 38 30 4 66 85 263 429 87 20 67 103 451 110 446 89 71 189 418 406 81 456 28 107 77 272 414 273 290 274 256 84 284 417 407 423 31 399 276 421 265 13 252 258 79 389 385 245 25 35 92 40 305 458 68 70 83 424 45 72</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 289</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 57</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 150</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 160 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 175 164 167 173</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 71 167 89 189 418 26 290 274 446 87 118 417 407 423 406 276 84 273 73 103 284 31 81 424 175 25 35 348 86 92 67 105 451 38 30 110 4 421 77 456 13 126 83 173 160 40 305 458 430 68 70 265 66 85 252 164</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_gpiote.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 293</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 54</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 247</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 219 250 395 218 272 256 153 422 389 414 20 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 85 284 431 73 103 26 87 218 276 84 273 31 421 13 118 395 406 189 290 274 417 407 423 446 77 89 81 86 389 20 410 286 219 272 153 25 35 348 92 67 105 451 38 30 110 4 418 456 430 71 422 40 305 458 68 70 265 66 83 424 252 250 256 72 244 253 414</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 115</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 137</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 213</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 26 451 30 118 431 73 273 67 105 290 274 423 446 4 110 31 407 284 38 417 87 83 103 424 66 86 430 126 406 85</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 406 118 284 446 430 407 67 66 417 110 73 105 103 83 451 38 87 30 423 31 273 290 274 4 26 424 86 85 126</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_handler_iar.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 121</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 204</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 231</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 66 83 424 85</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 274 110 406 290 256 431 118 446 26 77 430 66 272 414 273 73 103 38 87 86 348 20 67 105 84 451 407 89 85 389 126 284 417 30 423 31 4 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fifo\app_fifo.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 449</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 200</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 230</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 14 254</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 73 31 446 272 273 103 126 414 431 86 14 118 406 77 290 274 256 26 417 30 254 348 87 430 20 67 105 284 423 4 389 84 451 38 407 110 89</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\app_uart_fifo.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 123</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 197</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 255</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 382 305 456 81 13 265 66 83 424 85 14 254 160 71 276 25 92 418 189 421 40 70 458 68 252 35 175 164 167 173</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118 71 13 423 431 417 407 103 276 421 406 290 274 256 84 73 126 85 160 77 446 254 382 272 414 273 284 31 456 86 14 89 348 87 430 20 67 105 26 451 38 30 110 4 305 81 167 189 418 173 389 265 66 83 424 175 25 35 92 40 458 68 70 252 164</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 428</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
           <file> 52</file>
         </tool>
         <tool>
+          <name>BICOMP</name>
+          <file> 230</file>
+        </tool>
+        <tool>
           <name>__cstat</name>
-          <file> 144</file>
+          <file> 388</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 75 46 415 71 276 25 92 418 189 421 40 70 305 456 81 13 265 66 83 424 85 458 68 252 35 425 409 400 19 388 396 411 245 28 258 79 399 263 385 239 410 72 286 224 422 244 253</file>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 293 4 383 362 254 310 458 372 398 282 21 175 449 41 3 301 22 318 16 457 195</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 406 431 417 407 290 274 256 84 73 446 415 26 86 46 400 118 77 110 189 418 89 81 71 72 75 28 224 422 272 414 273 103 284 425 66 85 388 389 286 411 245 263 239 348 87 430 20 67 105 126 451 38 30 4 396 276 421 265 13 252 305 79 423 31 409 25 35 92 40 458 68 70 456 83 424 19 258 399 385 410 244 253</file>
+          <file> 316 445 249 172 453 239 19 195 23 87 90 162 267 457 298 399 7 3 318 293 1 377 447 439 9 284 244 285 449 301 144 4 14 302 169 29 234 391 303 304 313 93 362 421 16 41 383 254 310 458 372 398 282 21 175 22</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\button\app_button.c</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 120</file>
+          <file> 58</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 440</file>
+          <file> 18</file>
         </tool>
         <tool>
           <name>__cstat</name>
-          <file> 212</file>
+          <file> 394</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 280 66 83 424 85 395 71 276 25 92 418 189 421 40 70 305 456 81 13 265 458 68 252 35 391 240 219 250</file>
+          <file> 168 423 399 398 249 316 23 445 29 234 377 447 7 172 284 90 313 285 162 244 93 304 391 87 303 282 21 267 175 449 14 41 3 239 301 19 302 22 144 453 439</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 26 430 105 73 118 189 87 86 418 89 81 66 348 126 431 38 30 4 406 265 252 280 20 67 103 451 110 446 85 424 71 83 391 240 272 414 77 273 290 274 256 84 284 417 407 423 31 276 421 13 395 389 25 35 92 40 305 458 68 70 456 219 250</file>
+          <file> 14 391 316 249 172 398 234 93 282 23 29 303 304 313 285 175 439 453 423 399 144 162 7 449 41 445 377 447 284 87 90 244 21 267 3 301 239 168 19 302 22</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh_ble.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 457</file>
+          <file> 55</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 195</file>
+          <file> 243</file>
         </tool>
         <tool>
           <name>__cstat</name>
-          <file> 216</file>
+          <file> 179</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 66 118 431 73 273 67 105 290 274 83 103 424 86 26 451 30 423 446 4 110 31 407 284 38 417 87 430 126 406 85 422 389 272 256 348 414 77 84 20 89 72 244 253 410 286 88 251 113 416 254 243 305 456 81 13 265 129 162</file>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 165 2 21 166 323 0 5 15 17 89 173 380 95 16 241 41 3 301 22 368 308 457 318 383</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 406 431 451 389 424 446 256 113 290 77 126 244 83 273 73 87 110 430 26 118 81 88 274 38 30 4 348 84 103 86 72 66 13 422 305 129 85 67 105 284 417 407 423 31 20 89 286 265 162 253 272 414 410 251 416 254 243 456</file>
+          <file> 267 399 298 316 16 93 249 166 41 453 445 23 239 391 5 21 302 22 165 1 377 447 439 9 303 304 313 285 14 2 173 0 15 19 318 383 241 368 308 144 7 169 29 234 172 284 87 90 244 162 17 89 457 421 95 323 380 3 301</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_core.c</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_str_formatter.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 100</file>
+          <file> 97</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 300</file>
+          <file> 77</file>
         </tool>
         <tool>
           <name>__cstat</name>
-          <file> 156</file>
+          <file> 443</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 411 46 415 71 276 25 92 418 189 421 40 70 305 456 81 13 265 66 83 424 85 458 68 252 35 425 409 400 19 388 396 75 270 224 422 72 244 253 410 286</file>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 424 136 4 383 362 254 310 458 372 398 282 21 175 449 41 3 301 22 318 16 457 419 183 187 167 418 396 429 163</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 126 348 424 46 38 30 118 305 86 431 68 409 75 253 400 430 105 73 26 446 77 89 406 411 396 422 87 20 67 103 451 110 25 40 70 13 83 244 410 286 270 224 272 414 273 290 274 256 84 284 417 407 423 31 4 71 35 92 458 456 81 19 72 389 415 425 276 189 418 421 265 66 85 252 388</file>
+          <file> 93 249 316 298 399 19 163 4 453 445 23 239 391 21 383 187 424 419 1 377 447 439 9 303 304 313 285 14 136 398 282 267 172 421 457 144 7 302 169 29 234 284 87 90 244 162 362 16 318 175 3 301 418 167 254 310 458 372 449 41 22 183 396 429</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_clock.c</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_backend_rtt.c</name>
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 294</file>
+          <file> 32</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 61</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 233</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 258 79 399 153 422 389 272 256 414 20 72 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 446 87 126 73 35 92 67 451 77 118 110 89 26 414 406 25 348 86 105 38 30 4 421 13 252 71 72 272 410 286 258 153 276 189 84 273 290 274 103 284 417 407 423 31 418 456 81 83 424 79 244 253 430 389 40 305 458 68 70 265 66 85 399 422 20 256</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\components\ble\ble_services\ble_nus_c\ble_nus_c.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 296</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 207</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 147</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 389 118 431 73 273 67 105 290 274 86 272 103 256 348 406 87 414 430 126 77 84 26 451 30 423 446 4 110 31 407 284 38 417 20 89 254 82 81 24 442 74 91 90 78 32 10 278 27 9 279 18 45 72 154 66 83 424 85 422 244 253 410 286</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 431 86 126 284 73 118 272 273 103 91 81 27 414 406 31 290 24 26 10 77 32 85 72 254 154 274 256 84 417 407 423 446 90 9 279 82 410 286 66 422 348 87 430 20 67 105 451 38 30 110 4 89 78 74 244 253 389 442 278 18 45 83 424</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 453</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 238</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 196</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 385 245 399</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 13 118 417 407 423 421 189 26 431 290 274 446 276 84 273 73 103 284 31 77 87 89 126 430 71 385 25 35 348 86 92 67 105 451 38 30 110 4 418 406 456 81 85 399 40 305 458 68 70 265 66 83 424 252 245</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power_clock.c</name>
-      <outputs>
-        <tool>
-          <name>ICCARM</name>
-          <file> 291</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 49</file>
+          <file> 174</file>
         </tool>
         <tool>
           <name>__cstat</name>
@@ -2326,39 +1232,1133 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 71 276 348 25 118 431 73 273 67 105 290 274 84 103 86 26 451 30 423 446 4 110 31 407 284 38 417 87 92 418 189 421 40 70 89 77 406 305 456 81 126 13 265 66 83 424 430 85 458 68 252 35 385 245 399 258 79</file>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 195 254 310 458 372 398 282 21 175 449 41 3 301 22 318 16 383 413 136 424 4 362 457 278 86 382 160 6 306 44 314 78 85 279 30 363 94 423 168</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 118 446 126 431 87 110 305 265 73 35 92 67 451 84 26 399 258 25 348 86 105 38 30 4 458 252 385 276 189 273 290 274 103 284 417 407 423 31 40 430 68 70 406 66 83 424 245 71 418 421 89 77 456 81 13 85 79</file>
+          <file> 14 93 254 306 423 298 316 399 23 144 249 44 413 453 445 239 391 16 19 267 172 363 457 1 377 447 439 9 303 304 313 285 302 41 175 421 318 195 424 278 168 7 169 29 234 284 87 90 244 162 449 21 22 4 383 86 382 314 398 310 458 372 282 3 301 136 362 160 94 6 78 279 30 85</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>[ROOT_NODE]</name>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\retarget.c</name>
       <outputs>
         <tool>
-          <name>ILINK</name>
-          <file> 444 143</file>
+          <name>ICCARM</name>
+          <file> 406</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 415</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 381</file>
         </tool>
       </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 3 301 420 398 282 21 175 449 41 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23 19 144 267 303 304 313 399 420 302 234 172 285 41 3 7 169 316 29 391 93 249 453 298 1 445 377 447 239 439 9 284 87 90 244 162 301 449 421 14 398 282 21 175 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\pwr_mgmt\nrf_pwr_mgmt.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 428</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 161</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 79 95 16 365 348 373 86 382 160 6 306 44 314 78 85 398 282 21 175 449 41 3 301 22 279 30 363 94 4 383 362 254 310 458 372 318 308 368 457 241</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 421 1 282 285 4 249 316 279 21 372 365 399 377 447 439 9 23 303 304 313 144 172 79 41 453 298 445 239 391 93 14 94 6 398 267 254 19 373 308 241 7 302 169 29 234 284 87 90 244 162 95 16 160 78 30 85 175 3 301 383 310 458 318 348 86 382 44 306 314 449 22 363 362 368 457</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\memobj\nrf_memobj.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 409</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 164</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 456</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 310 249 316 23 445 29 234 377 447 458 239 302 267 372 144 398 7 172 284 90 313 285 162 244 93 304 391 87 303 282 21 175 449 14 41 3 301 19 399 22 1 9 318 16 383 348 421 453 439 298 169</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 449 284 249 377 316 285 7 445 23 244 267 3 9 239 14 302 447 144 16 41 87 90 162 172 399 301 19 169 348 458 372 29 234 398 318 282 391 303 304 313 93 383 439 310 21 175 22 421 453 298</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\ringbuf\nrf_ringbuf.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 405</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 83</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 387</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 51 249 316 23 445 29 234 377 447 348 421 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 398 282 21 175 449 41 3 301 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 421 249 449 298 316 399 302 234 453 239 87 90 162 267 175 14 23 29 1 439 9 284 7 244 285 398 348 445 377 447 19 144 169 172 391 303 304 313 93 41 21 22 51 282 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\softdevice\common\nrf_sdh.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 386</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 235</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 180</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 241 95 16 260 21 118 282 175 449 41 3 301 22 398 308 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 23 7 316 244 302 398 29 239 285 172 260 19 169 284 1 21 175 249 41 16 241 144 308 234 87 90 162 95 399 318 383 449 453 298 445 377 447 439 9 391 303 304 313 93 14 118 22 368 457 421 282 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\external\segger_rtt\SEGGER_RTT_printf.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 56</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 245</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 177</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 168 423 399 398 249 316 23 445 29 234 377 447 7 172 284 90 313 285 162 244 93 304 391 87 303 282 21 267 175 449 14 41 3 239 301 19 302 22 144 458</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 29 23 316 303 304 313 21 267 112 282 285 398 172 14 234 391 93 175 302 239 423 458 399 144 162 7 449 41 445 377 447 284 87 90 244 19 22 168 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\external\utf_converter\utf.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 262</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 238</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 92</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 99 9 316 23 445 29 234 377 447 239 249</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 234 9 239 29 249 23 445 377 447 99</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf_format.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 34</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 176</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 434</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 136 135</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 144 19 316 267 87 90 162 136 302 234 23 172 249 112 7 169 29 239 284 244 285 14 135 453 399 298 1 445 377 447 439 9 391 303 304 313 93 421</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\log\src\nrf_log_frontend.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 101</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 81</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 375</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 398 282 21 175 449 41 3 301 22 308 16 368 457 318 383 4 362 254 310 458 372 424 136 51 348</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16 7 244 424 298 239 285 172 302 9 308 348 453 445 23 284 3 19 249 421 1 4 51 399 316 377 447 267 87 90 162 41 301 254 144 398 457 310 169 29 234 439 391 303 304 313 93 14 449 383 136 282 21 175 22 368 318 362 458 372</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 411</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 446</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 95 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 169 316 399 19 23 391 7 29 162 95 144 302 234 249 313 1 453 298 445 377 447 239 439 9 303 90 93 285 16 421 267 172 284 87 304 244 14</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\class\cdc\acm\app_usbd_cdc_acm.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 237</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 24</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 366</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 82 84 300 86 382 160 6 306 44 314 78 85 398 282 21 175 449 41 3 301 22 279 30 363 94 295 433 311 417 182 430 20 299 370 450 309 138 308 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 249 14 1 302 234 23 172 84 457 144 19 316 87 90 30 175 239 9 182 421 399 82 7 169 29 284 162 160 78 85 363 398 368 318 383 138 308 453 298 445 377 447 439 391 303 304 244 285 20 450 86 94 6 279 282 21 22 433 311 16 313 93 299 370 309 300 295 382 44 306 314 449 41 3 301 417 430</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_core.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 252</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 412</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 107</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 299 84 300 86 382 160 6 306 44 314 78 85 398 282 21 175 449 41 3 301 22 279 30 363 94 295 311 417 182 430 433 20 454 348 308 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 144 301 84 87 90 249 398 19 316 30 311 20 457 417 302 234 23 172 285 1 14 399 299 433 308 7 169 29 239 284 244 160 78 85 175 3 368 318 383 454 348 453 298 445 377 447 439 9 391 303 304 313 93 162 86 94 6 279 282 21 182 16 421 300 295 382 44 306 314 449 41 22 363 430</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\crc16\crc16.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 236</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 46</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 347</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 23 162 7 29 19 169 391 144 302 234 313 249 453 399 298 1 445 377 447 239 439 267 172 303 90 93 285 421 9 284 87 304 244 14</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_handler_iar.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 266</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 72</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 334</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 41 3 301 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 447 244 399 377 439 316 249 285 172 1 302 41 453 298 445 23 239 87 7 19 144 169 29 234 9 284 304 14 22 421 267 391 303 90 313 93 162 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fds\fds.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 251</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 60</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 402</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 23 162 7 29 19 169 391 144 302 234 313 249 453 399 298 1 445 377 447 239 439 267 172 303 90 93 285 421 9 284 87 304 244 14</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 288</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 73</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 350</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 41 249 316 23 445 29 234 377 447 3 239 301 19 172 284 90 313 285 162 244 93 304 391 87 303 7 302 267 399 22 308 421 453 439 144 298 1 9 169 14 16 368 457 318 383 4 362 254 310 458 372 398 282 21 175 449 260 118</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 399 316 284 421 301 285 439 254 377 1 267 368 3 445 23 7 244 302 172 249 21 4 447 87 90 162 144 9 239 19 16 41 175 308 398 260 22 29 234 391 303 304 313 93 169 14 383 449 118 457 453 298 318 362 310 458 372 282</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 315</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 38</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 125</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 20 84 300 86 382 160 6 306 44 314 78 85 398 282 21 175 449 41 3 301 22 279 30 363 94 295 311 417 182 430 433 299 373 189 455 13 436 440 427 358 318 16 383 348 308 368 457</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 399 316 303 304 377 447 439 9 23 285 300 172 19 84 417 249 1 244 44 306 14 21 86 16 20 189 348 308 453 298 445 239 391 295 41 22 430 421 383 299 373 440 358 144 7 302 169 29 234 267 284 87 90 162 433 382 314 449 175 363 398 13 313 93 311 160 94 6 78 279 30 85 282 3 301 182 455 436 427 318 368 457</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\hardfault\hardfault_implementation.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 247</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 171</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 23 162 7 29 19 169 391 144 302 234 313 249 453 399 298 1 445 377 447 239 439 267 172 303 90 93 285 421 9 284 87 304 244 14</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\balloc\nrf_balloc.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 401</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 426</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 441</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 16 372 398 282 21 175 449 41 3 301 22 318 383 308 368 457</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19 23 169 316 391 249 398 7 29 93 21 22 16 1 144 302 234 267 172 303 304 313 285 399 282 383 372 308 453 298 445 377 447 239 439 9 284 87 90 244 162 318 14 175 421 449 41 3 301 368 457</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\button\app_button.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 270</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 321</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 337</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 384 41 3 301 22 432 86 382 160 6 306 44 314 78 85 398 282 21 175 449 279 30 363 94 416 359 330 361</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 172 302 234 23 249 44 7 19 306 14 21 41 144 267 316 87 90 162 399 449 363 384 169 29 239 284 244 285 22 301 86 3 416 359 453 298 1 445 377 447 439 9 391 303 304 313 93 382 314 175 432 421 160 94 6 78 398 279 30 85 282 330 361</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 248</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 123</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 332</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 172 284 90 249 316 23 445 29 234 377 447 313 285 162 244 93 304 391 87 303 7 3 239 301 41 19 302 267 399 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 399 249 391 285 302 304 29 41 303 244 23 234 239 3 284 87 7 90 313 93 445 377 447 162 172 301 19 22 267</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\fifo\app_fifo.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 292</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 353</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 178 458</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23 93 285 453 445 239 267 298 316 19 178 249 399 1 377 447 439 172 303 90 458 144 7 302 169 29 234 391 313 162 421 9 284 87 304 244 14</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_serial_num.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 403</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 122</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 240 249 316 23 445 29 234 377 447 3 239 301 453 439 138 20 84 302 267 300 86 382 144 160 9 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 175 449 41 22 279 30 363 94 295 311 417 421 298 169 182 430 433</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3 23 19 175 172 7 391 285 9 267 417 138 316 377 447 44 398 449 302 445 239 311 300 295 382 303 304 244 279 249 169 1 453 20 29 234 301 439 84 433 86 160 94 144 6 284 87 90 162 78 30 85 399 41 21 22 363 182 430 240 313 93 306 314 14 282 421 298</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\timer\app_timer.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 326</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 269</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 110</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 416 41 3 301 22 458 6 306 282 21 175 278 86 382 160 44 314 78 85 398 449 279 30 363 94</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19 316 144 30 278 267 87 90 162 302 172 234 23 249 398 14 416 282 7 169 29 239 284 244 285 41 44 78 279 85 21 363 458 6 453 399 298 1 445 377 447 439 9 391 303 304 313 93 3 22 301 382 175 421 306 86 160 94 314 449</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\nrf_assert.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 324</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 328</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 414</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 14 249 316 23 445 29 234 377 447 172 284 90 313 285 162 244 93 304 391 87 303 7 41 3 239 301 19 302 267 399 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 22 172 234 313 285 239 87 162 23 399 316 29 284 7 90 93 19 249 41 445 377 447 391 303 304 244 302 14 3 301 267</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\scheduler\app_scheduler.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 320</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 65</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 111</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 425 41 3 301 22 458 282 21 175 398 449</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 162 87 90 398 144 239 316 302 234 399 172 22 23 449 425 282 19 7 169 29 439 9 284 244 285 1 458 453 14 298 445 377 447 267 391 303 304 313 93 41 421 3 301 21 175</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uarte.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 261</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 67</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 349</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 109 116 100 432 117 308 421 453 439 298 169 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 249 100 316 7 244 398 449 23 94 6 29 284 285 9 172 457 298 399 160 144 19 234 87 90 279 363 368 453 318 383 109 432 117 382 44 445 377 447 239 391 303 304 313 93 162 78 302 30 85 41 3 301 116 86 308 16 1 421 306 314 14 282 21 175 22 169 439</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_util_platform.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 233</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 31</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 119</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 398 249 316 23 445 29 234 377 447 7 172 284 90 313 285 162 244 93 304 391 87 303 282 21 267 175 449 14 41 3 239 301 19 302 399 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 284 23 41 445 285 316 7 244 399 449 377 447 87 90 162 172 267 175 3 282 14 29 234 391 303 304 313 93 21 301 398 19 302 22 239</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic_fifo\nrf_atfifo.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 389</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 297</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 453 316 23 445 29 234 377 447 239 439 249 19 1 9 7 399 172 284 90 313 285 162 244 93 304 391 87 303 358 144 14 302 267 318 16 383 64 308 421 298 169 368 457</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 285 249 308 23 172 284 144 16 453 358 234 19 316 7 244 9 29 239 87 90 162 318 383 298 1 64 439 445 377 447 399 391 303 304 313 93 14 368 457 302 267 421 169</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\atomic\nrf_atomic.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 265</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 220</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 451</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 348 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 431</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 249 399 377 447 439 1 244 285 172 431 453 298 445 23 239 87 421 19 144 7 302 169 29 234 9 284 304 14 348 267 391 303 90 313 93 162</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\external\fprintf\nrf_fprintf.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 27</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 296</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 442</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 135 136</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 304 298 316 7 135 453 445 23 239 112 249 399 1 377 447 439 284 14 19 144 302 169 29 234 267 172 87 244 285 136 421 9 391 303 90 313 93 162</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\uart\app_uart_fifo.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 256</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 74</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 448</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 420 398 282 21 175 449 41 3 301 22 178 458 108 86 382 160 6 306 44 314 78 85 279 30 363 94 109 116 98 106</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 86 175 313 316 303 304 239 382 314 399 377 447 439 9 23 267 22 108 1 285 458 420 453 298 445 391 93 282 19 178 14 144 7 302 169 29 234 172 284 87 90 244 162 398 21 98 44 306 106 421 449 41 3 301 109 160 94 6 78 279 30 85 363 116</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\drivers_nrf\usbd\nrf_drv_usbd.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 322</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 91</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 390</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 421 249 316 23 445 29 234 377 447 19 453 239 439 144 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 84 300 86 382 160 6 306 44 314 78 85 398 282 21 175 449 41 3 301 22 279 30 363 94 295 348 278 138 308 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 449 267 7 29 439 9 23 316 453 303 304 313 172 457 348 19 169 285 295 1 421 399 84 278 144 302 234 239 249 391 93 14 300 382 314 368 318 383 398 138 308 298 445 377 447 284 87 90 244 162 44 306 41 3 301 86 16 160 94 6 78 279 30 85 282 21 175 22 363</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\components\libraries\usbd\app_usbd_string_desc.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 277</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 408</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 120</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 454 249 316 23 445 29 234 377 447 421 19 453 239 439 399 7 298 302 267 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 20 84 300 86 382 160 6 306 44 314 78 85 398 282 21 175 449 41 3 301 22 279 30 363 94 295 311 417 182 430 433 299 99</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 20 23 7 445 302 172 9 182 299 144 267 19 316 87 90 300 382 314 363 454 99 377 447 169 239 284 244 14 311 295 1 449 175 398 84 430 399 421 29 234 453 298 439 391 303 304 313 93 285 44 306 41 21 22 417 433 162 86 160 94 6 78 279 30 85 282 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\MyNordic\flash_mem.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 400</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 351</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 113 249 316 23 445 29 234 377 447 19 453 239 439 302 267 305 16 399 104 308 421 144 7 298 1 9 172 284 90 313 285 162 244 93 304 391 87 303 169 14 368 457 318 383 4 362 254 310 458 372 398 282 21 175 449 41 3 301 22 293</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 172 87 19 90 316 162 14 249 4 377 447 169 302 23 7 399 254 1 267 104 445 305 421 144 9 239 284 244 285 16 41 175 22 453 308 293 29 234 439 368 457 298 391 303 304 313 93 383 449 21 113 318 362 310 458 372 398 282 3 301</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 255</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 88</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 121</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 100 117 308 421 453 439 298 169 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19 267 23 302 239 249 391 316 78 85 382 9 445 93 21 298 399 44 172 377 447 303 304 313 285 30 41 22 16 453 318 383 100 117 160 94 144 6 29 234 284 87 7 90 244 162 398 279 449 175 86 368 457 1 421 306 314 14 282 3 301 363 308 169 439</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uart.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 290</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 127</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 336</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 98 106 100 432 117 308 421 453 439 298 169 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 144 21 234 87 90 285 399 282 316 267 160 19 249 306 14 457 298 100 94 6 23 29 284 7 244 172 22 368 453 318 383 98 432 117 382 44 9 445 377 447 239 391 303 304 313 93 314 1 175 302 86 308 16 421 162 78 398 279 30 85 449 41 3 301 363 106 169 439</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power_clock.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 378</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 105</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 427 373 436 455 13</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 285 267 316 7 244 398 449 23 94 6 29 284 9 172 436 455 160 144 19 234 87 90 162 279 363 427 382 44 445 377 447 239 391 303 304 313 93 78 302 30 85 399 41 3 301 373 86 306 314 14 1 282 21 175 22 13</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_gpiote.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 392</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 43</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 369</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 330 361 432 346 453 439 117 308 421 298 169 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 267 22 391 316 23 239 172 7 346 382 9 445 93 314 175 249 432 399 44 377 447 303 304 313 285 1 14 21 19 421 169 318 383 330 453 117 160 94 144 6 29 234 284 87 90 244 162 306 282 302 86 308 78 398 279 30 85 449 41 3 301 363 361 439 16 368 457 298</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_clock.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 397</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 40</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 356</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 455 13 436 117 308 421 453 439 298 169 16 368 457 318 383</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 316 285 7 267 23 94 6 29 284 1 249 244 14 172 298 399 160 144 19 234 87 90 162 314 175 363 86 16 453 318 383 455 117 382 44 9 445 377 447 239 391 303 304 313 93 306 282 21 3 301 13 368 457 302 421 78 398 279 30 85 449 41 22 436 308 169 439</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_power.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 289</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 355</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 61</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 382 144 160 249 316 23 445 29 234 377 447 9 239 19 172 284 90 313 285 162 244 93 304 391 87 303 7 6 306 44 314 78 85 14 1 399 398 282 21 267 175 449 41 3 301 302 22 279 30 363 94 427 373 436</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 175 249 303 304 313 314 44 172 316 377 447 285 382 9 445 23 239 391 93 1 7 14 267 302 86 427 160 94 144 19 6 29 234 284 87 90 244 162 306 399 282 21 22 436 78 398 279 30 85 449 41 3 301 363 373</file>
+        </tool>
+      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\_build\ble_app_uart_c_pca10056_s140.out</name>
       <outputs>
         <tool>
           <name>OBJCOPY</name>
-          <file> 76</file>
+          <file> 12</file>
         </tool>
         <tool>
           <name>ILINK</name>
-          <file> 143</file>
+          <file> 128</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ILINK</name>
-          <file> 178 120 115 121 457 449 434 435 123 428 104 100 308 445 112 448 450 211 296 455 116 94 433 443 114 209 98 117 206 124 198 441 295 119 311 130 437 436 288 289 438 64 56 59 51 182 169 165 307 63 299 287 180 186 313 312 294 293 453 291 101 452 125 302 179 181 185 96 454 133 202 210 192 249</file>
+          <file> 49 270 248 266 288 292 320 326 256 315 237 252 403 277 233 287 281 344 407 291 268 10 325 283 236 331 251 247 68 257 62 324 389 265 401 263 319 327 385 395 322 27 34 32 37 52 101 97 409 26 405 386 55 48 411 404 397 392 289 378 255 290 261 406 58 56 45 246 286 262 71 329 57 360</file>
         </tool>
       </inputs>
     </file>

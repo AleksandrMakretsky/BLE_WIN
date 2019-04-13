@@ -99,6 +99,7 @@ void processInit() {
 	compressorInit(channels);
 	initTimeoutTimer();
 
+	simulatorIndex = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 

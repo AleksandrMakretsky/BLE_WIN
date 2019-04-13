@@ -7,5 +7,6 @@
 
 int32_t getTimestamp();
 void timestampTimerInit();
+void timestampClear();
 
 #endif // _TIMESTAMP_TIMER_H_

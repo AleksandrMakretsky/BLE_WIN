@@ -563,7 +563,7 @@ E:\WorkBle\Nordic\NordicSource\modules\nrfx\hal
 E:\WorkBle\Nordic\NordicSource\modules\nrfx\mdk
 -DECG=1
 -DDEBUG=1
--DBOARD_PCA10056=1
+-DBOARD_PCA10059=1
 -DCONFIG_GPIO_AS_PINRESET=1
 -DFLOAT_ABI_HARD=1
 -DNRF52840_XXAA=1

@@ -29,6 +29,7 @@
 #define ADS_BUFFER_LENGTH       32
 #define ADS_CHANNEL_COUNT       8
 
+#define SPI_BUFFER_LENGTH       32
 
 
 #define ADS_PWDN            NRF_GPIO_PIN_MAP(1,13)

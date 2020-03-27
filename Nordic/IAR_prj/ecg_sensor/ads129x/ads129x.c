@@ -5,11 +5,9 @@
 #include <string.h>
 #include <stdio.h>
 
-
 #include "../ecg_sensor.h"
 #include "ads129x.h"
 #include "ecg_pin_config.h"
-
 
 #include "nrf_drv_spi.h"
 #include "nrf_gpio.h"
@@ -18,19 +16,73 @@
 #define SPI_INSTANCE  0 /**< SPI instance index. */
 static const nrf_drv_spi_t spi = NRF_DRV_SPI_INSTANCE(SPI_INSTANCE);  /**< SPI instance. */
 static volatile bool spi_xfer_done;  /**< Flag used to indicate that SPI instance completed the transfer. */
+static uint8_t m_tx_buf[SPI_BUFFER_LENGTH];
+static uint8_t m_rx_buf[SPI_BUFFER_LENGTH];
 static uint8_t bytesToSend;
 
 static uint8_t adc_registers[ADC_RESULT_LENGTH];
 static uint32_t ecgResult[ADS_BUFFER_LENGTH][ADS_CHANNEL_COUNT];
 static uint16_t historyIndexHead;
 static uint16_t historyIndexTail;
+static bool initPinsDone = false;
+////////////////////////////////////////////////////////////////////////////////
 
-//#define TEST_STRING "Nordic1234567890 123456789 123456789"
-static uint8_t       m_tx_buf[32];// = TEST_STRING;           /**< TX buffer. */
-static uint8_t       m_rx_buf[32];    /**< RX buffer. */
-
+// prototipes
+void spi_event_handler(nrf_drv_spi_evt_t const* p_event, void* p_context);
+void interruptFromReadyPin(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action);
 
 ////////////////////////////////////////////////////////////////////////////////
+
+
+void debugSpi(void) {
+
+//	int ii = checkChipId();
+
+	EcgParams_t ecgParams = {
+		.cannelCount = 3,
+		.samplingRate = 500,
+		.ecgMode = INTERNAL_TEST_MODE,
+	};
+	
+	chipInit(&ecgParams);
+	
+	
+	startConversion();
+	while(1) {
+//		ii++;
+/*		
+		TEST_ON;
+		nrf_delay_us(100);
+		TEST_OFF;
+*/		
+		nrf_delay_us(100);
+		
+		m_tx_buf[0] = 0;//START_COMMAND  | 0; // 0 is ChipID register address 
+		m_tx_buf[1] = 0;  // register count to read
+		m_tx_buf[2] = 0;  // get result
+		bytesToSend = 3;
+
+		spi_xfer_done = false;
+//		TEST_ON;
+		APP_ERROR_CHECK(nrf_drv_spi_transfer(&spi, m_tx_buf, bytesToSend, m_rx_buf, bytesToSend));
+		while ( !spi_xfer_done ) ;
+
+	}	
+	
+//	pinsInit();
+	while(1) {
+		nrf_delay_us(100);
+		uint8_t OK = checkChipId();
+
+		if ( OK ) {
+			OK = 1;
+		} else {
+			OK = 0;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
 
 const AdsRerister_t regilarSettings[] = {
 	{0x01, 0x05}, // CONFIG1 = default + 0x5	fMOD = 500SPS
@@ -91,43 +143,55 @@ const AdsRerister_t internalTestSettings[] = {
 	{0x18, 0x08}, // Address = 18h WCT1: Wilson Central Terminal and Augmented Lead Control Register
 	{0x19, 0xd1}, // Address = 19h WCT2: Wilson Central Terminal Control Register
 };
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-bool getEcgVector(int32_t* p_vector) {
 
-	if ( historyIndexHead == historyIndexTail ) {
-		return false;
+bool checkChipId(void) {
+
+	if ( !initPinsDone ) {
+		pinsInit();
+		initPinsDone = true;
 	}
 	
-	memcpy(p_vector, &ecgResult[historyIndexTail][0], sizeof(int32_t)*ADS_CHANNEL_COUNT);
-	historyIndexTail = (historyIndexTail+1) & (ADS_BUFFER_LENGTH-1);
+	bool ret = false;
+	m_tx_buf[0] = READ_REG_COMMAND  | 0; // 0 is ChipID register address 
+	m_tx_buf[1] = 0;  // register count to read
+	m_tx_buf[2] = 0;  // get result
+	bytesToSend = 3;
 	
-	return true;
-}
-///////////////////////////////////////////////////////////////////////////////
+	spi_xfer_done = false;
+	TEST_ON;
+	APP_ERROR_CHECK(nrf_drv_spi_transfer(&spi, m_tx_buf, bytesToSend, m_rx_buf, bytesToSend));
+	while ( !spi_xfer_done ) ;
 
-
-void pinsOff(void) {
-
+	unsigned char id = m_rx_buf[2];
+	if ( id == ADC1298_DEVICE_ID || id == ADC1298R_DEVICE_ID ) {
+		ret = true;
+	}
+	if ( id == ADC1294_DEVICE_ID || id == ADC1294R_DEVICE_ID ) {
+		ret = true;
+	}
+	
+	return ret;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
 void startConversion(void) {
 	
-	pinsInit();
-	// config chip ship 
+	if ( !initPinsDone ) {
+		pinsInit();
+		initPinsDone = true;
+	}
 	
 	AdsRerister_t reg = {0x00, 0x01}; // fix me or comment me 
 	adsSetRegister(&reg);
 	
-	
-	
-	CLEAR_PENDING_INTERRUPTS;
+//	CLEAR_PENDING_INTERRUPTS;
 	
 	// set interrupt function interruptFromReadyPin
-	ADS129X_ENABLE_INTERRUPT;
-	START_ADS129X;
+//	ADS129X_ENABLE_INTERRUPT;
+//	START_ADS129X;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -142,11 +206,16 @@ void stopConversion(void) {
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void spi_event_handler(nrf_drv_spi_evt_t const * p_event,
-                       void *                    p_context)
-{
-    spi_xfer_done = true;
-	TEST_OFF;
+bool getEcgVector(int32_t* p_vector) {
+
+	if ( historyIndexHead == historyIndexTail ) {
+		return false;
+	}
+	
+	memcpy(p_vector, &ecgResult[historyIndexTail][0], sizeof(int32_t)*ADS_CHANNEL_COUNT);
+	historyIndexTail = (historyIndexTail+1) & (ADS_BUFFER_LENGTH-1);
+	
+	return true;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -155,93 +224,70 @@ uint8_t sendByte(uint8_t data) {
 
 	m_tx_buf[0] = data;
 	bytesToSend = 1;
-//	spi_xfer_done = false;
+	spi_xfer_done = false;
 	APP_ERROR_CHECK(nrf_drv_spi_transfer(&spi, m_tx_buf, bytesToSend, m_rx_buf, bytesToSend));
-//	while ( !spi_xfer_done ) ;
+	while ( !spi_xfer_done ) ;
 
 	return m_rx_buf[0];
 }
-///////////////////////////////////////////////////////////////////////////////
-
-
-bool checkChipId(void) {
-
-//	pinsInit();
-
-	bool ret = false;
-	m_tx_buf[0] = READ_REG_COMMAND  | 0; // 0 register address
-	m_tx_buf[1] = 0;  // register count to read
-	m_tx_buf[2] = 0;  // get result 
-	bytesToSend = 3;
-	
-//	spi_xfer_done = false;
-	TEST_ON;
-	APP_ERROR_CHECK(nrf_drv_spi_transfer(&spi, m_tx_buf, bytesToSend, m_rx_buf, bytesToSend));
-//	while ( !spi_xfer_done ) ;
-	TEST_OFF;
-
-	unsigned char id = m_rx_buf[2];
-	if ( id == ADC1298_DEVICE_ID || id == ADC1298R_DEVICE_ID ) {
-		ret = true;
-	}
-	if ( id == ADC1294_DEVICE_ID || id == ADC1294R_DEVICE_ID ) {
-		ret = true;
-	}
-	
-	return ret;
-}
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 void pinsInit(void) {
 
 	memset(m_tx_buf, 0, sizeof(m_tx_buf));
 	memset(m_rx_buf, 0, sizeof(m_rx_buf));
-	
+
 	nrf_gpio_cfg_output(ADS_PWDN);
-	nrf_gpio_cfg_input(ADS_READY, NRF_GPIO_PIN_PULLDOWN);
+//	nrf_gpio_cfg_input(ADS_READY, NRF_GPIO_PIN_PULLDOWN);
+
+	// ready interrupt
+	ret_code_t err_code;
+
+	err_code = nrf_drv_gpiote_init();
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_gpiote_in_config_t in_config = NRFX_GPIOTE_CONFIG_IN_SENSE_LOTOHI(true);
+    in_config.pull = NRF_GPIO_PIN_PULLUP;
+	
+	err_code = nrf_drv_gpiote_in_init(ADS_READY, &in_config, interruptFromReadyPin);
+	APP_ERROR_CHECK(err_code);
+    
+	nrf_drv_gpiote_in_event_enable(ADS_READY, true);
+
+	
+	
 	ADS_POWER_OFF;
 	nrf_delay_ms(100);
-	
+
 	// init spi
     nrf_drv_spi_config_t spi_config = SPI_ADS1298_CONFIG;
-//    APP_ERROR_CHECK(nrf_drv_spi_init(&spi, &spi_config, spi_event_handler, NULL));
-    APP_ERROR_CHECK(nrf_drv_spi_init(&spi, &spi_config, NULL, NULL));
-	
+    APP_ERROR_CHECK(nrf_drv_spi_init(&spi, &spi_config, spi_event_handler, NULL));
+
 	ADS_POWER_ON;
 	nrf_delay_ms(200);
-	
+
 	// send RESET command
 	sendByte(RESET_COMMAND);
 	nrf_delay_ms(100);
-	
+
 	sendByte(SDATAC_COMMAND);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void debugSpi(void) {
+void pinsOff(void) {
 
-	pinsInit();
-	while(1) {
-		nrf_delay_us(100);
-		uint8_t OK = checkChipId();
-
-		if ( OK ) {
-			OK = 1;
-		} else {
-			OK = 0;
-		}
-
-	}
-	
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
 void chipInit(EcgParams_t* _ecgParams) {
 	
-	pinsInit();
+	if ( !initPinsDone ) {
+		pinsInit();
+		initPinsDone = true;
+	}
 	
 	// set ads registers
 	uint8_t regCount;
@@ -281,15 +327,28 @@ void chipInit(EcgParams_t* _ecgParams) {
 
 void adsSetRegister(AdsRerister_t* p_register) {
 
+	m_tx_buf[0] = WRITE_REG_COMMAND | p_register->address; // 0 is ChipID register address 
+	m_tx_buf[1] = 0;                 // register count
+	m_tx_buf[2] = p_register->data;  // get result
+	bytesToSend = 3;
+	
+	spi_xfer_done = false;
+	TEST_ON;
+	APP_ERROR_CHECK(nrf_drv_spi_transfer(&spi, m_tx_buf, bytesToSend, m_rx_buf, bytesToSend));
+	while ( !spi_xfer_done ) ;
+
+	
+/*	
 	ADS129X_CS_ON;
 		uint8_t command = WRITE_REG_COMMAND | p_register->address;
 		adsSendByte(command);
 		adsSendByte(0);
 		adsSendByte(p_register->data);
 	ADS129X_CS_OFF;
-
+*/
 }
 ////////////////////////////////////////////////////////////////////////////////
+
 
 uint8_t adsReadRegister(AdsRerister_t* p_register) {
 
@@ -313,16 +372,6 @@ uint8_t adsSendByte(uint8_t data) {
 
 	uint8_t ret = ADS129X_RXBUF; // dummy read
 	return ret;
-}
-////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-void OffPins(void) {
-
-//	OFF_ADS_PINS;
-//	ADS129X_POWER_OFF;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -368,10 +417,21 @@ void parseConversionResult() {
 void interruptFromReadyPin(nrf_drv_gpiote_pin_t pin,
 						 nrf_gpiote_polarity_t action) {
 
+							 
+	TEST_INV;						 
 	// Crear intrerrupt flag
 
 	// Read and parce cenversion result
-	readConversionResult();
-	parseConversionResult();
+//	readConversionResult();
+//	parseConversionResult();
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+void spi_event_handler(nrf_drv_spi_evt_t const * p_event,
+                       void *                    p_context)
+{
+	spi_xfer_done = true;
+//	TEST_OFF;
 }
 ////////////////////////////////////////////////////////////////////////////////

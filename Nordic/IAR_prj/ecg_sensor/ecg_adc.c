@@ -32,7 +32,8 @@ void adcInit(EcgParams_t* _ecgParams) {
 
 bool adcTestChip(void) {
 
-	debugSpi();
+	debugSpi(); // delme
+	
 	return checkChipId();
 }
 ////////////////////////////////////////////////////////////////////////////////

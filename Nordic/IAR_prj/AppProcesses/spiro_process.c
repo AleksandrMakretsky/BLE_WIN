@@ -44,7 +44,7 @@ void spiroProcessResetTimeout() {
 static void timeoutTimerHandler(nrf_timer_event_t event_type, void* p_context) {
 
 	uint32_t  temp_ts = getTimestamp();
-
+	TEST_INV;
 	int count = 0;
 	while ( done_index != in_index) {
 		compressorAddRaw32(input_buffer[done_index]);
@@ -80,7 +80,7 @@ void initTimeoutTimer(){
 	err_code = nrfx_timer_init(&TIMEOUT_TIMER_100MS, &timer_cfg, timeoutTimerHandler);
 	APP_ERROR_CHECK(err_code);
 
-	uint32_t timeMs = 500;
+	uint32_t timeMs = 200;
 	uint32_t timeTicks = nrf_drv_timer_ms_to_ticks(&TIMEOUT_TIMER_100MS, timeMs);
 	
 	nrf_drv_timer_extended_compare(
@@ -91,13 +91,9 @@ void initTimeoutTimer(){
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void spiroProcessInit() {
+//void spiroProcessInit() {
 	
-	in_index = 0;
-	done_index = 0;
-
-	initTimeoutTimer();
-}
+//}
 ////////////////////////////////////////////////////////////////////////////////
 
 
@@ -129,8 +125,17 @@ void sensorProcessStart() {
 	
 	if ( !initDone ) {
 		initSpiroPins(interruptFromPhaseA);
-		spiroProcessInit();
+		initTimeoutTimer();
+
+//		spiroProcessInit();
 	}
+	
+	in_index = 0;
+	done_index = 0;
+	LED_IR_ON;
+	LED_R_ON;
+	LED_G_OFF;
+	
 	nrf_drv_timer_clear(&TIMEOUT_TIMER_100MS);
 	nrf_drv_timer_enable(&TIMEOUT_TIMER_100MS);
 	timestampClear();
@@ -145,6 +150,11 @@ void sensorProcessStop() {
 	if ( !initDone ) { // need it in debug mode
 		initTimeoutTimer();
 	}
+
+	LED_IR_OFF;
+	LED_R_OFF;
+	LED_G_ON;
+
 	nrf_drv_timer_disable(&TIMEOUT_TIMER_100MS);
 }
 ////////////////////////////////////////////////////////////////////////////////

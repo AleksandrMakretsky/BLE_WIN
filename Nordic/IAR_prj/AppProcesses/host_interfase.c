@@ -180,10 +180,6 @@ void hostInterfaseInit() {
 	
 	strBufferIndex = 0;
 	memset(strMessageBuffer, 0, sizeof(strMessageBuffer));
-
-	// delme after debugging
-//	sensorProcessStart();
-
 }
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -20,17 +20,18 @@ host interfase
 #include "timestamp_timer.h"
 #include "nrf_drv_timer.h"
 #include "compressor.h"
+#include "../ecg_sensor/ecg_adc.h"
 
 const nrf_drv_timer_t TIMER_500HZ = NRF_DRV_TIMER_INSTANCE(2);
 static bool initDone = false;
-static uint16_t ecgVector[MAX_CHANNELS];
+static short ecgVector[MAX_CHANNELS];
 static enum { ADS1294, ADS1298 } chipId;
-static uint16_t channels;
 static uint16_t channelsOnChip[] = { 3, 8 };
+static uint16_t channels;
+EcgParams_t ecgParams;
 
 #define SIMULATOR
-
-#ifdef SIMULATOR
+#ifdef  SIMULATOR
 #include "simulator_ecg.h"
 uint16_t simulatorIndex = 0;
 
@@ -58,8 +59,15 @@ static void timeoutTimerHandler(nrf_timer_event_t event_type, void* p_context) {
 	memset(ecgVector, 0, sizeof(ecgVector));
 #ifdef SIMULATOR
 	getEcgFromSimulator();
+	compressorAddVector(ecgVector);
 #endif // SIMULATOR
-	compressorAddVector((short*)ecgVector);
+	
+	
+#ifndef SIMULATOR
+	while ( adcGetEcgVector(ecgVector) ) {
+		compressorAddVector(ecgVector);
+	}
+#endif // not SIMULATOR
 
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +103,11 @@ void processInit() {
 	
 	chipId = ADS1294;
 	channels = channelsOnChip[chipId];
+	ecgParams.cannelCount = channelsOnChip[chipId];
+	ecgParams.samplingRate = 500;
+	ecgParams.ecgMode = SIMULATOR_MODE;
 
+	adcInit(&ecgParams);
 	compressorInit(channels);
 	initTimeoutTimer();
 

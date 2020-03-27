@@ -1,12 +1,12 @@
 
 
-#include "spiro_pin_config.h"
+#include "ecg_pin_config.h"
 
 
-void initSpiroPins(nrfx_gpiote_evt_handler_t evt_handler) {
+void initEcgPins(nrfx_gpiote_evt_handler_t evt_handler) {
 	
     ret_code_t err_code;
-	
+/*
 	// phase A,B
     err_code = nrf_drv_gpiote_init();
     APP_ERROR_CHECK(err_code);
@@ -23,5 +23,6 @@ void initSpiroPins(nrfx_gpiote_evt_handler_t evt_handler) {
     err_code = nrf_drv_gpiote_in_init(IN2, &in_config, evt_handler);
 	APP_ERROR_CHECK(err_code);
     nrf_drv_gpiote_in_event_enable(IN2, true);
+*/	
 }
 ////////////////////////////////////////////////////////////////////////////////

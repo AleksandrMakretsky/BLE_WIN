@@ -45,7 +45,13 @@ USBD CDC ACM over BLE application main file.
 #include "flash_mem.h"
 #include "timestamp_timer.h"
 
+#ifdef ECG
+#include "ecg_pin_config.h"
+#include "../ecg_sensor/ecg_adc.h"
+#endif
+#ifdef SPIRO
 #include "spiro_pin_config.h"
+#endif
 //------------------------------------------------------------------------------
 
 // app vars
@@ -57,7 +63,7 @@ USBD CDC ACM over BLE application main file.
 //------------------------------------------------------------------------------
 const char version_name[] = "UsbLe V1.002";
 char firmware_version[VERSION_NAME_LENGTH];
-#define DEVICE_NAME  "MobiCardio 0001"                      /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME  "MobiCardio 1234"                      /**< Name of device. Will be included in the advertising data. */
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 #define RX_BUFFER_SIZE 512
@@ -617,6 +623,32 @@ static void buttons_leds_init(void) {
 
     uint32_t err_code = bsp_init(BSP_INIT_LEDS, bsp_event_handler);
     APP_ERROR_CHECK(err_code);
+
+//#ifdef SPIRO	
+	nrf_gpio_cfg_output(TEST_PIN);
+//	nrf_gpio_cfg_output(TEST2_PIN);
+	nrf_gpio_cfg_output(LED_R);
+	nrf_gpio_cfg_output(LED_G);
+	nrf_gpio_cfg_output(LED_B);
+	nrf_gpio_cfg_output(LED_IR);
+	
+//	TEST_ON;
+//	TEST_OFF;
+
+	LED_R_OFF;
+	LED_G_OFF;
+	LED_B_OFF;
+	
+	LED_R_ON;
+	LED_R_OFF;
+	LED_G_ON;
+	LED_G_OFF;
+	LED_B_ON;
+	LED_B_OFF;
+	LED_G_ON;
+//#endif // SPIRO	
+	LED_B_ON;
+	
 }
 
 
@@ -821,7 +853,9 @@ void checkOutStream() {
 	}
 	
 	if ( count > 0 && SendDataToHostFn != NULL ) {
+//		TEST_ON;
 		SendDataToHostFn(send_buffer, count);
+//		TEST_OFF;
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -853,6 +887,9 @@ void initRxBuffer() {
 
 /** @brief Application main function. */
 int main(void) {
+
+	nrf_gpio_cfg_output(TEST_PIN);
+	adcTestChip();
 	
     ret_code_t ret;
 
@@ -898,6 +935,13 @@ int main(void) {
 
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
+	
+	// usb on start
+    app_usbd_enable();
+	m_usb_connected = true;
+	app_usbd_start();
+	SendDataToHostFn = channelWriteUsb;
+
 	
     for (;;) {
 //		TEST_INV;

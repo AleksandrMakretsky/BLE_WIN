@@ -18,23 +18,13 @@
           
           
           
-        <Column0>412</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>275</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
-    <Find-in-Files><ColumnWidth0>526</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>595</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/><Select-Ambiguous-Definitions><ColumnWidth0>457</ColumnWidth0><ColumnWidth1>65</ColumnWidth1><ColumnWidth2>784</ColumnWidth2></Select-Ambiguous-Definitions><Debug-Log><ColumnWidth0>23</ColumnWidth0><ColumnWidth1>1222</ColumnWidth1></Debug-Log></Static>
+    <Find-in-Files><ColumnWidth0>526</ColumnWidth0><ColumnWidth1>69</ColumnWidth1><ColumnWidth2>595</ColumnWidth2><ColumnWidth3>183</ColumnWidth3></Find-in-Files><TerminalIO/><Select-Ambiguous-Definitions><ColumnWidth0>457</ColumnWidth0><ColumnWidth1>65</ColumnWidth1><ColumnWidth2>784</ColumnWidth2></Select-Ambiguous-Definitions><Debug-Log><ColumnWidth0>23</ColumnWidth0><ColumnWidth1>1222</ColumnWidth1></Debug-Log><Find-All-References><ColumnWidth0>579</ColumnWidth0><ColumnWidth1>82</ColumnWidth1><ColumnWidth2>993</ColumnWidth2></Find-All-References></Static>
     <Windows>
       
       
-    <Wnd0>
-        <Tabs>
-          <Tab>
-            <Identity>TabID-18415-14010</Identity>
-            <TabName>Build</TabName>
-            <Factory>Build</Factory>
-            <Session/>
-          </Tab>
-        <Tab><Identity>TabID-8088-30374</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-32110-14452</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab><Tab><Identity>TabID-12340-2818</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs>
-        
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd2>
+    <Wnd1>
         <Tabs>
           <Tab>
             <Identity>TabID-29164-14014</Identity>
@@ -42,24 +32,29 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>EcgLe/Application</ExpandedNode><ExpandedNode>EcgLe/Application/Processes</ExpandedNode><ExpandedNode>EcgLe/DsCommons</ExpandedNode><ExpandedNode>EcgLe/nRF_BLE_Services</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe/Board Definition</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode><ExpandedNode>SpiroLe/nRF_BLE_Services</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>EcgLe</ExpandedNode><ExpandedNode>EcgLe/Application</ExpandedNode><ExpandedNode>EcgLe/Application/Processes</ExpandedNode><ExpandedNode>EcgLe/Application/ecg_sensor</ExpandedNode><ExpandedNode>EcgLe/Application/ecg_sensor/ads129x</ExpandedNode><ExpandedNode>EcgLe/MyNordic</ExpandedNode><ExpandedNode>EcgLe/nRF_Drivers</ExpandedNode><ExpandedNode>SpiroLe</ExpandedNode><ExpandedNode>SpiroLe/Application</ExpandedNode><ExpandedNode>SpiroLe/Application/Processes</ExpandedNode><ExpandedNode>SpiroLe/Board Definition</ExpandedNode><ExpandedNode>SpiroLe/MyNordic</ExpandedNode><ExpandedNode>SpiroLe/nRF_BLE_Services</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd2></Windows>
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd2><Tabs><Tab>
+            <Identity>TabID-18415-14010</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab><Tab><Identity>TabID-8088-30374</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab><Tab><Identity>TabID-32110-14452</Identity><TabName>Ambiguous Definitions</TabName><Factory>Select-Ambiguous-Definitions</Factory><Session/></Tab><Tab><Identity>TabID-12340-2818</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab><Tab><Identity>TabID-393-9280</Identity><TabName>References</TabName><Factory>Find-All-References</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd2></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_gpiote.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>660</YPos2><SelStart2>20095</SelStart2><SelEnd2>20095</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\host_interfase.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>165</YPos2><SelStart2>4979</SelStart2><SelEnd2>4979</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Boards\pca10056_UsbLe\spiro_pin_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>8</YPos2><SelStart2>684</SelStart2><SelEnd2>684</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Boards\pca10056_UsbLe\spiro_pin_config.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>3</YPos2><SelStart2>668</SelStart2><SelEnd2>668</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\AppProcesses\spiro_process.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>95</YPos2><SelStart2>2835</SelStart2><SelEnd2>2835</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>81</YPos2><SelStart2>3865</SelStart2><SelEnd2>3865</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Boards\pca10056_UsbLe\sdk_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>5890</YPos2><SelStart2>138131</SelStart2><SelEnd2>138131</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>840</YPos2><SelStart2>30463</SelStart2><SelEnd2>30463</SelEnd2></Tab><ActiveTab>7</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_timer.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>59</YPos2><SelStart2>3979</SelStart2><SelEnd2>3998</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\ecg_sensor\ecg_adc.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>33</YPos2><SelStart2>859</SelStart2><SelEnd2>859</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\ecg_sensor\ads129x\ads129x.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>168</YPos2><SelStart2>5408</SelStart2><SelEnd2>5408</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\ecg_sensor\ads129x\ads129x.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>36</YPos2><SelStart2>2264</SelStart2><SelEnd2>2264</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Boards\pca10056_UsbLe\ecg_pin_config.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>841</SelStart2><SelEnd2>841</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>886</YPos2><SelStart2>31248</SelStart2><SelEnd2>31248</SelEnd2></Tab><ActiveTab>4</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\modules\nrfx\soc\nrfx_coredep.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>130</YPos2><SelStart2>6044</SelStart2><SelEnd2>6044</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_spi.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>78</YPos2><SelStart2>3808</SelStart2><SelEnd2>3808</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_spi.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>60</YPos2><SelStart2>3546</SelStart2><SelEnd2>3546</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-00BBC730><key>iaridepm.enu1</key></Toolbar-00BBC730></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>561</Bottom><Right>486</Right><x>-2</x><y>-2</y><xscreen>33</xscreen><yscreen>27</yscreen><sizeHorzCX>20703</sizeHorzCX><sizeHorzCY>26946</sizeHorzCY><sizeVertCX>306148</sizeVertCX><sizeVertCY>513972</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>396</Bottom><Right>1596</Right><x>-2</x><y>-2</y><xscreen>1598</xscreen><yscreen>398</yscreen><sizeHorzCX>1002509</sizeHorzCX><sizeHorzCY>397206</sizeHorzCY><sizeVertCX>20703</sizeVertCX><sizeVertCY>26946</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-00C1B030><key>iaridepm.enu1</key></Toolbar-00C1B030></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>616</Bottom><Right>366</Right><x>-2</x><y>-2</y><xscreen>13</xscreen><yscreen>7</yscreen><sizeHorzCX>9200</sizeHorzCX><sizeHorzCY>8037</sizeHorzCY><sizeVertCX>260439</sizeVertCX><sizeVertCY>709529</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>210</Bottom><Right>1415</Right><x>-2</x><y>-2</y><xscreen>1417</xscreen><yscreen>212</yscreen><sizeHorzCX>1002831</sizeHorzCX><sizeHorzCY>243398</sizeHorzCY><sizeVertCX>200991</sizeVertCX><sizeVertCY>235362</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

@@ -77,6 +77,24 @@ inline int mul_div(int number, int numerator, int denominator) {
  #define MAX_CHANNEL_COUNT     8
 #endif
 
+#define BIT0                (0x0001u)
+#define BIT1                (0x0002u)
+#define BIT2                (0x0004u)
+#define BIT3                (0x0008u)
+#define BIT4                (0x0010u)
+#define BIT5                (0x0020u)
+#define BIT6                (0x0040u)
+#define BIT7                (0x0080u)
+#define BIT8                (0x0100u)
+#define BIT9                (0x0200u)
+#define BITA                (0x0400u)
+#define BITB                (0x0800u)
+#define BITC                (0x1000u)
+#define BITD                (0x2000u)
+#define BITE                (0x4000u)
+#define BITF                (0x8000u)
+
+
 void short_to_int(int* i_valueas, short* s_values, int count);
 unsigned short bytes2short(char lsb, char msb);
 void short2bytes(char* p_array, short value);

@@ -745,15 +745,15 @@
         <option>
           <name>OOCOutputFormat</name>
           <version>3</version>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>OCOutputOverride</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state></state>
+          <state>EcgLe.hex</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -761,7 +761,7 @@
         </option>
         <option>
           <name>OOCObjCopyEnable</name>
-          <state>0</state>
+          <state>1</state>
         </option>
       </data>
     </settings>
@@ -3017,6 +3017,21 @@
   <group>
     <name>Application</name>
     <group>
+      <name>ecg_sensor</name>
+      <group>
+        <name>ads129x</name>
+        <file>
+          <name>$PROJ_DIR$\..\ecg_sensor\ads129x\ads129x.c</name>
+        </file>
+      </group>
+      <file>
+        <name>$PROJ_DIR$\..\ecg_sensor\ecg_adc.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\ecg_sensor\ecg_sensor.h</name>
+      </file>
+    </group>
+    <group>
       <name>Processes</name>
       <file>
         <name>$PROJ_DIR$\..\AppProcesses\ecg_process.c</name>
@@ -3036,6 +3051,9 @@
     <name>Board Definition</name>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Boards\pca10056_UsbLe\ecg_pin_config.c</name>
     </file>
   </group>
   <group>
@@ -3057,6 +3075,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\DsCommons\crc16_ccitt.cpp</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\filter_ac.cpp</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\DsCommons\filter_dc_remove.cpp</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\DsCommons\net_level.cpp</name>
@@ -3122,6 +3146,9 @@
       <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_power.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_spi.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.c</name>
     </file>
     <file>
@@ -3141,6 +3168,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\prs\nrfx_prs.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_spim.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_timer.c</name>

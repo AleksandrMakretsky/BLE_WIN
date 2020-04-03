@@ -42,11 +42,6 @@
 #define SPI_MOSI_PIN 43
 #define SPI_SCK_PIN  41
 
-//    spi_config.ss_pin   = SPI_SS_PIN;
-//    spi_config.miso_pin = SPI_MISO_PIN;
-//    spi_config.mosi_pin = SPI_MOSI_PIN;
-//    spi_config.sck_pin  = SPI_SCK_PIN;
-
 #define SPI_ADS1298_CONFIG                                   \
 {                                                            \
     .sck_pin      = SPI_SCK_PIN,                             \
@@ -60,6 +55,11 @@
     .bit_order    = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST,         \
 }
 ////////////////////////////////////////////////////////////////////////////////
+
+typedef enum {
+    DO_NOTHING,
+    PARCE_ADS_RESULT,
+} SpiContext_t;
 
 
 typedef struct {
@@ -81,7 +81,7 @@ typedef struct {
 	bool getEcgVector(int32_t* p_vector);
 	void readConversionResult();
 	void parseConversionResult();
-	void debugSpi();
+	void debugAdsChip();
 	
 //	void AdsGetEcg(short* p_ecg);
 //	void setControlRegisters(ecg_parameters_st* p_ecg_parameters);

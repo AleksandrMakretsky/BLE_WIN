@@ -1094,3 +1094,30 @@
 /Nordic/IAR_prj/UsbLeBridge_v01/_build/retarget.pbi.cout
 /Nordic/IAR_prj/UsbLeBridge_v01/_build/utf.pbi
 /Nordic/IAR_prj/UsbLeBridge_v01/_build/utf.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Obj/spiro_pin_config.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/spiro_pin_config.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/spiro_pin_config.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Exe/EcgLe.hex
+/Nordic/IAR_prj/UsbLe/Debug/Exe/MobiCardio 0001.hex
+/Nordic/IAR_prj/UsbLe/Debug/Exe/MobiCardio 0777.hex
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ads129x.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ads129x.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ads129x.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ecg_adc.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ecg_adc.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ecg_adc.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ecg_pin_config.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ecg_pin_config.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/ecg_pin_config.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Obj/filter_ac.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/filter_ac.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/filter_ac.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Obj/filter_dc_remove.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/filter_dc_remove.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/filter_dc_remove.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Obj/nrf_drv_spi.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/nrf_drv_spi.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/nrf_drv_spi.pbi.cout
+/Nordic/IAR_prj/UsbLe/Debug/Obj/nrfx_spim.o
+/Nordic/IAR_prj/UsbLe/Debug/Obj/nrfx_spim.pbi
+/Nordic/IAR_prj/UsbLe/Debug/Obj/nrfx_spim.pbi.cout

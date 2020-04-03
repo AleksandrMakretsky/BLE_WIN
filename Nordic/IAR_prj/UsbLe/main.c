@@ -1,4 +1,4 @@
-/*
+/**
 ECG Spiro USB/BLE device FW
 ome from sbd_ble_uart_example
 USBD CDC ACM over BLE application main file.
@@ -942,7 +942,6 @@ int main(void) {
 	app_usbd_start();
 	SendDataToHostFn = channelWriteUsb;
 
-	
     for (;;) {
 //		TEST_INV;
 		

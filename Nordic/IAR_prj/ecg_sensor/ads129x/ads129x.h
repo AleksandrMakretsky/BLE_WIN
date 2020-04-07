@@ -33,8 +33,8 @@
 
 
 #define ADS_PWDN            NRF_GPIO_PIN_MAP(1,13)
-#define ADS_POWER_ON        nrf_gpio_pin_write(ADS_PWDN, 1);
-#define ADS_POWER_OFF       nrf_gpio_pin_write(ADS_PWDN, 0);
+#define ADS_PWDN_OFF        nrf_gpio_pin_write(ADS_PWDN, 1);
+#define ADS_PWDN_ON         nrf_gpio_pin_write(ADS_PWDN, 0);
 #define ADS_READY           NRF_GPIO_PIN_MAP(0,2)
 
 #define SPI_SS_PIN   255

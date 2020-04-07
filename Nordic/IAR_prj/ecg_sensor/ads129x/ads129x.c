@@ -20,7 +20,7 @@ static uint8_t m_tx_buf[SPI_BUFFER_LENGTH];
 static uint8_t m_rx_buf[SPI_BUFFER_LENGTH];
 static uint8_t bytesToSend;
 
-static uint8_t adc_registers[ADC_RESULT_LENGTH];
+//static uint8_t adc_registers[ADC_RESULT_LENGTH];
 static uint32_t ecgResult[ADS_BUFFER_LENGTH][ADS_CHANNEL_COUNT];
 static uint16_t historyIndexHead;
 static uint16_t historyIndexTail;
@@ -54,12 +54,12 @@ void debugAdsChip(void) {
 	};
 	
 	chipInit(&ecgParams);
-	
 	startConversion();
-	spi_xfer_done = true;
 
 	while(1) {
-		nrf_delay_us(200);
+//		TEST_INV;
+//		checkChipId();
+		nrf_delay_us(5);
 	}	
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -171,17 +171,15 @@ void startConversion(void) {
 	
 	AdsRerister_t reg = {0x00, 0x01}; // fix me or comment me 
 	adsSetRegister(&reg);
-	
-//	ADS129X_ENABLE_INTERRUPT;
-	nrf_drv_gpiote_in_event_enable(ADS_READY, true);
+
+	nrf_drv_gpiote_in_event_enable(ADS_READY, true);  // ENABLE INTERRUPT;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
 void stopConversion(void) {
 
-//	ADS129X_DISNABLE_INTERRUPT;
-	nrf_drv_gpiote_in_event_enable(ADS_READY, false);
+	nrf_drv_gpiote_in_event_enable(ADS_READY, false); //  DISNABLE INTERRUPT;
 
 	AdsRerister_t reg = {0x00, 0x00};
 	adsSetRegister(&reg);
@@ -219,36 +217,28 @@ void pinsInit(void) {
 	memset(m_rx_buf, 0, sizeof(m_rx_buf));
 
 	nrf_gpio_cfg_output(ADS_PWDN);
-//	nrf_gpio_cfg_input(ADS_READY, NRF_GPIO_PIN_PULLDOWN);
+	ADS_PWDN_ON;
 
-	// ready interrupt
+	// ads ready pin init 
 	ret_code_t err_code;
-
 	err_code = nrf_drv_gpiote_init();
     APP_ERROR_CHECK(err_code);
-
     nrf_drv_gpiote_in_config_t in_config = NRFX_GPIOTE_CONFIG_IN_SENSE_HITOLO(true);
     in_config.pull = NRF_GPIO_PIN_PULLUP;
-	
 	err_code = nrf_drv_gpiote_in_init(ADS_READY, &in_config, interruptFromReadyPin);
 	APP_ERROR_CHECK(err_code);
-    
-	nrf_drv_gpiote_in_event_enable(ADS_READY, false);
+	nrf_drv_gpiote_in_event_enable(ADS_READY, false); //  DISNABLE INTERRUPT;
 	
-	ADS_POWER_OFF;
-	nrf_delay_ms(100);
-
 	// init spi
     nrf_drv_spi_config_t spi_config = SPI_ADS1298_CONFIG;
     APP_ERROR_CHECK(nrf_drv_spi_init(&spi, &spi_config, spi_event_handler, &spiContext));
 
-	ADS_POWER_ON;
+	ADS_PWDN_OFF;
 	nrf_delay_ms(200);
 
-	// send RESET command
+	// send RESET command to ads chip
 	sendByte(RESET_COMMAND);
 	nrf_delay_ms(100);
-
 	sendByte(SDATAC_COMMAND);
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -340,6 +330,7 @@ uint8_t adsSendByte(uint8_t data) {
 ////////////////////////////////////////////////////////////////////////////////
 */
 
+/*
 void readConversionResult() {
 
 	ADS129X_CS_ON;
@@ -353,10 +344,10 @@ void readConversionResult() {
 	ADS129X_CS_OFF;
 }
 ////////////////////////////////////////////////////////////////////////////////
-
+*/
 
 void parseConversionResult() {
-
+/*
 	unsigned char ctemp;
 	char* p_result = (char*)(&ecgResult[historyIndexHead][0]);
 	char* reg = (char*)&adc_registers[3]; // skip status info
@@ -372,7 +363,7 @@ void parseConversionResult() {
 			*p_result++ = 0;
 		}
 	}
-	
+*/	
 	historyIndexHead = (historyIndexHead+1) & (ADS_BUFFER_LENGTH-1);
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -380,15 +371,16 @@ void parseConversionResult() {
 
 void interruptFromReadyPin(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 
-	TEST_ON;
+	TEST_INV;
 	if ( !initPinsDone ) return;
 
 	if ( spi_xfer_done ) {
 		
-		m_tx_buf[0] = 0;//START_COMMAND  | 0; // 0 is ChipID register address 
-		m_tx_buf[1] = 0;  // register count to read
-		m_tx_buf[2] = 0;  // get result
-		bytesToSend = 27;
+		m_tx_buf[0] = RDATA_COMMAND;
+		m_tx_buf[1] = 0;
+		m_tx_buf[2] = 0;
+		m_tx_buf[28] = RDATAC_COMMAND;
+		bytesToSend = 29;
 		
 		spi_xfer_done = false;
 		APP_ERROR_CHECK(nrf_drv_spi_transfer(&spi, m_tx_buf, bytesToSend, m_rx_buf, bytesToSend));
@@ -401,6 +393,6 @@ void interruptFromReadyPin(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t actio
 void spi_event_handler(nrf_drv_spi_evt_t const* p_event, void* p_context) {
 
 	spi_xfer_done = true;
-	TEST_OFF;
+//	TEST_OFF;
 }
 ////////////////////////////////////////////////////////////////////////////////

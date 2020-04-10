@@ -632,22 +632,15 @@ static void buttons_leds_init(void) {
 	nrf_gpio_cfg_output(LED_B);
 	nrf_gpio_cfg_output(LED_IR);
 	
-//	TEST_ON;
-//	TEST_OFF;
 
-	LED_R_OFF;
-	LED_G_OFF;
-	LED_B_OFF;
-	
 	LED_R_ON;
-	LED_R_OFF;
+	nrf_delay_ms(400);
 	LED_G_ON;
-	LED_G_OFF;
+	nrf_delay_ms(400);
 	LED_B_ON;
-	LED_B_OFF;
-	LED_G_ON;
-//#endif // SPIRO	
-	LED_B_ON;
+	nrf_delay_ms(400);
+	LED_OFF;
+	nrf_delay_ms(300);
 	
 }
 
@@ -885,21 +878,53 @@ void initRxBuffer() {
 ////////////////////////////////////////////////////////////////////////////////
 
 
+void showError(uint16_t code) {
+
+	LED_OFF;
+	while (1) {
+		for (int i = 0; i < code; i++) {
+			LED_R_ON;
+			nrf_delay_ms(200);
+			LED_R_OFF;
+			nrf_delay_ms(200);
+		}
+		nrf_delay_ms(1000);
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+#define _DEBUG
+#ifdef _DEBUG
+#include "../ecg_sensor/ads129x/ads129x.h"
+#endif
+
 /** @brief Application main function. */
 int main(void) {
 
 	nrf_gpio_cfg_output(TEST_PIN);
-	adcTestChip();
-	
-    ret_code_t ret;
+	nrf_gpio_cfg_output(TEST2_PIN);
+	nrf_gpio_cfg_output(ADS_PWDN);
+
+	nrf_gpio_cfg_output(ADS_POWER);
+	ADS_PWDN_ON;
+	ADS_POWER_OFF;
 
 	// common initialization
     log_init();
     timers_init();
     buttons_leds_init();
+
+	ret_code_t ret;
     ret = nrf_drv_clock_init();
     APP_ERROR_CHECK(ret);
 
+	uint16_t errorCode = 0;
+	if ( !adcTestChip() ) errorCode++;
+	if ( errorCode ) showError(errorCode);
+	
+//	debugAdsChip();
+	
 	// init USB
     static const app_usbd_config_t usbd_config = {
         .ev_state_proc = usbd_user_ev_handler
@@ -935,6 +960,7 @@ int main(void) {
 
     // Enter main loop.
     NRF_LOG_INFO("USBD BLE UART example started.");
+	printf("\nUSBD BLE UART example started.\n");
 	
 	// usb on start
     app_usbd_enable();
@@ -942,8 +968,9 @@ int main(void) {
 	app_usbd_start();
 	SendDataToHostFn = channelWriteUsb;
 
+//	bool boardOk = adcTestChip();
+	
     for (;;) {
-//		TEST_INV;
 		
 		checkIncommingData();
 		checkOutStream();

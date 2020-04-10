@@ -31,8 +31,8 @@ Filter_Capasitor is like a split capacitor in classic ECG
 it remove baseline.
 average[i] = ( average[i-1] * alpha + input[i] * betta );
 */
-short FiltersDCRemoveGetNext(short channel, __int32 input_value)
-{
+short FiltersDCRemoveGetNext(short channel, __int32 input_value) {
+	
 	__int32 ret_value;
 	__int64 low_pass_value;
 
@@ -42,7 +42,6 @@ short FiltersDCRemoveGetNext(short channel, __int32 input_value)
 		capacitor[channel] = (__int32)low_pass_value;
 		ret_value = 0;
 	} else {
-		
 		unsigned __int32 betta;
 		unsigned __int32 alpha;
 

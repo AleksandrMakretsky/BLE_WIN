@@ -23,7 +23,7 @@ host interfase
 #include "../ecg_sensor/ecg_adc.h"
 
 const nrf_drv_timer_t TIMER_500HZ = NRF_DRV_TIMER_INSTANCE(2);
-static bool initDone = false;
+static bool initTimerDone = false;
 static short ecgVector[MAX_CHANNELS];
 static enum { ADS1294, ADS1298 } chipId;
 static uint16_t channelsOnChip[] = { 3, 8 };
@@ -58,8 +58,13 @@ static void timeoutTimerHandler(nrf_timer_event_t event_type, void* p_context) {
 
 	memset(ecgVector, 0, sizeof(ecgVector));
 #ifdef SIMULATOR
-	getEcgFromSimulator();
-	compressorAddVector(ecgVector);
+	
+	while ( adcGetEcgVector(ecgVector) ) {
+		compressorAddVector(ecgVector);
+	}
+	
+//	getEcgFromSimulator();
+//	compressorAddVector(ecgVector);
 #endif // SIMULATOR
 	
 	
@@ -93,13 +98,11 @@ void initTimeoutTimer(){
 	
 	nrf_drv_timer_extended_compare(
 		 &TIMER_500HZ, NRF_TIMER_CC_CHANNEL0, timeTicks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
-
-	initDone = true;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void processInit() {
+void ecgProcessInit() {
 	
 	chipId = ADS1294;
 	channels = channelsOnChip[chipId];
@@ -109,29 +112,29 @@ void processInit() {
 
 	adcInit(&ecgParams);
 	compressorInit(channels);
-	initTimeoutTimer();
-
-	simulatorIndex = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
 void sensorProcessStart() {
 	
-	if ( !initDone ) {
-		processInit();
+	ecgProcessInit();
+
+	if ( !initTimerDone ) {
+		initTimeoutTimer();
+		initTimerDone = true;
 	}
 	nrf_drv_timer_clear(&TIMER_500HZ);
 	nrf_drv_timer_enable(&TIMER_500HZ);
+	
+	adcStart();
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
 void sensorProcessStop() {
-	
-	if ( !initDone ) { // need it in debug mode
-		initTimeoutTimer();
-	}
+
 	nrf_drv_timer_disable(&TIMER_500HZ);
+	adcStop();
 }
 ////////////////////////////////////////////////////////////////////////////////

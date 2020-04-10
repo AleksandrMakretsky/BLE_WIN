@@ -20,7 +20,7 @@ Stop=1
 Freq=10000000
 MultiCoreRunAll=1
 [DebugChecksum]
-Checksum=-1479743370
+Checksum=-2024757435
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -52,6 +52,8 @@ ITMportsEnable=0
 ITMportsTermIO=0
 ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
+[array_types]
+Fmt0=uint32_t[8]	3	0
 [Trace1]
 Enabled=0
 ShowSource=1
@@ -127,10 +129,9 @@ ProbeSetup0=2 1 1 2 0 0
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c}.64.5" 0 0 1 "" 0 "" 0
-Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\NordicSource\components\libraries\button\app_button.c}.175.9" 0 0 1 "" 0 "" 0
-Bp2=_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.897.5" 0 0 1 "" 0 "" 0
-Count=3
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$}.175.9" 0 0 1 "" 0 "" 0
+Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c}.64.5" 0 0 1 "" 0 "" 0
+Count=2
 [Aliases]
 A0=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c" ""
 A1=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\nrf_log_backend_interface.h" ""

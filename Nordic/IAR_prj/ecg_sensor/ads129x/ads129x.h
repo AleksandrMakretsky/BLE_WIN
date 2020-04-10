@@ -32,6 +32,11 @@
 #define SPI_BUFFER_LENGTH       32
 
 
+
+#define ADS_POWER            NRF_GPIO_PIN_MAP(0,13)
+#define ADS_POWER_ON         nrf_gpio_pin_write(ADS_POWER, 1);
+#define ADS_POWER_OFF        nrf_gpio_pin_write(ADS_POWER, 0);
+
 #define ADS_PWDN            NRF_GPIO_PIN_MAP(1,13)
 #define ADS_PWDN_OFF        nrf_gpio_pin_write(ADS_PWDN, 1);
 #define ADS_PWDN_ON         nrf_gpio_pin_write(ADS_PWDN, 0);
@@ -50,11 +55,12 @@
     .ss_pin       = SPI_SS_PIN,                              \
     .irq_priority = SPI_DEFAULT_CONFIG_IRQ_PRIORITY,         \
     .orc          = 0xFF,                                    \
-    .frequency    = NRF_SPI_FREQ_2M,                         \
+    .frequency    = NRF_SPI_FREQ_1M,                         \
     .mode         = NRF_DRV_SPI_MODE_1,                      \
     .bit_order    = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST,         \
 }
 ////////////////////////////////////////////////////////////////////////////////
+
 
 typedef enum {
     DO_NOTHING,
@@ -67,12 +73,14 @@ typedef struct {
 	uint8_t data;
 } AdsRerister_t;
 
-	bool checkChipId(void);
-	void startConversion(void);
+	bool checkAdsChipId(void);
+	void startConversion(EcgParams_t* _ecgParams);
 	void stopConversion(void);
 	
 	void pinsInit(void);
-	void pinsOff(void);
+	
+	void chipOff(void);
+	void chipOn(void);
 	void chipInit(EcgParams_t* _ecgParams);
 	
 	uint8_t adsReadRegister(AdsRerister_t* p_register);

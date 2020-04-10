@@ -22,19 +22,21 @@ static EcgParams_t* p_ecgParams = NULL;
 ////////////////////////////////////////////////////////////////////////////////
 
 
-void adcInit(EcgParams_t* _ecgParams) {
+bool adcTestChip(void) {
 
-	// store ecg params
-	p_ecgParams = _ecgParams;
+//	debugAdsChip(); // endless loop delme
+	
+	return checkAdsChipId();
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
-bool adcTestChip(void) {
+void adcInit(EcgParams_t* _ecgParams) {
 
-	debugAdsChip(); // endless loop delme
-	
-	return checkChipId();
+	// store ecg params
+	p_ecgParams = _ecgParams;
+	FiltersDCRemoveInit(ADS_CHANNEL_COUNT);
+	FilterAcRemoveInit(ADS_CHANNEL_COUNT, AC_REMOVE_MODE_50, p_ecgParams->samplingRate);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -43,10 +45,7 @@ void adcStart(void) {
 
 	if ( p_ecgParams == NULL ) return;
 	
-	chipInit(p_ecgParams);
-	FiltersDCRemoveInit(ADS_CHANNEL_COUNT);
-	FilterAcRemoveInit(ADS_CHANNEL_COUNT, AC_REMOVE_MODE_50, p_ecgParams->samplingRate);
-	startConversion();
+	startConversion(p_ecgParams);
 }
 ////////////////////////////////////////////////////////////////////////////////
 

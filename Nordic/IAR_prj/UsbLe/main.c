@@ -912,9 +912,7 @@ int main(void) {
 	nrf_delay_ms(200); 
 	accDebug();
 
-//	nrf_gpio_cfg_output(ADS_POWER);
 	ADS_PWDN_ON;
-//	ADS_POWER_OFF;
 
 	// common initialization
     log_init();

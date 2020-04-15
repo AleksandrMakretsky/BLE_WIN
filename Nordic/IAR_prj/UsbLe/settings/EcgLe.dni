@@ -20,7 +20,7 @@ Stop=1
 Freq=10000000
 MultiCoreRunAll=1
 [DebugChecksum]
-Checksum=-1780714165
+Checksum=1028086969
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -105,6 +105,13 @@ ShowTimeLog=1
 SumEnabled=0
 ShowTimeSum=1
 SumSortOrder=0
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$}.175.9" 0 0 1 "" 0 "" 0
+Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c}.64.5" 0 0 1 "" 0 "" 0
+Bp2=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\twi_sensor\acc_sensor.c}.278.2" 0 0 1 "" 0 "" 0
+Count=3
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -112,6 +119,14 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
+[Aliases]
+A0=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c" ""
+A1=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\nrf_log_backend_interface.h" ""
+A2=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\src\nrf_log_frontend.c" ""
+A3=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\util\app_error_weak.c" ""
+A4=_ "E:\TestNordic\Nordic\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s" ""
+Count=5
+SuppressDialog=1
 [DriverProfiling]
 Enabled=0
 Mode=1
@@ -126,17 +141,3 @@ ShowTiming=1
 Frequency=10000
 Probe0=I0
 ProbeSetup0=2 1 1 2 0 0
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$}.175.9" 0 0 1 "" 0 "" 0
-Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c}.64.5" 0 0 1 "" 0 "" 0
-Count=2
-[Aliases]
-A0=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c" ""
-A1=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\nrf_log_backend_interface.h" ""
-A2=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\src\nrf_log_frontend.c" ""
-A3=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\util\app_error_weak.c" ""
-A4=_ "E:\TestNordic\Nordic\NordicSource\modules\nrfx\mdk\iar_startup_nrf52840.s" ""
-Count=5
-SuppressDialog=1

@@ -45,6 +45,9 @@ USBD CDC ACM over BLE application main file.
 #include "flash_mem.h"
 #include "timestamp_timer.h"
 
+
+#include "../twi_sensor/acc_sensor.h"
+
 #ifdef ECG
 #include "ecg_pin_config.h"
 #include "../ecg_sensor/ecg_adc.h"
@@ -906,9 +909,12 @@ int main(void) {
 	nrf_gpio_cfg_output(TEST2_PIN);
 	nrf_gpio_cfg_output(ADS_PWDN);
 
-	nrf_gpio_cfg_output(ADS_POWER);
+	nrf_delay_ms(200); 
+	accDebug();
+
+//	nrf_gpio_cfg_output(ADS_POWER);
 	ADS_PWDN_ON;
-	ADS_POWER_OFF;
+//	ADS_POWER_OFF;
 
 	// common initialization
     log_init();
@@ -967,8 +973,9 @@ int main(void) {
 	m_usb_connected = true;
 	app_usbd_start();
 	SendDataToHostFn = channelWriteUsb;
-
-//	bool boardOk = adcTestChip();
+	
+	
+	bool boardOk = adcTestChip();
 	
     for (;;) {
 		

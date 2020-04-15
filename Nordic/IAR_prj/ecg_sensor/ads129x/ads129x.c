@@ -249,7 +249,7 @@ uint8_t sendByte(uint8_t data) {
 
 void chipOn(void) {
 
-	ADS_POWER_ON;
+//	ADS_POWER_ON;
 	ADS_PWDN_OFF;
 	nrf_delay_ms(250); // t por at least 130ms 2^18 slk = 500ns
 
@@ -264,7 +264,7 @@ void chipOn(void) {
 void chipOff(void) {
 
 	ADS_PWDN_ON;
-	ADS_POWER_OFF;
+//	ADS_POWER_OFF;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -280,10 +280,13 @@ void pinsInit(void) {
 	ret_code_t err_code;
 	err_code = nrf_drv_gpiote_init();
     APP_ERROR_CHECK(err_code);
-    nrf_drv_gpiote_in_config_t in_config = NRFX_GPIOTE_CONFIG_IN_SENSE_HITOLO(true);
+
+	nrf_drv_gpiote_in_config_t in_config = NRFX_GPIOTE_CONFIG_IN_SENSE_HITOLO(true);
     in_config.pull = NRF_GPIO_PIN_PULLUP;
 	err_code = nrf_drv_gpiote_in_init(ADS_READY, &in_config, interruptFromReadyPin);
 	APP_ERROR_CHECK(err_code);
+	
+	// !!! should be nrf_drv_gpiote_in_event_disable
 	nrf_drv_gpiote_in_event_enable(ADS_READY, false); //  DISNABLE INTERRUPT;
 	
 	// init spi

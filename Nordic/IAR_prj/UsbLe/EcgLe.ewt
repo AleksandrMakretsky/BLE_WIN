@@ -3166,6 +3166,12 @@
         <name>$PROJ_DIR$\..\AppProcesses\host_interfase.c</name>
       </file>
     </group>
+    <group>
+      <name>twi_sensor</name>
+      <file>
+        <name>$PROJ_DIR$\..\twi_sensor\acc_sensor.c</name>
+      </file>
+    </group>
     <file>
       <name>$PROJ_DIR$\main.c</name>
     </file>
@@ -3275,6 +3281,9 @@
       <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_spi.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_twi.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\NordicSource\integration\nrfx\legacy\nrf_drv_uart.c</name>
     </file>
     <file>
@@ -3300,6 +3309,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_timer.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_twi.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_twim.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\modules\nrfx\drivers\src\nrfx_uart.c</name>

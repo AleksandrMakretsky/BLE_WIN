@@ -5,7 +5,7 @@
 
 void initEcgPins(nrfx_gpiote_evt_handler_t evt_handler) {
 	
-    ret_code_t err_code;
+//    ret_code_t err_code;
 /*
 	// phase A,B
     err_code = nrf_drv_gpiote_init();

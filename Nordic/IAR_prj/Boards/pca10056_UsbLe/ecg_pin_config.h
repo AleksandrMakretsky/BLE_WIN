@@ -25,12 +25,12 @@
 #define LED_IR_ON      nrf_gpio_pin_write(LED_IR, 1);
 #define LED_IR_OFF     nrf_gpio_pin_write(LED_IR, 0);
 
-#define TEST_PIN       NRF_GPIO_PIN_MAP(0,24)
+#define TEST_PIN       NRF_GPIO_PIN_MAP(0,30)
 #define TEST_ON        nrf_gpio_pin_write(TEST_PIN, 1);
 #define TEST_OFF       nrf_gpio_pin_write(TEST_PIN, 0);
 #define TEST_INV       nrf_gpio_pin_toggle(TEST_PIN);
 
-#define TEST2_PIN      NRF_GPIO_PIN_MAP(0,24)
+#define TEST2_PIN      NRF_GPIO_PIN_MAP(0,31)
 #define TEST2_ON       nrf_gpio_pin_write(TEST2_PIN, 1);
 #define TEST2_OFF      nrf_gpio_pin_write(TEST2_PIN, 0);
 #define TEST2_INV      nrf_gpio_pin_toggle(TEST2_PIN);

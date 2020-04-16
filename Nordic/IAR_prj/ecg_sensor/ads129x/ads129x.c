@@ -7,7 +7,8 @@
 
 #include "../ecg_sensor.h"
 #include "ads129x.h"
-#include "ecg_pin_config.h"
+#include "board_pins.h"
+
 
 #include "nrf_drv_spi.h"
 #include "nrf_gpio.h"

@@ -325,7 +325,7 @@
         <option>
           <name>CCIncludePath2</name>
           <state>$PROJ_DIR$\</state>
-          <state>$PROJ_DIR$\..\Boards\pca10056_UsbLe</state>
+          <state>$PROJ_DIR$\..\Boards\ecg_ble</state>
           <state>$PROJ_DIR$\..\MyNordic</state>
           <state>$PROJ_DIR$\..\AppProcesses</state>
           <state>$PROJ_DIR$\..\DsCommons</state>
@@ -3051,16 +3051,13 @@
       <name>$PROJ_DIR$\main.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Boards\pca10056_UsbLe\sdk_config.h</name>
+      <name>$PROJ_DIR$\..\Boards\ecg_ble\sdk_config.h</name>
     </file>
   </group>
   <group>
     <name>Board Definition</name>
     <file>
       <name>$PROJ_DIR$\..\..\NordicSource\components\boards\boards.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\Boards\pca10056_UsbLe\ecg_pin_config.c</name>
     </file>
   </group>
   <group>

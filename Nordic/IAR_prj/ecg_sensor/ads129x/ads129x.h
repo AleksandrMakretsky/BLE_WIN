@@ -4,7 +4,8 @@
 
 #include <stdint.h>
 #include <types_porting.h>
-#include <ecg_pin_config.h>
+#include "board_pins.h"
+
 
 #define NOISY_BITS              6
 #define	ADC_RESULT_LENGTH       27

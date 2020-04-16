@@ -9,7 +9,7 @@
 #include "nrf_delay.h"
 
 #include "nrf_drv_twi.h"
-#include "ecg_pin_config.h"
+#include "board_pins.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /* TWI instance ID. */
@@ -60,7 +60,6 @@
 #define S4G    0x10
 #define S8G    0x20
 #define S16G   0x30
-
 
 // reg 38
 #define ZDOUDLE       0x20
@@ -200,8 +199,8 @@ void twi_init (void)
 	ret_code_t err_code;
 
 	const nrf_drv_twi_config_t twi_lm75b_config = {
-	   .scl                = NRF_GPIO_PIN_MAP(0,24),
-	   .sda                = NRF_GPIO_PIN_MAP(0,13),
+	   .scl                = SCL_PIN,
+	   .sda                = SDA_PIN,
 	   .frequency          = NRF_DRV_TWI_FREQ_100K,
 	   .interrupt_priority = APP_IRQ_PRIORITY_HIGH,
 	   .clear_bus_init     = true

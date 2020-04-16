@@ -48,8 +48,10 @@ USBD CDC ACM over BLE application main file.
 
 #include "../twi_sensor/acc_sensor.h"
 
+#include "board_pins.h"
+
+
 #ifdef ECG
-#include "ecg_pin_config.h"
 #include "../ecg_sensor/ecg_adc.h"
 #endif
 #ifdef SPIRO

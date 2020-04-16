@@ -901,7 +901,11 @@ void showError(uint16_t code) {
 
 #define _DEBUG
 #ifdef _DEBUG
+
+#ifdef ECG
 #include "../ecg_sensor/ads129x/ads129x.h"
+#endif
+
 #endif
 
 /** @brief Application main function. */

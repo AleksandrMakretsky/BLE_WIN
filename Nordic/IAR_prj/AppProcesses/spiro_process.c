@@ -21,7 +21,7 @@ host interfase
 #include "nrf_drv_timer.h"
 #include "compressor.h"
 
-#include "spiro_pin_config.h"
+//#include "spiro_pin_config.h"
 
 
 #define IN_BUFFER_LENGTH   128

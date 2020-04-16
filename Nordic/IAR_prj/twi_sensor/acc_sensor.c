@@ -39,7 +39,16 @@
 #define LIS3DH_INT2_THS       0x36U
 #define LIS3DH_INT2_DURATION  0x37U
 
-// reg 20 
+#define LIS3DH_CLICK_CFG_38    0x38U
+#define LIS3DH_CLICK_THS_3A    0x3AU 
+#define LIS3DH_TIME_LIMIT_3B   0x3BU
+#define LIS3DH_TIME_LATENCY_3C 0x3CU
+#define LIS3DH_TIME_WINDOW_3D  0x3DU
+
+#define LIS3DH_TEMP_CFG_REG_1F 0x1FU
+
+
+// reg 20 LIS3DH_CTRL_REG1
 #define Z_EN        0x04
 #define Y_EN        0x02
 #define X_EN        0x01
@@ -55,16 +64,20 @@
 // reg 22  LIS3DH_CTRL_REG3
 #define I1_CLICK   0x80
 
-// reg 23 
-#define S2G    0x00
-#define S4G    0x10
-#define S8G    0x20
-#define S16G   0x30
+// reg 23 LIS3DH_CTRL_REG4
+#define S2G           0x00
+#define S4G           0x10
+#define S8G           0x20
+#define S16G          0x30
+#define HI_RES        0x08
+#define BDU           0x80
+
+
 
 // reg 38
-#define ZDOUDLE       0x20
-#define ZSINGLE       0x10
-#define XSINGLE       0x01
+#define ZDOUDLE           0x20
+#define ZSINGLE           0x10
+#define XSINGLE           0x01
 
 // reg 39
 #define CLICK_SRC_Z       0x04
@@ -74,33 +87,19 @@
 
 #define REG_COUNT   10
 const uint8_t LIS3DH_register_settings[REG_COUNT][2]={
+{LIS3DH_CTRL_REG1,ODR_400+Z_EN},      // enable all axes, normal mode,odr 400Гц(T=2,5mc)
+{LIS3DH_CTRL_REG3,0x80},      // Click interrupt on INT1.
 
- {LIS3DH_CTRL_REG1, 0x77}, // включить преобразование x y z ODR = 400 Hz
- {LIS3DH_CTRL_REG2, 0x00}, // High-pass filter disabled
- {LIS3DH_CTRL_REG3, 0x80},// Interrupt activity 1 driven to INT1 pad
- {LIS3DH_CTRL_REG4, 0x10}, // // FS = ±2 g
- {0x38, 0x01}, // CLICK_CFG   tap singl
- {0x39, 0x01},      // CLICK_SRC
- {0x3a, 0x08}, // Duration = 0
- {0x3b, 0xaa},// TIME_LIMIT
- {0x3c, 0xa0}, //TIME_LATENCY
- {0x3d, 0x08}, //TIME WINDOW
-	
-/*	
-	{LIS3DH_CTRL_REG1, ODR_400 | X_EN}, // включить преобразование x y z ODR = 400 Hz
-	{LIS3DH_CTRL_REG2, 0x00}, // High-pass filter disabled
-	{LIS3DH_CTRL_REG3, I1_CLICK},// Interrupt activity 1 driven to INT1 pad
-	{LIS3DH_CTRL_REG4, S4G}, // // FS = ±2 g
-	{LIS3DH_CTRL_REG5, 0x8}, //
+{LIS3DH_CTRL_REG4, HI_RES+S4G+BDU},  // BDU enabled, Full-scale selection 4g,High-resolution output mode ON
+{LIS3DH_CTRL_REG5,0x04},      // 4D enable: 4D detection is enabled on INT1 when 6D bit on INT1_CFG is set to 1.
 
- 	{0x38, XSINGLE},                                   // CLICK_CFG   tap singl
-	{0x39, CLICK_SRC_Z|CLICK_SRC_SINGL|CLICK_SRC_IA},  // CLICK_SRC
-	{0x3a, 0xa0},             // CLICK_THS  = 0
-	{0x3b, 0xa0},             // TIME_LIMIT
-	{0x3c, 0x08},             // TIME_LATENCY tics of ODR(10ms per tic)
-	{0x3d, 0x08},             // TIME WINDOW
- 
-*/ 
+{LIS3DH_TEMP_CFG_REG_1F,0x80},  //ADC enable 
+{LIS3DH_CLICK_CFG_38,ZDOUDLE},     //Enable interrupt double click on XYZ-axis 
+{LIS3DH_CLICK_THS_3A,64},       //Click threshold прог клика(максимальное 127 вся шкала 4g)
+{LIS3DH_TIME_LIMIT_3B,20},      //Click time limit максимальное 127 LSB=2,5ms
+{LIS3DH_TIME_LATENCY_3C,50},    //Click time latency время удержания ножки int1   max255
+{LIS3DH_TIME_WINDOW_3D,200},     //Click time window max255
+//{LIS3DH_CTRL_REG5,0x04},
 };
 
 static uint8_t m_sample;
@@ -185,8 +184,8 @@ void interruptFromAccPin(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
 
 	TEST_ON;
 
-	registr[0] = 0x31;
-	nrf_drv_twi_xfer(&m_twi, &twiTransfer, false);
+//	registr[0] = 0x31;
+//	nrf_drv_twi_xfer(&m_twi, &twiTransfer, false);
 }
 ////////////////////////////////////////////////////////////////////////////////
 

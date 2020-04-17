@@ -3026,7 +3026,7 @@
       <name>$PROJ_DIR$\main.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Boards\pca10056_UsbLe\sdk_config.h</name>
+      <name>$PROJ_DIR$\..\Boards\stetho_ble\sdk_config.h</name>
     </file>
   </group>
   <group>

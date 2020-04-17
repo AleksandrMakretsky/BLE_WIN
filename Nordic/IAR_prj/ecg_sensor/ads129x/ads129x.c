@@ -279,9 +279,11 @@ void pinsInit(void) {
 
 	// ads ready pin init 
 	ret_code_t err_code;
-	err_code = nrf_drv_gpiote_init();
-    APP_ERROR_CHECK(err_code);
-
+	if ( !nrfx_gpiote_is_init() ) {
+		err_code = nrf_drv_gpiote_init();
+		APP_ERROR_CHECK(err_code);
+	}
+	
 	nrf_drv_gpiote_in_config_t in_config = NRFX_GPIOTE_CONFIG_IN_SENSE_HITOLO(true);
     in_config.pull = NRF_GPIO_PIN_PULLUP;
 	err_code = nrf_drv_gpiote_in_init(ADS_READY, &in_config, interruptFromReadyPin);

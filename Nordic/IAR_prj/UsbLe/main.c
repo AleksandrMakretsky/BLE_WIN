@@ -916,7 +916,11 @@ int main(void) {
 	nrf_gpio_cfg_output(ADS_PWDN);
 
 	nrf_delay_ms(200); 
-	accDebug();
+//	bool err = !accInit();
+	
+//	while (1) {
+//		nrf_delay_ms(1000);
+//	}
 
 	ADS_PWDN_ON;
 
@@ -930,7 +934,8 @@ int main(void) {
     APP_ERROR_CHECK(ret);
 
 	uint16_t errorCode = 0;
-	if ( !adcTestChip() ) errorCode++;
+	if ( !accInit() ) errorCode++;
+	if ( !adcTestChip() ) errorCode+=2;
 	if ( errorCode ) showError(errorCode);
 	
 //	debugAdsChip();

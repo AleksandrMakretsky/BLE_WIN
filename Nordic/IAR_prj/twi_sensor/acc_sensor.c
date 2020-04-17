@@ -10,191 +10,96 @@
 
 #include "nrf_drv_twi.h"
 #include "board_pins.h"
-
 ////////////////////////////////////////////////////////////////////////////////
-/* TWI instance ID. */
-#define TWI_INSTANCE_ID     1
 
-/* Common addresses definition for acc. */
-#define LM75B_ADDR            0x19U // заводской адрес LIS3DH
-#define LM75B_REG_TEMP        0x00U
-#define LM75B_REG_CONF        0x01U
-#define LM75B_REG_THYST       0x02U
-#define LM75B_REG_TOS         0x03U
-
-#define LIS3DH_CTRL_REG1      0x20U
-#define LIS3DH_CTRL_REG2      0x21U
-#define LIS3DH_CTRL_REG3      0x22U
-#define LIS3DH_CTRL_REG4      0x23U
-#define LIS3DH_CTRL_REG5      0x24U
-#define LIS3DH_CTRL_REG6      0x25U
-
-#define LIS3DH_INT1_CFG       0x30U
-#define LIS3DH_INT1_SRC       0x31U
-#define LIS3DH_INT1_THS       0x32U
-#define LIS3DH_INT1_DURATION  0x33U
-
-#define LIS3DH_INT2_CFG       0x34U
-#define LIS3DH_INT2_SRC       0x35U
-#define LIS3DH_INT2_THS       0x36U
-#define LIS3DH_INT2_DURATION  0x37U
-
-#define LIS3DH_CLICK_CFG_38    0x38U
-#define LIS3DH_CLICK_THS_3A    0x3AU 
-#define LIS3DH_TIME_LIMIT_3B   0x3BU
-#define LIS3DH_TIME_LATENCY_3C 0x3CU
-#define LIS3DH_TIME_WINDOW_3D  0x3DU
-
-#define LIS3DH_TEMP_CFG_REG_1F 0x1FU
+// TWI instance ID.
+#define TWI_INSTANCE_ID 1
+////////////////////////////////////////////////////////////////////////////////
 
 
-// reg 20 LIS3DH_CTRL_REG1
-#define Z_EN        0x04
-#define Y_EN        0x02
-#define X_EN        0x01
-#define LP_MODE     0x08
-#define ODR_50      0x40
-#define ODR_100     0x50
-#define ODR_200     0x60
-#define ODR_400     0x70
-
-// reg 21
-// By default
-
-// reg 22  LIS3DH_CTRL_REG3
-#define I1_CLICK   0x80
-
-// reg 23 LIS3DH_CTRL_REG4
-#define S2G           0x00
-#define S4G           0x10
-#define S8G           0x20
-#define S16G          0x30
-#define HI_RES        0x08
-#define BDU           0x80
+bool chipLis3Init();
 
 
+#define REG_COUNT   8
+const uint8_t LIS3DH_register_settings[REG_COUNT][2] = {
+	
+	// enable Z axe, odr 200Hz(T = 5ms)
+	{R20_CTRL_REG1, ODR_200 + Z_EN + LP_MODE},
 
-// reg 38
-#define ZDOUDLE           0x20
-#define ZSINGLE           0x10
-#define XSINGLE           0x01
+	// Click interrupt on INT1.
+	{R22_CTRL_REG3, I1_CLICK},
 
-// reg 39
-#define CLICK_SRC_Z       0x04
-#define CLICK_SRC_SINGL   0x10
-#define CLICK_SRC_DOUDLE  0x20
-#define CLICK_SRC_IA      0x40
+	// BDU enabled, Full-scale selection 4g, High-resolution output mode ON
+	{R23_CTRL_REG4, S4G},
 
-#define REG_COUNT   10
-const uint8_t LIS3DH_register_settings[REG_COUNT][2]={
-{LIS3DH_CTRL_REG1,ODR_400+Z_EN},      // enable all axes, normal mode,odr 400√ц(T=2,5mc)
-{LIS3DH_CTRL_REG3,0x80},      // Click interrupt on INT1.
+	// Enable interrupt double click on XYZ-axis 
+	{R38_CLICK_CFG, ZDOUDLE},
+	
+	// Click threshold max = 127)
+	{R3A_CLICK_THS, CLICK_THRESHOLD},
 
-{LIS3DH_CTRL_REG4, HI_RES+S4G+BDU},  // BDU enabled, Full-scale selection 4g,High-resolution output mode ON
-{LIS3DH_CTRL_REG5,0x04},      // 4D enable: 4D detection is enabled on INT1 when 6D bit on INT1_CFG is set to 1.
-
-{LIS3DH_TEMP_CFG_REG_1F,0x80},  //ADC enable 
-{LIS3DH_CLICK_CFG_38,ZDOUDLE},     //Enable interrupt double click on XYZ-axis 
-{LIS3DH_CLICK_THS_3A,64},       //Click threshold прог клика(максимальное 127 вс€ шкала 4g)
-{LIS3DH_TIME_LIMIT_3B,20},      //Click time limit максимальное 127 LSB=2,5ms
-{LIS3DH_TIME_LATENCY_3C,50},    //Click time latency врем€ удержани€ ножки int1   max255
-{LIS3DH_TIME_WINDOW_3D,200},     //Click time window max255
-//{LIS3DH_CTRL_REG5,0x04},
+	// Click time limit max = 127 LSB = 5ms
+	{R3B_TIME_LIMIT, TIME_LIMIT_MS/ONE_TIC_MS},
+	
+	// Click time latency int1-active during that time. max = 255
+	{R3C_TIME_LATENCY, TIME_LATENCY_MS/ONE_TIC_MS},
+	
+	// Click time window max255 should be greater than latency
+	{R3D_TIME_WINDOW, TIME_WINDOW_MS/ONE_TIC_MS},
 };
 
 static uint8_t m_sample;
 static uint8_t registr[2];
-//static uint8_t rxData[2];
 
 const nrf_drv_twi_xfer_desc_t twiTransfer = {
 	.type     = NRF_DRV_TWI_XFER_TXRX,
-	.address  = LM75B_ADDR,
+	.address  = LM75B_CHIP_ADR,
 	.primary_length = 1,
 	.secondary_length = 1,
 	.p_primary_buf = registr,
 	.p_secondary_buf = (uint8_t *)&m_sample
 };
 
-/* Mode for LM75B. */
-#define NORMAL_MODE 0U
 
-/* Indicates if operation on TWI has ended. */
+// Indicates if operation on TWI has ended.
 static volatile bool m_xfer_done = false;
+static bool accChipOk = true;
 
-/* TWI instance. */
+// TWI instance.
 static const nrf_drv_twi_t m_twi = NRF_DRV_TWI_INSTANCE(TWI_INSTANCE_ID);
+////////////////////////////////////////////////////////////////////////////////
 
-
-/**
- * @brief Function for setting active mode on MMA7660 accelerometer.
- */
-void LM75B_set_mode(void)
-{
-    ret_code_t err_code;
-
-    /* Writing to LM75B_REG_CONF "0" set temperature sensor in NORMAL mode. */
-    uint8_t reg[2] = {LM75B_REG_CONF, NORMAL_MODE};
-    err_code = nrf_drv_twi_tx(&m_twi, LM75B_ADDR, reg, sizeof(reg), false);
-    APP_ERROR_CHECK(err_code);
-    while (m_xfer_done == false);
-
-    /* Writing to pointer byte. */
-    reg[0] = LM75B_REG_TEMP;
-    m_xfer_done = false;
-    err_code = nrf_drv_twi_tx(&m_twi, LM75B_ADDR, reg, 1, false);
-    APP_ERROR_CHECK(err_code);
-    while (m_xfer_done == false);
-}
-
-/**
- * @brief Function for handling data from temperature sensor.
- *
- * @param[in] temp          Temperature in Celsius degrees read from sensor.
- */
-__STATIC_INLINE void data_handler(uint8_t temp)
-{
-//	NRF_LOG_INFO("Temperature: %d Celsius degrees.", temp);
-}
 
 /**
  * @brief TWI events handler.
  */
-void twi_handler(nrf_drv_twi_evt_t const * p_event, void * p_context)
-{
-	TEST_OFF;
+void twi_handler(nrf_drv_twi_evt_t const * p_event, void * p_context) {
 
-    switch (p_event->type)
-    {
-        case NRF_DRV_TWI_EVT_DONE:
-            if (p_event->xfer_desc.type == NRF_DRV_TWI_XFER_RX)
-            {
-                data_handler(m_sample);
-            }
-            m_xfer_done = true;
-            break;
-        default:
-            break;
-    }
+	m_xfer_done = true;
+	switch (p_event->type) {
+		case NRF_DRV_TWI_EVT_DONE:
+//			if (p_event->xfer_desc.type == NRF_DRV_TWI_XFER_RX) ;
+			break;
+		case NRF_DRV_TWI_EVT_ADDRESS_NACK:
+		case NRF_DRV_TWI_EVT_DATA_NACK:
+			accChipOk = false;
+			break;
+		default:
+		break;
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
 void interruptFromAccPin(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 
-
 	TEST_ON;
-
-//	registr[0] = 0x31;
-//	nrf_drv_twi_xfer(&m_twi, &twiTransfer, false);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
-/**
- * @brief UART initialization.
- */
-void twi_init (void)
-{
+void twi_init (void) {
+	
 	ret_code_t err_code;
 
 	const nrf_drv_twi_config_t twi_lm75b_config = {
@@ -210,93 +115,58 @@ void twi_init (void)
 
 	nrf_drv_twi_enable(&m_twi);
 	
-	
 	// ACC_INT_PIN init 
-	err_code = nrf_drv_gpiote_init();
-    APP_ERROR_CHECK(err_code);
-
+	if ( !nrfx_gpiote_is_init() ) {
+		err_code = nrf_drv_gpiote_init();
+		APP_ERROR_CHECK(err_code);
+	}
 	nrf_drv_gpiote_in_config_t in_config = NRFX_GPIOTE_CONFIG_IN_SENSE_HITOLO(true);
     in_config.pull = NRF_GPIO_PIN_PULLUP;
 	err_code = nrf_drv_gpiote_in_init(ACC_INT_PIN, &in_config, interruptFromAccPin);
 	APP_ERROR_CHECK(err_code);
+
 	nrf_drv_gpiote_in_event_disable(ACC_INT_PIN); //  DISNABLE INTERRUPT;
-
 }
-
-/**
- * @brief Function for reading data from temperature sensor.
- */
-/*
-static void read_sensor_data()
-{
-    m_xfer_done = false;
-
-    // Read 1 byte from the specified address - skip 3 bits dedicated for fractional part of temperature.
-    ret_code_t err_code = nrf_drv_twi_rx(&m_twi, LM75B_ADDR, rxData, 1);
-    APP_ERROR_CHECK(err_code);
-}
-*/
-
 ////////////////////////////////////////////////////////////////////////////////
-//volatile uint32_t pin;
+
 
 void writeTwi(uint8_t * data, uint8_t len) {
 
 	m_xfer_done = false;
-	nrf_drv_twi_tx(&m_twi, LM75B_ADDR, data, len, false);
+	nrf_drv_twi_tx(&m_twi, LM75B_CHIP_ADR, data, len, false);
 	while (!m_xfer_done);
-
 }
+////////////////////////////////////////////////////////////////////////////////
 
 
-void accDebug() {
+bool chipLis3Init() {
+
+	accChipOk = true;
 	
-	twi_init();
-
 	// init acc settings (registers)
-    for( int i = 0; i < REG_COUNT; i++ ) {
-		
-      registr[0] = (LIS3DH_register_settings[i][0]);
-      registr[1] = (LIS3DH_register_settings[i][1]);
-	  
-	  writeTwi(registr, 2);
-	  
-//      nrf_drv_twi_tx(&m_twi, LM75B_ADDR, registr, 2, false); //отдаем адрес регистра
-      //registr[0] = (LIS3DH_register_settings[i][1]);
-      //nrf_drv_twi_tx(&m_twi, LM75B_ADDR,registr, 1, false); //отдаем значение регистра
-//      nrf_delay_ms(20);
-    }
-//    registr[0] = LIS3DH_CTRL_REG1;
-//    nrf_drv_twi_tx(&m_twi, LM75B_ADDR, registr, 1, false);
-//	nrf_delay_ms(10);
-//    nrf_drv_twi_rx(&m_twi, LM75B_ADDR, rxData, 2);  
-//	nrf_delay_ms(10);
-	
-	
-	nrf_drv_gpiote_in_event_enable(ACC_INT_PIN, true);  // ENABLE INTERRUPT;
-
-	
-	while(1) {
-		
-		nrf_delay_ms(100); 
+	for( int i = 0; i < REG_COUNT; i++ ) {
+		registr[0] = (LIS3DH_register_settings[i][0]);
+		registr[1] = (LIS3DH_register_settings[i][1]);
+		writeTwi(registr, 2);
 	}
 
-	
+	return accChipOk;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 
-bool accCheckChip(void) {
+bool accInit() {
 
-//	debugAdsChip(); // endless loop delme
-	
-	return true;
-}
-////////////////////////////////////////////////////////////////////////////////
+	bool chipOk = true;
 
-
-void accInit() {
 	twi_init();
+	chipOk = chipLis3Init();
+
+	if ( chipOk ) {
+		nrf_drv_gpiote_in_event_enable(ACC_INT_PIN, true);  // ENABLE INTERRUPT;
+	}
+		
+	return chipOk;
 }
 ////////////////////////////////////////////////////////////////////////////////
 

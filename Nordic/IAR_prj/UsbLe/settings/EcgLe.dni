@@ -20,7 +20,7 @@ Stop=1
 Freq=10000000
 MultiCoreRunAll=1
 [DebugChecksum]
-Checksum=1849519959
+Checksum=-1792897028
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -133,7 +133,9 @@ Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$}.175.9" 0 0 1 "" 0 "" 0
 Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\NordicSource\components\libraries\util\app_error_weak.c}.64.5" 0 0 1 "" 0 "" 0
 Bp2=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\twi_sensor\acc_sensor.c}.85.4" 0 0 1 "" 0 "" 0
 Bp3=_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.888.2" 0 0 1 "" 0 "" 0
-Count=4
+Bp4=_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.692.44" 0 0 1 "" 0 "" 0
+Bp5=_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.780.13" 0 0 1 "" 0 "" 0
+Count=6
 [Aliases]
 A0=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\experimental_section_vars\nrf_section_iter.c" ""
 A1=_ "E:\TestNordic\Nordic\NordicSource\components\libraries\log\nrf_log_backend_interface.h" ""
